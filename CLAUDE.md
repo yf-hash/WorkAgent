@@ -66,7 +66,19 @@
 /ppt React Hooks 技术分享 --backend slidev
 /ppt 把 README.md 转成幻灯片 --backend marp --source README.md
 
-# 文章配图生成（三合一：HTML图表/Mermaid/Stable Diffusion）
+# 云架构图生成（mingrammer/diagrams）
+/arch-diagram 用户→CloudFront→ALB→EC2集群→RDS+ElastiCache --provider aws
+/arch-diagram Ingress→Service→Pod(前端/后端/Worker)→PVC --provider k8s
+/arch-diagram Pub/Sub→Dataflow→BigQuery→Looker --provider gcp --direction LR
+/arch-diagram AWS VPC + Azure AD + 本地数据中心通过 VPN 互联 --provider multi
+/arch-diagram 微服务架构：API网关→认证/订单/支付服务→MySQL --mode code
+
+# Visio 图表创建与转换（python-visio / Visio.NET）
+/visio 用户注册流程：填写信息→邮箱验证→完善资料→激活 --type flowchart
+/visio diagram.mmd --mode convert --from mermaid --output vsdx
+/visio arch.puml --mode convert --from plantuml --output svg
+/visio network.vsdx --mode export --output png
+/visio CEO→CTO,CFO,CMO; CTO→研发总监,架构师 --type org
 /illustrate article.md                          # 全自动为文章配图
 /illustrate article.md --mode staged            # 阶段模式（每步确认）
 /illustrate --mode single --desc "用户登录流程：输入→验证→跳转"
@@ -214,6 +226,7 @@ color: blue|yellow|green   # 语义颜色
 | `ppt-generator` | PPT 生成协调，6 种引擎路由（academic/slidetailor/ppt-master/slidev/marp/sdk） | PPT 生成任务时 |
 | `data-analyst` | 综合 TaskWeaver + Chat2DB 的数据分析 Agent | 数据查询、分析、报表生成时 |
 | `visual-creator` | 文章配图 Agent — HTML图表（ASCII→HTML→截图）+ Mermaid + Stable Diffusion 三合一 | 配图/图表/视觉内容时 |
+| `diagram-architect` | 统一图表编排 Agent，自动路由至 Mermaid/PlantUML/diagrams/Visio 最优引擎，支持批量生成和格式互转 | 图表类型不确定、需要多图表套件、格式互转时 |
 
 ### Skills
 
@@ -229,6 +242,8 @@ color: blue|yellow|green   # 语义颜色
 | `marp` | Markdown快速出片，输出HTML/PDF/PPTX | `/ppt --backend marp` |
 | `pptx-sdk` | 编程式PPTX生成（python-pptx + PptxGenJS） | `/ppt --backend sdk` |
 | `mermaid-chart` | Mermaid 图表生成（流程图/时序图/甘特图/ER图等） | `/illustrate --backend mermaid` |
+| `arch-diagram` | 云架构图生成（AWS/GCP/Azure/K8s/阿里云），基于 mingrammer/diagrams | `/arch-diagram` 命令调用 |
+| `visio-builder` | Visio 图表创建与转换（python-visio / Visio.NET COM），支持 .vsdx 读写和格式互转 | `/visio` 命令调用 |
 | `stable-diffusion` | AI 图像生成，文生图/图生图（需本地 SD WebUI） | `/illustrate --backend sd` |
 | `html-chart` | HTML图表生成器，ASCII草图→HTML→Playwright截图，4种风格 | `/illustrate`（主管道） |
 | `chat2db` | 自然语言转 SQL，支持 MySQL/PostgreSQL 等主流数据库 | 对话触发 或 `/taskweaver --backend sql` |
@@ -260,6 +275,9 @@ color: blue|yellow|green   # 语义颜色
 | `/interview-writer` | 访谈写作 Writer-Reviewer 互搏流程 | `commands/interview-writer.md` |
 | `/ppt` | PPT 生成，6种引擎自动路由（academic/slidetailor/ppt-master/slidev/marp/sdk） | `commands/ppt.md` |
 | `/illustrate` | 文章配图生成 — ASCII→HTML→截图 / Mermaid / Stable Diffusion 三合一 | `commands/illustrate.md` |
+| `/diagram` | 多引擎图表生成（Markmap/PlantUML/Mermaid/diagrams/Visio 六引擎路由） | `commands/media/diagram.md` |
+| `/arch-diagram` | 云架构图生成（AWS/GCP/Azure/K8s/阿里云），基于 mingrammer/diagrams | `commands/media/arch-diagram.md` |
+| `/visio` | Visio 图表创建与转换（python-visio / Visio.NET），支持 .vsdx 读写和格式互转 | `commands/media/visio.md` |
 | `/taskweaver` | 数据分析 Agent — 自然语言转 SQL（Chat2DB）+ Python 代码执行，联合数据库查询与文件分析 | `commands/taskweaver.md` |
 | `/bid` | 标书智能编制（七阶段流水线：analyze/clarify/outline/write/review/check/export/rewrite） | `commands/bid.md` |
 | `/self-evolve` | 内容自进化 — 风格学习 + Writer-Reviewer 迭代创作（支持风格卡片复用） | `commands/self-evolve.md` |

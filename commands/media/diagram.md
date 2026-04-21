@@ -2,9 +2,10 @@
 name: diagram
 description: >
   图表生成命令，整合 Markmap（思维导图）、PlantUML（UML全系）、Mermaid（流程/时序/甘特）、
-  MerdiAi（AI自然语言生成）四大引擎，按图表类型智能路由
+  MerdiAi（AI自然语言生成）、diagrams（云架构图）、visio（企业Visio格式）六大引擎，
+  按图表类型智能路由；云架构图和 Visio 格式请直接使用 /arch-diagram 和 /visio 命令
 user-invocable: true
-argument-hint: "<描述或内容> [--engine markmap|plantuml|mermaid|ai|auto] [--type mindmap|flow|sequence|class|er|gantt|component|state|json] [--output code|render|file]"
+argument-hint: "<描述或内容> [--engine markmap|plantuml|mermaid|ai|arch|visio|auto] [--type mindmap|flow|sequence|class|er|gantt|component|state|json|cloud|org] [--output code|render|file]"
 ---
 
 # /diagram — 多引擎图表生成
@@ -30,6 +31,8 @@ argument-hint: "<描述或内容> [--engine markmap|plantuml|mermaid|ai|auto] [-
 | `plantuml` | PlantUML | UML全系、架构图、JSON可视化 |
 | `mermaid` | Mermaid | 流程图、时序图、甘特图、ER图 |
 | `ai` | MerdiAi/Claude | 自然语言 → 图表（自动选型） |
+| `arch` | mingrammer/diagrams | 云架构图（AWS/GCP/Azure/K8s）→ 转发至 `/arch-diagram` |
+| `visio` | python-visio / Visio.NET | Visio .vsdx 格式 → 转发至 `/visio` |
 | `auto` | 自动路由 | 根据 --type 和描述智能选择 |
 
 ### 图表类型（--type）
@@ -44,6 +47,8 @@ argument-hint: "<描述或内容> [--engine markmap|plantuml|mermaid|ai|auto] [-
 | `component` | 组件/架构图 | plantuml |
 | `state` | 状态图 | mermaid / plantuml |
 | `json` | JSON/YAML可视化 | plantuml |
+| `cloud` | 云架构图 | arch（diagrams）|
+| `org` | 组织架构图 | visio / plantuml |
 
 ### 输出方式（--output）
 | 值 | 说明 |
@@ -60,6 +65,8 @@ argument-hint: "<描述或内容> [--engine markmap|plantuml|mermaid|ai|auto] [-
 Step 1: 引擎路由
   → 分析 --engine 和 --type 参数
   → auto 模式：根据描述关键词自动选择最优引擎
+  → arch 引擎：转发至 /arch-diagram 命令（mingrammer/diagrams）
+  → visio 引擎：转发至 /visio 命令（python-visio / Visio.NET）
   → 加载对应引擎的语法规范
 
 Step 2: 内容解析
@@ -83,9 +90,11 @@ Step 4: 输出
 
 ```
 /diagram → 图表代码生成
-  ├── /illustrate  → 将图表嵌入文章配图流程
-  ├── /md-visual   → 将 Mermaid 图表渲染为图片
-  └── @visual-suite → 完整视觉内容编排 Agent
+  ├── /illustrate    → 将图表嵌入文章配图流程
+  ├── /md-visual     → 将 Mermaid 图表渲染为图片
+  ├── /arch-diagram  → 云架构图（AWS/GCP/Azure/K8s）专用命令
+  ├── /visio         → Visio .vsdx 格式专用命令
+  └── @diagram-architect → 统一图表编排 Agent，自动选择最优引擎
 ```
 
 ---
@@ -113,4 +122,10 @@ Step 4: 输出
 
 # 从文章大纲生成思维导图
 /diagram [粘贴文章大纲] --engine markmap
+
+# 云架构图（转发至 /arch-diagram）
+/diagram AWS三层架构：CloudFront→ALB→EC2→RDS --engine arch
+
+# Visio 格式（转发至 /visio）
+/diagram 组织架构图 --engine visio --type org
 ```
