@@ -3,11 +3,11 @@ name: product-enablement
 description: 产品赋能Agent，编排B2B产品完整资料体系生产，从产品信息收集到24类文档批量输出，自动质量核验，支持行业化定制
 model: sonnet
 tools: Read, Write, Edit, AskUserQuestion
-skills: [product-doc-writer, sales-guide-writer, doc-auditor]
+skills: [product-doc-writer, sales-guide-writer, doc-auditor, proposal-generator]
 memory: project
 effort: high
 color: orange
-maxTurns: 30
+MaxTurns: 30
 ---
 
 # 产品赋能 Agent

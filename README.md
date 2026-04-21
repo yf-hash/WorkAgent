@@ -1,265 +1,452 @@
 # WorkAgent
 
-> 以风格驱动的 AI 内容创作平台
+> 以 Claude Code 为入口，通过自然语言 command 调用适配的 Agent 和 Skill，完成前场需求的工作智能体，满足产品、市场、HR、设计等不同用户的场景需求。
 
-WorkAgent 是面向内容创作者的 AI 辅助写作系统，核心理念是：**先学习你的风格，再用你的风格写作**。
+WorkAgent 是面向产品、市场、HR、售前等用户的工作智能体，核心理念是：**通过 WorkAgent，让工作效率指数级提升**。
 
-## 快速开始
+---
 
-### 用卡兹克风格写文章
+## 项目概述
 
-直接触发，无需命令：
+WorkAgent 是一套以 **风格驱动** 为核心设计理念的 AI 原生工作平台。它不是通用代码工具，而是专为前场业务人员打造的智能工作系统：
 
-```
-帮我写一篇公众号文章，主题是 Claude Code 的实际使用体验
-```
+- **内容创作**：公众号长文、访谈稿、深度研究报告、文档润色
+- **产品管理**：PRD 生成、竞品分析、用户研究、数据分析、路线图规划
+- **标书编制**：七阶段全流程标书智能编制，三色标记 + RAG 增强写作
+- **演示制作**：6 种 PPT 引擎自动路由，学术/商务/开发者场景全覆盖
+- **数据分析**：自然语言转 SQL + Python 沙箱执行，联合数据库与文件分析
+- **HR 招聘**：简历智能筛选，JD 匹配 + 六维评分 + 候选人排名
+- **视频生成**：Remotion 动态视频，模板/字幕/TTS/MP4 渲染全流程
 
-或显式调用：
+**支持编辑器**：Claude Code（完整支持）> Cursor > OpenAI Codex
 
-```
-/khazix-writer 帮我写一篇关于 Claude Code 的公众号文章
-```
+---
 
-### 横纵分析法深度研究
+## 核心内容
 
-对产品/公司/概念/人物进行系统性研究，输出排版精美的 PDF 报告：
+| 模块 | 数量 | 说明 |
+|------|------|------|
+| Agents | 17 个 | 自治代理，编排完整业务流程 |
+| Skills | 40 个 | 可复用知识库，自动激活或命令调用 |
+| Commands | 31 个（50+ 调用模式） | 统一命令入口，智能路由到对应 Skill/Agent |
 
-```
-/hv-analysis 帮我用横纵分析法研究 Hermes Agent
-/hv-analysis 深度研究一下 Claude Code 这个产品
-/hv-analysis 竞品分析：Cursor vs Claude Code vs Windsurf
-```
+**设计原则**：
+- **风格驱动**：所有写作输出以用户/角色风格为第一优先级，避免 AI 套话
+- **人机协同**：关键节点设置人工确认，标书/内容创作均有阶段性检查点
+- **多引擎路由**：PPT、配图、数据分析等场景支持多种后端引擎自动选择
+- **质量四层自检**：活人感 → 情感 → 信息 → 结构，逐层验证输出质量
 
-### 访谈写作（Writer-Reviewer 互搏）
+---
 
-输入访谈素材，自动提炼核心观点，通过 Writer-Reviewer 对抗迭代生成高质量文章：
-
-```
-/interview-writer 以下是我和 [人物] 的访谈记录：[粘贴素材]
-/interview-writer --target-score 88 --max-rounds 3
-```
-
-### PPT 生成（6种引擎）
-
-智能路由到最合适的引擎，或手动指定 `--backend`：
+## 项目结构
 
 ```
-# 学术演讲（无论文PDF） → academic-pptx
-/ppt 帮我做论文答辩 PPT，主题"深度学习在医学图像分割中的应用"
-
-# 学术演讲（有论文PDF，自动提取内容） → SlideTailor
-/ppt --backend slidetailor --source paper.pdf --duration 15
-
-# 商务通用 PPT → ppt-master
-/ppt 做一个年度总结 PPT --style mckinsey --pages 12
-
-# 技术/代码演示 → Slidev
-/ppt React Hooks 深度解析技术分享 --backend slidev
-
-# Markdown 快速出片 → Marp
-/ppt 把这份 README.md 转成幻灯片 --backend marp --source README.md
-
-# ���据驱动/批量生成 → PPTX SDK
-/ppt 根据 data.csv 批量生成月度销售报告 --backend sdk
-```
-
-### 文章配图生成（三合一）
-
-智能路由到三种渲染后端，零成本生成专业级配图：
-
-```
-# 全自动为整篇文章配图（扫描→识别→批量生成→插入）
-/illustrate article.md
-
-# 阶段模式（每步暂停确认 ASCII 草图和 HTML 效果）
-/illustrate article.md --mode staged
-
-# 单图生成：结构化图表（ASCII→HTML→截图，零成本）
-/illustrate --mode single --desc "用户注册流程：填写信息→验证→发送邮件→激活"
-/illustrate --mode single --type arch --desc "微服务三层架构：前端/网关/服务/数据库"
-/illustrate --mode single --type compare --desc "方案A快速部署 vs 方案B高度定制"
-
-# 单图生成：精确语义图表（Mermaid）
-/illustrate --mode single --backend mermaid --type sequence --desc "API调用时序"
-/illustrate --mode single --backend mermaid --type er --desc "用户-订单-商品关系"
-
-# 单图生成：AI创意图像（Stable Diffusion，需本地 WebUI）
-/illustrate --mode single --backend sd --desc "AI多智能体协作科技感封面"
-
-# 风格选择
-/illustrate article.md --style tech           # 科技感深色
-/illustrate article.md --style business-blue  # 商务蓝白（默认）
-/illustrate article.md --style minimal        # 极简线条
-```
-
-**三个后端对比**：
-
-| 后端 | 适合图表类型 | 成本 | 质量 |
-|------|------------|------|------|
-| `html`（默认）| 流程图/架构图/对比表/步骤图 | 零成本 | 专业商务风 |
-| `mermaid` | 时序图/ER图/甘特图/类图 | 零成本 | 精确语义 |
-| `sd` | 封面图/插图/创意图像 | 需本地GPU | AI生成 |
-
-### 数据查询与分析（SQL + Python 双后端）
-
-自然语言转 SQL、SQL 优化、Python 数据分析，支持 MySQL/PostgreSQL/SQLite/MongoDB 等：
-
-```
-# 数据库查询
-/taskweaver 查询最近 30 天销售额超过 1000 的订单
-/taskweaver 按月统计 2024 年各地区销售额，取前 10 名
-/taskweaver 优化这个慢查询 --mode optimize
-/taskweaver 解释这段 SQL 的含义 --mode explain
-```
-
-### TaskWeaver 数据分析
-
-代码优先 Agent，SQL 查询与 Python 代码执行一体化：
-
-```
-/taskweaver 读取 sales.csv 按月统计销售额并生成趋势图
-/taskweaver 将 data/ 目录下所有 Excel 文件合并去重 --output combined.csv
-/taskweaver 分析 log.txt 中各类错误的出现频率
-```
-
-### MetaGPT 项目生成
-
-多 Agent 软件公司模拟，从需求到代码一键生成完整项目：
-
-```
-/metagpt 开发一个待办事项 API，支持增删改查，使用 FastAPI + SQLite
-/metagpt 仅生成 PRD：在线书店系统 --mode prd
-/metagpt 开发博客系统 --roles pm,architect --mode design
+WorkAgent/
+├── agents/          # 17 个自治代理（编排完整业务流程）
+├── skills/          # 40 个可复用知识库
+├── commands/        # 31 个统一命令入口（50+ 调用模式）
+│   ├── writing/     # 写作类命令（article-writer/bid/humanize/interview-writer/polish/self-evolve）
+│   ├── product/     # 产品管理类命令（prd/market-research/analytics/roadmap/gtm-strategy 等）
+│   ├── research/    # 研究分析类命令（hv-analysis/paper-collect/paper-interpret/taskweaver）
+│   ├── media/       # 媒体生成类命令（ppt/illustrate/diagram/md-visual/table/remotion-generate）
+│   └── hr/          # HR 招聘类命令（screen）
+├── hooks/           # Claude Code 生命周期钩子（安全拦截 + 质量检查）
+├── .claude/
+│   └── settings.json    # Claude Code 权限配置
+├── .cursor/
+│   └── rules/           # Cursor 写作规范规则
+├── CLAUDE.md            # Claude Code 完整使用指南
+├── AGENTS.md            # Codex/OpenCode 兼容指南
+└── README.md
 ```
 
 ---
 
-## Skills
+## 智能体系统
 
-| Skill | 触发场景 | 使用方式 |
-|-------|---------|---------|
-| `khazix-writer` | 写公众号文章、写稿子、续写、按我风格写 | 对话触发 或 `/khazix-writer` |
-| `hv-analysis` | 横纵分析、深度研究、竞品分析、研究产品/公司/概念/人物 | 对话触发 或 `/hv-analysis` |
-| `interview-writer` | 访谈写作、人物专访、对话整理、访谈稿 | 对话触发 或 `/interview-writer` |
+17 个自治 Agent，覆盖产品、内容、标书、数据、研究、HR、媒体、GTM、方案、视觉全域：
+
+| Agent | 职责 | 调用时机 |
+|-------|------|---------|
+| `product-manager` | 全栈产品经理（PRD/竞品/用研/分析/路线图/反馈全流程） | 产品决策、需求文档、产品策略 |
+| `market-intelligence` | 市场情报分析（竞品监测/TAM/趋势/选品/OSS 生态） | 竞品分析、市场研究、选品研究 |
+| `bid-writer` | 标书全流程编制（七阶段：拆解→澄清→大纲→撰写→评审→核查→移交） | 标书/投标/招标文件编制 |
+| `content-director` | 全流程内容创作编排（风格分析→框架→写作→QA→迭代） | 需要完整写作流程 |
+| `writer-reviewer` | Writer-Reviewer 互搏 + 知识库进化 | 访谈写作迭代优化 |
+| `style-evolver` | 风格学习 → 风格卡片确认 → Writer-Reviewer 迭代创作 | 风格迁移、参考文章仿写 |
+| `doc-polisher` | 文档智能润色（AI 去痕 + 智能配图全自动闭环） | 文档润色、去 AI 味 + 配图一体化 |
+| `talent-screener` | 简历智能筛选（JD 匹配、六维评分、候选人排名） | 招聘初筛、简历批量筛选 |
+| `paper-researcher` | 论文研究（arXiv 搜集 + 单篇深度解读） | 论文情报跟踪、学术科普写作 |
+| `video-maker` | Remotion 视频生成（模板/字幕/TTS/渲染） | 企业介绍视频、产品演示视频 |
+| `ppt-generator` | PPT 生成协调，6 种引擎路由（academic/slidetailor/ppt-master/slidev/marp/sdk） | PPT 生成任务 |
+| `data-analyst` | 综合 TaskWeaver + Chat2DB 的数据分析 Agent | 数据查询、分析、报表生成 |
+| `visual-creator` | 文章配图 Agent — HTML 图表 + Mermaid + Stable Diffusion 三合一 | 配图/图表/视觉内容生成 |
+| `product-enablement` | 产品赋能工作流（销售指南/文档审计/产品文档） | 产品赋能、销售支持 |
+| `gtm-strategist` | GTM 全链路战略 Agent（增长模型/ICP/定位/渠道/定价/90天计划） | 新产品上市规划、GTM 诊断与优化 |
+| `proposal-writer` | 企业方案撰写全链路 Agent（售前方案/可研报告/初步设计，多行业定制） | 售前解决方案、项目建议书 |
+| `visual-suite` | 视觉内容全链路 Agent（配图/思维导图/UML/Markdown 海报/表格可视化） | 文章配图、图表、MD 转图片 |
+
+---
+
+## Skill 系统
+
+40 个可复用知识库，支持对话触发或命令调用：
+
+### 写作与内容
+
+| Skill | 描述 | 触发方式 |
+|-------|------|---------|
+| `article-writer` | 文章风格公众号长文写作（4000-8000 字） | 对话触发 或 `/article-writer` |
+| `hv-analysis` | 横纵分析法深度研究，输出 PDF 报告（10000-30000 字） | 对话触发 或 `/hv-analysis` |
+| `interview-writer` | 访谈写作 v2.0，Writer-Reviewer 互搏 + 知识库进化 | 对话触发 或 `/interview-writer` |
+| `style-evolver` | 风格驱动内容自进化，从参考文章提炼风格卡片，迭代创作 | 对话触发 或 `/self-evolve` |
+| `humanizer` | AI 文本人性化改写（40+ 痕迹检测，五维评分） | `/humanize` 命令调用 |
+| `doc-polisher` | 文档智能润色闭环（读取→去痕→配图→输出） | `/polish` 命令调用 |
+| `bid-writer` | 标书七阶段编制知识库（三色标记/偏离表/RAG 写作/双轮评审/合规核查） | `/bid` 命令调用 |
+| `bid-rewriter` | 偏离表"无偏离"应答项五原则同义改写 | `/bid rewrite` 调用 |
+
+### PPT 与可视化
+
+| Skill | 描述 | 触发方式 |
+|-------|------|---------|
 | `ppt-master` | 通用 PPT 生成，支持多种设计风格和图片生成 | `/ppt` 命令调用 |
 | `academic-pptx` | 学术演讲 PPT 生成，论证优先设计 | `/ppt` 命令调用 |
-| `slidetailor` | 论文PDF → 学术幻灯片，NLP自动内容提取 | `/ppt --backend slidetailor` |
-| `slidev` | 开发者/技术演示（Markdown+Vue，代码高亮动画） | `/ppt --backend slidev` |
+| `slidetailor` | 论文 PDF → 学术幻灯片，NLP 自动提取内容 | `/ppt --backend slidetailor` |
+| `slidev` | 开发者/技术演示，Markdown + Vue，代码高亮动画 | `/ppt --backend slidev` |
 | `marp` | Markdown 快速出片，输出 HTML/PDF/PPTX | `/ppt --backend marp` |
-| `pptx-sdk` | 编程式 PPTX 生成（python-pptx / PptxGenJS） | `/ppt --backend sdk` |
-| `mermaid-chart` | 精确语义图表（时序图/ER图/甘特图/类图） | `/illustrate --backend mermaid` |
+| `pptx-sdk` | 编程式 PPTX 生成（python-pptx + PptxGenJS） | `/ppt --backend sdk` |
+| `html-chart` | HTML 图表生成器，ASCII 草图→HTML→Playwright 截图，4 种风格 | `/illustrate`（主管道） |
+| `mermaid-chart` | Mermaid 图表生成（流程图/时序图/甘特图/ER 图等） | `/illustrate --backend mermaid` |
 | `stable-diffusion` | AI 图像生成，文生图/图生图（需本地 SD WebUI） | `/illustrate --backend sd` |
-| `html-chart` | HTML图表生成器，ASCII→HTML→截图，4种商务风格（主管道） | `/illustrate`（默认） |
-| `chat2db` | 自然语言转 SQL，SQL 优化，支持 MySQL/PostgreSQL 等 | 对话触发 或 `/taskweaver --backend sql` |
+
+### 产品管理
+
+| Skill | 描述 | 触发方式 |
+|-------|------|---------|
+| `pm-skills` | 产品经理技能库（JTBD/RICE/OKR/PMF/发布清单/用户故事地图等） | 对话触发 或 `/pm-skills` |
+| `prd-generator` | AI PRD 生成（lite/full/gtm/workflow 四种模式） | `/prd` 命令调用 |
+| `market-research` | 市场研究与竞争情报（竞品/趋势/TAM/亚马逊选品/OSS 生态） | `/market-research` 命令调用 |
+| `product-analytics` | 产品数据分析（指标体系/漏斗/留存/埋点/PostHog/Matomo） | `/analytics` 命令调用 |
+| `user-feedback` | 用户反馈管理（NPS/CSAT/功能投票/VoC 报告/情感分析） | `/feedback` 命令调用 |
+| `product-roadmap` | 路线图规划（RICE/MoSCoW/Gantt/GitHub Projects/OKR） | `/roadmap` 命令调用 |
+| `design-proto` | 产品设计与原型（线框图/Penpot/Framer Motion/Onboarding） | `/design-proto` 命令调用 |
+
+### 数据与研究
+
+| Skill | 描述 | 触发方式 |
+|-------|------|---------|
 | `taskweaver` | 代码优先 Agent，Python 沙箱执行数据分析和自动化任务 | 对话触发 或 `/taskweaver` |
-| `metagpt` | 多 Agent 软件公司，PRD→架构→代码→测试全流程 | 对话触发 或 `/metagpt` |
+| `chat2db` | 自然语言转 SQL，支持 MySQL/PostgreSQL 等主流数据库 | 对话触发 或 `/taskweaver --backend sql` |
+| `paper-collector` | arXiv 安全论文搜集与中文摘要生成 | `/paper-collect` 命令调用 |
+| `paper-interpreter` | 论文 PDF 深度解读（4000-6000 字公众号长文） | `/paper-interpret` 命令调用 |
+| `metagpt` | 多 Agent 软件公司模拟，PRD→架构→代码→测试全流程 | 对话触发 或 `/metagpt` |
 
-## Commands
+### HR 与媒体
 
-独立命令，直接调用对应的 skill：
+| Skill | 描述 | 触发方式 |
+|-------|------|---------|
+| `resume-screener` | 简历智能筛选（JD 匹配、硬过滤、六维评分） | `/screen` 命令调用 |
+| `remotion-generator` | Remotion 动态视频生成（模板/字幕/TTS/渲染） | `/remotion-generate` 命令调用 |
 
-| Command | 描述 | 文件 |
-|---------|------|------|
-| `/khazix-writer` | 卡兹克风格公众号长文写作（4000-8000字） | `commands/khazix-writer.md` |
-| `/hv-analysis` | 横纵分析法深度研究，输出 PDF 报告（10000-30000字） | `commands/hv-analysis.md` |
-| `/interview-writer` | 访谈写作 Writer-Reviewer 互搏流程 | `commands/interview-writer.md` |
-| `/ppt` | PPT 生成，自动识别学术演讲或通用 PPT 场景 | `commands/ppt.md` |
-| `/illustrate` | 文章配图生成，HTML图表/Mermaid/SD三合一，支持全文自动配图 | `commands/illustrate.md` |
-| `/taskweaver` | 数据分析 Agent — SQL 查询（Chat2DB）+ Python 代码执行，双后端智能路由 | `commands/taskweaver.md` |
-| `/metagpt` | 多 Agent 软件项目生成（PRD→架构→代码→测试） | `commands/metagpt.md` |
+### 产品赋能
 
-## khazix-writer 说明
+| Skill | 描述 | 触发方式 |
+|-------|------|---------|
+| `gtm-strategy` | GTM 上市战略知识库（增长模型/ICP/定位/渠道/定价/90天计划/GTM KPI） | `/gtm-strategy` 命令调用 |
+| `proposal-generator` | 企业方案撰写知识库（售前解决方案/可研报告/初步设计，多行业定制） | `/proposal` 命令调用 |
+| `sales-guide-writer` | B2B 销售赋能知识库（销售一页禅/场景剧本/竞争话术/行业 FAQ） | `/sales-guide` 命令调用 |
+| `product-doc-writer` | B2B 产品资料体系（24 类标准文档：白皮书/彩页/解决方案/操作手册等） | `/product-doc` 命令调用 |
+| `doc-auditor` | 产品文档质量审核（14 项检查/24 类完整性/命名规范/密级管理） | `/doc-audit` 命令调用 |
 
-`khazix-writer` 内置了「数字生命卡兹克」的写作风格体系，核心是：
+### 可视化增强
 
-> **"有见识的普通人在认真聊一件打动他的事。"**
+| Skill | 描述 | 触发方式 |
+|-------|------|---------|
+| `diagram-suite` | 完整图表生成套件（Markmap 思维导图/PlantUML/Mermaid/MerdiAi 四引擎路由） | `/diagram` 命令调用 |
+| `ai-illustrator` | AI 智能插图生成（文章配图/学术图表/文档插图/创意画布，支持多种艺术风格） | 对话触发 |
+| `md-visual` | Markdown 转视觉图像（md 转图片/海报/卡片，整合 mark-pic/Madopic/tablesnap） | `/md-visual` 命令调用 |
+| `table-toolkit` | 表格生成与转换工具集（文本/CSV/自然语言转 Markdown 表格，多工具链整合） | `/table` 命令调用 |
 
-- 亲自下场，不隔空评论
-- 口语化叙述，不用套话
-- 四层自检体系保证"活人感"
-- 适用于公众号长文（4000-8000 字）
+---
 
-## hv-analysis 说明
+## 命令系统
 
-横纵分析法由数字生命卡兹克提出，融合了：
-- 索绪尔的历时-共时分析（Saussure）
-- 社会科学的纵向-横截面研究设计
-- 商学院案例研究法
-- 竞争战略分析
+31 个统一命令入口，按场景分类：
 
-核心原则：纵向追时间深度，横向追同期广度，最终交汇出判断。
+### 写作类
 
-**输出格式**：
-- Markdown 报告：`[研究对象]_横纵分析报告.md`
-- PDF 报告：`[研究对象]_横纵分析报告.pdf`（A4 排版，深蓝/绿/浅蓝配色）
-
-**依赖**：`pip install weasyprint markdown --break-system-packages`
-
-## interview-writer 参数说明
-
-```
---style-card <路径>         使用已保存的风格卡片（可选）
---target-score <分数>       目标评分，默认 85
---max-rounds <轮次>         最大互搏轮次，默认 3
---mode full|draft           full=完整互搏流程，draft=仅输出初稿
---save-kb true|false        是否沉淀到知识库，默认 true
-```
-
-## PPT 生成说明
-
-WorkAgent 集成了两个 PPT 生成 skill，自动根据场景选择：
-
-### academic-pptx（学术演讲 PPT）
-
-**适用场景**：
-- 会议论文演讲（conference talk）
-- 研讨会报告（seminar）
-- 论文答辩（thesis defense）
-- 资助申请简报（grant briefing）
-
-**设计原则**：
-- 论证优先设计（Argument-first design）
-- 行动标题（Action titles）— 每张幻灯片标题是完整句子
-- 一个展品一张幻灯片
-- 强制引用和参考文献
-- 白色背景，单一无衬线字体
-
-**依赖**：
 ```bash
-pip install "markitdown[pptx]"
-npm install -g pptxgenjs
+/article-writer 帮我写一篇关于 Claude Code 的公众号文章
+/hv-analysis 帮我用横纵分析法研究 Hermes Agent
+/interview-writer 以下是我和张三的访谈记录：[素材]
+/self-evolve --learn url1,url2 --title "文章标题"
+/humanize article.md --tone casual --intensity high
+/polish thesis.pdf --tone academic --intensity max
+/bid full 招标文件.pdf --kb company-docs/
+/bid analyze 招标.pdf --color --clarify-list
+/bid write --section solution --kb company-docs/ --figures
+/bid rewrite --file 技术偏离表.docx
 ```
 
-### ppt-master（通用 PPT）
+### 产品管理类
 
-**适用场景**：
-- 商业报告、产品介绍
-- 年度总结、工作汇报
-- 营销材料、培训材料
-
-**核心特性**：
-- 完全可编辑的原生 PPTX（DrawingML 形状，非图片）
-- 支持 PDF/DOCX/URL/Markdown 源文档转换
-- 多角色 AI 协作（Strategist → Image_Generator → Executor）
-- 支持 10+ 图片生成后端（Gemini、OpenAI、Qwen 等）
-- 多种设计风格（Google、McKinsey、Zen、Pixel 等）
-
-**依赖**：
 ```bash
-pip install python-pptx PyMuPDF mammoth svglib reportlab Pillow
-npm install -g pptxgenjs
+/prd 开发一个 AI 写作助手浏览器插件 --mode full
+/prd 新功能 GTM 计划 --mode gtm
+/market-research AI 写作工具市场 --mode competitive
+/market-research 中国 SaaS 趋势 --mode trend --output report
+/user-research 验证用户是否愿意为 AI 写作工具付费
+/analytics SaaS 产品指标体系设计 --mode metrics
+/analytics 用户注册漏斗分析 --mode funnel
+/feedback 分析 feedback.csv 用户反馈 --source feedback.csv
+/feedback 设计月度 NPS 调查 --mode nps
+/roadmap Q2 产品路线图规划 --horizon 3m
+/roadmap 需求优先级排序 --mode prioritize
+/design-proto 设计 SaaS 仪表盘线框图 --mode wireframe
+/pm-skills RICE 优先级框架 --mode framework
+/gtm-strategy 云安全产品上市策略 --mode fullplan --growth plg
+/gtm-strategy --mode diagnose --market b2b
+/proposal 智慧城市交通系统 --type feasibility --industry gov
+/proposal 企业私有化部署方案 --type presale --industry finance
+/sales-guide 数据安全产品 --mode full --industry fintech
+/product-doc AI 客服平台 --type whitepaper --industry saas
+/doc-audit ./product-docs/ --mode fullset --strict
 ```
 
-**参数说明**：
+### 研究与数据类
+
+```bash
+/paper-collect --since 2026-02-01 --topic llm-security,fuzzing --limit 5
+/paper-interpret paper.pdf --style professional --length medium
+/taskweaver 查询最近 30 天销售额超过 1000 的订单
+/taskweaver 分析 sales.csv 按月统计销售额并生成图表
+/taskweaver 合并 data/ 目录下所有 Excel 文件 --output combined.csv
+/metagpt 开发一个待办事项 API，FastAPI + SQLite
 ```
---format <格式>             画布格式（ppt169/ppt43/xiaohongshu/moments），默认 ppt169
---style <风格>              设计风格（google/mckinsey/zen/pixel/academic），默认自动判断
---source <路径>             源文档路径（PDF/DOCX/URL/Markdown）
---pages <数量>              目标页数，默认自动计算
---type <类型>               演讲类型（conference/seminar/defense/grant），默认 conference
---duration <分钟>           演讲时长，默认 15
---image-backend <后端>      图片生成后端（gemini/openai/qwen/zhipu），默认 gemini
+
+### 媒体生成类
+
+```bash
+/ppt 帮我做一个论文答辩 PPT，主题是"深度学习"
+/ppt 做一个产品介绍 PPT --style google --pages 10
+/ppt --backend slidetailor --source paper.pdf --duration 15
+/ppt React Hooks 技术分享 --backend slidev
+/illustrate article.md
+/illustrate --mode single --backend mermaid --type sequence --desc "微服务调用链"
+/illustrate --mode single --backend sd --desc "AI 协作封面图" --sd-style digital-art
+/remotion-generate --template ai-native-company-intro --render
+/diagram "用户注册流程" --engine markmap --type mindmap
+/diagram --engine plantuml --type sequence --desc "微服务调用链"
+/md-visual article.md --type poster --theme gradient
+/table "姓名、年龄、城市\n张三、28、北京" --from text --to md
 ```
+
+### HR 类
+
+```bash
+/screen --jd jd_backend.md ./resumes/ --weights tech --top 5
+```
+
+---
+
+## 核心场景
+
+### 场景一：公众号长文创作
+
+适用于需要输出高质量、有个人风格的公众号文章。
+
+```bash
+# 直接写作
+/article-writer 帮我写一篇关于 AI Native 产品设计的文章
+
+# 风格迁移：先学习参考文章风格，再创作
+/self-evolve --learn https://mp.weixin.qq.com/xxx --title "我的新文章标题"
+
+# 访谈稿：Writer-Reviewer 互搏迭代
+/interview-writer --target-score 88 --max-rounds 3
+```
+
+### 场景二：标书全流程编制
+
+七阶段流水线，支持一键全流程或分阶段执行：
+
+```bash
+# 一键全流程
+/bid full 招标文件.pdf --kb company-docs/
+
+# 分阶段执行
+/bid analyze 招标.pdf --color --clarify-list   # 拆解 + 三色标记
+/bid outline --from 要求清单.xlsx --with-deviation  # 偏离表 + 大纲
+/bid write --section solution --kb company-docs/    # 写技术方案
+/bid rewrite --file 技术偏离表.docx                 # 偏离表改写
+```
+
+三色标记规则：🔴 一票否决项 / 🟡 高分项 / 🔵 基础合规项
+
+### 场景三：PPT 智能生成
+
+6 种引擎自动路由，覆盖学术/商务/开发者场景：
+
+```bash
+/ppt 论文答辩 PPT，主题"深度学习在医疗影像中的应用"   # 自动路由到 academic-pptx
+/ppt 产品季度汇报 --style business --pages 15          # 自动路由到 ppt-master
+/ppt --backend slidetailor --source paper.pdf          # 论文 PDF 直接转幻灯片
+/ppt React 技术分享 --backend slidev                   # 开发者演示
+```
+
+### 场景四：产品经理全流程
+
+从需求到上线的完整 PM 工作流：
+
+```bash
+/prd 开发 AI 写作助手浏览器插件 --mode full        # 完整 PRD
+/market-research AI 写作工具市场 --mode competitive  # 竞品分析
+/analytics 用户注册漏斗分析 --mode funnel            # 数据分析
+/roadmap Q2 路线图规划 --horizon 3m                  # 路线图
+/feedback 生成 Q1 用户之声报告 --mode voc            # 用户反馈
+```
+
+### 场景五：深度研究报告
+
+横纵分析法，输出 10000-30000 字深度报告：
+
+```bash
+/hv-analysis 研究 Cursor 的产品策略与市场定位
+```
+
+### 场景六：GTM 上市战略
+
+从增长模型选择到 90 天执行计划的完整 GTM 路径：
+
+```bash
+/gtm-strategy 云安全 SaaS 产品上市 --mode fullplan --growth plg
+/gtm-strategy --mode diagnose    # 诊断当前 GTM 问题
+/gtm-strategy 进入政府市场 --growth slg --market b2b --output deck
+```
+
+### 场景七：企业方案撰写
+
+多行业定制，支持售前解决方案、可研报告、初步设计方案：
+
+```bash
+/proposal 智慧交通系统 --type feasibility --industry gov
+/proposal 企业私有化部署 --type presale --industry finance
+/proposal 工厂数字化改造 --type design --industry mfg
+```
+
+---
+
+## 使用指南
+
+### 编辑器配置
+
+**Claude Code（推荐）**
+
+直接在 Claude Code 中使用 `/` 命令调用，所有功能完整支持。配置文件位于 `.claude/settings.json`，已预设必要权限。
+
+**Cursor**
+
+在 Agent 模式下使用，写作规范规则已配置于 `.cursor/rules/writing-guidelines.mdc`。
+
+**OpenAI Codex / OpenCode**
+
+参考 `AGENTS.md` 中的兼容指南，通过读取 Skill 文件内容调用。
+
+### Skill 调用方式
+
+Skills 支持两种触发方式：
+
+1. **对话触发**：在对话中描述需求，Claude Code 自动识别并激活对应 Skill
+2. **命令调用**：使用 `/command-name` 直接调用，支持参数控制行为
+
+### 质量标准
+
+所有写作输出通过四层自检：
+
+| 层次 | 检查项 | 标准 |
+|------|--------|------|
+| 活人感 | 是否有真实的人在说话 | 无 AI 套话，有个人立场 |
+| 情感 | 是否打动读者 | 有温度，不说教 |
+| 信息 | 是否有干货 | 有见识，不废话 |
+| 结构 | 是否好读 | 段落节奏流畅 |
+
+禁止出现的 AI 套话：「首先」「总之」「不得不说」「值得注意的是」「综上所述」等。
+
+---
+
+## 快速开始
+
+**1. 克隆仓库**
+
+```bash
+git clone https://github.com/your-org/WorkAgent.git
+cd WorkAgent
+```
+
+**2. 在 Claude Code 中打开**
+
+```bash
+claude .
+```
+
+**3. 尝试第一个命令**
+
+```bash
+# 写一篇公众号文章
+/article-writer 帮我写一篇关于 AI 工具提效的文章
+
+# 生成一份 PRD
+/prd 开发一个团队协作工具 --mode lite
+
+# 做一个 PPT
+/ppt 产品季度汇报 --style business --pages 10
+
+# GTM 上市策略
+/gtm-strategy 新产品上市规划 --mode fullplan
+
+# 企业方案文档
+/proposal 云计算解决方案 --type presale --industry fintech
+
+# 生成思维导图
+/diagram "产品设计流程" --engine markmap --type mindmap
+```
+
+**4. 查看完整命令列表**
+
+参考 `CLAUDE.md` 获取所有命令的完整参数说明和使用示例。
+
+---
+
+## 更新日志
+
+### v2.1
+- 新增 `gtm-strategist` GTM 全链路战略 Agent
+- 新增 `proposal-writer` 企业方案撰写全链路 Agent
+- 新增 `visual-suite` 视觉内容全链路 Agent（整合六大视觉技能）
+- 新增 `diagram-suite` 完整图表套件（Markmap/PlantUML/Mermaid/MerdiAi 四引擎）
+- 新增 `ai-illustrator` AI 智能插图技能（多种艺术风格支持）
+- 新增 `md-visual` Markdown 转视觉图像技能（md 转图片/海报/卡片）
+- 新增 `table-toolkit` 表格生成与转换工具集
+- 新增 `gtm-strategy` GTM 知识库（增长模型/ICP/定位/渠道/定价）
+- 新增 `proposal-generator` 企业方案撰写知识库（多行业/三类方案）
+- 新增 `sales-guide-writer` B2B 销售赋能知识库（销售一页禅/竞争话术）
+- 新增 `product-doc-writer` B2B 产品资料体系（24 类标准文档）
+- 新增 `doc-auditor` 产品文档质量审核知识库
+- 新增命令：`/diagram`、`/md-visual`、`/table`、`/gtm-strategy`、`/proposal`、`/sales-guide`、`/product-doc`、`/doc-audit`
+- Agent 数量升至 17 个，Skills 升至 40 个
+
+### v2.0
+- 新增 `product-manager` 全栈 PM Agent，整合 PRD/竞品/用研/分析/路线图/反馈全流程
+- 新增 `market-intelligence` 市场情报 Agent
+- 新增 `product-enablement` 产品赋能 Agent
+- 新增 `style-evolver` 风格自进化 Agent 和 Skill
+- 新增 `doc-polisher` 文档润色 + 配图一体化 Agent
+- PPT 引擎扩展至 6 种（新增 SlideTailor、PPTX SDK）
+- 命令系统扩展至 40+ 个，新增产品管理全套命令
+
+### v1.0
+- 初始版本，包含写作、标书、PPT、数据分析、HR 筛选核心能力
+- 14 个 Agent，36+ 个 Skill，40+ 个 Command
 
 ---
 
@@ -268,8 +455,8 @@ npm install -g pptxgenjs
 本项目集成了以下开源仓库的内容：
 
 ### 写作能力
-- [khazix-skills](https://github.com/KKKKhazix/khazix-skills) — 数字生命卡兹克的写作技能
-  - `khazix-writer` — 公众号长文写作 skill
+- [article-writer-skills] — 文章写作技能
+  - `article-writer` — 公众号长文写作 skill
   - `hv-analysis` — 横纵分析法深度研究 skill
 
 ### PPT 生成能力
@@ -295,7 +482,7 @@ npm install -g pptxgenjs
   - 流程图、时序图、甘特图、ER 图、思维导图
 
 感谢以上作者的开源贡献：
-- [@KKKKhazix](https://github.com/KKKKhazix)
+
 - [@hugohe3](https://github.com/hugohe3)
 - [@Gabberflast](https://github.com/Gabberflast)
 - [@nusnlp](https://github.com/nusnlp)（SlideTailor）

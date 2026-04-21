@@ -69,7 +69,7 @@ argument-hint: "<pdf-path> [--output md|docx] [--style popular|professional|casu
 
 - `paper-interpreter` - 论文解读核心规范
 - `content-humanizer` - 去 AI 味处理
-- `khazix-writer` - 写作风格参考
+- `article-writer` - 写作风格参考
 
 ## 相关命令
 

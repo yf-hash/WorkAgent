@@ -1,3 +1,12 @@
+---
+name: chat2db
+description: >
+  Chat2DB AI 数据库助手知识库。触发词：自然语言转SQL、SQL生成、数据库查询、
+  Chat2DB、SQL优化、数据库分析、NL2SQL、数据库操作。
+user-invocable: false
+effort: medium
+---
+
 # Chat2DB - AI Database Assistant
 
 ## 概述

@@ -23,8 +23,8 @@
 通过独立命令直接调用对应的 skill：
 
 ```bash
-# 卡兹克风格写作
-/khazix-writer 帮我写一篇关于 Claude Code 的公众号文章
+# 文章风格写作
+/article-writer 帮我写一篇关于 Claude Code 的公众号文章
 
 # 横纵分析法深度研究
 /hv-analysis 帮我用横纵分析法研究 Hermes Agent
@@ -219,7 +219,7 @@ color: blue|yellow|green   # 语义颜色
 
 | Skill | 描述 | 触发方式 |
 |-------|------|---------|
-| `khazix-writer` | 卡兹克风格公众号长文写作（4000-8000字） | 对话触发 或 `/khazix-writer` |
+| `article-writer` | 文章风格公众号长文写作（4000-8000字） | 对话触发 或 `/article-writer` |
 | `hv-analysis` | 横纵分析法深度研究，输出 PDF 报告（10000-30000字） | 对话触发 或 `/hv-analysis` |
 | `interview-writer` | 访谈写作 v2.0，Writer-Reviewer 互搏 + 知识库进化 | 对话触发 或 `/interview-writer` |
 | `ppt-master` | 通用 PPT 生成，支持多种设计风格和图片生成 | `/ppt` 命令调用 |
@@ -255,7 +255,7 @@ color: blue|yellow|green   # 语义颜色
 
 | Command | 描述 | 位置 |
 |---------|------|------|
-| `/khazix-writer` | 卡兹克风格公众号长文写作（4000-8000字） | `commands/khazix-writer.md` |
+| `/article-writer` | 文章风格公众号长文写作（4000-8000字） | `commands/writing/article-writer.md` |
 | `/hv-analysis` | 横纵分析法深度研究，输出 PDF 报告（10000-30000字） | `commands/hv-analysis.md` |
 | `/interview-writer` | 访谈写作 Writer-Reviewer 互搏流程 | `commands/interview-writer.md` |
 | `/ppt` | PPT 生成，6种引擎自动路由（academic/slidetailor/ppt-master/slidev/marp/sdk） | `commands/ppt.md` |

@@ -1,3 +1,12 @@
+---
+name: metagpt
+description: >
+  MetaGPT 多 Agent 软件开发框架知识库。触发词：MetaGPT、多Agent协作、软件公司模拟、
+  自动软件开发、PRD转代码、多角色Agent、AI软件工程。
+user-invocable: false
+effort: high
+---
+
 # MetaGPT - Multi-Agent Collaboration Framework
 
 ## 概述

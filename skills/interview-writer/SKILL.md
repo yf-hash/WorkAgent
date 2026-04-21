@@ -17,7 +17,7 @@ argument-hint: "[访谈素材/主题] [--style-card path] [--target-score 85] [-
 
 将访谈素材转化为有温度、有见识的公众号长文。不是整理访谈记录，而是提炼访谈精华，重新构建叙事。
 
-**与 khazix-writer 的区别**：khazix-writer 适合观点类文章，interview-writer 专为访谈素材设计，保留受访者声音，重构叙事结构。
+**与 article-writer 的区别**：article-writer 适合观点类文章，interview-writer 专为访谈素材设计，保留受访者声音，重构叙事结构。
 
 ---
 

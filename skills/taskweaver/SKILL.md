@@ -1,3 +1,12 @@
+---
+name: taskweaver
+description: >
+  TaskWeaver 代码优先数据分析 Agent 知识库。触发词：数据分析、Python代码分析、
+  TaskWeaver、代码执行、自动化数据处理、复杂数据任务、微软Agent框架。
+user-invocable: false
+effort: high
+---
+
 # TaskWeaver - Code-First AI Agent
 
 ## 概述

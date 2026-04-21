@@ -1,3 +1,12 @@
+---
+name: slidetailor
+description: >
+  SlideTailor AI 学术幻灯片内容生成知识库。触发词：学术幻灯片、论文PPT、
+  SlideTailor、NLP论文转幻灯片、学术演讲、科学论文幻灯片骨架生成。
+user-invocable: false
+effort: medium
+---
+
 # SlideTailor — AI 学术幻灯片内容生成
 
 ## 概述

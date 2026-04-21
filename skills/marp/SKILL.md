@@ -1,3 +1,12 @@
+---
+name: marp
+description: >
+  Marp Markdown 幻灯片生成知识库。触发词：Marp、Markdown转PPT、轻量幻灯片、
+  快速出片、HTML幻灯片、PDF幻灯片、VSCode幻灯片预览。
+user-invocable: false
+effort: low
+---
+
 # Marp — Markdown Presentation Ecosystem
 
 ## 概述

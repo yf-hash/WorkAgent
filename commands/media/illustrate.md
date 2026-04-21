@@ -1,8 +1,8 @@
 ---
 name: illustrate
-description: 文章配图生成 — 为 Markdown 文章自动识别配图位置并生成图像。主管道：Claude ASCII草图 → HTML → Playwright截图（零成本）；备选：Mermaid（精确图表）、Stable Diffusion（创意封面/插图）
+description: 文章配图生成 — 为 Markdown 文章自动识别配图位置并生成图像。主管道：Claude ASCII草图 → HTML → Playwright截图（零成本）；备选：Mermaid/PlantUML/Markmap（精确图表）、AI插图（article-illustrator/document-illustrator）、Stable Diffusion（创意封面）
 user-invocable: true
-argument-hint: "[<article.md>] [--backend html|mermaid|sd] [--style business-blue|tech|warm|minimal] [--mode auto|staged|single] [--type flow|arch|compare|steps|chart|image] [--desc <描述>]"
+argument-hint: "[<article.md>] [--backend html|mermaid|plantuml|markmap|ai-illus|sd] [--style business-blue|tech|warm|minimal|pixel-art|ghibli] [--mode auto|staged|single] [--type flow|arch|compare|steps|chart|mindmap|image] [--desc <描述>]"
 allowed-tools:
   - Read
   - Write
@@ -18,6 +18,10 @@ allowed-tools:
 
 加载技能：
 - `skills/html-chart/SKILL.md`（主管道：ASCII → HTML → 截图）
+- `skills/mermaid-chart/SKILL.md`（备选：精确图表）
+- `skills/diagram-suite/SKILL.md`（扩展：PlantUML/Markmap/MerdiAi）
+- `skills/ai-illustrator/SKILL.md`（AI插图：article-illustrator/document-illustrator/thesis-figure）
+- `skills/stable-diffusion/SKILL.md`（备选：创意图像，需本地 SD WebUI）
 - `skills/mermaid-chart/SKILL.md`（备选：精确图表）
 - `skills/stable-diffusion/SKILL.md`（备选：创意图像，需本地 SD WebUI）
 

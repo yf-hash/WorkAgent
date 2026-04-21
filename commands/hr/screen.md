@@ -172,4 +172,4 @@ blacklist_keywords:
 
 ## 相关命令
 
-- `/khazix-writer` - 撰写岗位描述（JD）文档
+- `/article-writer` - 撰写岗位描述（JD）文档

@@ -1,3 +1,12 @@
+---
+name: slidev
+description: >
+  Slidev 开发者演示框架知识库。触发词：Slidev、开发者PPT、代码演示、
+  Vue幻灯片、交互式演示、Markdown+Vue、实时代码展示、技术演讲。
+user-invocable: false
+effort: medium
+---
+
 # Slidev — 开发者演示框架
 
 ## 概述

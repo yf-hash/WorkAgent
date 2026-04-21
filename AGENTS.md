@@ -24,7 +24,7 @@ WorkAgent/
 ├── agents/                # 自治代理（编排写作全流程）
 │   └── content-director.md
 ├── skills/                # 写作技能知识库
-│   ├── khazix-writer/     # 卡兹克写作风格
+│   ├── article-writer/    # 文章写作风格
 │   │   ├── SKILL.md
 │   │   ├── references/    # 风格体系文档
 │   │   └── templates/     # 写作模板
@@ -44,7 +44,7 @@ WorkAgent/
 
 | 功能 | Claude Code | Cursor | Codex/OpenCode |
 |------|-------------|--------|----------------|
-| 卡兹克写作 | `/khazix-writer` | 对话触发 | 读取 `skills/khazix-writer/SKILL.md` 后执行 |
+| 文章写作 | `/article-writer` | 对话触发 | 读取 `skills/article-writer/SKILL.md` 后执行 |
 | 风格学习+创作 | `/content-evolve` | 对话触发 | 读取 `skills/content-evolve/SKILL.md` 后执行 |
 | 全流程编排 | `@content-director` | Agent 模式 | 读取 `agents/content-director.md` |
 
@@ -57,7 +57,7 @@ WorkAgent/
 **方式 1：加载 Skill 文件**
 
 ```
-请读取 skills/khazix-writer/SKILL.md，然后按照其中的写作流程，
+请读取 skills/article-writer/SKILL.md，然后按照其中的写作流程，
 帮我写一篇关于 [主题] 的公众号文章。
 ```
 
@@ -85,7 +85,7 @@ WorkAgent/
 
 ### 1. 风格优先
 
-- 任何写作输出必须遵循指定风格（卡兹克风格或用户学习的自定义风格）
+- 任何写作输出必须遵循指定风格（文章风格或用户学习的自定义风格）
 - 禁止使用 AI 套话（"首先"、"总之"、"不得不说"、"深刻感受到"等）
 - 保持"有见识的普通人在认真聊一件事"的语感
 
@@ -130,8 +130,8 @@ Layer 4 - 结构：段落节奏是否流畅好读？
 # 列出所有 Skills（确认两个 Skill 存在）
 ls skills/
 
-# 查看 khazix-writer 的触发条件
-head -20 skills/khazix-writer/SKILL.md
+# 查看 article-writer 的触发条件
+head -20 skills/article-writer/SKILL.md
 
 # 查看 content-evolve 的参数说明
 grep -A 20 "intake" skills/content-evolve/SKILL.md

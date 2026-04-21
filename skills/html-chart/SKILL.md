@@ -1,3 +1,12 @@
+---
+name: html-chart
+description: >
+  HTML 结构化图表生成知识库。触发词：ASCII草图、HTML图表、流程图截图、架构图截图、
+  对比表、步骤图、Playwright截图、零成本配图、1600x900图表。
+user-invocable: false
+effort: medium
+---
+
 # HTML Chart Generator — 结构化图表生成器
 
 ## 概述

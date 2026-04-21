@@ -1,3 +1,12 @@
+---
+name: stable-diffusion
+description: >
+  Stable Diffusion 图像生成知识库。触发词：AI绘图、文生图、图生图、SD、
+  Stable Diffusion、创意图像、封面图、插图、写实风格、艺术风格、提示词。
+user-invocable: false
+effort: medium
+---
+
 # Stable Diffusion Image Generator
 
 ## 概述

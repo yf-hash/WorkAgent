@@ -1,3 +1,12 @@
+---
+name: mermaid-chart
+description: >
+  Mermaid 图表生成知识库。触发词：流程图、时序图、甘特图、类图、状态图、ER图、
+  用户旅程图、Git图、饼图、思维导图、Mermaid、mermaid代码。
+user-invocable: false
+effort: low
+---
+
 # Mermaid Chart Generator
 
 ## 概述
