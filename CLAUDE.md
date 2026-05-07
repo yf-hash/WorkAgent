@@ -59,12 +59,25 @@
 # Remotion 动态视频生成
 /remotion-generate --template ai-native-company-intro --render
 
-# PPT 生成（6种引擎自动路由）
-/ppt 帮我做一个论文答辩 PPT，主题是"深度学习"
+# PPT 生成（10阶段全流程 / RAG模式 / 6种引擎快速模式）
+# === 全流程（从零开始，自动搜索+评分迭代）===
+/ppt 人工智能医疗应用前景 --mode full --pages 20 --style mckinsey
+/ppt 帮我做一个论文答辩 PPT，主题是"深度学习" --backend academic
+# === RAG 模式（有现成材料）===
+/ppt Q4业绩汇报 --rag quarterly_report.pdf kpi_data.xlsx --style mckinsey
+/ppt AI医疗分析 --rag-dir ./research/ --pages 20
+/ppt 政策解读   --rag https://gov.cn/policy.pdf --rag-mode supplement
+/ppt 产品发布   --rag spec.pdf user_research.pdf --rag-index proj2025
+/ppt --rag-list                                       # 查看已保存索引
+# === 引擎快速模式 ===
 /ppt 做一个产品介绍 PPT --style google --pages 10
 /ppt --backend slidetailor --source paper.pdf --duration 15
 /ppt React Hooks 技术分享 --backend slidev
 /ppt 把 README.md 转成幻灯片 --backend marp --source README.md
+# === 评分与迭代控制 ===
+/ppt 年终总结 --mode full --iter auto --score-pass 90
+/ppt 年终总结 --mode full --iter 0                    # 跳过迭代直接输出
+/ppt 年终总结 --mode full --score-only                # 仅评分，不修改
 
 # 云架构图生成（mingrammer/diagrams）
 /arch-diagram 用户→CloudFront→ALB→EC2集群→RDS+ElastiCache --provider aws
@@ -223,7 +236,7 @@ color: blue|yellow|green   # 语义颜色
 | `talent-screener` | 简历智能筛选（JD匹配、六维评分、候选人排名） | 招聘初筛、简历批量筛选时 |
 | `paper-researcher` | 论文研究（arXiv搜集 + 单篇深度解读） | 论文情报跟踪、学术科普写作时 |
 | `video-maker` | Remotion视频生成（模板/字幕/TTS/渲染） | 企业介绍视频、产品演示视频时 |
-| `ppt-generator` | PPT 生成协调，6 种引擎路由（academic/slidetailor/ppt-master/slidev/marp/sdk） | PPT 生成任务时 |
+| `ppt-generator` | PPT 全流程编排：10阶段流水线（研究/RAG/图表/制作/评分迭代）+ 6种引擎路由 + 100分5维度质量闭环 | PPT 生成任务时 |
 | `data-analyst` | 综合 TaskWeaver + Chat2DB 的数据分析 Agent | 数据查询、分析、报表生成时 |
 | `visual-creator` | 文章配图 Agent — HTML图表（ASCII→HTML→截图）+ Mermaid + Stable Diffusion 三合一 | 配图/图表/视觉内容时 |
 | `diagram-architect` | 统一图表编排 Agent，自动路由至 Mermaid/PlantUML/diagrams/Visio 最优引擎，支持批量生成和格式互转 | 图表类型不确定、需要多图表套件、格式互转时 |
@@ -241,6 +254,9 @@ color: blue|yellow|green   # 语义颜色
 | `slidev` | 开发者/技术演示，Markdown+Vue，代码高亮动画 | `/ppt --backend slidev` |
 | `marp` | Markdown快速出片，输出HTML/PDF/PPTX | `/ppt --backend marp` |
 | `pptx-sdk` | 编程式PPTX生成（python-pptx + PptxGenJS） | `/ppt --backend sdk` |
+| `ppt-rag` | PPT专用RAG索引检索：本地文件/URL向量化，语义检索合成素材包 | `/ppt --rag` 自动调用 |
+| `ppt-researcher` | PPT多源内容搜集：官方/媒体/学术/产业/社区5渠道并行搜索 | `/ppt --mode full` 自动调用 |
+| `ppt-architect` | PPT场景图表构建：自动识别图表需求，路由至Mermaid/PlantUML/diagrams | `/ppt` Phase 4 自动调用 |
 | `mermaid-chart` | Mermaid 图表生成（流程图/时序图/甘特图/ER图等） | `/illustrate --backend mermaid` |
 | `arch-diagram` | 云架构图生成（AWS/GCP/Azure/K8s/阿里云），基于 mingrammer/diagrams | `/arch-diagram` 命令调用 |
 | `visio-builder` | Visio 图表创建与转换（python-visio / Visio.NET COM），支持 .vsdx 读写和格式互转 | `/visio` 命令调用 |
@@ -273,7 +289,7 @@ color: blue|yellow|green   # 语义颜色
 | `/article-writer` | 文章风格公众号长文写作（4000-8000字） | `commands/writing/article-writer.md` |
 | `/hv-analysis` | 横纵分析法深度研究，输出 PDF 报告（10000-30000字） | `commands/hv-analysis.md` |
 | `/interview-writer` | 访谈写作 Writer-Reviewer 互搏流程 | `commands/interview-writer.md` |
-| `/ppt` | PPT 生成，6种引擎自动路由（academic/slidetailor/ppt-master/slidev/marp/sdk） | `commands/ppt.md` |
+| `/ppt` | PPT 10阶段全流程（主题→研究/RAG→归纳→图表→制作→评分迭代→输出）+ 6种引擎快速路由 + 100分质量闭环 | `commands/media/ppt.md` |
 | `/illustrate` | 文章配图生成 — ASCII→HTML→截图 / Mermaid / Stable Diffusion 三合一 | `commands/illustrate.md` |
 | `/diagram` | 多引擎图表生成（Markmap/PlantUML/Mermaid/diagrams/Visio 六引擎路由） | `commands/media/diagram.md` |
 | `/arch-diagram` | 云架构图生成（AWS/GCP/Azure/K8s/阿里云），基于 mingrammer/diagrams | `commands/media/arch-diagram.md` |
