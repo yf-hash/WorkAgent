@@ -56,8 +56,26 @@
 # 简历智能筛选
 /screen --jd jd_backend.md ./resumes/ --weights tech --top 5
 
-# Remotion 动态视频生成
+# Remotion 动态视频生成（三引擎：native/prompt2video/vidosy）
 /remotion-generate --template ai-native-company-intro --render
+/remotion-generate --engine prompt2video --duration 30 "产品发布宣传片"
+/remotion-generate --engine vidosy scenes.json --render
+
+# PDF/PPT 转动态视频
+/pdf2video report.pdf --render
+/pdf2video presentation.pptx --style tech --scene-type stack --render
+
+# 视频字幕生成
+/caption video.mp4 --translate zh --bilingual --format ass
+/caption https://youtube.com/watch?v=xxx --translate zh
+
+# AI 视频智能剪辑（去停顿/口误/重复）
+/videocut lecture.mp4 --mode review
+/videocut podcast.mp4 --mode auto
+
+# 内容多平台分发
+/sync article.md --platforms wechat,zhihu,juejin
+/sync article.md --platforms wechat,xiaohongshu --mode draft
 
 # PPT 生成（10阶段全流程 / RAG模式 / 6种引擎快速模式）
 # === 全流程（从零开始，自动搜索+评分迭代）===
@@ -235,7 +253,7 @@ color: blue|yellow|green   # 语义颜色
 | `doc-polisher` | 文档智能润色（AI去痕 + 智能配图全自动闭环） | 文档润色、去AI味+配图一体化时 |
 | `talent-screener` | 简历智能筛选（JD匹配、六维评分、候选人排名） | 招聘初筛、简历批量筛选时 |
 | `paper-researcher` | 论文研究（arXiv搜集 + 单篇深度解读） | 论文情报跟踪、学术科普写作时 |
-| `video-maker` | Remotion视频生成（模板/字幕/TTS/渲染） | 企业介绍视频、产品演示视频时 |
+| `video-maker` | 视频生成代理 — 三引擎路由（native/prompt2video/vidosy）+ PDF转视频 + 字幕 + TTS + MP4渲染 | 视频生成、文档转视频、口播剪辑时 |
 | `ppt-generator` | PPT 全流程编排：10阶段流水线（研究/RAG/图表/制作/评分迭代）+ 6种引擎路由 + 100分5维度质量闭环 | PPT 生成任务时 |
 | `data-analyst` | 综合 TaskWeaver + Chat2DB 的数据分析 Agent | 数据查询、分析、报表生成时 |
 | `visual-creator` | 文章配图 Agent — HTML图表（ASCII→HTML→截图）+ Mermaid + Stable Diffusion 三合一 | 配图/图表/视觉内容时 |
@@ -267,16 +285,20 @@ color: blue|yellow|green   # 语义颜色
 | `style-evolver` | 风格驱动内容自进化，从参考文章提炼风格卡片，Writer-Reviewer 迭代创作 | 对话触发 或 `/self-evolve` |
 | `bid-writer` | 标书七阶段编制知识库（三色标记/偏离表规范/RAG写作/双轮评审/合规核查） | `/bid` 命令调用 |
 | `bid-rewriter` | 偏离表"无偏离"应答项五原则同义改写 | `/bid rewrite` 调用 |
-| `humanizer` | AI 文本人性化改写（40+ 痕迹检测，五维评分） | `/humanize` 命令调用 |
-| `doc-polisher` | 文档智能润色闭环（读取→去痕→配图→输出） | `/polish` 命令调用 |
+| `humanizer` | AI 文本人性化改写（40+ 痕迹检测，五维评分，中文排版规范自动校正） | `/humanize` 命令调用 |
+| `doc-polisher` | 文档智能润色闭环（读取→去痕→排版校正→配图→输出，支持 DOCX 导出） | `/polish` 命令调用 |
 | `paper-collector` | arXiv 安全论文搜集与中文摘要生成 | `/paper-collect` 命令调用 |
 | `paper-interpreter` | 论文 PDF 深度解读（4000-6000字公众号长文） | `/paper-interpret` 命令调用 |
 | `resume-screener` | 简历智能筛选（JD匹配、硬过滤、六维评分） | `/screen` 命令调用 |
-| `remotion-generator` | Remotion 动态视频生成（模板/字幕/TTS/渲染） | `/remotion-generate` 命令调用 |
+| `remotion-generator` | Remotion 视频生成（三引擎：native模板/prompt2video全链路/vidosy场景配置） | `/remotion-generate` 命令调用 |
+| `pdf2video` | PDF/PPT 转动态视频（stack/focus/zoom/fan 四种场景动画） | `/pdf2video` 命令调用 |
+| `omni-captions` | 视频字幕生成（转录/翻译/双语/30+格式，Claude翻译无需额外API） | `/caption` 命令调用 |
+| `videocut` | AI 视频智能剪辑（去停顿/重复/口误，ASR+Claude语义分析+FFmpeg剪切） | `/videocut` 命令调用 |
+| `content-sync` | 内容多平台分发（30+平台一键同步，Wechatsync MCP + PostBot） | `/sync` 命令调用 |
 | `metagpt` | 多 Agent 软件公司模拟，PRD→架构→代码→测试全流程 | 对话触发 或 `/metagpt` |
 | `pm-skills` | 产品经理技能库（JTBD/RICE/OKR/PMF/发布清单/用户故事地图等） | 对话触发 或 `/pm-skills` |
 | `prd-generator` | AI PRD 生成（lite/full/gtm/workflow 四种模式） | `/prd` 命令调用 |
-| `market-research` | 市场研究与竞争情报（竞品/趋势/TAM/亚马逊选品/OSS生态） | `/market-research` 或 `/user-research` 命令调用 |
+| `market-research` | 市场研究与竞争情报（竞品/趋势/TAM/亚马逊/OSS生态/品牌战略/营销分析框架） | `/market-research` 或 `/user-research` 命令调用 |
 | `product-analytics` | 产品数据分析（指标体系/漏斗/留存/埋点/PostHog/Matomo） | `/analytics` 命令调用 |
 | `user-feedback` | 用户反馈管理（NPS/CSAT/功能投票/VoC 报告/情感分析） | `/feedback` 命令调用 |
 | `product-roadmap` | 路线图规划（RICE/MoSCoW/Gantt/GitHub Projects/OKR） | `/roadmap` 命令调用 |
@@ -298,11 +320,15 @@ color: blue|yellow|green   # 语义颜色
 | `/bid` | 标书智能编制（七阶段流水线：analyze/clarify/outline/write/review/check/export/rewrite） | `commands/bid.md` |
 | `/self-evolve` | 内容自进化 — 风格学习 + Writer-Reviewer 迭代创作（支持风格卡片复用） | `commands/self-evolve.md` |
 | `/humanize` | AI 文本人性化改写（识别 40+ 种痕迹，五维度评分） | `commands/humanize.md` |
-| `/polish` | 文档智能润色（AI去痕 + 智能配图全自动闭环） | `commands/polish.md` |
+| `/polish` | 文档智能润色（AI去痕 + 中文排版校正 + 智能配图，支持 DOCX 导出） | `commands/polish.md` |
 | `/paper-collect` | arXiv 安全论文搜集（按时间范围和主题批量检索，中文摘要输出） | `commands/paper-collect.md` |
 | `/paper-interpret` | 论文深度解读（PDF → 4000-6000字公众号长文） | `commands/paper-interpret.md` |
 | `/screen` | 简历智能筛选（JD匹配、六维评分、候选人排名） | `commands/screen.md` |
-| `/remotion-generate` | Remotion 动态视频生成（模板/字幕/TTS/MP4渲染） | `commands/remotion-generate.md` |
+| `/remotion-generate` | Remotion 视频生成（三引擎：native模板/prompt2video全链路/vidosy场景配置） | `commands/media/remotion-generate.md` |
+| `/pdf2video` | PDF/PPT 文档转动态视频（四种场景动画，直接渲染 MP4） | `commands/media/pdf2video.md` |
+| `/caption` | 视频字幕生成（转录+翻译+双语，30+格式，YouTube支持） | `commands/media/caption.md` |
+| `/videocut` | AI 视频智能剪辑（去停顿/口误/重复，人工审核模式） | `commands/media/videocut.md` |
+| `/sync` | 内容多平台一键分发（30+平台，草稿/直接发布） | `commands/writing/sync.md` |
 | `/metagpt` | 多 Agent 软件项目生成（PRD→架构→代码→测试） | `commands/metagpt.md` |
 | `/pm-skills` | 产品经理技能库查询（框架/模板/案例/辅导/清单） | `commands/product/pm-skills.md` |
 | `/prd` | PRD 生成（lite/full/gtm/workflow 四种模式） | `commands/product/prd.md` |
