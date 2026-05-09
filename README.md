@@ -17,6 +17,8 @@ WorkAgent 是一套以 **风格驱动** 为核心设计理念的 AI 原生工作
 - **数据分析**：自然语言转 SQL + Python 沙箱执行，联合数据库与文件分析
 - **HR 招聘**：简历智能筛选，JD 匹配 + 六维评分 + 候选人排名
 - **视频生成**：Remotion 动态视频，模板/字幕/TTS/MP4 渲染全流程
+- **视频处理**：PDF/PPT 转动态视频、AI 智能剪辑、字幕生成、多平台分发
+- **图表架构**：云架构图（AWS/GCP/Azure/K8s）、Visio 图表、多引擎统一路由
 
 **支持编辑器**：Claude Code（完整支持）> Cursor > OpenAI Codex
 
@@ -26,9 +28,9 @@ WorkAgent 是一套以 **风格驱动** 为核心设计理念的 AI 原生工作
 
 | 模块 | 数量 | 说明 |
 |------|------|------|
-| Agents | 17 个 | 自治代理，编排完整业务流程 |
-| Skills | 40 个 | 可复用知识库，自动激活或命令调用 |
-| Commands | 31 个（50+ 调用模式） | 统一命令入口，智能路由到对应 Skill/Agent |
+| Agents | 18 个 | 自治代理，编排完整业务流程 |
+| Skills | 49 个 | 可复用知识库，自动激活或命令调用 |
+| Commands | 37 个（60+ 调用模式） | 统一命令入口，智能路由到对应 Skill/Agent |
 
 **设计原则**：
 - **风格驱动**：所有写作输出以用户/角色风格为第一优先级，避免 AI 套话
@@ -42,13 +44,13 @@ WorkAgent 是一套以 **风格驱动** 为核心设计理念的 AI 原生工作
 
 ```
 WorkAgent/
-├── agents/          # 17 个自治代理（编排完整业务流程）
-├── skills/          # 40 个可复用知识库
-├── commands/        # 31 个统一命令入口（50+ 调用模式）
-│   ├── writing/     # 写作类命令（article-writer/bid/humanize/interview-writer/polish/self-evolve）
+├── agents/          # 18 个自治代理（编排完整业务流程）
+├── skills/          # 49 个可复用知识库
+├── commands/        # 37 个统一命令入口（60+ 调用模式）
+│   ├── writing/     # 写作类命令（article-writer/bid/humanize/interview-writer/polish/self-evolve/sync）
 │   ├── product/     # 产品管理类命令（prd/market-research/analytics/roadmap/gtm-strategy 等）
 │   ├── research/    # 研究分析类命令（hv-analysis/paper-collect/paper-interpret/taskweaver）
-│   ├── media/       # 媒体生成类命令（ppt/illustrate/diagram/md-visual/table/remotion-generate）
+│   ├── media/       # 媒体生成类命令（ppt/illustrate/diagram/arch-diagram/visio/md-visual/table/remotion-generate/pdf2video/caption/videocut）
 │   └── hr/          # HR 招聘类命令（screen）
 ├── hooks/           # Claude Code 生命周期钩子（安全拦截 + 质量检查）
 ├── .claude/
@@ -85,6 +87,7 @@ WorkAgent/
 | `gtm-strategist` | GTM 全链路战略 Agent（增长模型/ICP/定位/渠道/定价/90天计划） | 新产品上市规划、GTM 诊断与优化 |
 | `proposal-writer` | 企业方案撰写全链路 Agent（售前方案/可研报告/初步设计，多行业定制） | 售前解决方案、项目建议书 |
 | `visual-suite` | 视觉内容全链路 Agent（配图/思维导图/UML/Markdown 海报/表格可视化） | 文章配图、图表、MD 转图片 |
+| `diagram-architect` | 统一图表编排 Agent，自动路由至 Mermaid/PlantUML/diagrams/Visio 最优引擎，支持批量生成和格式互转 | 图表类型不确定、需要多图表套件、格式互转时 |
 
 ---
 
@@ -147,6 +150,10 @@ WorkAgent/
 |-------|------|---------|
 | `resume-screener` | 简历智能筛选（JD 匹配、硬过滤、六维评分） | `/screen` 命令调用 |
 | `remotion-generator` | Remotion 动态视频生成（模板/字幕/TTS/渲染） | `/remotion-generate` 命令调用 |
+| `pdf2video` | PDF/PPT 转动态视频（stack/focus/zoom/fan 四种场景动画，直接渲染 MP4） | `/pdf2video` 命令调用 |
+| `omni-captions` | 视频字幕生成（转录/翻译/双语/30+格式，Claude 翻译无需额外 API） | `/caption` 命令调用 |
+| `videocut` | AI 视频智能剪辑（去停顿/重复/口误，ASR+Claude 语义分析+FFmpeg 剪切） | `/videocut` 命令调用 |
+| `content-sync` | 内容多平台分发（30+ 平台一键同步，Wechatsync MCP + PostBot） | `/sync` 命令调用 |
 
 ### 产品赋能
 
@@ -163,6 +170,8 @@ WorkAgent/
 | Skill | 描述 | 触发方式 |
 |-------|------|---------|
 | `diagram-suite` | 完整图表生成套件（Markmap 思维导图/PlantUML/Mermaid/MerdiAi 四引擎路由） | `/diagram` 命令调用 |
+| `arch-diagram` | 云架构图生成（AWS/GCP/Azure/K8s/阿里云），基于 mingrammer/diagrams | `/arch-diagram` 命令调用 |
+| `visio-builder` | Visio 图表创建与转换（python-visio / Visio.NET COM），支持 .vsdx 读写和格式互转 | `/visio` 命令调用 |
 | `ai-illustrator` | AI 智能插图生成（文章配图/学术图表/文档插图/创意画布，支持多种艺术风格） | 对话触发 |
 | `md-visual` | Markdown 转视觉图像（md 转图片/海报/卡片，整合 mark-pic/Madopic/tablesnap） | `/md-visual` 命令调用 |
 | `table-toolkit` | 表格生成与转换工具集（文本/CSV/自然语言转 Markdown 表格，多工具链整合） | `/table` 命令调用 |
@@ -231,12 +240,24 @@ WorkAgent/
 /ppt 做一个产品介绍 PPT --style google --pages 10
 /ppt --backend slidetailor --source paper.pdf --duration 15
 /ppt React Hooks 技术分享 --backend slidev
+/ppt Q4业绩汇报 --rag quarterly_report.pdf kpi_data.xlsx --style mckinsey
 /illustrate article.md
 /illustrate --mode single --backend mermaid --type sequence --desc "微服务调用链"
 /illustrate --mode single --backend sd --desc "AI 协作封面图" --sd-style digital-art
 /remotion-generate --template ai-native-company-intro --render
+/pdf2video report.pdf --render
+/pdf2video presentation.pptx --style tech --scene-type stack --render
+/caption video.mp4 --translate zh --bilingual --format ass
+/caption https://youtube.com/watch?v=xxx --translate zh
+/videocut lecture.mp4 --mode review
+/videocut podcast.mp4 --mode auto
+/sync article.md --platforms wechat,zhihu,juejin
 /diagram "用户注册流程" --engine markmap --type mindmap
 /diagram --engine plantuml --type sequence --desc "微服务调用链"
+/arch-diagram 用户→CloudFront→ALB→EC2集群→RDS+ElastiCache --provider aws
+/arch-diagram Ingress→Service→Pod(前端/后端/Worker)→PVC --provider k8s
+/visio 用户注册流程：填写信息→邮箱验证→完善资料→激活 --type flowchart
+/visio diagram.mmd --mode convert --from mermaid --output vsdx
 /md-visual article.md --type poster --theme gradient
 /table "姓名、年龄、城市\n张三、28、北京" --from text --to md
 ```
@@ -334,6 +355,43 @@ WorkAgent/
 /proposal 工厂数字化改造 --type design --industry mfg
 ```
 
+### 场景八：视频全链路处理
+
+从文档转视频到智能剪辑、字幕生成、多平台分发：
+
+```bash
+# PDF/PPT 转动态视频
+/pdf2video report.pdf --render
+/pdf2video presentation.pptx --style tech --scene-type zoom --render
+
+# AI 视频智能剪辑（去停顿/口误）
+/videocut lecture.mp4 --mode review
+/videocut podcast.mp4 --mode auto
+
+# 视频字幕生成（支持 YouTube）
+/caption video.mp4 --translate zh --bilingual --format ass
+/caption https://youtube.com/watch?v=xxx --translate zh
+
+# 内容多平台一键分发
+/sync article.md --platforms wechat,zhihu,juejin,xiaohongshu
+```
+
+### 场景九：云架构图与 Visio 图表
+
+从自然语言描述生成标准云架构图和 Visio 图表：
+
+```bash
+# 云架构图（AWS/GCP/Azure/K8s）
+/arch-diagram 用户→CloudFront→ALB→EC2集群→RDS+ElastiCache --provider aws
+/arch-diagram Ingress→Service→Pod(前端/后端/Worker)→PVC --provider k8s
+/arch-diagram Pub/Sub→Dataflow→BigQuery→Looker --provider gcp
+
+# Visio 图表创建与格式互转
+/visio 用户注册流程：填写信息→邮箱验证→完善资料→激活 --type flowchart
+/visio diagram.mmd --mode convert --from mermaid --output vsdx
+/visio arch.puml --mode convert --from plantuml --output svg
+```
+
 ---
 
 ## 使用指南
@@ -398,14 +456,22 @@ claude .
 # 生成一份 PRD
 /prd 开发一个团队协作工具 --mode lite
 
-# 做一个 PPT
+# 做一个 PPT（支持 RAG 模式）
 /ppt 产品季度汇报 --style business --pages 10
+/ppt Q4业绩汇报 --rag quarterly_report.pdf kpi_data.xlsx
 
 # GTM 上市策略
 /gtm-strategy 新产品上市规划 --mode fullplan
 
 # 企业方案文档
 /proposal 云计算解决方案 --type presale --industry fintech
+
+# 云架构图
+/arch-diagram 用户→CloudFront→ALB→EC2集群→RDS --provider aws
+
+# 视频处理
+/pdf2video report.pdf --render
+/videocut lecture.mp4 --mode review
 
 # 生成思维导图
 /diagram "产品设计流程" --engine markmap --type mindmap
@@ -418,6 +484,21 @@ claude .
 ---
 
 ## 更新日志
+
+### v2.2
+- 新增 `diagram-architect` 统一图表编排 Agent（Mermaid/PlantUML/diagrams/Visio 四引擎路由）
+- 新增 `arch-diagram` 云架构图技能（AWS/GCP/Azure/K8s/阿里云，基于 mingrammer/diagrams）
+- 新增 `visio-builder` Visio 图表技能（python-visio + Visio.NET COM，.vsdx 读写与格式互转）
+- 新增 `pdf2video` PDF/PPT 转动态视频技能（stack/focus/zoom/fan 四种场景动画）
+- 新增 `omni-captions` 视频字幕生成技能（30+ 格式，Claude 翻译，YouTube 支持）
+- 新增 `videocut` AI 视频智能剪辑技能（ASR + Claude 语义分析 + FFmpeg 精准剪切）
+- 新增 `content-sync` 内容多平台分发技能（30+ 平台，Wechatsync MCP + PostBot）
+- 新增 `ppt-rag` PPT 专用 RAG 索引检索技能（本地文件/URL 向量化，语义检索）
+- 新增 `ppt-researcher` PPT 多源内容搜集技能（官方/媒体/学术/产业/社区 5 渠道并行）
+- 新增 `ppt-architect` PPT 场景图表构建技能（自动识别图表需求，路由至最优引擎）
+- 新增命令：`/arch-diagram`、`/visio`、`/pdf2video`、`/caption`、`/videocut`、`/sync`
+- PPT 系统升级为 10 阶段全流程（研究/RAG/归纳/图表/制作/评分迭代），100 分 5 维度质量闭环
+- Agent 数量升至 18 个，Skills 升至 49 个，Commands 升至 37 个
 
 ### v2.1
 - 新增 `gtm-strategist` GTM 全链路战略 Agent
