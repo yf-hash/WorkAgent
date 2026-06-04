@@ -1,8 +1,8 @@
 # WorkAgent
 
-> 以 Claude Code 为入口，通过自然语言 command 调用适配的 Agent 和 Skill，完成前场需求的工作智能体，满足产品、市场、HR、设计等不同用户的场景需求。
+> 以 Claude Code 为入口，通过自然语言 command 调用适配的 Agent 和 Skill，完成前场需求的工作智能体，满足产品经理、售前工程师、市场营销等不同用户的场景需求。
 
-WorkAgent 是面向产品、市场、HR、售前等用户的工作智能体，核心理念是：**通过 WorkAgent，让工作效率指数级提升**。
+WorkAgent 是面向产品经理、售前工程师、市场营销等用户的工作智能体，核心理念是：**通过 WorkAgent，让工作效率指数级提升**。
 
 ---
 
