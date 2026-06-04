@@ -1,16 +1,25 @@
 ---
 name: analytics
-description: 产品数据分析，支持指标体系设计、漏斗分析、埋点方案、增长分析、PostHog/Matomo/Countly 集成
+description: >
+  产品数据指标设计 — 指标体系 + 漏斗 + 留存 + 埋点四件套。
+  产品分析的"上游设计"层。
+  
+  与相邻命令的边界（防混淆）：
+  - vs /data-dashboard：本命令做"指标定义 / 计算口径 / 埋点 Schema"，
+    /data-dashboard 做"看板可视化 + SQL 查询 + 嵌入"。指标定下来后再去做看板。
+  - vs /growth-experiment：本命令产出"诊断方法和数据基础"，
+    /growth-experiment 是"基于诊断结果设计实验队列"。
+  - vs /ab-test：本命令是"宏观指标"，/ab-test 是"实验级 OEC + 护栏指标"。
 user-invocable: true
-argument-hint: "<分析目标> [--mode metrics|funnel|cohort|growth|event|dashboard] [--platform posthog|matomo|countly|jitsu]"
+argument-hint: "<分析目标> [--mode metrics|funnel|cohort|event] [--platform posthog|matomo|countly|jitsu]"
 ---
 
-# /analytics — 产品分析工作台
+# /analytics — 产品数据指标设计
 
 加载技能：`skills/product-analytics/SKILL.md`
 
 ## 触发条件
-需要设计产品指标体系、分析用户漏斗、设计埋点方案、搭建增长看板，或将数据转化为产品决策时。
+设计指标体系、定义漏斗、规划埋点 Schema，或为后续看板 / 实验提供数据基础时。
 
 ## 参数说明
 
@@ -20,15 +29,17 @@ argument-hint: "<分析目标> [--mode metrics|funnel|cohort|growth|event|dashbo
 | `--mode` | 分析类型 | `metrics` |
 | `--platform` | 目标平台 | `posthog` |
 
-### 分析模式
+### 分析模式（已聚焦）
 | `--mode` | 输出内容 | 适用场景 |
 |----------|---------|---------|
-| `metrics` | 指标体系设计（北极星+OKR+护栏指标） | 产品定义、季度规划 |
-| `funnel` | 漏斗分析（转化路径 + 流失节点 + 优化建议） | 注册/付费/激活优化 |
-| `cohort` | 留存分析（Cohort 矩阵 + 留存曲线解读） | 用户质量评估 |
-| `growth` | 增长诊断（AARRR框架 + 增长杠杆识别） | 增长策略制定 |
-| `event` | 埋点方案（事件命名规范 + 属性设计 + 代码示例） | 前端工程师对接 |
-| `dashboard` | 看板设计（图表选型 + 布局 + 刷新频率） | 日报/周报自动化 |
+| `metrics` | 指标体系设计（北极星 + 输入 + 护栏） | 产品定义、季度规划 |
+| `funnel` | 漏斗定义（事件序列 + 转化口径） | 注册/付费/激活路径 |
+| `cohort` | 留存定义（Cohort 切片 + 留存口径） | 用户质量评估 |
+| `event` | 埋点 Schema（事件命名 + 属性 + 代码示例） | 前端工程师对接 |
+
+### ⚠️ 已迁移的能力
+- `--mode growth`（增长诊断 + AARRR 杠杆）→ 使用 `/growth-experiment --mode diagnose`
+- `--mode dashboard`（看板设计 + 图表选型）→ 使用 `/data-dashboard --mode design`
 
 ## 参考平台生态
 
@@ -94,9 +105,17 @@ posthog.capture('feature_used', {
 
 ```
 /analytics SaaS 订阅产品指标体系设计
-/analytics 用户注册到激活的漏斗分析 --mode funnel
-/analytics 新用户 7/30/90 天留存分析 --mode cohort
-/analytics 产品增长诊断 AARRR --mode growth
+/analytics 用户注册到激活的漏斗 --mode funnel
+/analytics 新用户 7/30/90 天留存 --mode cohort
 /analytics 设计 AI 功能使用埋点方案 --mode event --platform posthog
-/analytics 搭建日常运营数据看板 --mode dashboard
+```
+
+## 推荐工作流
+
+```
+1. /analytics --mode metrics（定义指标体系）
+2. /analytics --mode event（产出埋点 Schema）
+3. 工程实施
+4. /data-dashboard --mode design（基于指标做看板）
+5. /growth-experiment --mode diagnose（基于数据做增长诊断）
 ```

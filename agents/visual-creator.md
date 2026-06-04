@@ -1,6 +1,6 @@
 ---
 name: visual-creator
-description: 视觉创作 Agent — 文章配图（ASCII→HTML→截图）、图表生成（Mermaid）、AI图像（Stable Diffusion）三合一视觉内容生成
+description: ⚠️ 已重命名为 article-illustrator（agents/article-illustrator.md）。文章内联配图 Agent — 专为 .md 文章自动批量配图，HTML图表（ASCII→截图）+ Mermaid + Stable Diffusion 三合一。
 model: claude-sonnet-4-6
 tools:
   - Read
@@ -12,10 +12,10 @@ tools:
   - mcp__playwright__browser_snapshot
   - mcp__playwright__browser_close
 skills:
-  - skills/html-chart/SKILL.md
-  - skills/mermaid-chart/SKILL.md
-  - skills/stable-diffusion/SKILL.md
-memory: agents/visual-creator-memory.md
+  - html-chart
+  - mermaid-chart
+  - stable-diffusion
+memory: agents/article-illustrator-memory.md
 effort: medium
 color: "#7b1fa2"
 MaxTurns: 20
@@ -23,7 +23,10 @@ MaxTurns: 20
 
 # Visual Creator Agent
 
-三合一视觉内容生成 Agent。根据任务类型智能路由到最优管道：
+> ⚠️ **已重命名** — 本 Agent 已重命名为 `article-illustrator`，新路径：`agents/article-illustrator.md`。
+> 请更新引用。本文件暂时保留以兼容旧引用。
+
+文章内联配图专用 Agent。针对 `.md` 文章文件，自动扫描段落、判断配图需求、路由到最优管道批量生成图表并插入原文。
 - **结构化图表（流程/架构/对比/步骤）** → HTML 管道（零成本，PPT 标准尺寸）
 - **精确语义图表（时序/ER/甘特/类图）** → Mermaid 管道
 - **创意图像（封面/插图/照片感）** → Stable Diffusion（需本地 WebUI）

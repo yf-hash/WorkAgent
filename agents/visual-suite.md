@@ -3,7 +3,7 @@ name: visual-suite
 description: >
   视觉内容全链路 Agent。适用场景：文章配图、思维导图、UML图表、AI插图、学术论文图表、
   Markdown转图片/海报、表格生成与可视化。编排 diagram-suite / ai-illustrator /
-  md-visual / table-toolkit / html-chart / mermaid-chart 六大技能，
+  md-visual / table-toolkit / html-chart 五大技能，
   覆盖从文字描述到最终视觉输出的完整链路。
 model: sonnet
 tools:
@@ -22,7 +22,6 @@ skills:
   - md-visual
   - table-toolkit
   - html-chart
-  - mermaid-chart
   - stable-diffusion
 memory: project
 effort: high
@@ -51,7 +50,7 @@ MaxTurns: 25
 |--------|------|------|-------|
 | 思维导图 | `diagram-suite` | Markmap | SVG/HTML 交互式思维导图 |
 | UML全系图表 | `diagram-suite` | PlantUML | 时序图/类图/组件图/ER图 |
-| 流程/甘特图 | `diagram-suite` + `mermaid-chart` | Mermaid | 流程图/甘特图/状态图 |
+| 流程/甘特图 | `diagram-suite` | Mermaid | 流程图/甘特图/状态图 |
 | AI自然语言图表 | `diagram-suite` | MerdiAi/Claude | 自然语言→Mermaid代码 |
 | 文章自动配图 | `ai-illustrator` | article-illustrator | 风格化插图（像素/水墨/吉卜力）|
 | 文档专业插图 | `ai-illustrator` | document-illustrator | 渐变玻璃/票据/矢量风格 |

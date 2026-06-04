@@ -20,16 +20,15 @@ tools:
   - WebFetch
   - AskUserQuestion
 skills:
-  - skills/ppt-rag/SKILL.md
-  - skills/ppt-researcher/SKILL.md
-  - skills/ppt-architect/SKILL.md
-  - skills/academic-pptx/SKILL.md
-  - skills/slidetailor/SKILL.md
-  - skills/ppt-master/SKILL.md
-  - skills/slidev/SKILL.md
-  - skills/marp/SKILL.md
-  - skills/pptx-sdk/SKILL.md
-  - skills/diagram-suite/SKILL.md
+  - ppt-source
+  - ppt-architect
+  - academic-pptx
+  - slidetailor
+  - ppt-master
+  - slidev
+  - marp
+  - pptx-sdk
+  - diagram-suite
 memory: project
 effort: high
 color: "#5c6bc0"
@@ -685,6 +684,6 @@ F级（<50分）持续5轮仍不达标：
   ├─ @market-intelligence → 市场情报补充（Phase 2 增强）
   ├─ @paper-researcher   → 学术文献深度搜集（Phase 2 学术增强）
   ├─ @content-director   → 长文内容拆解优化（Phase 3 增强）
-  ├─ @visual-creator     → 封面/配图美化（Phase 7 增强）
+  ├─ @article-illustrator     → 封面/配图美化（Phase 7 增强）
   └─ @data-analyst       → 数据可视化图表（Phase 4 数据图增强）
 ```

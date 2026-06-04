@@ -1,6 +1,16 @@
 ---
 name: feedback
-description: 用户反馈收集与分析，支持反馈看板、功能投票、情感分析、NPS/CSAT、用户之声报告
+description: >
+  用户反馈管理 — 多渠道反馈数据的收集、分析、行动闭环。覆盖反馈收集（弹窗 /
+  邮件 / 应用内 / 工单）、主题聚类与情感分析、NPS / CSAT 设计、
+  功能投票看板、Voice of Customer（VoC）月报 / 季报。
+  
+  与相邻命令的边界（防混淆）：
+  - vs /user-research：本命令是"被动分析现有反馈数据"；
+    /user-research 是"主动设计研究并采集"。
+  - vs /pmf-survey：PMF 是 NPS 的"专项进阶版"（Sean Ellis 测试）。
+  - vs /retrospective：本命令面向用户反馈；/retrospective 面向团队复盘。
+  适用于：产品反馈数据治理、月度 VoC 报告、新功能优先级、流失原因分析。
 user-invocable: true
 argument-hint: "<产品/功能描述> [--mode collect|analyze|nps|vote|voc] [--source <文件或URL>]"
 ---

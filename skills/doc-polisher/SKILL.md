@@ -1,13 +1,18 @@
 ---
 name: doc-polisher
 description: >
+  ⚠️ 已重命名为 doc-formatter。本文件保留以兼容旧引用。
+  新技能路径：skills/doc-formatter/SKILL.md（DOCX读写 + 中文排版校正）。
+  doc-polisher 名称现保留给同名 Agent（全流程润色编排器）。
   文档智能润色技能。一键闭环：文档读取 → AI去痕 → 中文排版校正 → 智能配图 → 输出完整文档（支持 .docx 导出）。
-  支持 Markdown/PDF/DOCX 输入，支持 auto/staged/iterative 三种模式和 15 种配图风格。
-  触发关键词：文档润色、polish、去AI味+配图、自动配图、文档优化、导出Word、docx输出
 user-invocable: false
 effort: high
 argument-hint: "<filepath> [--tone ...] [--intensity ...] [--style ...] [--mode auto|staged|iterative] [--export docx|md]"
 ---
+
+> ⚠️ **已重命名** — 本技能已重命名为 `doc-formatter`（路径：`skills/doc-formatter/SKILL.md`）。
+> `doc-polisher` 名称现专属于同名 Agent（全流程编排器）。旧引用暂时兼容保留。
+
 
 # 文档智能润色技能
 

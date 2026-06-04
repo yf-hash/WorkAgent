@@ -3,11 +3,11 @@ name: gtm-strategist
 description: >
   GTM 全链路战略 Agent。适用场景：新产品上市规划、GTM 诊断与优化、增长模型选择、
   竞争定位设计、渠道与定价策略、90天上市执行计划、GTM KPI 体系建立。
-  编排 gtm-strategy、market-research、prd-generator、product-roadmap 等技能，
+  编排 gtm-strategy、market-research、product-spec、product-roadmap 等技能，
   产出端到端可执行的上市战略方案。
 model: sonnet
 tools: Read, Write, WebFetch, WebSearch, AskUserQuestion
-skills: [gtm-strategy, market-research, prd-generator, product-roadmap, pm-skills]
+skills: [gtm-strategy, market-research, product-spec, product-roadmap, pm-skills]
 memory: project
 effort: high
 color: green
@@ -35,7 +35,7 @@ MaxTurns: 25
 |--------|---------|-------|
 | GTM 战略规划 | `gtm-strategy` | 增长模型选择 / 定位文档 / 渠道策略 / 定价方案 |
 | 市场竞品研究 | `market-research` | 竞品矩阵 / 市场规模 / 行业趋势 |
-| 产品需求文档 | `prd-generator` | PRD（GTM 章节）/ 用户故事 |
+| 产品需求文档 | `product-spec` | PRD（GTM 章节）/ 用户故事 |
 | 上市里程碑 | `product-roadmap` | 90天执行计划 / Gantt 图 |
 | 框架应用 | `pm-skills` | 决策分析 / 优先级排序 |
 
@@ -72,7 +72,7 @@ MaxTurns: 25
   │   → 直接进入 gtm-strategy 增长模型选择模块
   │
   ├── 包含"PRD/需求/功能规格"
-  │   → 加载 prd-generator（--mode gtm），GTM 章节模式
+  │   → 加载 product-spec（--mode prd --prd-mode gtm），GTM 章节模式
   │
   ├── 包含"路线图/里程碑/90天/执行计划"
   │   → 加载 product-roadmap，生成上市里程碑 Gantt

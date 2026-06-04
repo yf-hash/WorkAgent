@@ -1,6 +1,10 @@
 ---
 name: design-proto
-description: 产品设计与原型工具指南，支持原型方案、组件库选型、动效设计、新手引导、Penpot 自托管
+description: >
+  设计原型与线框图 — UI / UX 设计与交互原型工具台。覆盖 ASCII 线框图、
+  交互原型流程、组件库选型、新手引导（Onboarding）方案、动效设计、
+  Penpot / Figma / Pencil 工具评估。
+  适用于：早期需求快速沟通、研发对接前的设计、Onboarding 优化、动效规划。
 user-invocable: true
 argument-hint: "<设计需求> [--mode wireframe|prototype|component|onboarding|motion] [--tool penpot|figma|pencil]"
 ---

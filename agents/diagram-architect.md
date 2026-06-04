@@ -149,7 +149,7 @@ Phase 5: 输出交付
 
 ```
 @diagram-architect
-  ├─ @visual-creator    → 图表 + 文章配图一体化
+  ├─ @article-illustrator    → 图表 + 文章配图一体化
   ├─ @content-director  → 技术文章全流程（含图表）
   ├─ @product-manager   → PRD 图表自动配套
   └─ @data-analyst      → 数据可视化图表生成

@@ -1,16 +1,24 @@
 ---
 name: user-research
-description: 用户研究全流程支持，包括访谈设计、问卷制作、卡片分类、用户旅程、创始人发现
+description: >
+  用户研究工作台 — 访谈 / 问卷 / 卡片分类 / 旅程 / 画像 / Founder 六种方法。
+  
+  与相邻命令的边界（防混淆）：
+  - vs /market-research：本命令做"用户视角"（行为 + 动机 + JTBD）；
+    /market-research 做"市场视角"（竞品 + 趋势 + TAM）。两者互补。
+  - vs /feedback：本命令是"主动研究"（设计研究问题去问）；
+    /feedback 是"被动分析"（已有反馈数据做聚类）。
+  - vs /pmf-survey：PMF 是用户研究的特殊形式（专项 Sean Ellis 测试）。
 user-invocable: true
-argument-hint: "<研究目标> [--mode interview|survey|card-sort|journey|persona] [--participants <N>]"
+argument-hint: "<研究目标> [--mode interview|survey|card-sort|journey|persona|founder] [--participants <N>]"
 ---
 
 # /user-research — 用户研究工作台
 
-加载技能：`skills/market-research/SKILL.md`
+加载技能：`skills/user-research/SKILL.md`
 
 ## 触发条件
-需要设计用户访谈脚本、问卷、卡片分类、用户旅程地图、用户画像，或分析用户研究数据时。
+设计用户访谈脚本、问卷、卡片分类、用户旅程地图、用户画像，或寻找早期 Adopter / 创始人级用户时。
 
 ## 参数说明
 

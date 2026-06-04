@@ -1,12 +1,18 @@
 ---
 name: ppt-researcher
 description: >
+  ⚠️ 已迁移至 ppt-source（--mode research）。本文件保留以兼容旧引用。
+  新用法：加载 skills/ppt-source/SKILL.md，使用 --mode research 参数。
   PPT专用多源内容搜集与归纳技能。触发词：PPT研究、内容搜集、资料调研、PPT素材、
   研究报告生成、多源搜索、官方媒体学术产业搜集。
   覆盖官方/媒体/学术/产业/社区五大渠道，输出结构化PPT素材包（大纲+数据+引用+案例）。
 user-invocable: false
 effort: high
 ---
+
+> ⚠️ **已迁移** — 本技能已合并入 `skills/ppt-source/SKILL.md`（`--mode research`）。
+> 新项目请直接加载 `ppt-source` 技能，旧引用暂时兼容保留。
+
 
 # PPT Researcher — PPT专用多源内容搜集技能
 

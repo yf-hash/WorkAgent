@@ -1,4 +1,5 @@
 {
+  "autoCompact": true,
   "permissions": {
     "allow": [
       "Bash(git *)",

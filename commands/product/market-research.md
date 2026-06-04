@@ -1,6 +1,13 @@
 ---
 name: market-research
-description: 市场研究与竞争情报分析，支持竞品分析、行业趋势、市场规模估算、亚马逊选品研究
+description: >
+  市场研究与竞争情报分析，支持竞品分析、行业趋势、市场规模估算、亚马逊选品研究。
+  
+  与相邻命令的边界（防混淆）：
+  - vs /user-research：本命令做"市场视角（竞品 + 趋势 + TAM）"；
+    /user-research 做"用户视角（行为 + 动机 + JTBD）"。两者互补不重复。
+  - vs /product-strategy --mode lean：本命令产出"市场情报数据"；
+    /product-strategy 接收数据后做"战略画布"决策。
 user-invocable: true
 argument-hint: "<研究主题> [--mode competitive|trend|tam|amazon|oss] [--output brief|report|matrix]"
 ---

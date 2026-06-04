@@ -7,8 +7,8 @@ tools:
   - file_read
   - file_write
 skills:
-  - skills/taskweaver/SKILL.md
-  - skills/chat2db/SKILL.md
+  - taskweaver
+  - chat2db
 memory: agents/data-analyst-memory.md
 effort: high
 color: "#1e88e5"

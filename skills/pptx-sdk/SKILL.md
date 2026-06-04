@@ -1,3 +1,16 @@
+---
+name: pptx-sdk
+description: >
+  ⚠️ 已降级为参考模块。新引用请使用 ppt-master 技能（`skills/ppt-master/references/pptx-sdk.md`）。
+  PPTX 编程式生成知识库（python-pptx + PptxGenJS），适合数据驱动批量幻灯片、CI/CD 输出。
+  触发词：python-pptx、PptxGenJS、编程式 PPTX、批量生成幻灯片、PPTX SDK。
+user-invocable: false
+effort: low
+---
+
+> ⚠️ **已降级为参考模块** — 本技能已迁移至 `skills/ppt-master/references/pptx-sdk.md`。
+> 请通过 `ppt-master` 技能访问 SDK 编程接口，或直接引用 `skills/ppt-master/references/pptx-sdk.md`。
+
 # PPTX SDK — 编程式幻灯片生成
 
 ## 概述

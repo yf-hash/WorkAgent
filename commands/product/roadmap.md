@@ -1,8 +1,17 @@
 ---
 name: roadmap
-description: 产品路线图规划，支持需求优先级排序、里程碑规划、GitHub 项目管理、Gantt 图生成
+description: >
+  产品路线图规划 — 主题 × 时间的可视化路径。
+  
+  与相邻命令的边界（防混淆）：
+  - vs /okr：本命令是"主题 + 里程碑 + 交付物"的时间轴；
+    /okr 是"季度 O + KR + 跟踪"的目标管理。两者并行（OKR 决定方向，Roadmap 排路径）。
+  - vs /sprint-planning：本命令周期 1m/3m/6m/1y；/sprint-planning 周期 2 周。
+    Roadmap 季度切片落到 Sprint 执行。
+  - vs /user-story-mapping：故事地图是"用户旅程 × 故事切片"，
+    Roadmap 是"主题 × 季度交付"。前者细到故事卡，后者粗到主题。
 user-invocable: true
-argument-hint: "<产品/团队描述> [--mode prioritize|plan|gantt|github|okr] [--horizon 1m|3m|6m|1y]"
+argument-hint: "<产品/团队描述> [--mode prioritize|plan|gantt|github] [--horizon 1m|3m|6m|1y]"
 ---
 
 # /roadmap — 产品路线图规划
@@ -10,7 +19,7 @@ argument-hint: "<产品/团队描述> [--mode prioritize|plan|gantt|github|okr] 
 加载技能：`skills/product-roadmap/SKILL.md`
 
 ## 触发条件
-需要规划产品路线图、对需求进行优先级排序、生成里程碑计划、创建 Gantt 图，或同步 GitHub Projects 时。
+规划季度 / 半年 / 年度产品路线图、对 Backlog 做需求优先级排序、生成 Gantt 图、同步 GitHub Projects 时。
 
 ## 参数说明
 
@@ -20,14 +29,17 @@ argument-hint: "<产品/团队描述> [--mode prioritize|plan|gantt|github|okr] 
 | `--mode` | 规划模式 | `plan` |
 | `--horizon` | 规划周期 | `3m` |
 
-### 规划模式
+### 规划模式（已聚焦）
 | `--mode` | 输出内容 | 适用场景 |
 |----------|---------|---------|
-| `prioritize` | 需求优先级排序（RICE/MoSCoW/ICE） | Backlog 梳理 |
+| `prioritize` | 需求优先级排序（RICE / MoSCoW / ICE） | Backlog 梳理 |
 | `plan` | 路线图结构（主题 + 里程碑 + 交付物） | 季度/年度规划 |
 | `gantt` | Mermaid Gantt 图 | 可视化展示 |
 | `github` | GitHub Projects 配置方案 | 工程团队协作 |
-| `okr` | OKR 联动路线图 | 目标对齐 |
+
+### ⚠️ 已迁移的能力
+- `--mode okr`（OKR 联动）→ 使用 `/okr --mode draft` 起草季度 OKR，
+  然后 Roadmap 主题与 OKR 关联即可（推荐工作流见底部）。
 
 ## 参考工具生态
 
@@ -96,5 +108,15 @@ gantt
 /roadmap 对积压的 20 个需求做优先级排序 --mode prioritize
 /roadmap 生成 H2 半年路线图 Gantt 图 --mode gantt --horizon 6m
 /roadmap 配置 GitHub Projects 看板结构 --mode github
-/roadmap 将路线图与 OKR 对齐 --mode okr
+```
+
+## 推荐工作流（OKR + Roadmap 联动）
+
+```
+1. /okr --mode draft（季度 O + KR 起草）
+2. /roadmap --horizon 3m（基于 KR 排主题/里程碑）
+3. /roadmap --mode prioritize（Backlog 优先级 RICE）
+4. /roadmap --mode gantt（输出可视化）
+5. /sprint-planning（每 2 周从 Roadmap 拉取本 Sprint）
+6. 季度末 /okr --mode review（评分）
 ```

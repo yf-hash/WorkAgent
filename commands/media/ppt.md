@@ -13,7 +13,7 @@ allowed-tools: [Read, Write, Edit, Bash, WebSearch, WebFetch, AskUserQuestion]
 
 # /ppt — 演示文稿全流程生成
 
-加载技能：`skills/ppt-rag/SKILL.md` · `skills/ppt-researcher/SKILL.md` ·
+加载技能：`skills/ppt-source/SKILL.md` ·
 `skills/ppt-architect/SKILL.md` · `skills/ppt-master/SKILL.md` ·
 `skills/academic-pptx/SKILL.md` · `skills/marp/SKILL.md` · `skills/diagram-suite/SKILL.md`
 
@@ -952,7 +952,7 @@ D5 受众匹配改进（当D5最弱时）：
 /ppt (研究阶段)     → /market-research   更深度的竞品/市场研究
 /ppt (图表阶段)     → /arch-diagram      专业云架构图生成
                     → /diagram           Mermaid/PlantUML轻量图表
-/ppt (美化阶段)     → @visual-creator    图表+配图一体化美化
+/ppt (美化阶段)     → @article-illustrator    图表+配图一体化美化
 /ppt (学术场景)     → /paper-collect     论文搜集与整理
 /ppt (汇报场景)     → /prd              产品文档一键转PPT
 /ppt (报告场景)     → @content-director  长文拆解+叙事优化

@@ -1,6 +1,8 @@
 ---
 name: ppt-rag
 description: >
+  ⚠️ 已迁移至 ppt-source（--mode rag）。本文件保留以兼容旧引用。
+  新用法：加载 skills/ppt-source/SKILL.md，使用 --mode rag 参数。
   PPT专用RAG（检索增强生成）技能。触发词：本地文档/URL索引、RAG、已有材料、
   现成资料、文档库检索、知识库、资料归纳、--rag参数。
   支持PDF/DOCX/PPTX/MD/TXT/HTML/Excel等格式及在线URL批量摄入，
@@ -9,6 +11,10 @@ description: >
 user-invocable: false
 effort: medium
 ---
+
+> ⚠️ **已迁移** — 本技能已合并入 `skills/ppt-source/SKILL.md`（`--mode rag`）。
+> 新项目请直接加载 `ppt-source` 技能，旧引用暂时兼容保留。
+
 
 # PPT RAG — 已有材料索引与检索技能
 
