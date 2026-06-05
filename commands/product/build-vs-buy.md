@@ -83,8 +83,8 @@ Buy TCO   = 订阅成本 + 集成成本 + 培训成本 + 切换成本 + Vendor �
 - 退出策略
 
 ## 7. 下一步
-- 决策记录：`/decision-log register --type build-vs-buy`
-- 若 Buy：`/sla-design` + `/integration-design`
+- 若 Buy：评估供应商 SLA + 制定集成方案
+- 若 Build：纳入 `/roadmap`
 ```
 
 ## 红线（不要做）

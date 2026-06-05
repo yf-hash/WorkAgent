@@ -254,12 +254,9 @@ argument-hint: "<时间窗口/产品> [--mode weekly|monthly|quarterly|board|cus
 
 ```
 /product-report（本命令）
-  ├── /okr → 季度报告基础
   ├── /roadmap → 月报里程碑
   ├── /analytics → 北极星 / 漏斗数据
-  ├── /ab-test → 本月实验复盘
-  ├── /retrospective → 学习沉淀
-  └── /stakeholder → 不同受众报告内容
+  └── /ab-test → 本月实验复盘
 
 推荐节奏：
   每周一上午：/product-report --mode weekly

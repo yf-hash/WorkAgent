@@ -177,7 +177,6 @@ Stage 7：合同阶段（T+135 ~ T+165）
   /business-case --mode full（完整版给法务 / 财务）
   → 合规支撑（/compliance-checklist + /security-questionnaire）
   → 签约
-  → 转 @customer-success-manager 实施
 ```
 
 ---
@@ -206,7 +205,6 @@ Stage 7：合同阶段（T+135 ~ T+165）
   ├── 需要标书全流程 → @bid-writer
   ├── 需要 24 类产品资料批量 → @product-enablement
   ├── 需要售前方案文档 → @proposal-writer
-  ├── 签约后客户实施 → @customer-success-manager
   ├── PRD 规格化（架构 + AI 安全融合）→ @ai-product-architect
   └── 需要 PRD 评审 → @qa-acceptance-designer
 

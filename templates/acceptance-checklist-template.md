@@ -187,5 +187,5 @@
 
 - 上线计划：`/launch-checklist "<产品名> v0.1" --mode full`
 - 应急预案：`/launch-checklist --mode rollback`
-- 复盘安排：D+7 `/retrospective --type launch`
+- 复盘安排：D+7 上线后复盘
 - 售前承接：`@solution-architect` 进入合同与实施阶段

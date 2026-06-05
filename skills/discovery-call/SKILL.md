@@ -242,6 +242,5 @@ DMU = Decision Making Unit（决策单元），通常 4-8 人。
 | 选择 | 用前者 | 用后者 |
 |------|-------|-------|
 | `discovery-call` vs `user-research` | 售前商业语境（卖方-买方）| 产品研发语境（找需求做产品）|
-| `discovery-call` vs `customer-success --mode onboarding` | 签约前需求挖掘 | 签约后实施动员 |
 | `discovery-call` vs `pm-discovery` | 单一客户深度访谈 | PM 全流程的发现阶段（市场+多客户）|
 | `discovery-call` vs `solution-architecture` | 第 1-2 次会议（搞清需求）| 第 3+ 次会议（架构方案落地）|

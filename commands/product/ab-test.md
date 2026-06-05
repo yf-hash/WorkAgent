@@ -203,18 +203,14 @@ Step 6: 失败模式自检
 /ab-test（本命令）
   ├── /analytics → 提供 baseline 数据 + 埋点设计
   ├── /mvp-canvas → MVP 上线后做 A/B 验证假设
-  ├── /growth-experiment → A/B 是增长实验执行手段
-  ├── /pricing-strategy → 定价 A/B 测试
-  └── /retrospective → 实验失败/成功的复盘归档
+  └── /pricing-strategy → 定价 A/B 测试
 
 推荐工作流：
   增长实验：
-    /growth-experiment（生成假设 + ICE 排序）
-    → /ab-test --mode design
+    /ab-test --mode design
     → /ab-test --mode sizing
     → 上线
     → /ab-test --mode analyze
-    → /retrospective（沉淀实验日志）
 ```
 
 ---

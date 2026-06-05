@@ -160,7 +160,5 @@ Buy TCO（3 年）：
 
 ## 配套资源
 
-- 决策记录：`/decision-log register --type build-vs-buy`
-- 后续 SLA 谈判：`/sla-design`
-- 后续集成设计：`/integration-design`
 - 上游战略：`/product-strategy`
+- 上线后路线图：`/roadmap`

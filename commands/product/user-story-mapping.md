@@ -128,7 +128,6 @@ R1 包含的故事：[故事列表 + 简述]
   ├── /user-research → 提供 Persona 和 JTBD
   ├── /product-strategy → 提供 Vision 决定地图聚焦
   ├── /mvp-canvas → R1 切片即 MVP 范围
-  ├── /sprint-planning → R1 故事进入 Sprint Backlog
   ├── /product-spec → 故事卡 → 详细 PRD
   └── /roadmap → 切片 → 路线图里程碑
 
@@ -137,7 +136,6 @@ R1 包含的故事：[故事列表 + 简述]
     /user-research --mode persona
     → /user-story-mapping --mode full
     → /product-spec --mode spec
-    → /sprint-planning
 ```
 
 ---

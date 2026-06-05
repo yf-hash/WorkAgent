@@ -95,4 +95,4 @@ Step 3: 风险信号识别
 | `/discovery-call` vs `/user-research` | 售前商业语境 | 产品研发语境 |
 | `/discovery-call` vs `/pm-discovery` | 单一客户深度访谈 | PM 全流程发现阶段 |
 | `/discovery-call` vs `/solution-architecture` | 第 1-2 次会议（需求挖掘）| 第 3+ 次（方案落地）|
-| `/discovery-call --mode mom` vs `/status-update` | 客户会议纪要 | 内部干系人状态汇报 |
+| `/discovery-call --mode mom` vs `/discovery-call --mode email` | 客户会议纪要 | 客户跟进邮件 |

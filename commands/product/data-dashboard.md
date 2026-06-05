@@ -270,9 +270,7 @@ alerts:
   ├── /product-strategy --mode northstar → 北极星定义 → 看板顶部
   ├── /ab-test → 实验影响标注在看板趋势图
   ├── /pmf-survey → PMF 信号雷达 → 看板组件
-  ├── /product-report → 月报/季报基于看板数据
-  ├── /retrospective → 异常告警触发复盘
-  └── /ai-feature-spec → AI 功能监控看板
+  └── /product-report → 月报/季报基于看板数据
 
 推荐工作流：
   搭看板（一次性）：

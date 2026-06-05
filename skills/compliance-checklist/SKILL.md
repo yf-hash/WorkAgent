@@ -350,10 +350,6 @@ T+30 天：完整 PIR + 长期改进
 
 | 知识库 | 协作 |
 |--------|------|
-| `rbac-design` | 访问控制 + 审计日志 |
-| `sla-design` | 数据 SLA + DPA |
-| `integration-design` | API 合规（PII / 加密） |
 | `product-spec` | 合规作为非功能需求 |
-| `customer-success` | 客户审计配合 |
-| `account-plan` | 大客户合规承诺 |
-| `retrospective --type incident` | 违约 PIR |
+| `security-questionnaire` | 客户安全问卷应答 |
+| `product-doc-writer` | 合规材料体系 |

@@ -6,10 +6,8 @@ description: >
   关键监控指标、危机响应 SOP。让发布从靠经验变成可复用的 SOP。
   
   与相邻命令的边界（防混淆）：
-  - vs /retrospective --type launch：本命令是"D-Day 之前的就绪清单"；
-    /retrospective --type launch 是"D+7 之后的复盘"。
-  - vs /sprint-planning：Sprint 是"双周开发节奏"；
-    Launch 是"上线那一刻的 6 轨道协同"。
+  - 本命令产出"D-Day 之前的就绪清单"。
+  - 上线后的复盘由其他流程承接。
   适用于：新功能上线、版本发布、大改版前对齐、跨团队协同。
 user-invocable: true
 argument-hint: "<产品/功能名> [--mode full|tracks|timebox|risk|gono] [--launch-type soft|hard|gradual|beta|stealth] [--scale small|medium|large]"
@@ -183,10 +181,8 @@ D+30  商业指标复盘
 /launch-checklist（本命令）
   ├── /gtm-strategy → Marketing 轨道内容
   ├── /roadmap → 发布日期来源
-  ├── /sprint-planning → Engineering 进度
   ├── /ab-test → 灰度阶段实验设计
   ├── /product-doc --type release-notes → 版本说明
-  ├── /retrospective → D+7 复盘方法
   └── /analytics → D-Day 监控指标埋点
 
 推荐工作流：
@@ -194,7 +190,6 @@ D+30  商业指标复盘
     /launch-checklist --launch-type gradual --scale large
     → /ab-test --mode design（灰度阶段）
     → 上线
-    → /retrospective --type post-launch（D+7）
 ```
 
 ---

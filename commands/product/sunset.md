@@ -79,10 +79,7 @@ $ARGUMENTS
 ## 7. 风险与应急
 
 ## 8. 关联资源
-- 决策记录：`/decision-log register --type sunset`
-- 客户挽留：`/customer-success --mode save`
 - 合规：`/compliance-checklist`
-- 复盘：`/retrospective --type project`
 ```
 
 ## 红线（不要做）

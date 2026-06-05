@@ -217,7 +217,5 @@ Deal 关闭后 **2-6 周内**访谈最有效：
 ## 配套资源
 
 - 客户访谈：`/user-research`
-- 销售复盘：`/retrospective --type project`
 - ICP 修正：`/product-strategy --mode lean`
-- 客户挽留：`/customer-success --mode save`
 - 产品改进：`/pm-intake` → `/pm-prd-enterprise`

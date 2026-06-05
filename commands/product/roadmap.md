@@ -4,10 +4,6 @@ description: >
   产品路线图规划 — 主题 × 时间的可视化路径。
   
   与相邻命令的边界（防混淆）：
-  - vs /okr：本命令是"主题 + 里程碑 + 交付物"的时间轴；
-    /okr 是"季度 O + KR + 跟踪"的目标管理。两者并行（OKR 决定方向，Roadmap 排路径）。
-  - vs /sprint-planning：本命令周期 1m/3m/6m/1y；/sprint-planning 周期 2 周。
-    Roadmap 季度切片落到 Sprint 执行。
   - vs /user-story-mapping：故事地图是"用户旅程 × 故事切片"，
     Roadmap 是"主题 × 季度交付"。前者细到故事卡，后者粗到主题。
 user-invocable: true
@@ -36,10 +32,6 @@ argument-hint: "<产品/团队描述> [--mode prioritize|plan|gantt|github] [--h
 | `plan` | 路线图结构（主题 + 里程碑 + 交付物） | 季度/年度规划 |
 | `gantt` | Mermaid Gantt 图 | 可视化展示 |
 | `github` | GitHub Projects 配置方案 | 工程团队协作 |
-
-### ⚠️ 已迁移的能力
-- `--mode okr`（OKR 联动）→ 使用 `/okr --mode draft` 起草季度 OKR，
-  然后 Roadmap 主题与 OKR 关联即可（推荐工作流见底部）。
 
 ## 参考工具生态
 
@@ -110,13 +102,11 @@ gantt
 /roadmap 配置 GitHub Projects 看板结构 --mode github
 ```
 
-## 推荐工作流（OKR + Roadmap 联动）
+## 推荐工作流（季度规划 → Sprint）
 
 ```
-1. /okr --mode draft（季度 O + KR 起草）
-2. /roadmap --horizon 3m（基于 KR 排主题/里程碑）
+1. /product-strategy --mode northstar（北极星 + 战略主题）
+2. /roadmap --horizon 3m（基于战略主题排里程碑）
 3. /roadmap --mode prioritize（Backlog 优先级 RICE）
 4. /roadmap --mode gantt（输出可视化）
-5. /sprint-planning（每 2 周从 Roadmap 拉取本 Sprint）
-6. 季度末 /okr --mode review（评分）
 ```

@@ -755,4 +755,4 @@ PRD    回答："为什么这样做？做到什么程度？怎么验收？"
 - **客户验收口径**：客户语言写、客户视角验、客户场景跑
 - **合规映射**：等保 / SOC2 / GDPR / 个保法（按客户合同）
 
-参考相关 Skills：`rbac-design` / `compliance-checklist` / `sla-design` / `integration-design`。
+参考相关 Skills：`compliance-checklist`。

@@ -1,9 +1,9 @@
 ---
 name: product-manager
-description: 全栈产品经理 Agent — 整合 C 端 + B 端产品全工作链。覆盖战略 / 用研 / PRD / 设计 / 路线图 / GTM / 增长 / 数据 / 复盘 / 治理 / 客户成功 / 大客户 / SLA / 权限 / 集成 / 合规 / PoC / 报价 全 35+ 项 PM 工作场景
+description: 全栈产品经理 Agent — 整合 C 端 + B 端产品全工作链。覆盖战略 / 用研 / PRD / 设计 / 路线图 / GTM / 增长 / 数据 / 治理 / 合规 / PoC / 报价等核心产品工作场景
 model: opus
 tools: Read, Write, WebFetch, WebSearch, Bash
-skills: [product-spec, prd-writer, design-proto, market-research, product-analytics, user-feedback, product-roadmap, pm-skills, gtm-strategy, product-strategy, user-story-mapping, mvp-canvas, ab-test, launch-checklist, sprint-planning, retrospective, pm-ai-security-product, pricing-strategy, okr, stakeholder, pmf-survey, product-report, data-dashboard, customer-success, compliance-checklist, poc-plan, user-research]
+skills: [product-spec, prd-writer, design-proto, market-research, product-analytics, user-feedback, product-roadmap, pm-skills, gtm-strategy, product-strategy, user-story-mapping, mvp-canvas, ab-test, launch-checklist, pm-ai-security-product, pricing-strategy, pmf-survey, product-report, data-dashboard, compliance-checklist, poc-plan, user-research]
 memory: project
 effort: high
 color: blue
@@ -31,15 +31,12 @@ color: blue
 | A/B 实验 | 假设 / 样本 / 显著性 / 护栏 | 实验设计 + 分析模板 |
 | 增长实验 | AARRR / 杠杆 / ICE / Growth Loop | 增长实验队列 |
 | 路线图 | 需求优先级、里程碑、OKR 联动 | Gantt 图、路线图文档 |
-| Sprint 规划 | Goal / Capacity / Pointing / DoR-DoD | Sprint 计划 |
 | 发布管理 | 6 轨道 / 时间盒 / Go-No-Go / 灰度 | Launch Checklist |
-| 复盘协调 | Sprint Retro / Launch PIR / Post-Mortem | 复盘报告 + Action |
 | 用户反馈 | 反馈分析、NPS 设计、VoC 报告 | 月度/季度 VoC 报告 |
 | GTM 战略 | 增长模型、定位、渠道、定价、上市 | GTM 策略 + 90 天计划 |
 | AI 功能 | Task Spec / Prompt / Eval / 失败模式 | AI Feature PRD |
 | 定价策略 | Freemium / 套餐 / PSM / Conjoint | 定价方案 + 单位经济 |
 | OKR | O 起草 / KR 量化 / 跟踪 / 评分 | OKR 文档 + 季度评分 |
-| 干系人 | Power-Interest / RACI / 向上管理 | 沟通计划 + RACI |
 | PMF 评估 | Sean Ellis / HXC / 信号雷达 | PMF 报告 + Pivot 决策 |
 | 产品报告 | 周报 / 月报 / 季度 / 董事会 | 多受众报告模板 |
 | 数据看板 | 北极星 / AARRR / Cohort / Revenue / AI 监控 | 看板设计 + SQL + 嵌入 |
@@ -105,17 +102,8 @@ color: blue
   ├── 包含"路线图/优先级/排期/里程碑/Gantt"
   │   → 加载 product-roadmap 技能
   │
-  ├── 包含"OKR/Objectives/Key Results/季度规划/季度目标"
-  │   → 加载 okr 技能
-  │
-  ├── 包含"Sprint 规划/迭代规划/Story Point/Velocity/Backlog 梳理/DoR/DoD"
-  │   → 加载 sprint-planning 技能
-  │
   ├── 包含"发布检查/Launch Readiness/上线清单/Go-No-Go/灰度发布"
   │   → 加载 launch-checklist 技能
-  │
-  ├── 包含"复盘/retrospective/PIR/Post-Mortem/根因分析/5 Whys"
-  │   → 加载 retrospective 技能
   │
   ├── 包含"增长实验/Growth Hacking/AARRR/增长杠杆/ICE/Growth Loop"
   │   → 加载 ab-test + product-analytics
@@ -132,18 +120,11 @@ color: blue
   ├── 包含"定价/Pricing/Freemium/套餐/PSM/Conjoint/涨价/降价"
   │   → 加载 pricing-strategy 技能
   │
-  ├── 包含"干系人/Stakeholder/RACI/Power-Interest/向上管理/坏消息/升级"
-  │   → 加载 stakeholder 技能
-  │
   ├── 包含"产品周报/月报/季度报告/Board Update/Business Review"
   │   → 加载 product-report 技能
   │
   ├── 包含"数据看板/北极星看板/漏斗看板/PostHog/Mixpanel/Amplitude/客户 BR 看板"
   │   → 加载 data-dashboard 技能
-  │
-  ├── 包含"客户成功/CSM/Onboarding/客户健康度/续约/Churn/Land Expand/大客户/QBR/EBR"
-  │   → 加载 customer-success 技能
-  │   → 复杂场景 → 委派给 @customer-success-manager
   │
   ├── 包含"合规/等保/SOC2/ISO27001/GDPR/HIPAA/PCI/个保法/数安法"
   │   → 加载 compliance-checklist 技能
@@ -165,7 +146,6 @@ color: blue
 战略层（季度/年度）：
   /product-strategy --mode lean       战略画布
   → /pmf-survey                        PMF 验证
-  → /okr --mode draft                  季度 OKR
   → /pricing-strategy                  定价方案
 
 发现层：
@@ -179,8 +159,7 @@ color: blue
   → AI 功能套用 pm-ai-security-product
 
 交付层：
-  /sprint-planning --mode plan         Sprint 规划
-  → /roadmap --horizon 3m              季度路线图
+  /roadmap --horizon 3m              季度路线图
 
 上市层：
   /gtm-strategy                        GTM 战略
@@ -194,13 +173,7 @@ color: blue
 
 度量层：
   /pmf-survey                          PMF 复测
-  → /retrospective --type project      季度复盘
   → /product-report --mode quarterly   季度报告
-
-沟通层：
-  /stakeholder --mode raci             责任矩阵
-  → /product-report --mode weekly      周报
-  → /product-report --mode monthly     月报
 
 治理层（贯穿全周期）：
   /data-dashboard --mode design       看板搭建（北极星/AARRR/收入/AI）
@@ -213,23 +186,17 @@ color: blue
   /product-strategy --mode lean    → 战略画布
   → /user-story-mapping            → 故事地图
   → /product-spec --mode spec      → 四件套规格对齐
-  → /sprint-planning               → 排期
   → /launch-checklist              → 发布清单
-  → /retrospective --type launch   → D+7 复盘
 
 早期 0→1 验证：
   /product-strategy --mode lean    → 假设清单
   → /mvp-canvas                    → MVP 设计
   → 上线 → 8 周后 /pmf-survey      → PMF 测试
   → ✅ → /ab-test                  → 增长实验队列
-  → ❌ → /retrospective failure    → Pivot 决策
 
 季度规划：
   /product-strategy --mode northstar  → 北极星
-  → /okr --mode draft                  → 季度 OKR
   → /roadmap --horizon 3m              → 路线图
-  → /sprint-planning --mode plan       → 首 Sprint
-  → 季度末 /okr --mode review          → 评分复盘
 
 PRD 质量提升：
   生成 PRD 后调用 /prd-writer --mode b → 三层评分 + 改进建议

@@ -254,17 +254,15 @@ Step 4: 问卷预演
   ├── /user-research → 早期访谈识别 PMF 假设
   ├── /mvp-canvas → MVP 验证完才有 PMF 测试意义
   ├── /product-strategy --mode lean → 调整 UVP / Solution
-  ├── /growth-experiment → PMF 后启动增长引擎
-  ├── /pricing-strategy → PMF 后才能稳定定价
-  └── /retrospective --type failure → 不达 PMF 复盘
+  └── /pricing-strategy → PMF 后才能稳定定价
 
 推荐工作流：
   早期产品验证：
     /mvp-canvas → 上线 MVP
     → 8 周后 /pmf-survey
-    → ✅ PMF → /growth-experiment + /pricing-strategy
+    → ✅ PMF → /ab-test + /pricing-strategy
     → ⚠️ 接近 → /pmf-survey --mode action（优化）
-    → ❌ 远未 → /retrospective --type failure（Pivot 决策）
+    → ❌ 远未 → 启动 Pivot 决策
 ```
 
 ---

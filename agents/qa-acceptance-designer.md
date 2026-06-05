@@ -57,7 +57,7 @@ color: green
 |------|------|------|
 | `@prd-coach` / `product-spec` | PRD | 本 Agent → 验收方案 |
 | 本 Agent | 验收方案 + 阻断项 | `/launch-checklist` Launch Readiness |
-| 本 Agent | 客户验收脚本 | `@product-enablement` / `@customer-success-manager` |
+| 本 Agent | 客户验收脚本 | `@product-enablement` |
 
 ## 输出模板
 

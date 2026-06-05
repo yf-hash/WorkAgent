@@ -310,7 +310,5 @@ H₀: 分流比例 = 预期
 | 知识库 | 协作方式 |
 |--------|---------|
 | `product-analytics` | 埋点设计、baseline 数据 |
-| `growth-experiment` | A/B 是增长实验的执行工具 |
 | `mvp-canvas` | MVP 验证可用 A/B |
 | `pricing-strategy` | 定价 A/B 是核心场景 |
-| `retrospective` | 实验复盘归档 |

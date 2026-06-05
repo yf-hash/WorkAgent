@@ -220,9 +220,6 @@ effort: high
 
 | 知识库 | 协作方式 |
 |--------|---------|
-| `okr` | 季度报告 OKR 评分基础 |
 | `roadmap` | 月报里程碑 |
 | `analytics` | 数字来源 |
 | `ab-test` | 实验复盘 |
-| `retrospective` | 学习沉淀 |
-| `stakeholder` | 不同受众的报告内容 |

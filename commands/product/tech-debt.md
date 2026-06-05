@@ -97,10 +97,8 @@ WSJF 高的先还。
 | 老板问 | "不做这个，下季度 5 个功能变 3 个；做了，下下季度 5 个变 8 个" |
 
 ## 七、关联资源
-- 决策记录：`/decision-log register --type tech-debt`
-- Sprint 规划：`/sprint-planning`
-- SLO：`/sla-design`
-- 升级备忘：`templates/stakeholder-update-templates.md`
+- 路线图：`/roadmap`
+- 业务话术参考：`/pm-sales-pack`
 ```
 
 ## 红线（不要做）

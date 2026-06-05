@@ -9,7 +9,6 @@ description: >
   - vs /user-research：本命令是"被动分析现有反馈数据"；
     /user-research 是"主动设计研究并采集"。
   - vs /pmf-survey：PMF 是 NPS 的"专项进阶版"（Sean Ellis 测试）。
-  - vs /retrospective：本命令面向用户反馈；/retrospective 面向团队复盘。
   适用于：产品反馈数据治理、月度 VoC 报告、新功能优先级、流失原因分析。
 user-invocable: true
 argument-hint: "<产品/功能描述> [--mode collect|analyze|nps|vote|voc] [--source <文件或URL>]"

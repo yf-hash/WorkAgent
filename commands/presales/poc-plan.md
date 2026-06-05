@@ -242,7 +242,7 @@ Day 7：商务谈判 1
 Day 14：法务对齐
 Day 21：合同终稿
 Day 28：财务付款 + 签约
-Day 30：正式 Kick-off（/customer-success --mode onboarding）
+Day 30：正式 Kick-off
 ```
 
 ### 失败 → 体面退出
@@ -284,20 +284,15 @@ Future：6 个月后重启评估（如改进达成）
 
 ```
 /poc-plan（本命令）
-  ├── /customer-success → PoC → Onboarding 转正
   ├── /sales-guide → PoC 销售物料
-  ├── /sla-design → PoC 阶段的轻量 SLA
-  ├── /account-plan → 大客户的 PoC 是 Account Plan 一部分
-  ├── /retrospective → PoC 失败 PIR
   └── /pricing-strategy → PoC 转正定价
 
 推荐工作流：
   新客户：
-    /account-plan --mode powermap（关键人地图）
-    → /poc-plan --mode fullset
+    /poc-plan --mode fullset
     → 执行 PoC
-    → 成功 → /customer-success --mode onboarding
-    → 失败 → /retrospective --type failure
+    → 成功 → 转正合同
+    → 失败 → 体面退出 + 后续跟进
 ```
 
 ---

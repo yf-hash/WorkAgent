@@ -136,7 +136,7 @@ D-Day：分阶段上线
   - T+8h：核查指标 → 50%
   - T+24h：100%（如健康）
 D+1：稳定性日报 + 主指标观察
-D+7：Launch Retrospective（参考 /retrospective）
+D+7：Launch Retrospective（上线后复盘）
 D+30：商业指标复盘
 ```
 
@@ -244,10 +244,8 @@ D+30：商业指标复盘
 |--------|---------|
 | `gtm-strategy` | Marketing/Sales 轨道的内容来源 |
 | `roadmap` | 发布日期来自路线图 |
-| `sprint-planning` | Engineering 轨道的进度来源 |
 | `ab-test` | 灰度阶段的实验设计 |
 | `product-doc` | Release Notes / 培训 PPT 等资料 |
-| `retrospective` | D+7 复盘的方法论 |
 | `analytics` | D-Day 监控指标埋点设计 |
 | `pm-qa-acceptance` | 上线阻断项与客户验收口径 |
 

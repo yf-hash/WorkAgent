@@ -1,9 +1,7 @@
 ---
 name: mvp-canvas
 description: >
-  MVP（最小可行产品）设计画布生成器。基于 Lean Startup 方法论，覆盖 MVP 定义、
-  最致命假设识别（RAT）、9 种 MVP 类型选型（落地页/解释视频/众筹/门童/绿野仙踪等）、
-  Build-Measure-Learn 循环、验证退出标准、伪 MVP 反模式检测。
+  MVP（最小可行产品）设计画布生成器。基于 Lean Startup 方法论，覆盖 MVP 定义、最致命假设识别（RAT）、9 种 MVP 类型选型（落地页/解释视频/众筹/门童/绿野仙踪等）、Build-Measure-Learn 循环、验证退出标准、伪 MVP 反模式检测。
   适用于：早期产品立项、新功能验证、增长实验前置、避免大爆炸式开发。
 user-invocable: true
 argument-hint: "<产品/功能描述> [--mode canvas|assumption|type|validation|fullset] [--budget low|mid|high] [--timebox 1w|2w|4w|8w]"

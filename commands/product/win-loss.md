@@ -113,10 +113,8 @@ Deal 关闭后 2-6 周内访谈最有效。
 - ICP 内成单率目标
 
 ## 十、关联资源
-- 决策记录：`/decision-log register --type win-loss`
 - ICP 修正：`@research-analyst` + `/product-strategy`
 - 销售改进：`@product-enablement`
-- 客户挽留：`/customer-success --mode save`
 ```
 
 ## 红线（不要做）

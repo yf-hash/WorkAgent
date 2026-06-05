@@ -86,7 +86,7 @@ color: green
   /pmf-survey --mode survey
     ↓
   达到 40%+ → 进入 1→10
-  低于 25% → /retrospective --type failure 决策 Pivot
+  低于 25% → 决策 Pivot（结合 /churn-analysis）
 
 1→10 阶段（建增长引擎）：
   Step 1：/analytics --mode funnel（漏斗诊断）

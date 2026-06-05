@@ -53,9 +53,6 @@
 /paper-collect --since 2026-02-01 --topic llm-security,fuzzing --limit 5
 /paper-interpret paper.pdf --style professional --length medium
 
-# 简历智能筛选
-/screen --jd jd_backend.md ./resumes/ --weights tech --top 5
-
 # Remotion 动态视频生成（三引擎：native/prompt2video/vidosy）
 /remotion-generate --template ai-native-company-intro --render
 /remotion-generate --engine prompt2video --duration 30 "产品发布宣传片"
@@ -180,21 +177,12 @@
 /pricing-strategy AI 写作助手 --mode psm
 /pricing-strategy 企业版重设计 --mode fullset
 
-# Sprint / 发布 / 复盘
-/sprint-planning Sprint 12 --mode plan
-/sprint-planning Cycle 5 --method shapeup --length 6w
+# 发布
 /launch-checklist AI 写作助手 v2 --mode full
 /launch-checklist 重大改版 --launch-type hard --scale large
-/retrospective Sprint 12 --framework 4l
-/retrospective 上线后 D+7 --type launch
-/retrospective 海外登录故障 --type incident --framework 5whys
 
-# AI 安全产品 / OKR / 干系人 / 报告
+# AI 安全产品 / 报告
 # AI 安全产品方法论触发：在对话中描述场景即可激活 pm-ai-security-product Skill
-/okr 产品团队 Q2 --mode draft
-/okr 产品团队 Q2 --mode review
-/stakeholder 海外版上线 --mode identify
-/stakeholder 跨团队 AI 功能 --mode raci
 /product-report W42 2026 --mode weekly
 /product-report 2026-05 月报 --mode monthly --audience exec
 /product-report Q1 2026 --mode quarterly
@@ -207,8 +195,6 @@
 /churn-analysis --quarter Q2
 /tech-debt --quarter Q2
 /ai-red-team "v2.0 模型"
-/status-update --mode weekly --week 24
-/status-update --mode escalation
 
 # 数据看板
 /data-dashboard 北极星看板 --mode design --platform posthog
@@ -309,7 +295,6 @@ color: blue|yellow|green   # 语义颜色
 | `qa-acceptance-designer` | 测试验收设计 — PRD → 验收方案（功能/权限/异常/数据/审计/客户口径），输出上线阻断项 | PRD/版本验收材料编制、UAT 设计、上线 Go/No-Go 前验收阻断项确认时 |
 | `ai-product-architect` | AI 产品架构师 — 专注 LLM/Agent/RAG 类功能的规格、Prompt、Eval、失败模式管理，套用 pm-ai-security-product 方法论 | 设计 AI 功能、Prompt 工程交付、AI 功能上线评审时 |
 | `growth-strategist` | 增长战略 — 统筹 PMF / 漏斗诊断 / A/B 实验 / 定价的全栈增长经理 | PMF 验证、增长瓶颈诊断、实验设计、定价优化时 |
-| `customer-success-manager` | 客户成功经理 — B 端客户全生命周期（Onboarding/健康度/续约/Land Expand/PoC/QBR） | B 端客户经营、大客户战略、续约管理、PoC 转正时 |
 | `research-analyst` | 综合研究分析师 — 用户研究 + 市场情报 + 反馈分析 + PMF 验证 | 早期 0→1 探索、立项验证、PMF 测量、综合研究方法选型时 |
 | `gtm-strategist` | GTM 全链路战略（增长模型/ICP/定位/渠道/定价/90天计划） | 制定上市战略、渠道规划、ICP 设计时 |
 | `proposal-writer` | 售前方案 / 可研报告 / 投标技术方案撰写 | 项目型客户响应方案、投标技术文档时 |
@@ -320,7 +305,6 @@ color: blue|yellow|green   # 语义颜色
 | `writer-reviewer` | Writer-Reviewer 互搏 + 知识库进化 | 访谈写作迭代优化时 |
 | `style-evolver` | 风格学习 → 风格卡片确认 → Writer-Reviewer 迭代创作 | 风格迁移、参考文章仿写、内容自进化时 |
 | `doc-polisher` | 文档智能润色（AI去痕 + 智能配图全自动闭环） | 文档润色、去AI味+配图一体化时 |
-| `talent-screener` | 简历智能筛选（JD匹配、六维评分、候选人排名） | 招聘初筛、简历批量筛选时 |
 | `paper-researcher` | 论文研究（arXiv搜集 + 单篇深度解读） | 论文情报跟踪、学术科普写作时 |
 | `video-maker` | 视频生成 — 三引擎路由（native/prompt2video/vidosy）+ PDF转视频 + 字幕 + TTS + MP4渲染 | 视频生成、文档转视频、口播剪辑时 |
 | `ppt-generator` | PPT 全流程编排：10阶段流水线 + 6种引擎路由 + 100分5维度质量闭环 | PPT 生成任务时 |
@@ -360,7 +344,6 @@ color: blue|yellow|green   # 语义颜色
 | `doc-formatter` | 文档格式化模块（DOCX读写 + 中文排版校正 + 导出），被 doc-polisher agent 调用 | `/polish` 命令调用 |
 | `paper-collector` | arXiv 安全论文搜集与中文摘要生成 | `/paper-collect` 命令调用 |
 | `paper-interpreter` | 论文 PDF 深度解读（4000-6000字公众号长文） | `/paper-interpret` 命令调用 |
-| `resume-screener` | 简历智能筛选（JD匹配、硬过滤、六维评分） | `/screen` 命令调用 |
 | `remotion-generator` | Remotion 视频生成（三引擎：native模板/prompt2video全链路/vidosy场景配置） | `/remotion-generate` 命令调用 |
 | `pdf2video` | PDF/PPT 转动态视频（stack/focus/zoom/fan 四种场景动画） | `/pdf2video` 命令调用 |
 | `omni-captions` | 视频字幕生成（转录/翻译/双语/30+格式，Claude翻译无需额外API） | `/caption` 命令调用 |
@@ -380,15 +363,10 @@ color: blue|yellow|green   # 语义颜色
 | `mvp-canvas` | MVP 设计画布（RAT + 9 种 MVP 类型 + Build-Measure-Learn） | `/mvp-canvas` 命令调用 |
 | `ab-test` | A/B 实验完整方法论（假设/样本/显著性/护栏/SRM/Peeking） | `/ab-test` 命令调用 |
 | `launch-checklist` | 发布检查清单（6 轨道 + 时间盒 + Go/No-Go + 回滚预案） | `/launch-checklist` 命令调用 |
-| `sprint-planning` | Sprint 规划（Scrum/Kanban/Shape Up + DoR/DoD + Velocity） | `/sprint-planning` 命令调用 |
-| `retrospective` | 产品复盘（Sprint/Launch/Failure/Incident + 4L/SSC/5Whys） | `/retrospective` 命令调用 |
 | `pricing-strategy` | 定价策略（Freemium/套餐/PSM/Conjoint/涨价/单位经济） | `/pricing-strategy` 命令调用 |
-| `okr` | OKR 规划（O 鼓舞 + KR 量化 + 跟踪节奏 + 季度评分） | `/okr` 命令调用 |
-| `stakeholder` | 干系人管理（Power-Interest + RACI + 向上管理 + 升级流程） | `/stakeholder` 命令调用 |
 | `pmf-survey` | PMF 评估（Sean Ellis + HXC + 信号雷达 + Pivot 决策） | `/pmf-survey` 命令调用 |
 | `product-report` | 产品报告（周报/月报/季度/Board/客户 BR + 受众分层） | `/product-report` 命令调用 |
 | `data-dashboard` | 数据看板生成（PostHog/Mixpanel/Amplitude/Matomo/GA4/Heap + 6 类模板） | `/data-dashboard` 命令调用 |
-| `customer-success` | B 端客户成功（Onboarding 30/60/90 + 健康度评分 + 续约 + Land Expand + Churn + 大客户经营） | `/customer-success` 命令调用 |
 | `compliance-checklist` | 合规检查（等保/SOC2/ISO27001/GDPR/HIPAA/PCI/个保法 + 客户问卷 + DPIA/TPRM） | `/compliance-checklist` 命令调用 |
 | `poc-plan` | PoC/试点管理（范围谈判 + SOW + 验收标准 + 转正 SOP + 失败退出） | `/poc-plan` 命令调用 |
 | `gtm-strategy` | Go-to-Market 上市战略（增长模型/ICP/定位/渠道/定价/90天计划） | `/gtm-strategy` 命令调用 |
@@ -440,7 +418,6 @@ color: blue|yellow|green   # 语义颜色
 | `/polish` | 文档智能润色（AI去痕 + 中文排版校正 + 智能配图，支持 DOCX 导出） | `commands/polish.md` |
 | `/paper-collect` | arXiv 安全论文搜集（按时间范围和主题批量检索，中文摘要输出） | `commands/paper-collect.md` |
 | `/paper-interpret` | 论文深度解读（PDF → 4000-6000字公众号长文） | `commands/paper-interpret.md` |
-| `/screen` | 简历智能筛选（JD匹配、六维评分、候选人排名） | `commands/screen.md` |
 | `/remotion-generate` | Remotion 视频生成（三引擎：native模板/prompt2video全链路/vidosy场景配置） | `commands/media/remotion-generate.md` |
 | `/pdf2video` | PDF/PPT 文档转动态视频（四种场景动画，直接渲染 MP4） | `commands/media/pdf2video.md` |
 | `/caption` | 视频字幕生成（转录+翻译+双语，30+格式，YouTube支持） | `commands/media/caption.md` |
@@ -461,15 +438,10 @@ color: blue|yellow|green   # 语义颜色
 | `/mvp-canvas` | MVP 设计画布（RAT + 9 种 MVP 类型 + 验证退出） | `commands/product/mvp-canvas.md` |
 | `/ab-test` | A/B 实验设计（假设 / 样本量 / 显著性 / 护栏 / SRM） | `commands/product/ab-test.md` |
 | `/launch-checklist` | 发布检查清单（6 轨道 + 时间盒 + Go/No-Go + 灰度） | `commands/product/launch-checklist.md` |
-| `/sprint-planning` | Sprint 规划（Goal / Capacity / Pointing / DoR-DoD） | `commands/product/sprint-planning.md` |
-| `/retrospective` | 产品复盘（Sprint/Launch/Failure/Incident + 4L/5Whys） | `commands/product/retrospective.md` |
 | `/pricing-strategy` | 定价策略（Freemium / 套餐 / PSM / Conjoint / 涨价） | `commands/product/pricing-strategy.md` |
-| `/okr` | OKR 规划（O 鼓舞 + KR 量化 + 跟踪 + 季度评分） | `commands/product/okr.md` |
-| `/stakeholder` | 干系人管理（Power-Interest + RACI + 向上管理 + 升级） | `commands/product/stakeholder.md` |
 | `/pmf-survey` | PMF 评估（Sean Ellis + HXC + 信号雷达 + Pivot 决策） | `commands/product/pmf-survey.md` |
 | `/product-report` | 产品报告（周报/月报/季度/Board/客户 BR） | `commands/product/product-report.md` |
 | `/data-dashboard` | 产品数据看板（北极星/AARRR/Cohort/Revenue/客户 BR/AI 监控） | `commands/product/data-dashboard.md` |
-| `/customer-success` | B 端客户成功（Onboarding 30/60/90 + 健康度 + 续约 + Land Expand + Churn + 大客户经营） | `commands/product/customer-success.md` |
 | `/compliance-checklist` | 合规检查（等保/SOC2/ISO27001/GDPR/HIPAA/个保法 + 问卷应答） | `commands/product/compliance-checklist.md` |
 | `/poc-plan` | PoC/试点管理（范围 + SOW + 验收 + 转正 SOP） | `commands/presales/poc-plan.md` |
 | `/pm-discovery` | PM 全流程发现阶段编排（市场+用户+竞品+场景+机会+MVP+风险一次性输出） | `commands/product/pm-discovery.md` |
@@ -484,7 +456,6 @@ color: blue|yellow|green   # 语义颜色
 | `/churn-analysis` | Churn 流失分析 + Save Playbook（CHI 健康度 + 三级 Save Play）| `commands/product/churn-analysis.md` |
 | `/tech-debt` | 技术债优先级评审（WSJF + 20% 规则 + SLO 守门 + 业务话术）| `commands/product/tech-debt.md` |
 | `/ai-red-team` | AI 红队测试（OWASP LLM Top 10 + 10 个必测场景 + 红队报告）| `commands/product/ai-red-team.md` |
-| `/status-update` | 干系人 Status Update（周更 / 月更 / 升级备忘 / All-Hands 四种模式）| `commands/product/status-update.md` |
 | `/discovery-call` | 售前需求挖掘工作流（拜访前准备 / 会议纪要 / 回声邮件 / MEDDIC 评分四模式）| `commands/presales/discovery-call.md` |
 | `/gap-analysis` | 客户需求 vs 产品能力对照（4 级匹配 / Gap 评分 / 投 vs 弃决策树 / Closure Plan）| `commands/presales/gap-analysis.md` |
 | `/solution-architecture` | 解决方案架构（SA Blueprint 12 章 / 现状 / 目标 / NFR / 路线图 / 三档报价）| `commands/presales/solution-architecture.md` |
@@ -526,7 +497,6 @@ color: blue|yellow|green   # 语义颜色
 | AI 功能 PRD / Prompt 工程 / Eval 设计 | `ai-product-architect` | 套用 pm-ai-security-product 双维度方法论 |
 | PMF 验证 / 漏斗诊断 / 增长实验 / 定价 | `growth-strategist` | 用数据做增长决策 |
 | **PRD/版本测试验收材料 / UAT / 上线阻断项** | `qa-acceptance-designer` | 验收方案 + 客户验收口径 |
-| B 端客户经营 / 大客户战略 / 续约 / PoC | `customer-success-manager` | B 端 CSM 全生命周期 |
 | 生成销售物料 / 产品手册 / 销售指南 | `product-enablement` | 销售赋能 |
 | 售前方案 / 可研报告 / 投标技术方案 | `proposal-writer` | 项目型方案 |
 
@@ -565,7 +535,7 @@ color: blue|yellow|green   # 语义颜色
 
 ## 产品经理全工作链路总览
 
-WorkAgent 现已覆盖 C 端 + B 端产品经理 + 售前 / 解决方案全工作场景：**36 个产品命令 + 13 个售前命令 + 47 个产品 Skills + 12 个产品 Agents + 15 个标准模板（含完整填充版）**。
+WorkAgent 现已覆盖 C 端 + B 端产品经理 + 售前 / 解决方案全工作场景：**35 个产品命令 + 13 个售前命令 + 45 个产品 Skills + 12 个产品 Agents + 15 个标准模板（含完整填充版）**。
 
 > 📚 **首次上手** → 套用 `templates/pm-discovery-template.md` 跑通 `/pm-intake → /pm-discovery → /pm-prd-enterprise → @qa-acceptance-designer → /pm-sales-pack` 端到端流程（含 PM Discovery / Sales Enablement / Acceptance Checklist 三大填充版模板）。
 > 📊 **仓库健康度** → 看 `HEALTH_REPORT.md`，确认所有组件可直接使用。
@@ -578,8 +548,7 @@ WorkAgent 现已覆盖 C 端 + B 端产品经理 + 售前 / 解决方案全工�
 | `/product-strategy` | 产品战略画布（BMC / Lean / VPC / Vision / 北极星） |
 | `/working-backwards` | Amazon 逆向工作法（PR-FAQ + 6-pager），新功能 / 立项前先写 |
 | `/gtm-strategy` | Go-to-Market 上市战略（增长模型 / ICP / 渠道 / 90 天计划） |
-| `/okr` | OKR 季度规划（O 鼓舞 + KR 量化 + 跟踪 + 评分） |
-| `/roadmap` | 产品路线图（优先级 / 里程碑 / Gantt / OKR 联动） |
+| `/roadmap` | 产品路线图（优先级 / 里程碑 / Gantt 视图） |
 | `/build-vs-buy` | Build vs Buy 决策（TCO 3 年 + Vendor 评估）|
 | `/sunset` | 产品 / 功能下线 Playbook（90/60/30/0 天通知节奏）|
 | `/pricing-strategy` | 定价策略（Freemium / 套餐 / PSM / Conjoint） |
@@ -587,9 +556,6 @@ WorkAgent 现已覆盖 C 端 + B 端产品经理 + 售前 / 解决方案全工�
 #### 💬 高频日常沟通工件
 | 命令 / 模板 | 一句话定位 |
 |------|---------|
-| `/status-update` | 周报 / 月报 / 升级备忘 / All-Hands 四合一 |
-| `templates/one-on-one-templates.md` | 1:1 模板集（与上级 / 研发 Lead / 设计 Lead）|
-| `templates/stakeholder-update-templates.md` | 干系人状态模板（4 种场景） |
 | `templates/pr-faq-template.md` | Amazon PR-FAQ 模板 |
 | `templates/six-pager-template.md` | 6-Pager 备忘录模板 |
 
@@ -622,7 +588,6 @@ WorkAgent 现已覆盖 C 端 + B 端产品经理 + 售前 / 解决方案全工�
 #### 🚀 交付与上线
 | 命令 | 一句话定位 |
 |------|---------|
-| `/sprint-planning` | Sprint 规划（Goal + Capacity + Pointing + DoR/DoD） |
 | `/tech-debt` | 技术债优先级（WSJF + 20% 规则 + SLO 守门 + 业务话术）|
 | `/launch-checklist` | 发布检查清单（6 轨道 + 时间盒 + Go/No-Go） |
 | `/ai-red-team` | AI 红队测试（OWASP LLM Top 10 + 10 个必测场景 + 报告）|
@@ -650,10 +615,9 @@ WorkAgent 现已覆盖 C 端 + B 端产品经理 + 售前 / 解决方案全工�
 | `/poc-plan` | PoC / 试点管理（范围 / SOW / 验收 / 转正 SOP） |
 | `/doc-audit` | B2B 文档治理审计（24 类完整性 / 14 项自查） |
 
-#### 👥 客户成功（B 端核心）
+#### 📈 客户分析（B 端核心）
 | 命令 | 一句话定位 |
 |------|---------|
-| `/customer-success` | 客户成功管理（Onboarding / 健康度 / 续约 / Land Expand / 大客户经营） |
 | `/churn-analysis` | 流失分析 + Save Playbook（CHI + 三级 Save Play + Win-Back）|
 | `/win-loss` | 赢单失单分析（访谈结构 + 根因聚类 + ICP 修正）|
 
@@ -664,21 +628,19 @@ WorkAgent 现已覆盖 C 端 + B 端产品经理 + 售前 / 解决方案全工�
 | `/data-dashboard` | 产品数据看板（PostHog/Mixpanel + 6 类模板 + 嵌入） |
 | `/ab-test` | A/B 实验设计（假设 / 样本量 / 显著性 / 护栏 / 实验日志） |
 
-#### 🔄 复盘与沉淀
+#### 🔄 报告与沉淀
 | 命令 | 一句话定位 |
 |------|---------|
-| `/retrospective` | 产品复盘（Sprint / Launch / Failure / Incident） |
 | `/product-report` | 产品报告（周报 / 月报 / 季度 / Board / 客户 BR） |
 
-#### 🤝 沟通与协作
+#### 🛠️ 框架与方法论
 | 命令 | 一句话定位 |
 |------|---------|
-| `/stakeholder` | 干系人管理（Power-Interest + RACI + 向上管理） |
-| `/pm-skills` | PM 知识库查询（JTBD / RICE / OKR / Lenny's 等） |
+| `/pm-skills` | PM 知识库查询（JTBD / RICE / Lenny's 等） |
 
 ---
 
-### Agent 全景（产品域 12 个）
+### Agent 全景（产品域 10 个）
 
 | Agent | 主战场 |
 |-------|--------|
@@ -690,7 +652,6 @@ WorkAgent 现已覆盖 C 端 + B 端产品经理 + 售前 / 解决方案全工�
 | `@growth-strategist` | 增长战略（PMF / 漏斗 / A/B / 定价） |
 | `@qa-acceptance-designer` | 测试验收设计（验收方案 + 上线阻断项 + 客户验收口径） |
 | `@ai-product-architect` | AI 产品架构师（LLM / Agent / RAG，套用 pm-ai-security-product） |
-| `@customer-success-manager` | B 端客户成功（Onboarding / 续约 / PoC / 大客户经营） |
 | `@gtm-strategist` | 上市战略 |
 | `@product-enablement` | 销售赋能 |
 | `@proposal-writer` | 售前方案 |
@@ -743,8 +704,6 @@ WorkAgent 现已覆盖 C 端 + B 端产品经理 + 售前 / 解决方案全工�
 | `sales-enablement-template.md` | 销售赋能材料 | `/pm-sales-pack`、`@product-enablement` |
 | `pr-faq-template.md` | Amazon 新闻稿 + FAQ（PR-FAQ） | `/working-backwards` |
 | `six-pager-template.md` | 6 页备忘录（完整段落叙述，禁子弹点） | `/working-backwards --mode six-pager` |
-| `one-on-one-templates.md` | 1:1 模板集（与上级 / 研发 Lead / 设计 Lead）| `stakeholder` |
-| `stakeholder-update-templates.md` | 周状态邮件 / 月度更新 / 升级备忘 / All-Hands 四种 | `/status-update` |
 | `model-card-template.md` | AI 透明度行业标准 Model Card | `pm-ai-security-product` |
 | `ai-eval-rubric-template.md` | AI Eval 评测尺（7 维 + 通过线 + 红线） | `pm-ai-security-product`、`/ai-red-team` |
 
@@ -768,19 +727,12 @@ WorkAgent 现已覆盖 C 端 + B 端产品经理 + 售前 / 解决方案全工�
 | `/build-vs-buy` vs `/pm-review` | 做"自研还是买"决策评估用前者；任何 PRD/方案的多维度评审用后者 |
 | `/sunset` vs `/launch-checklist` | 产品下线 / 退役用前者；新功能上线用后者 |
 | `/win-loss` vs `/churn-analysis` | 销售阶段（赢单失单）用前者；签约后（客户流失）用后者 |
-| `/tech-debt` vs `/sprint-planning` | 季度技术债还本评审用前者；双周 Sprint 排期用后者 |
 | `/ai-red-team` vs `/compliance-checklist` | AI 安全对抗测试用前者；通用合规框架检查用后者 |
-| `/status-update` vs `/product-report` | 干系人日常状态（周/月/升级）用前者；正式产品报告（季度/Board）用后者 |
 | `/user-research` vs `/market-research` | 用户视角（行为/JTBD）用前者；市场视角（竞品/TAM）用后者 |
 | `/user-research` vs `/feedback` | 主动设计研究用前者；分析现有反馈用后者 |
 | `/user-research` vs `/pmf-survey` | 通用研究用前者；PMF 专项 Sean Ellis 用后者 |
 | `/analytics` vs `/data-dashboard` | 指标定义 / 埋点用前者；看板可视化 / 嵌入用后者 |
 | `/ab-test` vs `@growth-strategist` | 单实验设计用前者；增长全局诊断 + 实验队列用后者 |
-| `/okr` vs `/roadmap` | 季度目标用前者；主题×时间用后者（两者并行） |
-| `/okr` vs `/sprint-planning` | 季度（13 周）用前者；双周用后者（Sprint Goal 应支撑 KR） |
-| `/launch-checklist` vs `/retrospective --type launch` | D-Day 前清单用前者；D+7 复盘用后者 |
-| `/customer-success` 模式选择 | onboarding（实施）/ health（健康度）/ renewal（续约）/ expand（扩展）/ strategic（大客户经营）|
-| `/customer-success` vs `/poc-plan` | 签约后实施用前者；签约前试点用后者 |
 | `/proposal` vs `/product-doc` | 项目型一次性用前者；产品级可复用资料用后者 |
 | `/proposal` vs `/sales-guide` | 客户响应方案用前者；销售一页禅用后者 |
 | `/marketing-copy` vs `/article-writer` | 带营销目的的推广（CTA 明确）用前者；公众号长文（个人风格 / 观点输出）用后者 |
@@ -808,22 +760,6 @@ PoC 阶段：
   → /compliance-checklist --mode questionnaire（合规问卷）
   → 签约
 
-实施 Onboarding：
-  /customer-success --mode onboarding（30/60/90 天）
-  → First Value 验证
-
-健康运营：
-  /customer-success --mode health（健康度评分）
-  → /customer-success --mode strategic（大客户经营 + Power Map + QBR/EBR）
-  → 月度复盘 + /feedback --mode nps
-
-扩展销售：
-  /customer-success --mode expand（白空间 + 扩展机会）
-
-续约（提前 90 天）：
-  /customer-success --mode renewal（红黄绿 + 防御 + Multi-Year 谈判）
-  → 签约
-
 合规与审计（贯穿）：
   /compliance-checklist --mode assess（年度自查）
   → /compliance-checklist --mode roadmap（认证规划）
@@ -840,41 +776,37 @@ PoC 阶段：
   → 上线 MVP
   → 8 周后 /pmf-survey
   → ✅ → 进入 1→10
-  → ❌ → /retrospective failure 决策 Pivot
+  → ❌ → 启动 Pivot 决策
 
 1→10 规模化：
   /pmf-survey --mode signals
   → @growth-strategist（漏斗诊断 + 实验队列）
   → /pricing-strategy --mode tier
-  → /okr --mode draft
   → /roadmap --horizon 3m
 
 新功能完整启动：
   /product-strategy → /user-story-mapping
   → /product-spec --mode spec
-  → /sprint-planning
-  → /launch-checklist → /retrospective --type launch
+  → /launch-checklist
 
 季度规划闭环：
-  /product-strategy --mode northstar → /okr --mode draft
-  → /roadmap --horizon 3m → /sprint-planning（每 Sprint）
-  → 季度末 /okr --mode review → /retrospective --type project
+  /product-strategy --mode northstar
+  → /roadmap --horizon 3m
 
 AI 功能开发：
   /product-strategy --mode lean
   → @ai-product-architect（套用 pm-ai-security-product 方法论）→ POC
   → /ab-test vs baseline → /launch-checklist
-  → /ai-red-team → /retrospective
+  → /ai-red-team
 
 产品报告节奏：
   每周 /product-report --mode weekly
   每月 /product-report --mode monthly --audience exec
-  每季 /product-report --mode quarterly + /okr --mode review
+  每季 /product-report --mode quarterly
   每季客户 /product-report --mode customer-br
 
 数据与上线后（贯穿全周期）：
   上线后 → /data-dashboard --mode embed
   实验设计 → /ab-test --mode design
-  事故复盘 → /retrospective --type incident
 ```
 

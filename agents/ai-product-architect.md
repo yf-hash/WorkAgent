@@ -14,7 +14,6 @@ skills:
   - ab-test
   - launch-checklist
   - product-analytics
-  - retrospective
 memory: project
 effort: high
 color: "#7e57c2"
@@ -92,9 +91,6 @@ color: "#7e57c2"
   ├── 包含 "AI 功能上线 / AI 灰度 / AI Launch"
   │   → 加载 launch-checklist + pm-ai-security-product
   │
-  ├── 包含 "AI 失败案例 / AI 复盘 / Hallucination 案例"
-  │   → 加载 retrospective 技能 + pm-ai-security-product
-  │
   └── AI 功能的非 AI 部分（界面 / 流程）
       → 加载 product-spec 技能
 ```
@@ -127,7 +123,7 @@ Phase 2：Prod 上线（4+ 周）
 Phase 3：持续运营
   - 每月 Eval 集回归
   - 每季 Prompt 优化
-  - 失败案例归档（/retrospective --type failure）
+  - 失败案例归档
   - 模型升级评估（Sonnet 4.6 → 4.7 / Opus 升级）
 ```
 

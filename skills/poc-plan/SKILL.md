@@ -343,9 +343,6 @@ Day 7：体面收尾会议
 
 | 知识库 | 协作 |
 |--------|------|
-| `customer-success` | PoC 成功 → Onboarding |
-| `sales-guide` | PoC 销售物料 |
-| `sla-design` | PoC 期的轻量 SLA |
-| `account-plan` | 大客户 PoC 是 Account Plan 一部分 |
-| `retrospective` | PoC 失败 PIR |
+| `sales-guide-writer` | PoC 销售物料 |
 | `pricing-strategy` | PoC 转正定价 |
+| `business-case` | PoC 转正商业论证 |

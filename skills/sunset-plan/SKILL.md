@@ -199,15 +199,10 @@ argument-hint: "[要下线的产品/功能名]"
 ## 6. 风险与应急
 
 ## 7. 关联资源
-- 决策记录：`/decision-log register --type sunset`
 - 财务影响：`/product-report --mode customer-br`
-- 客户挽留：`/customer-success --mode save`
 - 合规：`/compliance-checklist`
 ```
 
 ## 配套
 
-- 决策记录：`/decision-log`
-- 客户挽留：`/customer-success`
 - 合规审查：`/compliance-checklist`
-- 复盘：`/retrospective --type project`

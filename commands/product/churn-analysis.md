@@ -113,11 +113,9 @@ B 端 Win-Back 转化率 5-15%。
 | 客户 | 流失原因 | Win-Back 触发条件 | 跟进人 |
 
 ## 九、关联资源
-- 客户成功：`@customer-success-manager`
 - 数据看板：`/data-dashboard --mode customer-health`
 - 用户研究（离场访谈）：`/user-research --mode interview`
 - 销售对账：`/win-loss`
-- 决策记录：`/decision-log register --type churn`
 ```
 
 ## 红线（不要做）

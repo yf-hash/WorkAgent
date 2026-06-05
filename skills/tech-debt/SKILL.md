@@ -165,9 +165,7 @@ PM 常被问："为什么这个新功能不优先做？" — 用业务语言回�
 | # | 债务 | 累计搁置周期 | 风险升级条件 |
 
 ## 六、关联资源
-- 决策记录：`/decision-log register --type tech-debt`
-- 季度规划：`/sprint-planning`
-- SLO 与监控：`/sla-design`
+- 路线图：`/roadmap`
 - 上线门禁：`/launch-checklist`
 ```
 
@@ -182,8 +180,5 @@ PM 常被问："为什么这个新功能不优先做？" — 用业务语言回�
 
 ## 配套资源
 
-- 决策记录：`/decision-log register --type tech-debt`
-- Sprint 规划：`/sprint-planning`
-- SLO：`/sla-design`
-- 与 EM 1:1：`templates/one-on-one-templates.md`
-- 升级备忘（SLO 告警时用）：`templates/stakeholder-update-templates.md`
+- 路线图：`/roadmap`
+- 业务话术：`/pm-sales-pack`

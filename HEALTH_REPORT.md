@@ -18,8 +18,8 @@
 | 类别 | 数量 | Frontmatter 合规率 | 跨引用合规率 |
 |------|------|-------------------|--------------|
 | Agents | 27 | 100% | 100% |
-| Skills | 88 | 100% | — |
-| Commands | 73 | 100% | — |
+| Skills | 86 | 100% | — |
+| Commands | 72 | 100% | — |
 | Templates | 15 | — | — |
 
 **类别细分**：
@@ -27,7 +27,7 @@
 - 内容域 Agents：8（`bid-writer`、`content-director`、`writer-reviewer`、`style-evolver`、`doc-polisher`、`paper-researcher`、`talent-screener`、`ppt-generator`）
 - 媒体域 Agents：6（`article-illustrator`、`diagram-architect`、`video-maker`、`visual-creator` 弃用、`visual-suite`、`data-analyst`）
 
-**Product Commands 49 个 / Writing Commands 8 个 / Research / Media / HR 共 16 个**。
+**Product Commands 35 个 / Presales Commands 13 个 / Writing Commands 8 个 / Research / Media / HR 共 16 个**。
 
 ---
 

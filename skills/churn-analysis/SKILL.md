@@ -234,8 +234,6 @@ Win-Back 转化率 B 端通常 5-15%，远高于冷启动新客户。
 |------|----------|------------------|--------|
 
 ## 九、关联资源
-- 决策记录：`/decision-log register --type churn-analysis`
-- 客户成功改进：`/customer-success --mode retention`
 - 产品改进：`/pm-intake` → 优先级排序
 - 定价调整：`/pricing-strategy`
 - 后续看板：`/data-dashboard --mode customer-health`
@@ -251,7 +249,6 @@ Win-Back 转化率 B 端通常 5-15%，远高于冷启动新客户。
 
 ## 配套资源
 
-- 客户成功：`/customer-success` + `@customer-success-manager`
-- 数据看板：`/data-dashboard` + `@data-platform-pm`
+- 数据看板：`/data-dashboard`
 - 用户研究：`/user-research --mode interview`
 - 销售对账：参考 `win-loss-analysis` Skill

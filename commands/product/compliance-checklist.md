@@ -288,12 +288,8 @@ M5-M6：等保启动
 
 ```
 /compliance-checklist（本命令）
-  ├── /rbac-design → 合规驱动权限设计
-  ├── /sla-design → 数据 SLA + DPA
-  ├── /integration-design → 子处理者管理
   ├── /product-spec → 合规作为非功能需求
-  ├── /customer-success → 客户审计配合
-  ├── /retrospective --type incident → 违约 PIR
+  ├── /security-questionnaire → 客户安全问卷应答
   └── /product-doc → 合规材料体系
 
 推荐工作流：

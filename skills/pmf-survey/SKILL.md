@@ -285,7 +285,5 @@ PMF 后（6+ 个月）：每季度 1 次
 | `mvp-canvas` | MVP 验证后才能做 PMF 测试 |
 | `user-research` | PMF 调研是用户研究方法之一 |
 | `product-strategy` | PMF 数据 → 调整 UVP / Solution |
-| `growth-experiment` | PMF 后启动增长引擎 |
 | `pricing-strategy` | PMF 后才能稳定定价 |
-| `retrospective` | 不达 PMF 的失败 PIR |
-| `feedback` | NPS 调研协同 PMF 信号 |
+| `user-feedback` | NPS 调研协同 PMF 信号 |

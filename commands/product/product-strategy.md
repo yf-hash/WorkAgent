@@ -132,7 +132,6 @@ Step 5: 战略风险与对策
   ├── /user-research   → 验证 Problem 假设
   ├── /pricing-strategy → 收入模型深化
   ├── /pmf-survey      → 验证 UVP 是否对齐
-  ├── /okr             → 北极星拆解为季度 OKR
   └── /gtm-strategy    → 战略落地为上市计划
 
 推荐工作流：
@@ -141,7 +140,7 @@ Step 5: 战略风险与对策
          → /product-strategy --mode bmc（PMF 后切换商业模式视角）
 
   季度规划：/product-strategy --mode northstar
-         → /okr --mode quarterly
+         → /roadmap --horizon 3m（路线图落地）
          → /roadmap --horizon 3m
 ```
 

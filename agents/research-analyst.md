@@ -149,7 +149,6 @@ PMF 阶段判断：
 @research-analyst（本 Agent）
   ├── 输出 → @product-manager（决策依据）
   ├── 输出 → @growth-strategist（增长杠杆）
-  ├── 输出 → @customer-success-manager（客户洞察）
   ├── 输出 → @gtm-strategist（市场策略）
   ├── 协作 ← @market-intelligence（深度竞品时）
   └── 协作 ← @data-analyst（埋点 + 数据看板支撑）

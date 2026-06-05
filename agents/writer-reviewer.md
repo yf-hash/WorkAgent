@@ -3,7 +3,7 @@ name: writer-reviewer
 description: Writer-Reviewer 互搏代理 — 通过写作与评审的对抗迭代提升内容质量，并将有效模式沉淀到知识库
 model: sonnet
 tools: Read, Write, Edit
-skills: interview-writer
+skills: [interview-writer]
 memory: project
 effort: high
 color: green

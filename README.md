@@ -16,7 +16,6 @@ WorkAgent 是一套以 **风格驱动** 为核心设计理念的 AI 原生工作
 - **标书编制**：七阶段全流程标书智能编制，三色标记 + RAG 增强写作
 - **演示制作**：6 种 PPT 引擎自动路由，学术/商务/开发者场景全覆盖
 - **数据分析**：自然语言转 SQL + Python 沙箱执行，联合数据库与文件分析
-- **HR 招聘**：简历智能筛选，JD 匹配 + 六维评分 + 候选人排名
 - **视频生成**：Remotion 动态视频，模板/字幕/TTS/MP4 渲染全流程
 - **视频处理**：PDF/PPT 转动态视频、AI 智能剪辑、字幕生成、多平台分发
 - **图表架构**：云架构图（AWS/GCP/Azure/K8s）、Visio 图表、多引擎统一路由
@@ -29,9 +28,9 @@ WorkAgent 是一套以 **风格驱动** 为核心设计理念的 AI 原生工作
 
 | 模块 | 数量 | 说明 |
 |------|------|------|
-| Agents | 27 个 | 自治代理，编排完整业务流程 |
-| Skills | 88 个 | 可复用知识库，自动激活或命令调用 |
-| Commands | 73 个 | 统一命令入口，智能路由到对应 Skill/Agent |
+| Agents | 25 个 | 自治代理，编排完整业务流程 |
+| Skills | 82 个 | 可复用知识库，自动激活或命令调用 |
+| Commands | 67 个 | 统一命令入口，智能路由到对应 Skill/Agent |
 
 **设计原则**：
 - **风格驱动**：所有写作输出以用户/角色风格为第一优先级，避免 AI 套话
@@ -45,16 +44,15 @@ WorkAgent 是一套以 **风格驱动** 为核心设计理念的 AI 原生工作
 
 ```
 WorkAgent/
-├── agents/             # 27 个自治代理（编排完整业务流程）
-├── skills/             # 88 个可复用知识库
-├── commands/           # 73 个统一命令入口（按域分组）
+├── agents/             # 25 个自治代理（编排完整业务流程）
+├── skills/             # 82 个可复用知识库
+├── commands/           # 67 个统一命令入口（按域分组）
 │   ├── writing/        # 8 个：写作类（含 marketing-copy 营销推广）
-│   ├── product/        # 36 个：产品管理类（PM 全流程 + 战略决策 + AI 红队）
+│   ├── product/        # 31 个：产品管理类（PM 全流程 + 战略决策 + AI 红队）
 │   ├── presales/       # 13 个：售前 / 解决方案类（拜访 / 方案 / RFP / Demo / 竞品 / PoC / 销售物料）
 │   ├── research/       # 4 个：研究类
-│   ├── media/          # 11 个：媒体类
-│   └── hr/             # 1 个：HR 类
-├── templates/          # 15 个标准模板（PRD/BRD/MRD/Roadmap/PM-Discovery/验收/Release/Sales/需求池/PR-FAQ/6-pager/1:1/Status/Model Card/Eval Rubric）
+│   └── media/          # 11 个：媒体类
+├── templates/          # 13 个标准模板（PRD/BRD/MRD/Roadmap/PM-Discovery/验收/Release/Sales/需求池/PR-FAQ/6-pager/Model Card/Eval Rubric）
 ├── hooks/              # Claude Code 生命周期钩子（可选）
 ├── .claude/
 │   └── settings.json   # Claude Code 权限配置
@@ -70,7 +68,7 @@ WorkAgent/
 
 ## 智能体系统
 
-27 个自治 Agent，覆盖产品、内容、标书、数据、研究、HR、媒体、GTM、方案、视觉、**售前 / 解决方案**全域：
+25 个自治 Agent，覆盖产品、内容、标书、数据、研究、媒体、GTM、方案、视觉、**售前 / 解决方案**全域：
 
 | Agent | 职责 | 调用时机 |
 |-------|------|---------|
@@ -81,7 +79,6 @@ WorkAgent/
 | `qa-acceptance-designer` | 测试验收设计 — PRD → 验收方案（功能/权限/异常/数据/审计/客户口径），输出上线阻断项 | PRD/版本验收、UAT 设计、上线 Go/No-Go 阻断项确认 |
 | `ai-product-architect` | AI 产品架构师 — 专注 LLM/Agent/RAG 类功能的规格、Prompt、Eval、失败模式管理（套用 pm-ai-security-product 方法论） | AI 功能 PRD、Prompt 工程交付、AI 功能上线评审 |
 | `growth-strategist` | 增长战略 — 统筹 PMF / 漏斗诊断 / A/B 实验 / 定价 | PMF 验证、增长瓶颈诊断、实验设计、定价优化 |
-| `customer-success-manager` | 客户成功经理 — B 端客户全生命周期（Onboarding/健康度/续约/Land Expand/PoC/QBR） | B 端客户经营、大客户战略、续约管理、PoC 转正 |
 | `research-analyst` | 综合研究分析师 — 用户研究 + 市场情报 + 反馈分析 + PMF 验证 | 早期 0→1 探索、立项验证、PMF 测量 |
 | `gtm-strategist` | GTM 全链路战略（增长模型/ICP/定位/渠道/定价/90天计划） | 新产品上市规划、GTM 诊断与优化 |
 | `proposal-writer` | 企业方案撰写全链路（售前方案/可研报告/初步设计，多行业定制） | 售前解决方案、项目建议书 |
@@ -92,7 +89,6 @@ WorkAgent/
 | `writer-reviewer` | Writer-Reviewer 互搏 + 知识库进化 | 访谈写作迭代优化 |
 | `style-evolver` | 风格学习 → 风格卡片确认 → Writer-Reviewer 迭代创作 | 风格迁移、参考文章仿写 |
 | `doc-polisher` | 文档智能润色（AI 去痕 + 智能配图全自动闭环） | 文档润色、去 AI 味 + 配图一体化 |
-| `talent-screener` | 简历智能筛选（JD 匹配、六维评分、候选人排名） | 招聘初筛、简历批量筛选 |
 | `paper-researcher` | 论文研究（arXiv 搜集 + 单篇深度解读） | 论文情报跟踪、学术科普写作 |
 | `video-maker` | Remotion 视频生成（模板/字幕/TTS/渲染） | 企业介绍视频、产品演示视频 |
 | `ppt-generator` | PPT 生成协调，6 种引擎路由（academic/slidetailor/ppt-master/slidev/marp/sdk） | PPT 生成任务 |
@@ -105,7 +101,7 @@ WorkAgent/
 
 ## Skill 系统
 
-88 个可复用知识库，支持对话触发或命令调用：
+86 个可复用知识库，支持对话触发或命令调用：
 
 ### 写作与内容
 
@@ -153,15 +149,10 @@ WorkAgent/
 | `mvp-canvas` | MVP 设计画布（RAT + 9 种 MVP 类型 + Build-Measure-Learn） | `/mvp-canvas` 命令调用 |
 | `ab-test` | A/B 实验完整方法论（假设/样本/显著性/护栏/SRM/Peeking） | `/ab-test` 命令调用 |
 | `launch-checklist` | 发布检查清单（6 轨道 + 时间盒 + Go/No-Go + 回滚预案） | `/launch-checklist` 命令调用 |
-| `sprint-planning` | Sprint 规划（Scrum/Kanban/Shape Up + DoR/DoD + Velocity） | `/sprint-planning` 命令调用 |
-| `retrospective` | 产品复盘（Sprint/Launch/Failure/Incident + 4L/SSC/5Whys） | `/retrospective` 命令调用 |
 | `pricing-strategy` | 定价策略（Freemium/套餐/PSM/Conjoint/涨价/单位经济） | `/pricing-strategy` 命令调用 |
-| `okr` | OKR 规划（O 鼓舞 + KR 量化 + 跟踪节奏 + 季度评分） | `/okr` 命令调用 |
-| `stakeholder` | 干系人管理（Power-Interest + RACI + 向上管理 + 升级流程） | `/stakeholder` 命令调用 |
 | `pmf-survey` | PMF 评估（Sean Ellis + HXC + 信号雷达 + Pivot 决策） | `/pmf-survey` 命令调用 |
 | `product-report` | 产品报告（周报/月报/季度/Board/客户 BR + 受众分层） | `/product-report` 命令调用 |
 | `data-dashboard` | 数据看板生成（PostHog/Mixpanel/Amplitude/Matomo/GA4/Heap + 6 类模板） | `/data-dashboard` 命令调用 |
-| `customer-success` | B 端客户成功（Onboarding 30/60/90 + 健康度 + 续约 + Land Expand + 大客户经营） | `/customer-success` 命令调用 |
 | `compliance-checklist` | 合规检查（等保/SOC2/ISO27001/GDPR/HIPAA/PCI/个保法 + 客户问卷） | `/compliance-checklist` 命令调用 |
 | `poc-plan` | PoC/试点管理（范围谈判 + SOW + 验收标准 + 转正 SOP） | `/poc-plan` 命令调用 |
 | `working-backwards` | Amazon 逆向工作法（PR-FAQ + 6-pager） | `/working-backwards` 命令调用 |
@@ -185,11 +176,10 @@ WorkAgent/
 | `paper-collector` | arXiv 安全论文搜集与中文摘要生成 | `/paper-collect` 命令调用 |
 | `paper-interpreter` | 论文 PDF 深度解读（4000-6000 字公众号长文） | `/paper-interpret` 命令调用 |
 
-### HR 与媒体
+### 媒体
 
 | Skill | 描述 | 触发方式 |
 |-------|------|---------|
-| `resume-screener` | 简历智能筛选（JD 匹配、硬过滤、六维评分） | `/screen` 命令调用 |
 | `remotion-generator` | Remotion 动态视频生成（模板/字幕/TTS/渲染） | `/remotion-generate` 命令调用 |
 | `pdf2video` | PDF/PPT 转动态视频（stack/focus/zoom/fan 四种场景动画，直接渲染 MP4） | `/pdf2video` 命令调用 |
 | `omni-captions` | 视频字幕生成（转录/翻译/双语/30+格式，Claude 翻译无需额外 API） | `/caption` 命令调用 |
@@ -234,7 +224,7 @@ WorkAgent/
 
 ## 命令系统
 
-73 个统一命令入口，按场景分类：
+72 个统一命令入口，按场景分类：
 
 ### 写作类
 
@@ -280,9 +270,7 @@ WorkAgent/
 /win-loss --quarter Q2
 /churn-analysis --quarter Q2
 
-# === 日常沟通与协作 ===
-/status-update --mode weekly --week 24
-/stakeholder 海外版上线 --mode raci
+# === 工程协作 ===
 /tech-debt --quarter Q2
 /ai-red-team "v2.0 模型"
 
@@ -365,12 +353,6 @@ WorkAgent/
 /visio diagram.mmd --mode convert --from mermaid --output vsdx
 /md-visual article.md --type poster --theme gradient
 /table "姓名、年龄、城市\n张三、28、北京" --from text --to md
-```
-
-### HR 类
-
-```bash
-/screen --jd jd_backend.md ./resumes/ --weights tech --top 5
 ```
 
 ---
@@ -648,10 +630,6 @@ claude .
 /win-loss --quarter Q2                        # 赢单失单分析（季度做）
 /churn-analysis --quarter Q2                  # 流失分析 + Save Playbook
 
-# === 日常沟通 ===
-/status-update --mode weekly --week 24        # 周状态邮件
-/status-update --mode escalation              # 升级备忘（出问题时）
-
 # === 工程协作 ===
 /tech-debt --quarter Q2                       # 技术债优先级评审
 
@@ -693,6 +671,22 @@ claude .
 ---
 
 ## 更新日志
+
+### v2.4（聚焦工作技能，移除团队/人际管理类组件）
+
+**裁剪后规模：25 Agents / 82 Skills / 67 Commands（31 product + 13 presales + 8 writing + 11 media + 4 research）/ 13 Templates。**
+
+- **🗑️ 移除团队协作与人际关系管理类组件**：
+  - 删除 2 个 Agent：`talent-screener`（HR 招聘）、`customer-success-manager`（客户关系维护）
+  - 删除 6 个 Skill：`resume-screener`、`sprint-planning`、`retrospective`、`customer-success`、`stakeholder`（沟通工件）、`okr`（季度 OKR）
+  - 删除 9 个 Command：`/screen`、`/sprint-planning`、`/retrospective`、`/customer-success`、`/status-update`、`/rbac-design`、`/sla-design`、`/stakeholder`、`/okr`（rbac/sla 在 v2.3 已删 Skill 但命令未清理；stakeholder/okr 早期残留）
+  - 删除 2 个 Template：`one-on-one-templates.md`、`stakeholder-update-templates.md`
+  - 删除空目录 `commands/hr/`
+- **🔧 调用链路修复**：
+  - `product-manager.md` 与 `ai-product-architect.md` 的 `skills:` 字段移除已删除引用
+  - `writer-reviewer.md` 修正 frontmatter `skills` 写法（`skills: foo` → `skills: [foo]`）
+  - 清理 10+ commands 与 10+ skills 中"与其他命令的协同"等关联块对已删命令的引用
+- **🧹 重复命令清理**：删除冗余 `commands/product/sales-guide.md`（与 `commands/presales/sales-guide.md` 重复）
 
 ### v2.3（售前 / 解决方案补齐 + 营销推广 + 产品域裁剪）
 
@@ -767,8 +761,7 @@ claude .
 - **战略决策**：`/working-backwards`（PR-FAQ + 6-pager）、`/build-vs-buy`、`/sunset`、`/win-loss`、`/churn-analysis`
 - **运营协作**：`/tech-debt`（技术债优先级）
 - **AI 产品**：`/ai-red-team`（OWASP LLM Top 10 红队测试）
-- **沟通工件**：`/status-update`（周/月/升级/All-Hands 四合一）
-- **模板**：`pr-faq-template.md`、`six-pager-template.md`、`one-on-one-templates.md`、`stakeholder-update-templates.md`、`model-card-template.md`、`ai-eval-rubric-template.md`
+- **模板**：`pr-faq-template.md`、`six-pager-template.md`、`model-card-template.md`、`ai-eval-rubric-template.md`
 
 ---
 
