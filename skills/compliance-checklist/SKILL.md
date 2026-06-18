@@ -350,6 +350,6 @@ T+30 天：完整 PIR + 长期改进
 
 | 知识库 | 协作 |
 |--------|------|
-| `product-spec` | 合规作为非功能需求 |
+| `prd-standard` | 合规作为非功能需求 |
 | `security-questionnaire` | 客户安全问卷应答 |
-| `product-doc-writer` | 合规材料体系 |
+| `product-bid-params-writer` / `product-solution-writer` | 合规参数承载 / 行业方案合规承诺 |

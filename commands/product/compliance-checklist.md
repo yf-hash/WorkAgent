@@ -288,9 +288,9 @@ M5-M6：等保启动
 
 ```
 /compliance-checklist（本命令）
-  ├── /product-spec → 合规作为非功能需求
+  ├── /prd-standard / /prd-impl → 合规作为非功能需求
   ├── /security-questionnaire → 客户安全问卷应答
-  └── /product-doc → 合规材料体系
+  └── /product-bid-params / /product-solution → 合规参数 / 行业方案承载合规承诺
 
 推荐工作流：
   起步合规：

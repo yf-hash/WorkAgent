@@ -5,6 +5,8 @@ argument-hint: "[要下线的产品/功能名称]"
 
 # /sunset — Sunset / Deprecation Playbook
 
+加载技能：`skills/sunset-plan/SKILL.md`
+
 请基于以下要下线的产品 / 功能，制定完整下线计划：
 
 $ARGUMENTS

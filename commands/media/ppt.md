@@ -1,11 +1,7 @@
 ---
 name: ppt
 description: >
-  演示文稿全流程生成 — 10阶段完整流水线：主题定义→内容搜集（官方/媒体/学术/产业/RAG索引）→
-  归纳总结→图表构建→幻灯片初稿（0→1核心制作）→版式排版→视觉美化→初版渲染→
-  多维质量评分→3-5轮自迭代优化→最终生成输出；
-  同时支持6种引擎快速模式：学术演讲、商务通用、技术/代码演示、Markdown快速出片、
-  论文自动生成、编程式生成
+  演示文稿全流程生成 — 10阶段完整流水线：主题定义→内容搜集（官方/媒体/学术/产业/RAG索引）→归纳总结→图表构建→幻灯片初稿（0→1核心制作）→版式排版→视觉美化→初版渲染→多维质量评分→3-5轮自迭代优化→最终生成输出；同时支持6种引擎快速模式：学术演讲、商务通用、技术/代码演示、Markdown快速出片、论文自动生成、编程式生成
 user-invocable: true
 argument-hint: "<任务描述> [--mode full|rag|research|outline|diagram|make] [--backend academic|ppt-master|slidev|marp|slidetailor|sdk] [--rag <文件或URL>...] [--rag-dir <目录>] [--rag-index <名称>] [--rag-mode replace|supplement] [--style <风格>] [--format ppt169|4:3] [--source <路径>] [--output <文件名>] [--lang zh|en] [--pages <数量>] [--duration <分钟>] [--iter 0|1|auto] [--score-pass <分数>]"
 allowed-tools: [Read, Write, Edit, Bash, WebSearch, WebFetch, AskUserQuestion]
@@ -13,9 +9,10 @@ allowed-tools: [Read, Write, Edit, Bash, WebSearch, WebFetch, AskUserQuestion]
 
 # /ppt — 演示文稿全流程生成
 
-加载技能：`skills/ppt-source/SKILL.md` ·
-`skills/ppt-architect/SKILL.md` · `skills/ppt-master/SKILL.md` ·
-`skills/academic-pptx/SKILL.md` · `skills/marp/SKILL.md` · `skills/diagram-suite/SKILL.md`
+加载技能（按需）：
+- 素材获取：`skills/ppt-rag-indexer/SKILL.md`（已有材料） · `skills/ppt-web-researcher/SKILL.md`（联网研究）
+- 结构与制作：`skills/ppt-architect/SKILL.md` · `skills/ppt-master/SKILL.md` · `skills/academic-pptx/SKILL.md` · `skills/marp/SKILL.md`
+- 图表配套：`skills/mermaid-chart/SKILL.md` · `skills/diagram-plantuml/SKILL.md` · `skills/diagram-markmap/SKILL.md` · `skills/arch-diagram/SKILL.md`
 
 ---
 
@@ -951,10 +948,11 @@ D5 受众匹配改进（当D5最弱时）：
 ```
 /ppt (研究阶段)     → /market-research   更深度的竞品/市场研究
 /ppt (图表阶段)     → /arch-diagram      专业云架构图生成
-                    → /diagram           Mermaid/PlantUML轻量图表
+                    → /diagram-uml       PlantUML 轻量图表
+                    → /diagram-mindmap   Markmap 思维导图
 /ppt (美化阶段)     → @article-illustrator    图表+配图一体化美化
 /ppt (学术场景)     → /paper-collect     论文搜集与整理
-/ppt (汇报场景)     → /prd              产品文档一键转PPT
+/ppt (汇报场景)     → /prd-standard      产品文档一键转PPT
 /ppt (报告场景)     → @content-director  长文拆解+叙事优化
 /ppt (批量图表)     → @diagram-architect 批量图表套件生成
 ```

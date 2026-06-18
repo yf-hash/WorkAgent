@@ -134,7 +134,7 @@ effort: high
 
 ### 3.3 架构图绘制
 - 使用 `arch-diagram` Skill 生成主架构图（云上架构 / K8s 部署架构）
-- 用 `diagram-suite` 生成集成时序图（SSO 流程 / 数据同步流程）
+- 用 `mermaid-chart` / `diagram-plantuml` 生成集成时序图（SSO 流程 / 数据同步流程）
 - 用 `visio-builder` 生成给客户看的部署拓扑（VLAN / 防火墙 / 跨网段）
 
 ---

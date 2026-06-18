@@ -124,12 +124,12 @@ pip install google-generativeai
 
 ## 与视频生成技能的集成
 
-字幕生成完成后，可直接传入 `remotion-generator` 技能：
+字幕生成完成后，可直接传入 Remotion 系列命令：
 
 ```bash
 # 先生成字幕
 /caption video.mp4 --translate zh --format srt
 
 # 再用字幕渲染视频
-/remotion-generate --template ai-company-intro --subtitles video.srt --render
+/remotion-native --template ai-company-intro --subtitles video.srt --render
 ```

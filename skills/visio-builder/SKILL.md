@@ -160,5 +160,6 @@ def export_com(vsdx_path, output_path, fmt='svg'):
 ## 与其他技能的协同
 
 - `mermaid-chart`：提供 Mermaid 语法解析，供转换使用
-- `diagram-suite`：统一图表路由，visio-builder 作为 visio 引擎
+- `diagram-plantuml`：PlantUML ↔ Visio 互转
+- `arch-diagram`：云架构图导出为 PNG 后嵌入 Visio
 - `html-chart`：HTML 图表可导出为图片后嵌入 Visio

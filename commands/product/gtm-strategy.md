@@ -101,10 +101,10 @@ Step 6: 上市计划与 KPI
 
 ```
 /gtm-strategy → 战略层（做什么、怎么做）
-  ├── /market-research  → 竞品研究、市场规模验证
-  ├── /prd --mode gtm   → 产品需求文档的 GTM 章节
-  ├── /roadmap          → 上市里程碑路线图
-  └── @gtm-strategist   → 全链路 GTM Agent 编排（含多技能协作）
+  ├── /market-research        → 竞品研究、市场规模验证
+  ├── /prd-standard           → 产品需求文档的 GTM 章节
+  ├── /roadmap                → 上市里程碑路线图
+  └── @gtm-strategist         → 全链路 GTM Agent 编排（含多技能协作）
 ```
 
 ---

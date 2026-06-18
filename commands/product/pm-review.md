@@ -9,7 +9,7 @@ argument-hint: "[PRD/方案/需求列表 文件路径或内容]"
 
 $ARGUMENTS
 
-> 与 `/spec-validate`（机器化 lint）和 `/review-plan`（开发计划评审）互补：
+> 与 `/review-plan`（开发计划评审）互补：
 > 本命令做**人工产品视角**的定性评审，关注客户价值、商业逻辑、产品取舍。
 
 ## 评审维度（10 维）

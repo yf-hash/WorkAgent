@@ -5,10 +5,9 @@ description: >
   产品分析的"上游设计"层。
   
   与相邻命令的边界（防混淆）：
-  - vs /data-dashboard：本命令做"指标定义 / 计算口径 / 埋点 Schema"，
-    /data-dashboard 做"看板可视化 + SQL 查询 + 嵌入"。指标定下来后再去做看板。
-  - vs /growth-experiment：本命令产出"诊断方法和数据基础"，
-    /growth-experiment 是"基于诊断结果设计实验队列"。
+  - vs /dashboard-* 看板系列：本命令做"指标定义 / 计算口径 / 埋点 Schema"，
+    /dashboard-northstar / /dashboard-aarrr / /dashboard-cohort 等做"看板可视化 + SQL 查询 + 嵌入"。
+    指标定下来后再去做看板。
   - vs /ab-test：本命令是"宏观指标"，/ab-test 是"实验级 OEC + 护栏指标"。
 user-invocable: true
 argument-hint: "<分析目标> [--mode metrics|funnel|cohort|event] [--platform posthog|matomo|countly|jitsu]"
@@ -38,8 +37,7 @@ argument-hint: "<分析目标> [--mode metrics|funnel|cohort|event] [--platform 
 | `event` | 埋点 Schema（事件命名 + 属性 + 代码示例） | 前端工程师对接 |
 
 ### ⚠️ 已迁移的能力
-- `--mode growth`（增长诊断 + AARRR 杠杆）→ 使用 `/growth-experiment --mode diagnose`
-- `--mode dashboard`（看板设计 + 图表选型）→ 使用 `/data-dashboard --mode design`
+- 看板设计 → 使用 `/dashboard-northstar` / `/dashboard-aarrr` / `/dashboard-cohort` 等
 
 ## 参考平台生态
 
@@ -116,6 +114,6 @@ posthog.capture('feature_used', {
 1. /analytics --mode metrics（定义指标体系）
 2. /analytics --mode event（产出埋点 Schema）
 3. 工程实施
-4. /data-dashboard --mode design（基于指标做看板）
-5. /growth-experiment --mode diagnose（基于数据做增长诊断）
+4. /dashboard-northstar / /dashboard-aarrr / /dashboard-cohort（基于指标做对应看板）
+5. /ab-test（基于数据做对比实验设计）
 ```

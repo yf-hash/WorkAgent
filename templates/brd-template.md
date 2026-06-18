@@ -1,7 +1,7 @@
 # BRD：{{商业需求文档名称}}
 
 > 商业需求文档（Business Requirements Document）模板。回答"为什么要做、值不值得做、怎么收回成本"。
-> 配套 Skill：`product-strategy`、`pm-full-cycle`、Agent：`@product-director`、`@research-analyst`。
+> 配套 Skill：`product-strategy`、`pm-discovery-frameworks`、Agent：`@product-director`、`@research-analyst`。
 
 ## 1. 商业背景
 

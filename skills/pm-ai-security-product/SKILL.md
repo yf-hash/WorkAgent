@@ -100,5 +100,5 @@ argument-hint: "[AI/安全产品/客户场景]"
 ## 推荐 Agent
 
 - `@ai-product-architect`（AI 功能架构）
-- `@compliance-officer`（合规与权限）
 - `@research-analyst`（市场与客户）
+- `@qa-acceptance-designer`（验收 + 合规验证）

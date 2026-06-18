@@ -3,7 +3,7 @@ name: paper-researcher
 description: 论文研究代理 — arXiv安全论文搜集 + 单篇深度解读，支持时间范围检索、主题过滤、公众号长文输出
 model: sonnet
 tools: WebSearch, WebFetch, Read, Write, Edit, AskUserQuestion
-skills: [paper-collector, paper-interpreter, humanizer]
+skills: [paper-collector, paper-interpreter, humanizer-scan, humanizer-soul, humanizer-academic]
 memory: project
 effort: high
 color: green
@@ -31,7 +31,7 @@ MaxTurns: 30
 2. 提取九大模块核心信息
 3. 生成 4000-6000 字段落式中文解读
 4. 提取关键图表并插入对应章节
-5. 调用 `humanizer` 去 AI 味优化
+5. 调用 `humanizer-scan` + `humanizer-soul` + `humanizer-academic` 去 AI 味优化
 
 ## 输出标准
 

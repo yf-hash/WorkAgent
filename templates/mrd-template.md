@@ -1,7 +1,7 @@
 # MRD：{{市场需求文档名称}}
 
 > 市场需求文档（Market Requirements Document）模板。回答"市场在哪里、客户是谁、机会有多大"。
-> 配套 Skill：`market-research`、`pm-full-cycle`、Agent：`@market-intelligence`、`@research-analyst`。
+> 配套 Skill：`market-research`、`pm-discovery-frameworks`、Agent：`@market-intelligence`、`@research-analyst`。
 
 ## 1. 市场背景
 

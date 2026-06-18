@@ -75,5 +75,5 @@ npm install -g @wechatsync/cli
 ## 相关命令
 
 - `/article-writer` — 先写文章，再用 /sync 分发
-- `/humanize` — 先去AI味，再用 /sync 分发
+- `/humanize-scan` → `/humanize-soul` — 先去AI味，再用 /sync 分发
 - `/polish` — 先润色，再用 /sync 分发

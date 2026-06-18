@@ -6,7 +6,7 @@ description: >
   （solution-architecture）、商务论证（business-case）、招标应答
   （rfp-response / security-questionnaire / bid-writer）、Demo 准备
   （demo-design）、竞品作战（battle-card）、PoC 执行（poc-plan）、
-  售前赋能物料（proposal / sales-guide / product-doc）。
+  售前赋能物料（proposal / sales-guide / product-* 系列 16 个原子命令）。
   覆盖售前从首次接触到 PoC 转正合同的完整链路。
   与 product-manager（PM 视角）的差异：本 Agent 是售前 / 商业视角，
   关注"赢单 + 客户化方案 + 同行业说服"，不做产品定义。
@@ -26,8 +26,13 @@ skills:
   - arch-diagram
   - proposal-generator
   - sales-guide-writer
-  - product-doc-writer
-  - bid-writer
+  - bid-analyze
+  - bid-clarify
+  - bid-outline
+  - bid-write
+  - bid-review
+  - bid-check
+  - bid-export
 memory: project
 effort: high
 color: "#0F766E"
@@ -74,7 +79,7 @@ color: "#0F766E"
 | 演示 | Demo 故事线 + 数据集 + 异常应对 | `demo-design` |
 | 竞争 | Battle Card + Hot Button 应对 | `battle-card` |
 | 验证 | PoC 范围 + SOW + 验收标准 | `poc-plan` |
-| 物料 | 销售一页禅 + 产品资料 + 方案文档 | `sales-guide-writer` + `product-doc-writer` + `proposal-generator` |
+| 物料 | 销售一页禅 + 产品资料 + 方案文档 | `sales-guide-writer` + `/product-*` 系列原子命令 + `proposal-generator` |
 | 合规 | 合规检查 + 客户问卷应答 | `compliance-checklist` + `security-questionnaire` |
 
 ---

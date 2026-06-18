@@ -3,7 +3,7 @@ name: diagram-architect
 description: 统一图表编排 Agent，根据图表类型和使用场景自动路由至最优引擎（Mermaid/PlantUML/Diagrams/Visio），支持多图表批量生成、格式互转和文档配图全流程
 model: sonnet
 tools: Read, Write, Edit, Bash, WebFetch, AskUserQuestion
-skills: [diagram-suite, arch-diagram, visio-builder, mermaid-chart, html-chart]
+skills: [diagram-markmap, diagram-plantuml, mermaid-chart, arch-diagram, visio-builder, html-chart]
 memory: project
 effort: high
 color: blue
@@ -35,13 +35,13 @@ color: blue
   │    └─ → visio-builder（python-visio / Visio.NET）
   │
   ├─ UML 图（类图/组件图/部署图/用例图）？
-  │    └─ → PlantUML（diagram-suite）
+  │    └─ → diagram-plantuml
   │
   ├─ 流程图 / 时序图 / 甘特图 / ER 图？
-  │    └─ → Mermaid（diagram-suite）
+  │    └─ → mermaid-chart
   │
   ├─ 思维导图 / 知识树？
-  │    └─ → Markmap（diagram-suite）
+  │    └─ → diagram-markmap
   │
   ├─ 需要截图/嵌入文章的可视化图表？
   │    └─ → html-chart（ASCII→HTML→Playwright截图）

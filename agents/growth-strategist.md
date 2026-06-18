@@ -13,6 +13,12 @@ skills:
   - product-analytics
   - pricing-strategy
   - user-feedback
+  - pm-growth-aarrr
+  - pm-north-star
+  - dashboard-northstar
+  - dashboard-aarrr
+  - dashboard-cohort
+  - dashboard-revenue
 memory: project
 effort: high
 color: green
@@ -118,7 +124,7 @@ color: green
 ```
 @growth-strategist（本 Agent）
   ├── 早期 PMF 阶段 → @product-manager（先确认 PMF 再做增长）
-  ├── 需要做 PRD → @product-manager 或 /product-spec
+  ├── 需要做 PRD → @product-manager 或 /prd-standard
   ├── 需要市场情报 → @market-intelligence
   ├── 需要 GTM 战略 → @gtm-strategist
   ├── AI 功能增长 → @ai-product-architect

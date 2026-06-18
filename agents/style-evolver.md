@@ -3,7 +3,7 @@ name: style-evolver
 description: 风格自进化代理 — 从参考文章提炼风格卡片，横纵技术调查夯实素材，通过 Writer-Reviewer 双 Agent 迭代创作，适用于技术文章、观点文章、品牌内容等需要主动研究的体裁
 model: sonnet
 tools: Read, Write, Edit, WebFetch, WebSearch, AskUserQuestion
-skills: [style-evolver]
+skills: [style-card-extractor, style-writer-reviewer, style-refine, humanizer-scan, humanizer-soul]
 memory: project
 effort: high
 color: blue

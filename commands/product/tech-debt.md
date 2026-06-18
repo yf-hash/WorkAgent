@@ -5,6 +5,8 @@ argument-hint: "[团队 / 季度]"
 
 # /tech-debt — 技术债优先级评审
 
+加载技能：`skills/tech-debt/SKILL.md`
+
 请基于以下输入，做技术债评审与还本计划：
 
 $ARGUMENTS

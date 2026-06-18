@@ -3,7 +3,7 @@ name: video-maker
 description: 视频生成代理 — 三引擎路由（native/prompt2video/vidosy）+ PDF转视频 + 字幕生成 + TTS语音合成 + MP4渲染一体化
 model: sonnet
 tools: Bash, Read, Write, Edit, Grep, Glob, AskUserQuestion
-skills: [remotion-generator, pdf2video, omni-captions]
+skills: [remotion-native, remotion-prompt2video, remotion-vidosy, pdf2video, omni-captions]
 memory: project
 effort: high
 color: purple

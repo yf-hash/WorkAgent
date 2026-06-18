@@ -65,6 +65,6 @@ argument-hint: "[PRD/功能/版本]"
 
 ## 关联资源
 
-- 上游：`product-spec` / `prd-writer`（PRD 来源）
-- 下游：`launch-checklist`（Launch Readiness）、`spec-validate`（自动 lint）
-- Agent：`@qa-acceptance-designer`（编排）、`@release-manager`（Go/No-Go）
+- 上游：`prd-standard` / `prd-implementation-draft`（PRD 来源）
+- 下游：`launch-checklist`（Launch Readiness）、`/pm-review`（PRD 评审）
+- Agent：`@qa-acceptance-designer`（编排，Go/No-Go 阻断项）

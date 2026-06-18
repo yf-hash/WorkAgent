@@ -78,7 +78,7 @@ Step 6: 文件打包
 
 | 选择 | 用前者 | 用后者 |
 |------|-------|-------|
-| `/rfp-response` vs `/bid full` | 问题清单逐条应答 | 招标文件全流程编制 |
+| `/rfp-response` vs `/bid-analyze → /bid-export` 七阶段 | 问题清单逐条应答 | 招标文件全流程编制 |
 | `/rfp-response` vs `/proposal` | 问答风格 | 大块叙述方案 |
 | `/rfp-response` vs `/security-questionnaire` | 综合 RFP（部分含安全题）| 纯安全问卷（200+ 条 VSQ）|
 | `/rfp-response` vs `/gap-analysis` | 客户问 → 我方答 | 客户需求 vs 产品能力主动映射 |

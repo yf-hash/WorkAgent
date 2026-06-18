@@ -1,6 +1,6 @@
 # 产品 Roadmap：{{产品名称}}
 
-> 配套 Skill：`product-roadmap`、`okr`、Agent：`@release-manager`、`@product-manager`。
+> 配套 Skill：`product-roadmap`、`pm-prioritization-frameworks`、Agent：`@product-manager`、`@product-director`。
 
 ## 1. 产品目标
 

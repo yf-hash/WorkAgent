@@ -38,7 +38,7 @@ argument-hint: "<pdf-path> [--output md|docx] [--style popular|professional|casu
 3. 按九大模块提取结构化信息（简介/目的/贡献/引言/相关工作/核心方法/实验/讨论/结论）
 4. 按指定风格和字数生成公众号长文（段落式，非列表）
 5. 将提取的图表插入对应章节
-6. 调用 `content-humanizer` skill 去 AI 味
+6. 调用 `humanizer-scan` + `humanizer-soul` skill 去 AI 味（学术深度场景额外 `humanizer-academic`）
 7. 询问用户满意度，按反馈持续优化
 
 ## 输出格式
@@ -68,11 +68,11 @@ argument-hint: "<pdf-path> [--output md|docx] [--style popular|professional|casu
 ## 关联 Skills
 
 - `paper-interpreter` - 论文解读核心规范
-- `content-humanizer` - 去 AI 味处理
+- `humanizer-scan` / `humanizer-soul` / `humanizer-academic` - 去 AI 味处理
 - `article-writer` - 写作风格参考
 
 ## 相关命令
 
 - `/paper-collect` - 批量收集 arxiv 论文
-- `/humanize` - 单独去 AI 味处理
+- `/humanize-scan` - 单独去 AI 味处理（扫描阶段）
 - `/polish` - 文档润色（去痕+配图）

@@ -3,7 +3,7 @@ name: bid-writer
 description: 标书全流程编制代理 — 七阶段人工+AI协同，从招标文件深度拆解到定稿移交，偏离表先行，RAG增强写作，双轮评审，合规核查
 model: opus
 tools: Read, Write, Edit, Glob, Grep, AskUserQuestion
-skills: [bid-writer, bid-rewriter, mermaid-chart, html-chart]
+skills: [bid-analyze, bid-clarify, bid-outline, bid-write, bid-review, bid-check, bid-export, bid-rewriter, mermaid-chart, html-chart]
 memory: project
 effort: high
 color: yellow
@@ -28,7 +28,7 @@ MaxTurns: 60
 
 ## 阶段路由
 
-接收 `/bid <子命令>` 后，按以下逻辑路由：
+接收 `/bid-analyze` / `/bid-clarify` / `/bid-outline` / `/bid-write` / `/bid-review` / `/bid-check` / `/bid-export` 后，按以下逻辑路由：
 
 ```
 analyze   → 执行第1阶段

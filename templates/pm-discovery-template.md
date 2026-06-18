@@ -1,7 +1,7 @@
 # 产品发现报告模板：{{产品名}}
 
 > 输出于 `/pm-discovery "<产品方向>"`
-> 配套 Skill：`pm-full-cycle`、`market-research`、`pm-ai-security-product`（如含 AI 安全场景）
+> 配套 Skill：`pm-discovery-frameworks`、`market-research`、`pm-ai-security-product`（如含 AI 安全场景）
 > 日期：YYYY-MM-DD ｜ 作者：[PM 姓名]
 
 > **使用说明**：本文为通用 B 端 SaaS 发现报告模板，含完整 10 章结构 + 占位内容。所有 `[占位符]` 都需替换为真实业务上下文（市场规模、客户画像、痛点、竞品、MVP 范围）。

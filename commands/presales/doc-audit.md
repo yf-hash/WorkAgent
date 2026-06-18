@@ -1,9 +1,9 @@
 ---
 name: doc-audit
 description: >
-  B2B 文档治理审计 — 24 类产品资料的完整性与合规检查。区别于 /spec-validate
-  （Spec/PRD 内部质量校验）：本命令是上层文档治理，
-  含资料体系完整性 / 命名规范 / 格式合规 / 14 项自查清单。
+  B2B 文档治理审计 — 24 类产品资料的完整性与合规检查。
+  本命令是上层文档治理，含资料体系完整性 / 命名规范 / 格式合规 / 14 项自查清单。
+  与 /pm-review（PRD 内部质量评审）互补：本命令面向产品资料体系，pm-review 面向单份 PRD。
   适用于：发布前文档自查、版本更新核验、新产品资料首次入库审议。
 user-invocable: true
 argument-hint: "<文档路径或产品名> [--mode single|fullset|format|naming] [--strict]"

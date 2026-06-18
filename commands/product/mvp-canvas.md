@@ -124,8 +124,7 @@ Step 6: 风险预案 + 伪 MVP 反模式自检
   ├── /user-research    → 验证假设的访谈方案
   ├── /user-story-mapping → Walking Skeleton = MVP 范围
   ├── /ab-test          → MVP 上线后 A/B 验证
-  ├── /pmf-survey       → 验证后判断 PMF
-  └── /growth-experiment → MVP 之后的增长循环
+  └── /pmf-survey       → 验证后判断 PMF
 
 推荐工作流：
   早期想法：

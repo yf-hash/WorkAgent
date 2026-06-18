@@ -5,6 +5,8 @@ argument-hint: "[产品/功能想法]"
 
 # /working-backwards — Amazon 逆向工作法
 
+加载技能：`skills/working-backwards/SKILL.md`
+
 请基于以下输入，使用 Working Backwards 方法倒推产品价值：
 
 $ARGUMENTS
@@ -53,9 +55,9 @@ $ARGUMENTS
 | 场景 | 推荐 |
 |------|------|
 | 新产品立项 / 大功能 / 跨团队战略 | ✅ 用本命令 |
-| 已 PMF 后的小迭代 | ❌ 直接 `/product-spec` |
+| 已 PMF 后的小迭代 | ❌ 直接 `/prd-standard` 或 `/prd-update` |
 | 想法模糊 / 缺信息 | 先 `/pm-intake` 收集 |
-| PR-FAQ 评审过 → 进入 PRD | `/pm-prd-enterprise`（B 端）/ `/product-spec --mode prd`（C 端）|
+| PR-FAQ 评审过 → 进入 PRD | `/pm-prd-enterprise`（B 端）/ `/prd-standard`（C 端）|
 
 ## 评审清单
 

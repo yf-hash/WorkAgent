@@ -1,7 +1,7 @@
 # 需求池模板
 
-> 单需求池标准结构。配套 Skill：`pm-full-cycle`、`product-roadmap`、`spec-validate`。
-> 推荐与 `/sync-tasks` 配合，将需求池同步到 Linear / Jira / GitHub Projects / 飞书。
+> 单需求池标准结构。配套 Skill：`product-roadmap`、`prd-quality-check`、`pm-prioritization-frameworks`。
+> 推荐与 Linear / Jira / GitHub Projects / 飞书任务同步使用。
 
 | 需求ID | 需求名称 | 来源 | 客户/角色 | 场景 | 问题描述 | 需求类型 | 优先级 | 状态 | 版本 | 负责人 | 备注 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -19,7 +19,7 @@
 
 ```
 收集 → /pm-intake（信息澄清）
-     → /requirement-analysis（需求拆解）
+     → /prd-diagnose（需求拆解）
      → /roadmap（优先级与版本）
-     → /sync-tasks（系统同步）
+     → 同步到 Linear / Jira / GitHub Projects / 飞书
 ```

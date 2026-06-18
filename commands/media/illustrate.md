@@ -19,7 +19,7 @@ allowed-tools:
 加载技能：
 - `skills/html-chart/SKILL.md`（主管道：ASCII → HTML → 截图）
 - `skills/mermaid-chart/SKILL.md`（备选：精确图表）
-- `skills/diagram-suite/SKILL.md`（扩展：PlantUML/Markmap/MerdiAi）
+- `skills/diagram-plantuml/SKILL.md` · `skills/diagram-markmap/SKILL.md`（扩展：UML 系列与思维导图）
 - `skills/ai-illustrator/SKILL.md`（AI插图：article-illustrator/document-illustrator/thesis-figure）
 - `skills/stable-diffusion/SKILL.md`（备选：创意图像，需本地 SD WebUI）
 - `skills/mermaid-chart/SKILL.md`（备选：精确图表）

@@ -79,7 +79,7 @@ argument-hint: "[产品/功能想法]"
    ↓
 （6-pager 评审过 → 立项）
    ↓
-/pm-prd-enterprise / /product-spec   ← 进入 PRD
+/pm-prd-enterprise / /prd-standard   ← 进入 PRD
    ↓
 @qa-acceptance-designer + /launch-checklist ← 发布
 ```
@@ -122,4 +122,4 @@ argument-hint: "[产品/功能想法]"
 - 模板：`templates/pr-faq-template.md`、`templates/six-pager-template.md`
 - 命令：`/working-backwards`
 - 上游：`/pm-intake`、`/pm-discovery`
-- 下游：`/pm-prd-enterprise`、`/product-spec`、`@product-director`
+- 下游：`/pm-prd-enterprise`、`/prd-standard`、`@product-director`

@@ -74,6 +74,6 @@ pip install google-generativeai
 
 ## 相关命令
 
-- `/remotion-generate` — 生成视频（可传入字幕文件）
+- `/remotion-native` / `/remotion-prompt2video` / `/remotion-vidosy` — 生成动态视频（可传入字幕文件）
 - `/videocut` — AI 视频剪辑
 - `/pdf2video` — 文档转视频

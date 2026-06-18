@@ -66,7 +66,7 @@ argument-hint: "<filepath> [--tone casual|formal|technical|academic] [--intensit
 
 ```
 Phase 1: 文档读取与格式检测 [自动]
-Phase 2: AI 去痕处理 [自动] — 调用 humanizer skill
+Phase 2: AI 去痕处理 [自动] — 调用 humanizer-scan + humanizer-soul skills（学术场景额外调用 humanizer-academic）
 Phase 3: 智能配图生成 [自动] — 调用 html-chart + mermaid-chart skill
 Phase 4: 输出完整文档 [自动]
 ```
@@ -89,5 +89,5 @@ Phase 4: 输出完整文档 [自动]
 
 ## 相关命令
 
-- `/humanize` — 单独执行 AI 去痕
+- `/humanize-scan` `/humanize-soul` `/humanize-academic` — 单独执行 AI 去痕的三个阶段
 - `/illustrate` — 单独执行文章配图

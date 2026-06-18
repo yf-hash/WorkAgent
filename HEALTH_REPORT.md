@@ -1,167 +1,228 @@
 # WorkAgent 健康度报告
 
-> 生成于 2026-06-04（最近重构后）
+> 更新于 2026-06-18（v2.6.1 — 单一职责拆分后的断链修复与冗余清理）
 > 范围：`agents/`、`skills/`、`commands/**/`、`templates/`
 
 ---
 
 ## TL;DR
 
-✅ **完成度**：所有 Agent / Skill / Command 已通过 frontmatter 校验、跨引用解析、文档同步。
-✅ **可直接使用**：从 PM 全流程到售前 / 解决方案全链路端到端跑通。
-✅ **本轮重构**：完成产品域裁剪 + 售前 / 解决方案补齐 + 营销推广能力补齐 + examples 合并入 templates。
+✅ **零孤立 / 零断链**：所有 Skill 至少被 1 个命令或 Agent 引用，所有引用都指向存在的资产
+✅ **严格单一职责**：每个 Skill 只完成一个任务，不再有"4 种模式"、"6 轮流程"等多任务合并
+✅ **本轮修复（v2.6.1）**：清除 v2.6 拆分后残留的 25+ 处断链 + 删除 1 个被 Skill 完全覆盖的 Agent + 修正 3 处 SR 违规描述
 
 ---
 
 ## 一、当前指标
 
-| 类别 | 数量 | Frontmatter 合规率 | 跨引用合规率 |
-|------|------|-------------------|--------------|
-| Agents | 27 | 100% | 100% |
-| Skills | 86 | 100% | — |
-| Commands | 72 | 100% | — |
-| Templates | 15 | — | — |
+| 类别 | 数量 | 较 v2.6 变化 |
+|------|------|--------------|
+| Agents | 24 | -1（删除 `@writer-reviewer`，被 `style-writer-reviewer` Skill 覆盖）|
+| Skills | 129 | 持平 |
+| Commands | 112 | 持平 |
+| Templates | 13 | 持平 |
 
-**类别细分**：
-- 产品域 Agents：12（`product-manager`、`solution-architect`、`product-director`、`prd-coach`、`qa-acceptance-designer`、`ai-product-architect`、`growth-strategist`、`customer-success-manager`、`research-analyst`、`gtm-strategist`、`product-enablement`、`proposal-writer`、`market-intelligence`）
-- 内容域 Agents：8（`bid-writer`、`content-director`、`writer-reviewer`、`style-evolver`、`doc-polisher`、`paper-researcher`、`talent-screener`、`ppt-generator`）
-- 媒体域 Agents：6（`article-illustrator`、`diagram-architect`、`video-maker`、`visual-creator` 弃用、`visual-suite`、`data-analyst`）
+**命令分布**：
 
-**Product Commands 35 个 / Presales Commands 13 个 / Writing Commands 8 个 / Research / Media / HR 共 16 个**。
-
----
-
-## 二、本轮重构历史（按时间顺序）
-
-### A. 产品域裁剪（清理 18 项重叠 / 过技术 / 业务不符）
-
-删除：
-- **3 Agents**：`data-platform-pm`、`release-manager`、`compliance-officer`
-- **15 Skills**：`metagpt`、`rbac-design`、`sla-design`、`integration-design`、`spec-validate`、`ai-feature-spec`、`prd-generator`、`prd-spec`、`proto-prd`、`experiment-log`、`growth-experiment`、`decision-log`、`account-plan`、`cpq-config`、`sync-tasks`
-- **12 Commands**：对应 Skill 的入口
-
-修复 5 个 Agent 的断链引用（ai-product-architect、customer-success-manager、growth-strategist、product-manager、product-director、prd-coach、research-analyst、qa-acceptance-designer），改指向保留的资产。
-
-### B. 营销推广能力补齐
-
-新增：
-- **1 Skill**：`marketing-copy`（9 大文体：公众号 / 小红书 / 知乎 / 朋友圈 / 短视频 / 落地页 / EDM / PR 稿 / 客户故事 / Demo 脚本）
-- **1 Command**：`/marketing-copy`
-- **1 修复**：`/product-doc` 命令文件（之前 README/CLAUDE 引用但文件缺失）
-
-### C. 售前 / 解决方案能力补齐
-
-新增：
-- **1 Agent**：`@solution-architect`（售前总指挥，编排全链路）
-- **8 Skills**：`discovery-call`、`gap-analysis`、`solution-architecture`、`business-case`、`rfp-response`、`security-questionnaire`、`battle-card`、`demo-design`
-- **8 Commands**：一一对应
-
-### D. examples/ 目录合并入 templates/
-
-- 删除整个 `examples/` 目录（4 份占位符填充版与 templates 高度重叠）
-- 新增 **`templates/pm-discovery-template.md`**（来自 sample-pm-discovery，templates 此前缺失）
-- 升级 **`templates/sales-enablement-template.md`**（从 39 行骨架版 → 完整填充版，含 FAQ 10 条 / 竞品话术 / 成交节奏）
-- 升级 **`templates/acceptance-checklist-template.md`**（从 30 行骨架版 → 完整填充版，含 10 章验收 + 阻断项 + Go/No-Go 矩阵）
+- `commands/product/`：46（含 prd-* 10 个、dashboard-* 7 个、pm-* 5 个、战略决策 + 通用产品方法）
+- `commands/presales/`：35（含 bid-* 七阶段、product-* 16 类原子文档、售前 8 类工件）
+- `commands/writing/`：11（含 style-* 3 个、humanize-* 3 个）
+- `commands/research/`：4
+- `commands/media/`：16（含 remotion-* 3 个、diagram-* 2 个、md-* 2 个、table-* 2 个）
 
 ---
 
-## 三、当前文件结构
+## 二、v2.6.1 修复明细（本轮）
+
+### A. 断链修复（25+ 处）
+
+按文件分组列出本轮已修复的对已删除资产的引用：
+
+| 文件 | 原断链 | 替换为 |
+|---|---|---|
+| `skills/churn-analysis/SKILL.md` | `/data-dashboard --mode customer-health`, `/data-dashboard`, `/user-research --mode interview` | `/dashboard-customer-br`, `/dashboard-revenue`, `/user-research` |
+| `skills/omni-captions/SKILL.md` | `remotion-generator`, `/remotion-generate` | `Remotion 系列命令`, `/remotion-native` |
+| `skills/pm-core-framework/SKILL.md` | `pm-skills`, `pm-full-cycle`, `/prd-writer`, `/product-spec`, `/sales-guide` 等 7 处 | 重写定位为「前置思考层」+ 链接到 6 个原子 PM 框架 Skill |
+| `skills/pm-qa-acceptance/SKILL.md` | `product-spec / prd-writer` | `prd-standard / prd-implementation-draft` |
+| `skills/working-backwards/SKILL.md` | `/product-spec` × 2 | `/prd-standard` |
+| `skills/user-story-mapping/SKILL.md` | `product-spec` | `prd-standard` |
+| `skills/product-strategy/SKILL.md` | `product-spec` | `prd-standard` |
+| `skills/compliance-checklist/SKILL.md` | `product-spec` | `prd-standard` |
+| `skills/product-sales-faq-writer/SKILL.md` | `/sales-guide` | `sales-guide-writer / /sales-guide` |
+| `skills/arch-diagram/SKILL.md` | `diagram-suite` | `mermaid-chart / diagram-plantuml` |
+| `skills/visio-builder/SKILL.md` | `diagram-suite` | `diagram-plantuml / arch-diagram` |
+| `skills/solution-architecture/SKILL.md` | `diagram-suite` | `mermaid-chart / diagram-plantuml` |
+| `skills/impeccable/SKILL.md` | `humanizer skill` | `humanizer-scan / humanizer-soul` |
+| `skills/doc-formatter/SKILL.md` | `humanizer` | `humanizer-scan / humanizer-soul` |
+| `agents/bid-writer.md` | `/bid <子命令>` | `/bid-analyze / /bid-clarify / ... / /bid-export` |
+| `agents/visual-suite.md` | `document-illustrator`, `thesis-figure-skill`, `paper-banana`（不存在的 skill）+ `/mermaid`（不存在的命令） | 改写为 `ai-illustrator` 内部子流程 + `/diagram-uml` |
+| `commands/media/caption.md` | `/remotion-generate` | `/remotion-native / /remotion-prompt2video / /remotion-vidosy` |
+| `commands/media/videocut.md` | `/remotion-generate` | 同上 |
+| `commands/media/pdf2video.md` | `/remotion-generate` | 同上 |
+| `commands/media/arch-diagram.md` | `/diagram`, `/prd` | `/diagram-mindmap / /diagram-uml`, `/prd-standard` |
+| `commands/media/visio.md` | `/diagram` | `/diagram-uml` |
+| `commands/media/ppt.md` | `/diagram`, `/prd` | `/diagram-uml / /diagram-mindmap`, `/prd-standard` |
+| `commands/presales/proposal.md` | `/bid` + 失效路径 `commands/writing/bid.md` | `/bid-* 七阶段` |
+| `commands/presales/rfp-response.md` | `/bid full` | `/bid-analyze → /bid-export 七阶段` |
+| `commands/presales/security-questionnaire.md` | `/bid full` | 同上 |
+| `commands/writing/sync.md` | `/humanize` | `/humanize-scan → /humanize-soul` |
+| `commands/product/impeccable.md` | `/humanize` | `/humanize-scan → /humanize-soul` |
+| `commands/product/pm-discovery.md` | `competitor-analysis`（不存在的 skill 名） | `market-research`（含 `--mode competitive`） |
+| `commands/product/gtm-strategy.md` | `/prd --mode gtm` | `/prd-standard` |
+| `templates/prd-template.md` | 配套 Skill: `prd-writer`，配套命令: `/prd-writer` | 配套 Agent: `@prd-coach`，配套命令: `/prd-diagnose → /prd-concept → /prd-impl` 或 `/prd-standard` |
+
+### B. 冗余 Agent 清理
+
+- **删除 `agents/writer-reviewer.md`**（188 行）— 已被 `skills/style-writer-reviewer/SKILL.md`（139 行）完全覆盖。该 Agent 与 Skill 的 Writer-Reviewer 互搏流程一致，无独立编排价值，删除后由 `@content-director` 和 `@style-evolver` 直接调用 Skill。
+
+### C. 单一职责（SR）违规描述修正
+
+| Skill | 原 description 违规点 | 修正 |
+|---|---|---|
+| `proposal-generator` | "支持三大方案类型：售前解决方案 / 可行性研究报告 / 初步设计方案" | 改述为 `/proposal` 命令通过 `--type` 路由的章节模板库，加上「不做：产品级标准资料 / 招投标全流程 / 纯架构 Blueprint」边界 |
+| `ai-illustrator` | "支持文章自动配图、学术论文图表、文档专业插图、创意画布四大场景" | 改述为按场景路由到 article-illustrator / thesis-figure / document-illustrator 子流程，加上「不做：结构化图表 / SD 文生图 / Markdown 海报」边界 |
+| `bid-write` | "支持交互模式/批量模式/RAG 增强/配图生成" | 改述为「核心职责始终是按大纲写章节」，调用标志只是控制选项；加上拆解 / 大纲 / 评审 / 核查 / 导出的流转边界 |
+
+---
+
+## 三、v2.6 单一职责重构回顾
+
+> 以下为 v2.6 既有拆分清单，本轮（v2.6.1）未变化。
+
+### A. 必拆类（明确多任务 / 多模式合并）
+
+| 原 Skill | 拆分为 |
+|---|---|
+| `product-spec` | `prd-lite` / `prd-standard` / `prd-spec-first` / `prd-proto` / `prd-quality-check` |
+| `prd-writer` | `prd-diagnose` / `prd-concept-draft` / `prd-implementation-draft` / `prd-incremental-update` / `prd-deep-evaluate` |
+| `ppt-source` | `ppt-rag-indexer` / `ppt-web-researcher` |
+| `style-evolver` | `style-card-extractor` / `style-writer-reviewer` / `style-refine` |
+| `remotion-generator` | `remotion-native` / `remotion-prompt2video` / `remotion-vidosy` |
+| `pm-skills` | `pm-discovery-frameworks` / `pm-prioritization-frameworks` / `pm-growth-aarrr` / `pm-north-star` / `pm-upward-management` / `pm-ai-era-evolution` |
+| `pm-full-cycle` | 删除 → 改由 `@product-manager` Agent 编排原子命令 |
+| `diagram-suite` | `diagram-markmap` / `diagram-plantuml`（`mermaid-chart` 保留独立）|
+| `md-visual` | `md-poster` / `md-table-image` |
+| `table-toolkit` | `table-from-text` / `table-csv-md` |
+| `humanizer` | `humanizer-scan` / `humanizer-soul` / `humanizer-academic` |
+| `data-dashboard` | `dashboard-northstar` / `dashboard-aarrr` / `dashboard-cohort` / `dashboard-revenue` / `dashboard-customer-br` / `dashboard-ai-monitor` / `dashboard-platform-selector` |
+| `bid-writer` | `bid-analyze` / `bid-clarify` / `bid-outline` / `bid-write` / `bid-review` / `bid-check` / `bid-export` |
+
+### B. 保持不变的"看起来像聚合实则单一职责"Skill
+
+| Skill | 为何不拆 |
+|---|---|
+| `mermaid-chart` | 同一种语法的多种图表类型，单一任务"生成 Mermaid 代码" |
+| `content-sync` | 同一任务"发布到平台"的不同 driver/adapter，类似数据库驱动 |
+| `md-poster` / `md-table-image` / `table-csv-md` | "整合 N 个工具"指 driver/adapter，不是多任务 |
+
+---
+
+## 四、命令拆分（v2.6 既有）
+
+| 原命令 | 拆分为 |
+|---|---|
+| `/product-spec --mode {prd, spec, proto, lite}` | `/prd-standard` `/prd-spec-first` `/prd-proto` `/prd-lite` |
+| `/prd-writer` | `/prd-diagnose` `/prd-concept` `/prd-impl` `/prd-update` `/prd-quality` `/prd-deep-evaluate` |
+| `/self-evolve` | `/style-extract` `/style-create` `/style-refine` |
+| `/humanize` | `/humanize-scan` `/humanize-soul` `/humanize-academic` |
+| `/remotion-generate` | `/remotion-native` `/remotion-prompt2video` `/remotion-vidosy` |
+| `/diagram` | `/diagram-mindmap` `/diagram-uml`（mermaid-chart 命令保持）|
+| `/md-visual` | `/md-poster` `/md-table-image` |
+| `/table` | `/table-from-text` `/table-csv` |
+| `/data-dashboard` | `/dashboard-northstar` `/dashboard-aarrr` `/dashboard-cohort` `/dashboard-revenue` `/dashboard-customer-br` `/dashboard-ai-monitor` `/dashboard-platform-selector` |
+| `/bid` | `/bid-analyze` `/bid-clarify` `/bid-outline` `/bid-write` `/bid-review` `/bid-check` `/bid-export` |
+| `/product-doc` | `/product-whitepaper` 等 16 个原子命令 |
+
+---
+
+## 五、单一职责验证标准
+
+每个 Skill 的 description 必须满足：
+
+```
+✅ 一句话能讲清"这个 Skill 做什么"
+✅ 不出现"支持 N 种模式"、"M 轮流程"、"合并自 X+Y"等暗示多任务的措辞
+✅ 在文档中明确写出"不做什么 → 流转到哪个 Skill / 命令"
+✅ 一次调用消耗的上下文 ≤ 单一任务所需，不会拉满
+```
+
+> **例外**：driver/adapter 模式 Skill（`mermaid-chart` / `content-sync` / `md-poster` / `table-csv-md`）允许在 description 中列出底层引擎，但核心职责必须是单一任务。
+
+---
+
+## 六、当前文件结构
 
 ```
 WorkAgent/
-├── agents/             # 27
-├── skills/             # 88
+├── agents/             # 24
+├── skills/             # 129（严格单一职责）
 ├── commands/
-│   ├── writing/        # 8
-│   ├── product/        # 49
+│   ├── writing/        # 11（含 style-*/humanize-* 拆分）
+│   ├── product/        # 46（含 prd-*/dashboard-*/pm-* 拆分）
+│   ├── presales/       # 35（含 bid-* 七阶段 + product-* 16 类）
 │   ├── research/       # 4
-│   ├── media/          # 11
-│   └── hr/             # 1
-├── templates/          # 15
-│   ├── PM 文档：prd / pm-discovery / brd / mrd / roadmap / acceptance-checklist
-│   ├── 战略文档：pr-faq / six-pager
-│   ├── 沟通文档：one-on-one / stakeholder-update / status (sales-enablement)
-│   ├── 工程文档：release-note / requirement-pool
-│   └── AI 文档：model-card / ai-eval-rubric
-├── CLAUDE.md
-├── AGENTS.md
+│   └── media/          # 16（含 remotion-*/diagram-*/md-*/table-* 拆分）
+├── templates/          # 13
 ├── HEALTH_REPORT.md（本文件）
 └── README.md
 ```
 
 ---
 
-## 四、可直接使用的 templates 完整填充版
+## 七、易混命令边界
 
-| 模板 | 章节数 | 一句话 |
-|------|------|------|
-| `pm-discovery-template.md` | 10 章 | 结论 / 市场 / 客户 / 痛点 / 竞品 / MVP / 风险 / 下一步 |
-| `sales-enablement-template.md` | 12 章 | 定位 / 痛点 / 价值 / Demo 脚本 / FAQ 10 条 / 竞品话术 / 成交节奏 / 不适合客户 |
-| `acceptance-checklist-template.md` | 10 章 | 功能 / 权限 / 数据 / 异常 / 性能 / 安全 / 客户验收 / 阻断项 / Go/No-Go |
-| `prd-template.md` | 12 章 | B 端严格 PRD（权限 / 审计 / 合规默认必填）|
+### PRD 系列（10 个命令）
 
----
+| 场景 | 命令 |
+|---|---|
+| 1 页对齐方向 | `/prd-lite` |
+| 标准 8 章 PRD | `/prd-standard` |
+| Spec-First 四件套 | `/prd-spec-first` |
+| 含 ASCII 线框图 | `/prd-proto` |
+| B 端严格 12 章 | `/pm-prd-enterprise` |
+| 通用 5 维度评分 | `/prd-quality` |
+| 23 节模板差距分析 | `/prd-deep-evaluate` |
+| 对话式渐进生成（想法模糊）| `/prd-diagnose` → `/prd-concept` → `/prd-impl` |
+| 已有 PRD 增量变更 | `/prd-update` |
 
-## 五、易混命令边界（已写入 CLAUDE.md）
+### Style / Humanizer 系列
 
-- `/product-spec` vs `/pm-prd-enterprise`：通用 / C 端 vs B 端 SaaS / 私有化（严格 12 章模板）
-- `@product-manager` vs `@product-director`：执行层 vs 策略层
-- `@solution-architect` vs `@product-manager`：售前 / 客户视角 vs 产品定义 / 多客户通用
-- `@solution-architect` vs `@proposal-writer`：售前总指挥（端到端） vs 项目方案专项撰写
-- `@qa-acceptance-designer` vs `/launch-checklist`：验收方案 vs 发布全流程
-- `pm-ai-security-product` Skill vs `@ai-product-architect`：方法论 vs 套用方法论的 Agent
-- `/marketing-copy` vs `/article-writer`：带营销目的的推广（CTA 明确）vs 公众号长文（个人风格）
-- `/marketing-copy --type case` vs `/product-doc --type case`：媒体外推版 vs 官网案例库版
-- `/rfp-response` vs `@bid-writer`：问题清单逐条作答 vs 招标文件全流程
-- `/security-questionnaire` vs `/compliance-checklist`：客户问卷应答 vs 我方主动建立合规
-- `/business-case` vs `/proposal`：全数字财务论证 vs 综合方案叙述
-- `/gap-analysis` vs `/solution-architecture`：需求适配度 vs 完整方案蓝图
-- `/discovery-call` vs `/pm-discovery`：单客户深度访谈 vs PM 全流程发现阶段
+| 场景 | 命令 |
+|---|---|
+| 提炼风格卡片 | `/style-extract` |
+| 风格驱动从零创作 | `/style-create` |
+| 已有文章风格优化 | `/style-refine` |
+| AI 痕迹扫描去除 | `/humanize-scan` |
+| 灵魂注入 | `/humanize-soul` |
+| 学术深度强化 | `/humanize-academic` |
 
----
+### Dashboard 系列
 
-## 六、使用入口（一行命令上手）
+| 看板类型 | 命令 |
+|---|---|
+| 北极星 | `/dashboard-northstar` |
+| AARRR 漏斗 | `/dashboard-aarrr` |
+| Cohort 留存 | `/dashboard-cohort` |
+| 收入（MRR/ARR/NRR）| `/dashboard-revenue` |
+| 客户 BR / QBR | `/dashboard-customer-br` |
+| AI 功能监控 | `/dashboard-ai-monitor` |
+| 平台选型决策 | `/dashboard-platform-selector` |
 
-```bash
-# === PM 全流程 ===
-/pm-intake "脑子里那个模糊的想法"
-/pm-discovery "明确的产品方向"
-/pm-prd-enterprise "立项后的产品名"        # B 端 12 章 PRD
-/product-spec --mode prd "立项产品"        # C 端 / 通用 PRD
-/pm-review "PRD 文件路径"
-@qa-acceptance-designer "MVP 范围"
-/pm-sales-pack "产品名 / 目标客户"
+### Bid 系列（七阶段串行）
 
-# === 售前 / 解决方案全链路 ===
-@solution-architect 某城商行 SOC 项目      # 端到端编排
-/discovery-call 某客户 --mode prep         # 拜访前准备
-/gap-analysis ./Requirements.xlsx          # 需求适配度
-/solution-architecture 某项目 --mode blueprint
-/business-case 某项目 --mode onepage       # ROI 一页纸
-/rfp-response ./RFP.xlsx
-/security-questionnaire ./VSQ.xlsx
-/battle-card Splunk --tier 1
-/demo-design 某关键客户 --mode storyline
-
-# === 营销推广 ===
-/marketing-copy 产品名 --type wechat --cta demo    # 公众号软文
-/marketing-copy 产品名 --type landing               # 落地页
-/marketing-copy 客户名 --type case                  # 案例稿
-
-# === B2B 产品资料 ===
-/product-doc 产品名 --type whitepaper --industry fintech
-@product-enablement 产品名 + 场景                   # 24 类资料批量
-/proposal 项目名 --type presale                     # 售前方案
+```
+/bid-analyze → /bid-clarify → /bid-outline → /bid-write → /bid-review → /bid-check → /bid-export
 ```
 
----
+### Diagram 系列
 
-## 七、可选的进一步优化（暂未执行）
-
-1. `agents/visual-creator.md` 已声明"已重命名为 article-illustrator"，可考虑直接删除（外部引用风险低）。
-2. `commands/product/prd.md` 兼容入口可在所有 README/CLAUDE 引用全部迁移到 `/pm-prd-enterprise` 后删除。
-3. `hooks/` 目录目前不存在但被 `CLAUDE.md` 配置概览表格列出，建议要么删除该行，要么创建空目录占位。
-4. 部分高级 Agent（如 `@product-manager`、`@solution-architect`）的 `skills:` 列表已含 15+ 项，未来可考虑为子领域拆分轻量版。
+| 引擎 | 命令 |
+|---|---|
+| Mermaid（流程/甘特/状态/ER 等）| `/illustrate --backend mermaid` |
+| PlantUML（全系 UML）| `/diagram-uml` |
+| Markmap（思维导图）| `/diagram-mindmap` |
+| 云架构图（diagrams 库）| `/arch-diagram` |
+| Visio 创建 / 格式互转 | `/visio` |
 
 ---
 
@@ -169,8 +230,29 @@ WorkAgent/
 
 所有 Skill / Agent / Command 须遵守：
 
-1. **Frontmatter 规范**：name / description / 关键字段齐全
-2. **写作四层自检**：活人感 / 情感 / 信息 / 结构
-3. **量化驱动**：商业输出（Business Case / RFP / Demo）数字可查证
-4. **客户视角**：售前文档不用我方产品行话，用客户行业术语
-5. **诚实承诺**：做不到的明说 + 替代方案 + 时间表
+1. **单一职责**：一个 Skill 只做一件事（v2.6 起核心）
+2. **Frontmatter 规范**：name / description / 关键字段齐全
+3. **写作四层自检**：活人感 / 情感 / 信息 / 结构
+4. **量化驱动**：商业输出（Business Case / RFP / Demo）数字可查证
+5. **客户视角**：售前文档不用我方产品行话，用客户行业术语
+6. **诚实承诺**：做不到的明说 + 替代方案 + 时间表
+
+---
+
+## 九、本轮验证结果
+
+- ✅ 检查所有 `commands/` 和 `agents/` 中对 `skills/*` 的路径引用：**零断链**
+- ✅ 检查所有 agent frontmatter 中 `skills:` 列表：**零无效引用**
+- ✅ 修复 v2.6 后残留的 25+ 处对已删命令 / Skill / Agent 的纯文本引用
+- ✅ 删除被 Skill 完全覆盖的冗余 `@writer-reviewer` Agent
+- ✅ 3 处 SR 违规描述已修正（`proposal-generator` / `ai-illustrator` / `bid-write`）
+
+---
+
+## 十、可选的进一步优化
+
+1. **README 中保留的 `--mode` 示例审计**：当前 README 已尽量改用原子命令，但部分命令（如 `/discovery-call --mode prep`、`/ab-test --mode design`）的 `--mode` 是命令内部行为开关而非 v2.6 路由 flag，保留合理。如未来全部改为 flag-free 调用，需再次扫描清理。
+2. **Agent 维度的拆分**：`@product-manager` 现在的 `skills:` 列表已含 40+ 项，未来可按子领域拆为 PRD 专精 / 增长专精 / B 端专精等轻量版。
+3. **PPT Agent 的引擎归并**：`@ppt-generator` skills 列表也较长，可考虑引入"引擎注册中心" Skill 减少直接引用。
+4. **跨域同名 Skill**：`pm-ai-security-product` 和新增的 `pm-ai-era-evolution` 与 `@ai-product-architect` 三者职责需要持续观察，必要时合并或进一步细化边界。
+5. **重型 Agent 减肥**：`@ppt-generator`（693 行）、`@bid-writer`（323 行）等 Agent 内嵌大量本应在 Skill 中的伪代码/模板，可在下一轮重构中迁移至对应 Skill，让 Agent 退化为纯路由层。

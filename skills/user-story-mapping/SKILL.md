@@ -237,7 +237,7 @@ Step 10: 拍照存档 + 转化为数字化故事地图
 |--------|---------|
 | `product-strategy` | 提供 Vision 和 NSM，决定地图聚焦目标 |
 | `user-research` | 提供用户角色和真实 Job-to-be-Done |
-| `product-spec` | 故事地图 → PRD/Spec 详细规格 |
+| `prd-standard` | 故事地图 → PRD/Spec 详细规格 |
 | `roadmap` | 故事地图切片 → 路线图里程碑 |
 | `mvp-canvas` | Walking Skeleton 即 MVP 范围 |
 | `roadmap` | Release Slices → 路线图里程碑 |

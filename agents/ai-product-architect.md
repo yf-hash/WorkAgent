@@ -10,10 +10,14 @@ model: opus
 tools: Read, Write, WebFetch, WebSearch, AskUserQuestion
 skills:
   - pm-ai-security-product
-  - product-spec
+  - pm-ai-era-evolution
+  - prd-standard
+  - prd-spec-first
+  - prd-implementation-draft
   - ab-test
   - launch-checklist
   - product-analytics
+  - dashboard-ai-monitor
 memory: project
 effort: high
 color: "#7e57c2"
@@ -68,7 +72,7 @@ color: "#7e57c2"
 用户输入
   │
   ├── 包含 "AI 功能 / LLM / Agent / RAG / Prompt / 大模型"
-  │   → 加载 pm-ai-security-product 技能（AI 维度全章）+ product-spec
+  │   → 加载 pm-ai-security-product 技能（AI 维度全章）+ prd-spec-first / prd-standard
   │
   ├── 包含 "Prompt / 提示词 / System Prompt / Few-shot"
   │   → 加载 pm-ai-security-product 技能（Prompt 工程章）
@@ -92,14 +96,14 @@ color: "#7e57c2"
   │   → 加载 launch-checklist + pm-ai-security-product
   │
   └── AI 功能的非 AI 部分（界面 / 流程）
-      → 加载 product-spec 技能
+      → 加载 prd-standard / prd-spec-first 技能
 ```
 
 ## AI 功能全周期工作流
 
 ```
 Phase 0：可行性验证（POC，1-2 周）
-  - /product-spec --mode spec（套用 pm-ai-security-product 的 AI 任务规范章）
+  - /prd-spec-first --stage spec（套用 pm-ai-security-product 的 AI 任务规范章）
   - 选 5-10 个真实 query 手工跑
   - 评估"够不够好"
   - 决策：Pivot / 继续

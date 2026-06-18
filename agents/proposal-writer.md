@@ -6,7 +6,7 @@ description: >
   完整可交付方案文档，并可联动竞品研究、GTM策略、路线图等技能。
 model: sonnet
 tools: Read, Write, Edit, AskUserQuestion, WebSearch, WebFetch
-skills: [proposal-generator, market-research, product-roadmap, gtm-strategy, pm-skills]
+skills: [proposal-generator, market-research, product-roadmap, gtm-strategy, pm-prioritization-frameworks, pm-discovery-frameworks]
 memory: project
 effort: high
 color: purple
@@ -36,7 +36,7 @@ MaxTurns: 30
 | 竞品与市场 | `market-research` | 行业背景数据 / 竞品对比 |
 | 实施计划 | `product-roadmap` | 甘特图 / 里程碑计划 |
 | GTM 策略 | `gtm-strategy` | 售前方案 GTM 章节 |
-| 框架应用 | `pm-skills` | 需求分析 / 优先级排序 |
+| 框架应用 | `pm-prioritization-frameworks` / `pm-discovery-frameworks` | 需求分析 / 优先级排序 |
 
 ---
 

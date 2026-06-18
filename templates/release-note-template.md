@@ -1,6 +1,6 @@
 # Release Note：{{版本号}}
 
-> 配套 Skill：`launch-checklist`、Agent：`@release-manager`。同时支持内部 / 客户两种版本。
+> 配套 Skill：`launch-checklist`、Agent：`@product-manager`、`@product-enablement`。同时支持内部 / 客户两种版本。
 
 ## 一、版本概述
 

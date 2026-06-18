@@ -230,5 +230,5 @@ NSM = [广度] × [频率] × [质量]
 | `user-feedback` | 提供 Pains 和 Gains 的真实素材 |
 | `product-analytics` | 提供 NSM 和 Input 指标的埋点设计 |
 | `gtm-strategy` | 接收战略输出，落地为 90 天上市计划 |
-| `product-spec` | 接收 Solution，落地为 PRD/Spec |
+| `prd-standard` | 接收 Solution，落地为 PRD/Spec |
 | `pricing-strategy` | 深化 Revenue Streams 格子 |

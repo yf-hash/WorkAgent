@@ -1,6 +1,6 @@
 # 销售赋能材料模板：{{产品/功能名称}}
 
-> 配套 Skill：`sales-guide-writer`、`product-doc-writer`、`pm-ai-security-product`（如含 AI 安全场景）
+> 配套 Skill：`sales-guide-writer`、`product-*-writer` 系列（whitepaper / case / sales-faq / 等 16 个 Skill 按需）、`pm-ai-security-product`（如含 AI 安全场景）
 > 配套 Agent：`@product-enablement`、`@proposal-writer`、`@solution-architect`
 > 输出于：`/pm-sales-pack "<产品名> / <目标客户>"`
 

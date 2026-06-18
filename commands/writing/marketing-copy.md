@@ -14,7 +14,7 @@ argument-hint: "<产品/主题> [--type wechat|xhs|zhihu|moments|video|landing|e
 加载技能：`skills/marketing-copy/SKILL.md`
 
 ## 触发条件
-需要生成带营销目的的产品推广内容（区别于个人风格的公众号长文 `/article-writer`、内部资料体系 `/product-doc`、客户响应方案 `/proposal`）：
+需要生成带营销目的的产品推广内容（区别于个人风格的公众号长文 `/article-writer`、内部资料体系 `/product-*` 系列、客户响应方案 `/proposal`）：
 - 给媒体 / 自媒体投放的软文、种草、PR 稿
 - 给官网 / 落地页 / 邮件 / 短视频用的文案
 - 给销售外推用的客户故事 / 案例稿
@@ -149,7 +149,7 @@ Step 7: 输出
 | 选择 | 用前者 | 用后者 |
 |------|-------|-------|
 | `/marketing-copy` vs `/article-writer` | 带营销目的的推广（CTA 明确）| 公众号长文（个人风格 / 观点输出）|
-| `/marketing-copy --type case` vs `/product-doc --type case` | 媒体外推 / 公众号发版本 | 官网案例库 / 销售口袋资料 |
+| `/marketing-copy --type case` vs `/product-case` | 媒体外推 / 公众号发版本 | 官网案例库 / 销售口袋资料 |
 | `/marketing-copy` vs `/sales-guide` | 给读者 / 客户看的 | 给销售用的内部话术 |
 | `/marketing-copy --type pr` vs `/working-backwards` | 对外发布的真实新闻稿 | 立项前内部 PR-FAQ（决策工具）|
 | `/marketing-copy` vs `/proposal` | 标准化推广物料 | 一对一客户响应方案 |

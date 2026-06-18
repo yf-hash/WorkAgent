@@ -239,8 +239,7 @@ W4：
 - Model Card：`templates/model-card-template.md`
 - Eval Rubric：`templates/ai-eval-rubric-template.md`
 - 安全合规：`/compliance-checklist`
-- 上线决策：`@release-manager` + `/launch-checklist`
-- 决策记录：`/decision-log register --type ai-red-team`
+- 上线决策：`/launch-checklist` + `@qa-acceptance-designer`
 ```
 
 ## 输出原则
@@ -264,4 +263,4 @@ W4：
 - Eval Rubric：`templates/ai-eval-rubric-template.md`
 - AI 安全产品方法论：`skills/pm-ai-security-product/SKILL.md`
 - 合规：`/compliance-checklist`
-- 上线门禁：`@release-manager` + `@qa-acceptance-designer`
+- 上线门禁：`@qa-acceptance-designer` + `/launch-checklist`

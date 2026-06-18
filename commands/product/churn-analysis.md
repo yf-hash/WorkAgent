@@ -5,6 +5,8 @@ argument-hint: "[时间区间 / 客户群]"
 
 # /churn-analysis — 流失分析 + 挽留剧本
 
+加载技能：`skills/churn-analysis/SKILL.md`
+
 请基于以下输入做 Churn 分析：
 
 $ARGUMENTS
@@ -113,7 +115,7 @@ B 端 Win-Back 转化率 5-15%。
 | 客户 | 流失原因 | Win-Back 触发条件 | 跟进人 |
 
 ## 九、关联资源
-- 数据看板：`/data-dashboard --mode customer-health`
+- 数据看板：`/dashboard-customer-br`（客户健康度看板）
 - 用户研究（离场访谈）：`/user-research --mode interview`
 - 销售对账：`/win-loss`
 ```

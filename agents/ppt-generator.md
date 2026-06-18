@@ -20,7 +20,8 @@ tools:
   - WebFetch
   - AskUserQuestion
 skills:
-  - ppt-source
+  - ppt-rag-indexer
+  - ppt-web-researcher
   - ppt-architect
   - academic-pptx
   - slidetailor
@@ -28,7 +29,10 @@ skills:
   - slidev
   - marp
   - pptx-sdk
-  - diagram-suite
+  - mermaid-chart
+  - diagram-plantuml
+  - diagram-markmap
+  - arch-diagram
 memory: project
 effort: high
 color: "#5c6bc0"
@@ -122,7 +126,7 @@ MaxTurns: 50
 
 ## Phase 2: 多源内容搜集（无 --rag 时执行）
 
-调用 `ppt-researcher` 技能执行并行多渠道搜索：
+调用 `ppt-web-researcher` 技能执行并行多渠道搜索：
 
 ```python
 researcher = PPTResearcher(
@@ -165,7 +169,7 @@ researcher.export(verified, output_dir="./ppt_assets/")
 
 ## Phase 2B: RAG 材料索引与检索（有 `--rag` 时执行）
 
-调用 `ppt-rag` 技能，替代或补充 Phase 2：
+调用 `ppt-rag-indexer` 技能，替代或补充 Phase 2：
 
 ```python
 rag = PPTRag(
@@ -202,7 +206,7 @@ retrieved = rag.retrieve_for_ppt(
     top_k=params.rag_top_k
 )
 
-# Step 5: 内容合成 → 输出素材包（格式与ppt-researcher完全一致）
+# Step 5: 内容合成 → 输出素材包（与 research 模式完全一致的格式）
 rag.synthesize(retrieved, output_dir="./ppt_assets/")
 # 输出：outline.md / data.md / quotes.md / refs.md / rag_report.md
 ```

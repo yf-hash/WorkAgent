@@ -245,7 +245,7 @@ D+30：商业指标复盘
 | `gtm-strategy` | Marketing/Sales 轨道的内容来源 |
 | `roadmap` | 发布日期来自路线图 |
 | `ab-test` | 灰度阶段的实验设计 |
-| `product-doc` | Release Notes / 培训 PPT 等资料 |
+| `product-release-note` / `product-training` | Release Notes / 培训 PPT 等资料 |
 | `analytics` | D-Day 监控指标埋点设计 |
 | `pm-qa-acceptance` | 上线阻断项与客户验收口径 |
 
@@ -255,5 +255,4 @@ D+30：商业指标复盘
 
 - `templates/release-note-template.md` — Release Note 标准模板（内部 + 客户两版）
 - `templates/acceptance-checklist-template.md` — 上线前测试验收清单
-- `@release-manager` Agent — 发布全流程编排
 - `@qa-acceptance-designer` Agent — 验收方案与上线阻断项

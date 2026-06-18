@@ -86,5 +86,5 @@ Step 7: 文件打包
 |------|-------|-------|
 | `/security-questionnaire` vs `/compliance-checklist` | 客户问卷应答（被动）| 我方主动建立合规体系 |
 | `/security-questionnaire` vs `/rfp-response` | 纯安全维度深度问卷 | 综合 RFP（含部分安全题）|
-| `/security-questionnaire` vs `/bid full` | 安全问卷专项 | 招标文件全流程 |
+| `/security-questionnaire` vs `/bid-analyze → /bid-export` 七阶段 | 安全问卷专项 | 招标文件全流程 |
 | `/security-questionnaire` vs `/ai-red-team` | 客户对我方安全的评估 | AI 产品红队对抗测试 |

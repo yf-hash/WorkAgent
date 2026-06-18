@@ -8,10 +8,13 @@ model: opus
 tools: Read, Write, AskUserQuestion
 skills:
   - pm-core-framework
-  - pm-full-cycle
+  - pm-discovery-frameworks
+  - pm-prioritization-frameworks
+  - pm-upward-management
   - product-strategy
   - product-roadmap
-  - product-spec
+  - prd-standard
+  - prd-spec-first
 memory: project
 effort: high
 color: red

@@ -5,6 +5,8 @@ argument-hint: "[决策主题，如 自建身份系统 vs 用 Auth0]"
 
 # /build-vs-buy — Build vs Buy 决策评估
 
+加载技能：`skills/build-vs-buy/SKILL.md`
+
 请基于以下输入，使用 Build vs Buy 框架评估：
 
 $ARGUMENTS

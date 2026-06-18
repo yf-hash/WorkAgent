@@ -181,7 +181,6 @@ Deal 关闭后 **2-6 周内**访谈最有效：
 
 ## 十、关联资源
 - 客户访谈纪要：[链接]
-- 决策记录：`/decision-log register --type win-loss`
 - 后续 ICP 修正：`@research-analyst` + `/product-strategy`
 - 销售改进：`@product-enablement`
 ```

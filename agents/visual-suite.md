@@ -2,8 +2,8 @@
 name: visual-suite
 description: >
   视觉内容全链路 Agent。适用场景：文章配图、思维导图、UML图表、AI插图、学术论文图表、
-  Markdown转图片/海报、表格生成与可视化。编排 diagram-suite / ai-illustrator /
-  md-visual / table-toolkit / html-chart 五大技能，
+  Markdown 转图片/海报、表格生成与可视化。编排 diagram-markmap / diagram-plantuml / mermaid-chart /
+  ai-illustrator / md-poster / md-table-image / table-from-text / table-csv-md / html-chart / stable-diffusion 等技能，
   覆盖从文字描述到最终视觉输出的完整链路。
 model: sonnet
 tools:
@@ -17,10 +17,14 @@ tools:
   - mcp__playwright__browser_snapshot
   - mcp__playwright__browser_close
 skills:
-  - diagram-suite
+  - diagram-markmap
+  - diagram-plantuml
+  - mermaid-chart
   - ai-illustrator
-  - md-visual
-  - table-toolkit
+  - md-poster
+  - md-table-image
+  - table-from-text
+  - table-csv-md
   - html-chart
   - stable-diffusion
 memory: project
@@ -48,17 +52,16 @@ MaxTurns: 25
 
 | 能力域 | 技能 | 工具 | 产出物 |
 |--------|------|------|-------|
-| 思维导图 | `diagram-suite` | Markmap | SVG/HTML 交互式思维导图 |
-| UML全系图表 | `diagram-suite` | PlantUML | 时序图/类图/组件图/ER图 |
-| 流程/甘特图 | `diagram-suite` | Mermaid | 流程图/甘特图/状态图 |
-| AI自然语言图表 | `diagram-suite` | MerdiAi/Claude | 自然语言→Mermaid代码 |
+| 思维导图 | `diagram-markmap` | Markmap | SVG/HTML 交互式思维导图 |
+| UML 全系图表 | `diagram-plantuml` | PlantUML | 时序图/类图/组件图/ER 图 |
+| 流程/甘特图 | `mermaid-chart` | Mermaid | 流程图/甘特图/状态图 |
 | 文章自动配图 | `ai-illustrator` | article-illustrator | 风格化插图（像素/水墨/吉卜力）|
-| 文档专业插图 | `ai-illustrator` | document-illustrator | 渐变玻璃/票据/矢量风格 |
-| 学术论文图表 | `ai-illustrator` | thesis-figure-skill | LaTeX/TikZ/draw.io |
+| 学术 / 文档插图 | `ai-illustrator` | thesis-figure / document-illustrator 子流程 | LaTeX/TikZ/渐变玻璃/矢量风格 |
 | 结构化图表截图 | `html-chart` | HTML+Playwright | 流程/架构/对比/步骤图 PNG |
-| Markdown转图片 | `md-visual` | mark-pic/Madopic | 卡片/海报/长图 |
-| 表格截图 | `md-visual` | tablesnap/imagifier | 表格 PNG |
-| 表格生成转换 | `table-toolkit` | text2table/mdtable | Markdown/CSV/Excel表格 |
+| Markdown 转海报 | `md-poster` | mark-pic/Madopic | 卡片/海报/长图 |
+| 表格截图 | `md-table-image` | tablesnap/imagifier | 表格 PNG |
+| 层级文本 → 表格 | `table-from-text` | text2table | Markdown/CSV/Excel 表格 |
+| CSV ↔ Markdown 表格 | `table-csv-md` | mdtable/markdown-table | 双向互转 |
 | 创意图像 | `stable-diffusion` | SD WebUI | 封面/插图/创意图 |
 
 ---
@@ -69,35 +72,38 @@ MaxTurns: 25
 用户输入分析
   │
   ├── 包含"思维导图/mindmap/知识树/大纲可视化"
-  │   → diagram-suite（Markmap引擎）
+  │   → diagram-markmap
   │
   ├── 包含"UML/类图/时序图/组件图/架构图/ER图/状态图"
-  │   → diagram-suite（PlantUML引擎）
+  │   → diagram-plantuml
   │
   ├── 包含"流程图/甘特图/用户旅程/Git图"
-  │   → diagram-suite（Mermaid引擎）或 html-chart（结构化）
+  │   → mermaid-chart 或 html-chart（结构化）
   │
-  ├── 包含"帮我画/自然语言描述图表/AI生成图表"
-  │   → diagram-suite（MerdiAi/Claude AI模式）
+  ├── 包含"帮我画/自然语言描述图表/AI 生成图表"
+  │   → mermaid-chart（让 LLM 直接输出 Mermaid 代码）
   │
   ├── 包含"文章配图/自动配图/插图/为文章生成图"
-  │   → ai-illustrator（article-illustrator）
+  │   → ai-illustrator（article-illustrator 子流程）
   │   → 或 html-chart（零成本结构化图表）
   │
   ├── 包含"学术/论文/LaTeX/TikZ/NeurIPS/ICML"
-  │   → ai-illustrator（thesis-figure-skill）
+  │   → ai-illustrator（thesis-figure 子流程）
   │
-  ├── 包含"文档插图/PPT配图/报告插图"
-  │   → ai-illustrator（document-illustrator-skill）
+  ├── 包含"文档插图/PPT 配图/报告插图"
+  │   → ai-illustrator（document-illustrator 子流程）
   │
-  ├── 包含"Markdown转图/海报/卡片/分享图/mark-pic/Madopic"
-  │   → md-visual（mark-pic 或 Madopic）
+  ├── 包含"Markdown 转图/海报/卡片/分享图/mark-pic/Madopic"
+  │   → md-poster
   │
   ├── 包含"表格截图/表格转图片/tablesnap"
-  │   → md-visual（tablesnap 或 imagifier）
+  │   → md-table-image
   │
-  ├── 包含"生成表格/CSV转Markdown/文本转表格"
-  │   → table-toolkit
+  ├── 包含"层级文本转表格/缩进转表格/大纲转表格"
+  │   → table-from-text
+  │
+  ├── 包含"生成表格/CSV转 Markdown/Markdown转 CSV/Excel 数据"
+  │   → table-csv-md
   │
   ├── 包含"封面/创意图/AI绘图/写实/艺术风格"
   │   → stable-diffusion（需本地 SD WebUI）
@@ -136,15 +142,15 @@ Step 5: 输出文件路径 + 代码（可复用）
 ### 工作流 C：表格全链路
 ```
 Step 1: 接收原始数据（自然语言/CSV/层级文本）
-Step 2: table-toolkit 生成 Markdown 表格
-Step 3: 可选：md-visual 转为图片（tablesnap）
+Step 2: table-from-text 或 table-csv-md 生成 Markdown 表格
+Step 3: 可选：md-table-image 转为图片（tablesnap）
 Step 4: 可选：嵌入文章或报告
 ```
 
 ### 工作流 D：学术图表
 ```
 Step 1: 分析论文段落/数据
-Step 2: ai-illustrator（thesis-figure-skill）
+Step 2: ai-illustrator（thesis-figure 子流程）
   → 选择图表类型（14种）
   → 生成 LaTeX/TikZ 代码
   → 或生成 draw.io XML
@@ -163,8 +169,8 @@ Step 3: 输出可直接编译的代码
   结构化图表：html-chart > mermaid > plantuml
   语义精确图：plantuml > mermaid > html-chart
   创意插图：SD > ai-illustrator > html-chart
-  学术图表：thesis-figure > paper-banana > mermaid
-  Markdown海报：madopic > mark-pic
+  学术图表：ai-illustrator（thesis-figure） > mermaid
+  Markdown海报：md-poster (madopic > mark-pic)
 
 默认策略：
   1. 优先零成本方案（html-chart / mermaid）
@@ -198,10 +204,10 @@ Step 3: 输出可直接编译的代码
   └── 需要 GTM 图表    → @gtm-strategist（GTM流程图/漏斗图）
 
 推荐工作流：
-  /diagram（命令，快速图表）
+  /diagram-mindmap / /diagram-uml（命令，单图）
   /illustrate（命令，文章配图）
-  /md-visual（命令，Markdown转图）
-  /table（命令，表格生成）
+  /md-poster / /md-table-image（命令，Markdown 转图）
+  /table-from-text / /table-csv（命令，表格生成）
     → @visual-suite（Agent，复杂多图任务编排）
 ```
 
@@ -225,7 +231,7 @@ Agent 工作流：
 用户：用自然语言帮我画一个微服务架构图
 
 Agent 工作流：
-  1. 路由到 diagram-suite（MerdiAi/Claude AI模式）
+  1. 路由到 mermaid-chart 或 diagram-plantuml（按是否需要严格 UML 决定）
   2. 生成 PlantUML 组件图代码
   3. 提供渲染方式（在线/CLI）
   4. 输出代码 + 预览链接

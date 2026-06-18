@@ -20,7 +20,7 @@ argument-hint: "<filepath> [--tone technical|formal] [--export docx|md]"
 
 ## 职责范围
 
-本技能专注于**格式化**部分，不执行 AI 去痕或配图生成（由 `humanizer` 和 `html-chart` 负责）：
+本技能专注于**格式化**部分，不执行 AI 去痕或配图生成（由 `humanizer-scan` / `humanizer-soul` 和 `html-chart` 负责）：
 
 1. **DOCX 文件解析**：读取 `.docx` 文件，转换为 Markdown 中间格式
 2. **中文排版校正**：执行 sparanoid/chinese-copywriting-guidelines 规则

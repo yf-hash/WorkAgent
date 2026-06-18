@@ -5,6 +5,8 @@ argument-hint: "[AI 功能/模型/上线版本]"
 
 # /ai-red-team — AI 产品红队测试
 
+加载技能：`skills/ai-red-team/SKILL.md`
+
 请基于以下 AI 功能 / 模型版本，制定红队测试计划：
 
 $ARGUMENTS
@@ -115,8 +117,7 @@ W4: 跟踪修复 + 回归测试 + 对接下季度
 - Eval Rubric：`templates/ai-eval-rubric-template.md`
 - AI 安全产品方法论：`pm-ai-security-product`
 - 合规：`/compliance-checklist`
-- 上线决策：`@release-manager` + `/launch-checklist`
-- 决策记录：`/decision-log register --type ai-red-team`
+- 上线决策：`/launch-checklist` + `@qa-acceptance-designer`
 ```
 
 ## 输出原则

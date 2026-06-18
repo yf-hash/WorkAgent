@@ -3,15 +3,15 @@ name: proposal
 description: >
   售前方案文档 — 企业项目型方案撰写。覆盖售前解决方案、可行性研究报告、
   初步设计方案三大类型，行业适配（政府 / 金融 / 制造 / SaaS），
-  与 /sales-guide / /product-doc / /bid 互补。
+  与 /sales-guide / /product-* 系列 / /bid-* 七阶段标书互补。
   
   与相邻命令的边界（防混淆）：
   - vs /sales-guide：本命令产出"客户响应方案"（项目型，一次性）；
     /sales-guide 产出"销售一页禅"（场景剧本，给销售用）。
-  - vs /product-doc：本命令是"项目型一次性方案"；
-    /product-doc 是"产品级可复用资料体系（24 类标准文档）"。
-  - vs /bid（commands/writing/bid.md）：本命令更通用；
-    /bid 专门做招投标全流程（七阶段流水线）。
+  - vs /product-* 系列：本命令是"项目型一次性方案"；
+    /product-whitepaper / /product-solution 等是"产品级可复用资料"。
+  - vs /bid-* 七阶段：本命令更通用；
+    /bid-analyze → /bid-export 流水线专门做招投标全流程。
   适用于：客户响应型方案、项目立项报告、技术方案确认。
 user-invocable: true
 argument-hint: "<项目描述> [--type presale|feasibility|design] [--industry gov|finance|mfg|saas|general] [--section all|outline|chapter] [--output md|outline|brief]"

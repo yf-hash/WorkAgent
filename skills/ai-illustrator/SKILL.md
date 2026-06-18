@@ -1,10 +1,12 @@
 ---
 name: ai-illustrator
 description: >
-  AI 智能插图生成知识库。触发词：文章插图、学术配图、论文图表、文档插图、
-  AI插图、自动配图、article-illustrator、thesis-figure、paper-banana、
-  document-illustrator、jaaz、插画生成、风格插图、像素风、水墨风、吉卜力风格。
-  支持文章自动配图、学术论文图表、文档专业插图、创意画布四大场景。
+  AI 智能插图生成知识库 — 接收文章 / 论文 / 文档片段，按场景路由到 article-illustrator /
+  thesis-figure / document-illustrator / paper-banana 子流程，输出插图代码或文件路径。
+  触发词：文章插图、学术配图、论文图表、文档插图、AI插图、自动配图、
+  插画生成、风格插图、像素风、水墨风、吉卜力风格。
+  不做：结构化图表（→ html-chart / mermaid-chart）、SD 文生图（→ stable-diffusion）、
+  Markdown 转海报（→ md-poster）。
 user-invocable: false
 effort: high
 ---

@@ -177,5 +177,5 @@
 ## 10. 配套资源
 
 - Model Card：`templates/model-card-template.md`
-- 失败模式登记：`/experiment-log register --type ai-eval`
-- 上线 Go/No-Go：`@release-manager` + `/launch-checklist`
+- 失败模式登记：参考 `pm-ai-security-product` Skill 的失败模式登记规范
+- 上线 Go/No-Go：`/launch-checklist` + `@qa-acceptance-designer`

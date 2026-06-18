@@ -240,7 +240,7 @@ Step 4: 问卷预演
 - 团队规模未到放大期
 
 下一步：
-1. /growth-experiment --funnel referral
+1. /ab-test（针对 referral 漏斗设计实验）
 2. /pricing-strategy --mode psm（验证定价合理）
 3. 3 个月后再测 PMF
 ```

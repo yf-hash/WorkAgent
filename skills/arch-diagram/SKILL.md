@@ -196,5 +196,5 @@ python arch_output.py
 ## 与其他技能的协同
 
 - `visio-builder`：将生成的 PNG 嵌入 Visio 文档
-- `diagram-suite`：arch-diagram 作为 `arch` 引擎被路由调用
+- `mermaid-chart` / `diagram-plantuml`：轻量架构图补充
 - `html-chart`：复杂交互图表的补充方案

@@ -5,6 +5,8 @@ argument-hint: "[时间区间 / 客户群 / 产品线]"
 
 # /win-loss — Win/Loss 赢单失单分析
 
+加载技能：`skills/win-loss-analysis/SKILL.md`
+
 请基于以下输入做 Win/Loss 分析：
 
 $ARGUMENTS

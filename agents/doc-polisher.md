@@ -3,7 +3,7 @@ name: doc-polisher
 description: 文档智能润色代理 — AI去痕 + 智能配图全自动闭环，四阶段自动执行无需人工干预
 model: sonnet
 tools: Read, Write, Edit, Bash
-skills: [humanizer, doc-formatter, html-chart, mermaid-chart]
+skills: [humanizer-scan, humanizer-soul, humanizer-academic, doc-formatter, html-chart, mermaid-chart]
 memory: project
 effort: high
 color: blue
@@ -32,11 +32,12 @@ MaxTurns: 20
 
 ### Phase 2：AI 去痕处理 [自动]
 
-调用 `humanizer` Skill（五源方法论融合）：
-- **29 种模式扫描**（blader/humanizer）+ **中文高频词清洗**（op7418/Humanizer-zh）+ **7 项微策略**（降AI率精细改写）
-- **六轮改写流程**：扫描去痕 → 声音校准 → 情绪预设注入 → 审计 → 灵魂注入（H1–H6 六大人性原则）→ 学术深度强化（`academic + max` 时）
-- 根据 `--tone` 和 `--intensity` 决定执行轮次；支持 `--voice-sample` 声音校准；支持 `--domain` 激活垂直领域情绪预设
-- 交付前 6 项自查；五维度质量评分（直接性/节奏/信任度/真实性/精炼度，总分50）
+调用 `humanizer-scan` + `humanizer-soul` + 可选 `humanizer-academic` Skills（五源方法论融合）：
+- **第 1 步：humanizer-scan**（29 种模式扫描 + 中文高频词清洗 + 7 项微策略 + 中文排版校正）
+- **第 2 步：humanizer-soul**（六大人性原则 H1-H6 灵魂注入；可选声音校准 `--voice-sample` 和情绪预设 `--domain`）
+- **第 3 步（仅 academic + max）：humanizer-academic**（30 条高级学术去痕指令，9 大类）
+- 根据 `--tone` 和 `--intensity` 决定执行轮次
+- 交付前 6 项自查；五维度质量评分（直接性/节奏/信任度/真实性/精炼度，总分 50）
 
 ### Phase 3：智能配图生成 [自动]
 
