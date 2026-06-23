@@ -1,10 +1,8 @@
 ---
 name: impeccable
 description: >
-  Impeccable 设计语言入口 — 让 AI 生成的 UI 不再像 AI。集成 Paul Bakaus 的
-  impeccable.style 设计语言（27 条反 AI slop 反模式 + 7 个领域 reference + 13 个子命令）。
-  适用场景：landing page / dashboard / 组件 / 表单 / 品牌站设计与代码生成、
-  AI 味重的 UI 修复、上线前设计审查、风格调整（bolder/quieter/distill）。
+  Impeccable 设计语言入口 — 让 AI 生成的 UI 不再像 AI。集成 Paul Bakaus 的impeccable.style 设计语言（27 条反 AI slop 反模式 + 7 个领域 reference + 13 个子命令）。
+  适用场景：landing page / dashboard / 组件 / 表单 / 品牌站设计与代码生成、AI 味重的 UI 修复、上线前设计审查、风格调整（bolder/quieter/distill）。
 user-invocable: true
 argument-hint: "<craft|teach|document|extract|shape|critique|audit|polish|bolder|quieter|distill|harden|onboard> [目标] [--register brand|product] [--genre editorial|tech-minimal|luxury|brutalist|consumer-warm] [--stack react|vue|html|tailwind] [--audit-only]"
 allowed-tools:

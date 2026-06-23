@@ -1,10 +1,7 @@
 ---
 name: ab-test
 description: >
-  A/B 实验设计与分析助手。覆盖假设设计、样本量估算（含 Power Analysis）、
-  分流策略（流量切分/分层正交/独占）、显著性检验（双尾 t / 卡方 / Bayes）、
-  护栏指标体系、SRM 检测、辛普森悖论防范、实验结果解读模板。
-  适用于：注册转化率优化、定价 A/B、UX 改版、推荐算法、AI 模型上线灰度。
+  A/B 实验设计与分析助手。覆盖假设设计、样本量估算（含 Power Analysis）、分流策略（流量切分/分层正交/独占）、显著性检验（双尾 t / 卡方 / Bayes）、护栏指标体系、SRM 检测、辛普森悖论防范、实验结果解读模板。适用于：注册转化率优化、定价 A/B、UX 改版、推荐算法、AI 模型上线灰度。
 user-invocable: true
 argument-hint: "<实验目标> [--mode design|sizing|analyze|guardrails|fullset] [--metric <指标>] [--mde <最小可检测效应>] [--alpha 0.05] [--power 0.8] [--platform posthog|growthbook|optimizely|custom]"
 ---

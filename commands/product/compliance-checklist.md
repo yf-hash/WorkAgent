@@ -1,12 +1,7 @@
 ---
 name: compliance-checklist
 description: >
-  合规检查与认证规划。覆盖中国（等保 2.0 / 数据安全法 / 个保法 / 网安法 / 关基）、
-  国际（SOC 2 / ISO 27001 / GDPR / HIPAA / PCI-DSS）、行业（金融 / 医疗 / 教育）
-  合规要求。含合规优先级评估、Gap Analysis、整改清单、合规路线图、
-  TPRM 第三方风险、DPIA 数据保护影响评估、违约通知 SOP。
-  适用于：合规自查、合规认证规划、客户合规问卷应答、监管报送、
-  跨境业务合规对齐。
+  合规检查与认证规划。覆盖中国（等保 2.0 / 数据安全法 / 个保法 / 网安法 / 关基）、国际（SOC 2 / ISO 27001 / GDPR / HIPAA / PCI-DSS）、行业（金融 / 医疗 / 教育）合规要求。含合规优先级评估、Gap Analysis、整改清单、合规路线图、TPRM 第三方风险、DPIA 数据保护影响评估、违约通知 SOP。适用于：合规自查、合规认证规划、客户合规问卷应答、监管报送、跨境业务合规对齐。
 user-invocable: true
 argument-hint: "<合规框架/产品> [--mode assess|gap|roadmap|questionnaire|incident|fullset] [--framework dengbao|soc2|iso27001|gdpr|hipaa|pci|pipl|fullstack] [--region cn|us|eu|apac|global]"
 ---

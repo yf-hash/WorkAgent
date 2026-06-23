@@ -1,9 +1,7 @@
 ---
 name: launch-checklist
 description: >
-  产品发布检查清单生成器，覆盖产研测设市销 6 轨道、Soft/Hard/Gradual Launch 选型、
-  D-30 / D-7 / D-Day / D+7 时间盒、Go/No-Go 决策模板、回滚预案、
-  关键监控指标、危机响应 SOP。让发布从靠经验变成可复用的 SOP。
+  产品发布检查清单生成器，覆盖产研测设市销 6 轨道、Soft/Hard/Gradual Launch 选型、D-30 / D-7 / D-Day / D+7 时间盒、Go/No-Go 决策模板、回滚预案、关键监控指标、危机响应 SOP。让发布从靠经验变成可复用的 SOP。
   
   与相邻命令的边界（防混淆）：
   - 本命令产出"D-Day 之前的就绪清单"。

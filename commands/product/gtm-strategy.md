@@ -1,8 +1,7 @@
 ---
 name: gtm-strategy
 description: >
-  Go-to-Market 上市战略规划，覆盖增长模型选择、ICP定义、定位设计、渠道策略、定价方案、
-  90天上市计划及 GTM KPI 体系，支持 SaaS/B2B/B2C/中国市场等多种场景
+  Go-to-Market 上市战略规划，覆盖增长模型选择、ICP定义、定位设计、渠道策略、定价方案、90天上市计划及 GTM KPI 体系，支持 SaaS/B2B/B2C/中国市场等多种场景
 user-invocable: true
 argument-hint: "<产品/业务描述> [--mode diagnose|strategy|launch|optimize|fullplan] [--growth mlg|slg|plg|ecg|auto] [--market cn|global|b2b|b2c] [--output brief|doc|deck]"
 ---

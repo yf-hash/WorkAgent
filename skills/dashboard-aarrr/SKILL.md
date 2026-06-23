@@ -1,9 +1,8 @@
 ---
 name: dashboard-aarrr
 description: >
-  AARRR 漏斗看板生成知识库。模板结构：顶部 5 KPI（每层一个数字+转化率）→ 中部漏斗图+每层 vs Benchmark/上月对比
-  → 底部每层 Drill-down（按渠道/设备/地区）+流失节点 Top 3。含 PostHog HogQL 漏斗查询模板。
-  触发词：AARRR 看板、漏斗看板、转化漏斗、海盗指标看板
+  AARRR 漏斗看板生成知识库。模板结构：顶部 5 KPI（每层一个数字+转化率）→ 中部漏斗图+每层 vs Benchmark/上月对比→ 底部每层 Drill-down（按渠道/设备/地区）+流失节点 Top 3。含 PostHog HogQL 漏斗查询模板。
+触发词：AARRR 看板、漏斗看板、转化漏斗、海盗指标看板
 user-invocable: false
 effort: low
 ---
