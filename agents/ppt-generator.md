@@ -684,7 +684,7 @@ F级（<50分）持续5轮仍不达标：
 ```
 @ppt-generator
   ├─ @diagram-architect  → 批量图表生成（Phase 4 增强）
-  ├─ @market-intelligence → 市场情报补充（Phase 2 增强）
+  ├─ @research-analyst §Market Intelligence → 市场情报补充（Phase 2 增强）
   ├─ @paper-researcher   → 学术文献深度搜集（Phase 2 学术增强）
   ├─ @content-director   → 长文内容拆解优化（Phase 3 增强）
   ├─ @article-illustrator     → 封面/配图美化（Phase 7 增强）

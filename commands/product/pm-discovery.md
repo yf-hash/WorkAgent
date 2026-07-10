@@ -11,7 +11,7 @@ $ARGUMENTS
 
 > 综合使用 `market-research` / `user-research` / `product-strategy` 知识库
 > （竞品深度专项走 `/market-research --mode competitive`），
-> 一次性输出立项前需要的关键判断。深度专项请用 `@research-analyst` 或 `@market-intelligence`。
+> 一次性输出立项前需要的关键判断。深度专项请用 `@research-analyst`（含 Market Intelligence Focus Mode）。
 
 ## 输出内容
 
@@ -49,6 +49,6 @@ $ARGUMENTS
 ## 推荐后续
 
 - 立项通过 → `/product-strategy` → `/prd-standard`（C 端）或 `/pm-prd-enterprise`（B 端 SaaS）
-- 需要更深市场情报 → `@market-intelligence`
+- 需要更深市场情报 → `@research-analyst §Market Intelligence Focus Mode`
 - 需要客户访谈设计 → `/user-research`
 - 综合多领域研究 → `@research-analyst`

@@ -206,7 +206,7 @@ Stage 7：合同阶段（T+135 ~ T+165）
 @solution-architect（本 Agent）
   ├── 需要写产品 PRD → @product-manager
   ├── 需要做 GTM 战略 → @gtm-strategist
-  ├── 需要市场情报 / 行业研究 → @market-intelligence
+  ├── 需要市场情报 / 行业研究 → @research-analyst §Market Intelligence Focus Mode
   ├── 需要标书全流程 → @bid-writer
   ├── 需要 24 类产品资料批量 → @product-enablement
   ├── 需要售前方案文档 → @proposal-writer

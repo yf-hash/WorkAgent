@@ -392,7 +392,7 @@ Agent 工作流：
 @gtm-strategist（本 Agent，B2B GTM 主入口）
   ├── 战略层决策与编排
   │
-  ├── 需要深度竞品数据 → @market-intelligence
+  ├── 需要深度竞品数据 → @research-analyst §Market Intelligence Focus Mode
   ├── 需要完整 PRD → @product-manager
   ├── 需要销售材料 → @product-enablement
   ├── 需要 PPT 汇报 → @ppt-generator

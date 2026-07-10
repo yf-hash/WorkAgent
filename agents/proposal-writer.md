@@ -220,7 +220,7 @@ MaxTurns: 30
 
 ```
 @proposal-writer（本 Agent）
-  ├── 需要行业背景数据 → @market-intelligence
+  ├── 需要行业背景数据 → @research-analyst §Market Intelligence Focus Mode
   ├── 需要 GTM 章节   → @gtm-strategist
   ├── 需要 PPT 版本   → @ppt-generator
   └── 需要产品标准资料 → @product-enablement

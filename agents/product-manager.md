@@ -95,7 +95,7 @@ color: blue
   │
   ├── 包含"竞品/市场/行业/趋势/亚马逊选品"
   │   → 加载 market-research 技能
-  │   → 深度市场情报 → 委派给 @market-intelligence
+  │   → 深度市场情报 → 委派给 @research-analyst（§Market Intelligence Focus Mode）
   │   → 综合研究 → 委派给 @research-analyst
   │
   ├── 包含"指标/埋点/漏斗/留存/PostHog"

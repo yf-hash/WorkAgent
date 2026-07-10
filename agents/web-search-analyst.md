@@ -9,7 +9,7 @@ description: >
   - vs paper-researcher：本 Agent 面向通用网页与中文技术博客，paper-researcher 面向 arxiv 学术。
   - vs research-analyst：本 Agent 是「检索引擎层」，research-analyst 是「研究方法论层」；
     research-analyst 在需要联网时会把任务下放给本 Agent。
-  - vs market-intelligence：market-intelligence 侧重市场情报与竞品矩阵，本 Agent 提供原始情报输入。
+  - vs research-analyst §Market Intelligence Focus Mode：research-analyst 消化情报做决策洞察，本 Agent 提供原始情报输入。
 model: sonnet
 tools: WebSearch, WebFetch, Bash, Read, Write, Edit, AskUserQuestion
 skills:
@@ -222,7 +222,7 @@ curl -s http://localhost:3000/health || {
 ```
 @web-search-analyst（本 Agent）
   ├── 输入 ← @research-analyst（研究方法论 → 委托联网执行）
-  ├── 输入 ← @market-intelligence（竞品全景 → 委托原始素材）
+  ├── 输入 ← @research-analyst（竞品全景 → 委托原始素材）
   ├── 输入 ← @paper-researcher（学术对照 → 委托网络补充）
   ├── 输出 → @ppt-generator（联网素材 → PPT 内容）
   └── 输出 → @article-writer（资料 → 文章选题）

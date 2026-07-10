@@ -79,11 +79,10 @@ WorkAgent/
 | `qa-acceptance-designer` | 测试验收设计 — PRD → 验收方案（功能/权限/异常/数据/审计/客户口径），输出上线阻断项 | PRD/版本验收、UAT 设计、上线 Go/No-Go 阻断项确认 |
 | `ai-product-architect` | AI 产品架构师 — 专注 LLM/Agent/RAG 类功能的规格、Prompt、Eval、失败模式管理 | AI 功能 PRD、Prompt 工程交付、AI 功能上线评审 |
 | `growth-strategist` | 增长战略 — 统筹 PMF / 漏斗诊断 / A/B 实验 / 定价 | PMF 验证、增长瓶颈诊断、实验设计、定价优化 |
-| `research-analyst` | 综合研究分析师 — 用户研究 + 市场情报 + 反馈分析 + PMF 验证 | 早期 0→1 探索、立项验证、PMF 测量 |
+| `research-analyst` | 综合研究分析师 — 用户研究 + 市场情报 + 反馈分析 + PMF 验证 + Market Intelligence Focus Mode（深度竞品 / TAM / OSS 生态 / 选品，合并原 market-intelligence agent） | 早期 0→1 探索、立项验证、PMF 测量、深度竞品分析 |
 | `gtm-strategist` | GTM 全链路战略（增长模型/ICP/定位/渠道/定价/90天计划） | 新产品上市规划、GTM 诊断与优化 |
 | `proposal-writer` | 企业方案撰写全链路（售前方案/可研报告/初步设计，多行业定制） | 售前解决方案、项目建议书 |
 | `product-enablement` | 产品赋能（销售指南/文档审计/16 类产品资料编排） | 产品赋能、销售支持 |
-| `market-intelligence` | 市场情报分析（竞品监测/TAM/趋势/选品/OSS 生态） | 深度竞品分析、市场研究、选品研究 |
 | `bid-writer` | 标书七阶段编制（接收 /bid-* 系列子命令） | 标书/投标/招标文件编制 |
 | `content-director` | 全流程内容创作编排（风格分析→框架→写作→QA→迭代） | 需要完整写作流程 |
 | `style-evolver` | 风格学习 → 风格卡片确认 → Writer-Reviewer 迭代创作 | 风格迁移、参考文章仿写 |
