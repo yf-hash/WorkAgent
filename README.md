@@ -94,7 +94,7 @@ WorkAgent/
 | `data-analyst` | 综合 TaskWeaver + Chat2DB 的数据分析 Agent | 数据查询、分析、报表生成 |
 | `article-illustrator` | 文章内联配图 — HTML 图表 + Mermaid + Stable Diffusion 三合一，专为 .md 文章自动批量配图 | 文章/博客自动配图 |
 | `diagram-architect` | 统一图表编排，自动路由至 Mermaid/PlantUML/Markmap/diagrams/Visio 最优引擎 | 图表类型不确定、需要多图表套件、格式互转时 |
-| `impeccable-designer` | **反 AI Slop 的前端设计语言总指挥** — 集成 [Paul Bakaus 的 impeccable.style](https://impeccable.style/)，7 领域 vocabulary + 32 上游 flow 参考 + 27 条反模式 + 12 条 critique，让 AI 写的 UI 不再像 AI | landing page / dashboard / 组件设计、AI 味 UI 修复、上线前设计审查 |
+| `impeccable-designer` | **反 AI Slop 的前端设计语言总指挥** — 集成 [Paul Bakaus 的 impeccable.style](https://impeccable.style/)，7 领域 vocabulary + 32 上游 flow 参考 + 27 条反模式 + 12 条 critique，让 AI 写的 UI 不再像 AI（伴生 sub-agent：`impeccable-manual-edit-applier` 用于 live preview 反向 patch，未激活） | landing page / dashboard / 组件设计、AI 味 UI 修复、上线前设计审查 |
 | `web-search-analyst` | 多引擎联网研究分析师（Bing / 百度 / CSDN / DuckDuckGo / Brave / 掘金等 9 大引擎并行 + 跨源三角验证） | 热点解读、技术调研、竞品快照、错误排查 |
 | `xqy-spec-writer` | 银行/金融 XQY 需求规格说明书（8 章模板 + 5 张强制表格） | 银行/保险/证券/国企/运营商/政府类甲乙方交付场景 |
 
@@ -145,6 +145,7 @@ WorkAgent/
 | `prd-concept-draft` | 概念稿 | `/prd-concept` |
 | `prd-implementation-draft` | 实现稿 | `/prd-impl` |
 | `prd-incremental-update` | 已有 PRD 增量更新 | `/prd-update` |
+| `prd-xqy` | 银行/金融 XQY 需规格 8 章模板（接口/菜单/批处理） | `/prd-xqy` |
 
 > B 端严格 12 章另走 `/pm-prd-enterprise`。
 
@@ -209,6 +210,7 @@ WorkAgent/
 | `chat2db` | 自然语言转 SQL | 对话触发 |
 | `paper-collector` | arXiv 安全论文搜集 | `/paper-collect` |
 | `paper-interpreter` | 论文 PDF 深度解读（4000-6000 字公众号长文） | `/paper-interpret` |
+| `open-websearch` | 多引擎联网搜索后端封装（Bing / 百度 / CSDN / 掘金 / DuckDuckGo / Brave 等 9 引擎 + 站点抓取） | 由 `web-search-analyst` / `paper-collector` 调用 |
 
 ### 媒体
 
@@ -289,6 +291,7 @@ WorkAgent/
 /prd-spec-first "API 网关重构"              # Spec-First 四件套
 /prd-proto "新功能页面" --wireframe         # 含 ASCII 线框图
 /pm-prd-enterprise "多租户 RBAC 后台"       # B 端严格 12 章
+/prd-xqy "对公开户流程" --module-type mixed # 银行/金融 XQY 8 章需规格
 
 # 对话渐进 PRD（想法模糊时）
 /prd-diagnose "我有个模糊的想法..."
@@ -303,6 +306,7 @@ WorkAgent/
 # 调研类
 /market-research AI 写作工具市场 --mode competitive
 /user-research 验证用户付费意愿
+/feedback "AI 写作助手 v2.3" --mode voc     # 用户反馈 VoC 报告
 /analytics 用户注册漏斗分析
 
 # 数据看板（7 类原子）
