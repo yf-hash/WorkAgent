@@ -3,7 +3,7 @@ name: doc-polisher
 description: 文档智能润色代理 — AI去痕 + 智能配图全自动闭环，四阶段自动执行无需人工干预
 model: sonnet
 tools: Read, Write, Edit, Bash
-skills: [humanizer-scan, humanizer-soul, humanizer-academic, doc-formatter, html-chart, mermaid-chart]
+skills: [humanizer-scan, humanizer-soul, humanizer-academic, html-chart, mermaid-chart]
 memory: project
 effort: high
 color: blue

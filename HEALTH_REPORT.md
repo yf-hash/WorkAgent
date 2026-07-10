@@ -1,6 +1,6 @@
 # WorkAgent 健康度报告
 
-> 更新于 2026-06-18（v2.6.1 — 单一职责拆分后的断链修复与冗余清理）
+> 更新于 2026-07-10（v2.7 — 二次裁剪 + 文档漂移修正）
 > 范围：`agents/`、`skills/`、`commands/**/`、`templates/`
 
 ---
@@ -9,30 +9,72 @@
 
 ✅ **零孤立 / 零断链**：所有 Skill 至少被 1 个命令或 Agent 引用，所有引用都指向存在的资产
 ✅ **严格单一职责**：每个 Skill 只完成一个任务，不再有"4 种模式"、"6 轮流程"等多任务合并
-✅ **本轮修复（v2.6.1）**：清除 v2.6 拆分后残留的 25+ 处断链 + 删除 1 个被 Skill 完全覆盖的 Agent + 修正 3 处 SR 违规描述
+✅ **本轮修复（v2.7）**：删除 4 个低价值 Skill + 1 个能力被覆盖的 Agent + 补录 v2.6 遗漏的 2 个 Agent + 清理根仓库无关文件
+✅ **待办**：product-\*-writer 合并、pm-\* 合并、skills 分子目录等结构性优化见 `AUDIT.md`
 
 ---
 
 ## 一、当前指标
 
-| 类别 | 数量 | 较 v2.6 变化 |
+| 类别 | 数量 | 较 v2.6.1 变化 |
 |------|------|--------------|
-| Agents | 24 | -1（删除 `@writer-reviewer`，被 `style-writer-reviewer` Skill 覆盖）|
-| Skills | 129 | 持平 |
-| Commands | 112 | 持平 |
+| Agents | 25 | -1（删 `visual-suite`）+2 补录（`web-search-analyst` / `xqy-spec-writer`），净 +1 |
+| Skills | 127 | -4（删 `pm-core-framework` / `doc-formatter` / `bid-rewriter` / `pptx-sdk`）+2 补录（`open-websearch` / `prd-xqy`），净 -2 |
+| Commands | 114 | +2 补录（`web-search` / `prd-xqy`） |
 | Templates | 13 | 持平 |
 
 **命令分布**：
 
-- `commands/product/`：46（含 prd-* 10 个、dashboard-* 7 个、pm-* 5 个、战略决策 + 通用产品方法）
+- `commands/product/`：47（含 prd-* 11 个、dashboard-* 7 个、pm-* 5 个、战略决策 + 通用产品方法）
 - `commands/presales/`：35（含 bid-* 七阶段、product-* 16 类原子文档、售前 8 类工件）
 - `commands/writing/`：11（含 style-* 3 个、humanize-* 3 个）
-- `commands/research/`：4
+- `commands/research/`：5（新增 `/web-search`）
 - `commands/media/`：16（含 remotion-* 3 个、diagram-* 2 个、md-* 2 个、table-* 2 个）
 
 ---
 
-## 二、v2.6.1 修复明细（本轮）
+## 二、v2.7 修复明细（本轮）
+
+### A. 裁剪清单
+
+| 类型 | 名称 | 删除原因 | 迁移到 |
+|---|---|---|---|
+| skill | `pm-core-framework` | 仅 1 处引用（`product-director`），v2.6.1 已改写为"前置思考层"仍是名存实亡 | product-director skills 列表移除；PM 方法论直接引用原子 pm-* Skill |
+| skill | `doc-formatter` | 仅 2 处引用，`humanizer-scan/soul` 已覆盖排版 | doc-polisher skills 列表移除 |
+| skill | `bid-rewriter` | v2.6 已声明"内嵌于 bid-write" | bid-writer agent skills 列表和路由描述移除 |
+| skill | `pptx-sdk` | skill 自身已声明降级，能力已迁移到 `skills/ppt-master/references/pptx-sdk.md` | ppt-generator agent 路由指向 ppt-master |
+| agent | `visual-suite` | 能力被 `@diagram-architect`（图表路由）+ `@article-illustrator`（文章配图）+ `/md-poster` / `/md-table-image` 完全覆盖 | article-illustrator 边界说明更新为 `@diagram-architect` |
+
+### B. 补录（v2.6 遗漏）
+
+| 类型 | 名称 | 说明 |
+|---|---|---|
+| agent | `web-search-analyst` | 多引擎联网研究分析师，v2.6.x 已存在但未列入 README |
+| agent | `xqy-spec-writer` | 银行/金融 XQY 需求规格说明书写作 Agent，v2.6.x 已存在但未列入 README |
+| skill | `open-websearch` | `web-search-analyst` 的底层引擎 |
+| skill | `prd-xqy` | XQY 8 章模板方法论 |
+| command | `/web-search` | 触发 web-search-analyst |
+| command | `/prd-xqy` | 触发 xqy-spec-writer |
+
+### C. 根仓库清理
+
+- 删除 5 个漏洞挖掘遗留 Python 脚本（`gen_vuln_diff_report.py` / `generate_ai_security_report.py` / `generate_expert_report.py` / `generate_qa_report.py` / `generate_report.py`），与 WorkAgent 项目无关
+
+### D. 引用修复
+
+| 文件 | 原引用 | 处理 |
+|---|---|---|
+| `agents/doc-polisher.md` | skills 列表含 `doc-formatter` | 移除 |
+| `agents/product-director.md` | skills 列表含 `pm-core-framework` | 移除 |
+| `agents/bid-writer.md` | skills 列表含 `bid-rewriter` + "rewrite → 调用 bid-rewriter skill" 路由 | 移除 |
+| `agents/ppt-generator.md` | skills 列表含 `pptx-sdk` + description 提"6 种引擎" + 路由指向 pptx-sdk | 移除，改为"5 种引擎+ ppt-master 内嵌 SDK" |
+| `agents/article-illustrator.md` | description + 边界说明引用 `visual-suite` | 改为 `@diagram-architect` |
+| `skills/ppt-master/references/pptx-sdk.md` | 说明"原独立技能路径" | 改为"原独立 skill 已删除，能力完全内嵌" |
+| `README.md` | 数量表 / agent 表 / skill 表 / 更新日志 | 全量刷新 |
+
+---
+
+## 二·附：v2.6.1 修复历史（2026-06）
 
 ### A. 断链修复（25+ 处）
 

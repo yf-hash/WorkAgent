@@ -4,7 +4,7 @@ description: >
   PPT全流程生成协调代理 — 覆盖10阶段完整流水线：主题定义→内容搜集/RAG索引检索→
   归纳总结→图表构建→幻灯片初稿（0→1核心）→版式排版→视觉美化→初版渲染→
   多维评分+3-5轮迭代优化→最终输出；
-  同时支持6种引擎快速模式（academic-pptx / SlideTailor / ppt-master / Slidev / Marp / PPTX SDK）。
+  同时支持5种引擎快速模式（academic-pptx / SlideTailor / ppt-master / Slidev / Marp；PPTX SDK 编程接口内嵌于 ppt-master）。
   RAG模式：对本地文件(PDF/DOCX/PPTX/MD/Excel)和在线URL进行向量化索引，
   语义检索后归纳为PPT素材；质量评分机制（100分5维度）自动驱动3-5轮自迭代优化。
   根据用户起点（有无素材、有无论文PDF、有无RAG材料）和目标自动选择最优路径。
@@ -28,7 +28,6 @@ skills:
   - ppt-master
   - slidev
   - marp
-  - pptx-sdk
   - mermaid-chart
   - diagram-plantuml
   - diagram-markmap
@@ -91,7 +90,7 @@ MaxTurns: 50
   │     ├─ 学术关键词（无PDF）         → academic-pptx
   │     ├─ 代码/技术/开发者关键词      → slidev
   │     ├─ --source *.md / 快速出片    → marp
-  │     ├─ 数据驱动/批量/CSV          → pptx-sdk
+  │     ├─ 数据驱动/批量/CSV          → ppt-master（含 pptx-sdk 编程接口）
   │     └─ 商务/产品/汇报（默认）      → ppt-master
   │     └─→ Phase 5→6→7→8→9→10
   │

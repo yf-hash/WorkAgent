@@ -31,9 +31,9 @@ WorkAgent 是一套以 **风格驱动 + 单一职责** 为核心设计理念的 
 
 | 模块 | 数量 | 说明 |
 |------|------|------|
-| Agents | 24 个 | 自治代理，编排原子命令完成完整业务流程 |
-| Skills | 129 个 | 可复用知识库，**严格单一职责**（v2.6 拆分后） |
-| Commands | 112 个 | 统一命令入口，**原子命令**为主，不再用 `--mode` 路由（v2.6 拆分后） |
+| Agents | 25 个 | 自治代理，编排原子命令完成完整业务流程 |
+| Skills | 127 个 | 可复用知识库，**严格单一职责**（v2.7 二次裁剪后） |
+| Commands | 114 个 | 统一命令入口，**原子命令**为主，不再用 `--mode` 路由 |
 | Templates | 13 个 | PRD/BRD/MRD/Roadmap/PM-Discovery/验收/Release/Sales/需求池/PR-FAQ/6-pager/Model Card/Eval Rubric |
 
 **设计原则**：
@@ -50,15 +50,16 @@ WorkAgent 是一套以 **风格驱动 + 单一职责** 为核心设计理念的 
 
 ```
 WorkAgent/
-├── agents/             # 24 个自治代理（编排原子命令完成完整业务流程）
-├── skills/             # 129 个原子 Skill（v2.6 严格单一职责）
-├── commands/           # 112 个原子命令入口
+├── agents/             # 25 个自治代理（编排原子命令完成完整业务流程）
+├── skills/             # 127 个原子 Skill（v2.7 二次裁剪后，严格单一职责）
+├── commands/           # 114 个原子命令入口
 │   ├── writing/        # 11 个（含 style-* / humanize-* 拆分系列）
-│   ├── product/        # 46 个（PM 全流程 + 战略决策 + dashboard-* + prd-* 拆分系列）
+│   ├── product/        # 47 个（PM 全流程 + 战略决策 + dashboard-* + prd-* 拆分系列）
 │   ├── presales/       # 35 个（售前 / 方案 / RFP / Demo / 竞品 / PoC + bid-* 七阶段 + product-* 16 类）
-│   ├── research/       # 4 个
+│   ├── research/       # 5 个（含 /web-search）
 │   └── media/          # 16 个（PPT / 配图 / 视频 / 字幕 / 图表 + remotion-* / diagram-* / table-* / md-* 拆分）
 ├── templates/          # 13 个标准模板
+├── AUDIT.md            # 后续裁剪与结构优化 checklist
 ├── HEALTH_REPORT.md    # 仓库整体健康度 + 修复记录
 └── README.md
 ```
@@ -67,7 +68,7 @@ WorkAgent/
 
 ## 智能体系统
 
-24 个自治 Agent，覆盖产品、内容、标书、数据、研究、媒体、GTM、方案、视觉、**售前 / 解决方案**全域：
+25 个自治 Agent，覆盖产品、内容、标书、数据、研究、媒体、GTM、方案、视觉、**售前 / 解决方案**全域：
 
 | Agent | 职责 | 调用时机 |
 |-------|------|---------|
@@ -89,18 +90,19 @@ WorkAgent/
 | `doc-polisher` | 文档智能润色（AI 去痕 + 智能配图全自动闭环） | 文档润色、去 AI 味 + 配图一体化 |
 | `paper-researcher` | 论文研究（arXiv 搜集 + 单篇深度解读） | 论文情报跟踪、学术科普写作 |
 | `video-maker` | Remotion 视频生成路由（native / prompt2video / vidosy / pdf2video） | 企业介绍视频、产品演示视频 |
-| `ppt-generator` | PPT 生成协调，6 种引擎路由（academic/slidetailor/ppt-master/slidev/marp/sdk） | PPT 生成任务 |
+| `ppt-generator` | PPT 生成协调，5 种引擎路由（academic/slidetailor/ppt-master/slidev/marp；SDK 内嵌 ppt-master） | PPT 生成任务 |
 | `data-analyst` | 综合 TaskWeaver + Chat2DB 的数据分析 Agent | 数据查询、分析、报表生成 |
 | `article-illustrator` | 文章内联配图 — HTML 图表 + Mermaid + Stable Diffusion 三合一，专为 .md 文章自动批量配图 | 文章/博客自动配图 |
-| `visual-suite` | 视觉内容全链路（配图/思维导图/UML/Markdown 海报/表格可视化） | 文章配图、图表、MD 转图片 |
 | `diagram-architect` | 统一图表编排，自动路由至 Mermaid/PlantUML/Markmap/diagrams/Visio 最优引擎 | 图表类型不确定、需要多图表套件、格式互转时 |
 | `impeccable-designer` | **反 AI Slop 的前端设计语言总指挥** — 集成 [Paul Bakaus 的 impeccable.style](https://impeccable.style/)，7 领域 reference + 27 条反模式 + 12 条 critique，让 AI 写的 UI 不再像 AI | landing page / dashboard / 组件设计、AI 味 UI 修复、上线前设计审查 |
+| `web-search-analyst` | 多引擎联网研究分析师（Bing / 百度 / CSDN / DuckDuckGo / Brave / 掘金等 9 大引擎并行 + 跨源三角验证） | 热点解读、技术调研、竞品快照、错误排查 |
+| `xqy-spec-writer` | 银行/金融 XQY 需求规格说明书（8 章模板 + 5 张强制表格） | 银行/保险/证券/国企/运营商/政府类甲乙方交付场景 |
 
 ---
 
-## Skill 系统（v2.6 单一职责拆分后）
+## Skill 系统（v2.7 二次裁剪后）
 
-129 个原子 Skill。下方按域列出，每个 Skill **单一职责**、**有边界声明**。
+127 个原子 Skill。下方按域列出，每个 Skill **单一职责**、**有边界声明**。
 
 ### 写作与内容（10）
 
@@ -116,9 +118,8 @@ WorkAgent/
 | `humanizer-soul` | 灵魂注入（6 大人性原则） | `/humanize-soul` |
 | `humanizer-academic` | 学术深度强化（30 条指令） | `/humanize-academic` |
 | `marketing-copy` | 9 大营销文体（公众号软文 / 小红书 / 知乎 / 朋友圈 / 短视频 / 落地页 / EDM / PR 稿 / 客户故事 / Demo 脚本） | `/marketing-copy` |
-| `doc-formatter` | 文档格式化（DOCX 读写 + 中文排版校正 + 导出） | `/polish` |
 
-### 标书编制（7 阶段拆分，8 Skill）
+### 标书编制（7 阶段拆分，7 Skill）
 
 | Skill | 阶段 | 触发命令 |
 |-------|------|---------|
@@ -129,7 +130,6 @@ WorkAgent/
 | `bid-review` | 5. 双轮评审 | `/bid-review` |
 | `bid-check` | 6. 合规核查 | `/bid-check` |
 | `bid-export` | 7. 移交导出 | `/bid-export` |
-| `bid-rewriter` | 偏离表"无偏离"五原则同义改写 | （内嵌） |
 
 ### PRD 全光谱（10 Skill）
 
@@ -173,7 +173,7 @@ WorkAgent/
 - 数据：`product-analytics` / `user-research` / `market-research` / `user-feedback` / `product-roadmap`
 - 设计与运营：`design-proto` / `pricing-strategy` / `product-report` / `compliance-checklist` / `tech-debt`
 - AI 产品：`ai-red-team` / `pm-ai-security-product`
-- PM 框架：`pm-core-framework` / `pm-discovery-frameworks` / `pm-prioritization-frameworks` / `pm-growth-aarrr` / `pm-north-star` / `pm-upward-management` / `pm-ai-era-evolution` / `pm-qa-acceptance`
+- PM 框架：`pm-discovery-frameworks` / `pm-prioritization-frameworks` / `pm-growth-aarrr` / `pm-north-star` / `pm-upward-management` / `pm-ai-era-evolution` / `pm-qa-acceptance`
 
 ### PPT 与可视化
 
@@ -184,7 +184,6 @@ WorkAgent/
 | `slidetailor` | 论文 PDF → 学术幻灯片 | `/ppt --backend slidetailor` |
 | `slidev` | 开发者演示（Markdown + Vue） | `/ppt --backend slidev` |
 | `marp` | Markdown 快速出片 | `/ppt --backend marp` |
-| `pptx-sdk` | 编程式 PPTX 生成 | `/ppt --backend sdk` |
 | `ppt-architect` | PPT 场景图表构建（路由至 mermaid/plantuml/diagrams） | 内部调度 |
 | `ppt-rag-indexer` | PPT 专用 RAG 索引检索 | `/ppt --rag` |
 | `ppt-web-researcher` | PPT 多源内容搜集（官方/媒体/学术/产业/社区） | `/ppt --research` |
@@ -679,6 +678,16 @@ claude .
 ---
 
 ## 更新日志
+
+### v2.7（二次裁剪 + 文档漂移修正，2026-07）
+
+- 删除 4 个低价值 / 被覆盖的 Skill：`pm-core-framework` / `doc-formatter` / `bid-rewriter` / `pptx-sdk`
+- 删除 1 个能力被 `@diagram-architect` + `@article-illustrator` 覆盖的 Agent：`visual-suite`
+- 补录 v2.6 遗漏的 2 个 Agent：`web-search-analyst` / `xqy-spec-writer`（此前存在但 README/HEALTH_REPORT 未列入）
+- 清理根仓库无关文件：删除 5 个漏洞挖掘遗留 Python 脚本
+- 修复 `doc-polisher` / `product-director` / `bid-writer` / `ppt-generator` / `article-illustrator` 的 skills 列表和路由描述
+- 新增 `AUDIT.md`：后续裁剪与结构优化的 checklist（product-\*-writer 合并、pm-\* 合并、skills 分子目录等）
+- 最终规模：**25 Agents / 127 Skills / 114 Commands / 13 Templates**
 
 ### v2.6（单一职责拆分，2026-06）
 

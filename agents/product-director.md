@@ -7,7 +7,6 @@ description: >
 model: opus
 tools: Read, Write, AskUserQuestion
 skills:
-  - pm-core-framework
   - pm-discovery-frameworks
   - pm-prioritization-frameworks
   - pm-upward-management

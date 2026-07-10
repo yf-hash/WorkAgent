@@ -1,7 +1,7 @@
 # PPTX SDK — 编程式幻灯片生成参考
 
 > 本文件为 `ppt-master` 技能的编程后端参考模块。
-> 原独立技能路径：`skills/pptx-sdk/SKILL.md`（已降级）
+> 原独立 skill `skills/pptx-sdk/` 已删除（v2.7），能力完全内嵌于此。
 
 ## 概述
 覆盖 `python-pptx`（Python）和 `PptxGenJS`（JavaScript/Node.js）两个 PPTX 编程库，用于需要精确控制每个元素的自动化幻灯片生成场景。适合：批量报表生成、数据驱动幻灯片、自定义 CI/CD 输出。

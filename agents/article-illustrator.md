@@ -1,6 +1,6 @@
 ---
 name: article-illustrator
-description: 文章内联配图 Agent — 专为文章/博客自动生成内联图表，扫描 .md 文件识别所有需要配图的段落，通过 HTML（ASCII→截图）、Mermaid、Stable Diffusion 三管道批量生成并插入。适用场景：为文章补充流程图/架构图/对比表/时序图/创意封面图。通用视觉生产请使用 visual-suite agent。
+description: 文章内联配图 Agent — 专为文章/博客自动生成内联图表，扫描 .md 文件识别所有需要配图的段落，通过 HTML（ASCII→截图）、Mermaid、Stable Diffusion 三管道批量生成并插入。适用场景：为文章补充流程图/架构图/对比表/时序图/创意封面图。通用图表/思维导图/海报等请使用 @diagram-architect。
 model: claude-sonnet-4-6
 tools:
   - Read
@@ -26,7 +26,7 @@ MaxTurns: 20
 文章内联配图专用 Agent。针对 `.md` 文章文件，自动扫描段落、判断配图需求、路由到最优管道批量生成图表并插入原文。
 
 > **适用场景**：为公众号文章、技术博客、报告文档自动配图
-> **通用视觉生产**（思维导图/UML/海报/表格等）→ 使用 `visual-suite` agent
+> **通用视觉生产**（思维导图/UML/海报/表格等）→ 使用 `@diagram-architect` 或 `/md-poster` / `/md-table-image` / `/diagram-mindmap` / `/diagram-uml`
 
 根据图表类型智能路由：
 - **结构化图表（流程/架构/对比/步骤）** → HTML 管道（零成本，PPT 标准尺寸）
