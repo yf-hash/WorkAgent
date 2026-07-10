@@ -1,11 +1,9 @@
----
-name: product-compat-writer
-description: >
-  兼容性支持文档写作知识库（单一职责）。仅覆盖一类文档：兼容性支持文档（按平台
-  矩阵呈现，含国产化平台支持情况）。其他文档类型见同目录其他 product-*-writer Skill。
-  触发词：兼容性文档、平台兼容矩阵、信创支持、国产化兼容、CPU 架构支持。
-user-invocable: false
-effort: low
+<!-- templates/product/compat.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-compat-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+
+# 兼容性说明 — 结构模板
+
+> 硬件 / 操作系统 / 数据库 / 浏览器 兼容矩阵
+
 ---
 
 # 兼容性支持文档写作知识库
@@ -115,14 +113,3 @@ effort: low
 - **文件名**：`[产品名]【版本号】兼容性支持文档_版本号.docx`
 - **密级**：可公开
 
----
-
-## 与相邻文档的区别
-
-| 文档 | 内容 | 形态 |
-|------|------|------|
-| **兼容性文档（本 Skill）** | 平台支持矩阵 | 矩阵表格 |
-| 部署及配置手册 | 安装步骤 | 操作流程 |
-| 测试报告 | 性能 / 安全 / 功能测试结果 | 测试用例 |
-
-发现是安装步骤 → 转 `product-deploy-writer`

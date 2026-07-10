@@ -339,7 +339,7 @@ AI 产品在 B 端的核心顾虑：
 | 选择 | 用前者 | 用后者 |
 |------|-------|-------|
 | `marketing-copy` vs `article-writer` | 带营销目的的推广内容（CTA 明确）| 公众号长文（个人风格 / 表达观点）|
-| `marketing-copy` vs `product-*-writer` 系列 | 对外推广 / 多平台分发 | 内部资料体系（白皮书 / 手册 / 案例库），按文档类型分别走 product-whitepaper-writer / product-manual-writer 等 |
+| `marketing-copy` vs 产品资料写作系列 | 对外推广 / 多平台分发 | 内部资料体系：4 类 rich 走 product-whitepaper-writer / product-tech-whitepaper-writer / product-solution-writer / product-case-writer；12 类轻量走 product-writer-router + templates/product/*.md |
 | `marketing-copy` vs `sales-guide-writer` | 给读者看的内容 | 给销售用的内部话术 |
 | `marketing-copy --type case` vs `product-case` 命令 | 媒体投放 / 公众号发布版本 | 官网案例库 / 销售口袋资料 |
 | `marketing-copy` vs `proposal-generator` | 标准化推广物料 | 一对一客户响应方案 |

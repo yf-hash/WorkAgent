@@ -1,11 +1,9 @@
----
-name: product-release-note-writer
-description: >
-  产品版本说明（Release Note）写作知识库（单一职责）。仅覆盖一类文档：版本说明
-  （PPT 或 Word，按发版节奏定期产出）。其他文档类型见同目录其他 product-*-writer Skill。
-  触发词：版本说明、Release Note、发版公告、版本日志、升级说明。
-user-invocable: false
-effort: low
+<!-- templates/product/release-note.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-release-note-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+
+# 发布说明 — 结构模板
+
+> 版本 changelog，含 breaking / feature / fix
+
 ---
 
 # 产品版本说明（Release Note）写作知识库
@@ -133,16 +131,3 @@ effort: low
 - 例：`数据安全网关【v2.0】版本说明_v2.0.pptx`
 - **密级**：可公开
 
----
-
-## 与相邻文档的区别
-
-| 文档 | 用途 |
-|------|------|
-| **版本说明（本 Skill）** | 单次发版的变化清单 |
-| 产品白皮书 | 当前版本产品全貌 |
-| 部署及配置手册 | 完整升级 SOP |
-| 技术白皮书 | 内部技术深度 |
-
-发现是产品全貌 → 转 `product-whitepaper-writer`
-发现是升级 SOP 完整步骤 → 转 `product-deploy-writer`

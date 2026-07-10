@@ -119,4 +119,4 @@ effort: medium
 | 部署及配置手册 | 实施工程师 | 可公开 | 安装步骤 + 配置参数 |
 
 发现内容可公开 → 转 `product-whitepaper-writer`
-发现需要 PPT 形态 → 转 `product-intro-tech-writer`
+发现需要 PPT 形态 → 转 `/product-intro-tech`（product-writer-router + templates/product/intro-tech.md）

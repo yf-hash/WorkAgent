@@ -1,11 +1,9 @@
----
-name: product-deploy-writer
-description: >
-  产品部署及配置手册写作知识库（单一职责）。仅覆盖一类文档：部署及配置手册（面向
-  实施工程师的可公开 Word 文档）。其他文档类型见同目录其他 product-*-writer Skill。
-  触发词：部署手册、安装手册、配置手册、运维手册、升级手册、回滚。
-user-invocable: false
-effort: low
+<!-- templates/product/deploy.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-deploy-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+
+# 部署说明 — 结构模板
+
+> 面向运维 / 实施的部署配置指南
+
 ---
 
 # 产品部署及配置手册写作知识库
@@ -195,15 +193,3 @@ systemctl start [产品名]
 - **文件名**：`[产品名]【版本号】部署及配置手册_版本号.docx`
 - **密级**：可公开
 
----
-
-## 与相邻文档的区别
-
-| 文档 | 受众 | 内容侧重 |
-|------|------|---------|
-| **部署手册（本 Skill）** | 实施工程师 | 安装 / 配置 / 升级 / 监控 |
-| 操作手册 | 终端用户 | 日常业务操作 |
-| 兼容性文档 | 实施 / 集成商 | 平台矩阵 |
-
-发现是日常使用 → 转 `product-manual-writer`
-发现是平台兼容矩阵 → 转 `product-compat-writer`

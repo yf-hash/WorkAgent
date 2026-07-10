@@ -10,7 +10,7 @@ argument-hint: "<产品名称> --version <新版本号> [--from <旧版本号>] 
 
 # /product-release-note — 产品版本说明生成器
 
-加载技能：`skills/product-release-note-writer/SKILL.md`
+加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/release-note.md`
 配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
@@ -46,7 +46,7 @@ Step 1: 信息采集
   → 下一版本预告（高层规划，不承诺时间）
 
 Step 2: 结构填充
-  → 加载 product-release-note-writer 中的七章模板
+  → 加载 templates/product/release-note.md 中的七章模板
   → 按变更项归类
   → 每项功能必须有用户价值描述
 

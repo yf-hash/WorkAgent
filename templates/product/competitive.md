@@ -1,11 +1,9 @@
----
-name: product-competitive-writer
-description: >
-  竞品分析写作知识库（单一职责）。仅覆盖一类文档：竞品分析 PPT（内部保密，
-  含 A/B/C/D 四级优势分类与销售应对剧本）。其他文档类型见同目录其他 product-*-writer Skill。
-  触发词：竞品分析、竞争对比、A/B/C/D 优势分类、应对话术、竞争剧本。
-user-invocable: false
-effort: medium
+<!-- templates/product/competitive.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-competitive-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+
+# 竞品分析 — 结构模板
+
+> 3-5 家竞品对照，含决策建议
+
 ---
 
 # 竞品分析写作知识库
@@ -115,16 +113,3 @@ effort: medium
 - **标注**：封面 + 页眉必须含"内部资料 禁止外传"
 - **归档**：仅限内部权限系统，禁止公开分享
 
----
-
-## 与相邻文档的区别
-
-| 文档 | 范围 | 形态 |
-|------|------|------|
-| **竞品分析（本 Skill）** | 3-5 家系统盘点 | PPT，内部保密 |
-| 作战卡（battle-card） | 单个对手一页纸 | 紧凑卡片 |
-| 招投标参数 | 投标参数对照 | Excel |
-| 赢单失单分析 | 事后复盘 | 内部分析报告 |
-
-发现只针对单个对手 → 转 `/battle-card` 命令
-发现是投标场景 → 转 `product-bid-params-writer`

@@ -1,11 +1,9 @@
----
-name: product-brochure-writer
-description: >
-  产品彩页写作知识库（单一职责）。仅覆盖一类文档：产品彩页（A4 双面或三折页，
-  可公开传播的宣传物料）。其他文档类型见同目录其他 product-*-writer Skill。
-  触发词：产品彩页、宣传单页、三折页、展会物料。
-user-invocable: false
-effort: low
+<!-- templates/product/brochure.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-brochure-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+
+# 产品彩页 — 结构模板
+
+> A4 双面或三折页展会 / 客户拜访物料
+
 ---
 
 # 产品彩页写作知识库
@@ -90,15 +88,3 @@ effort: low
 - **密级**：可公开
 - **印刷规格**：A4 (210×297mm) 双面铜版纸 / 三折页
 
----
-
-## 与相邻文档的区别
-
-| 文档 | 篇幅 | 形态 | 用途 |
-|------|------|------|------|
-| **产品彩页（本 Skill）** | ≤2 页 | PDF / 印刷品 | 展会发放 / 客户拜访 |
-| 产品介绍-商务版 PPT | 15-25 页 | PPT 演讲 | 商务路演 |
-| 产品白皮书 | ≥20 页 | Word | 深度阅读 |
-
-发现需要演讲材料 → 转 `product-intro-business-writer`
-发现需要深度阅读材料 → 转 `product-whitepaper-writer`

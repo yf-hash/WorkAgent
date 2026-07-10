@@ -10,7 +10,7 @@ argument-hint: "<产品名称> [--version v1.0] [--industry fintech|gov|healthca
 
 # /product-intro-business — 产品介绍-商务版 PPT 生成器
 
-加载技能：`skills/product-intro-business-writer/SKILL.md`
+加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/intro-business.md`
 配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
@@ -41,7 +41,7 @@ Step 1: 信息采集
   → 典型客户 Logo 墙 + 3 个核心案例
 
 Step 2: 结构填充
-  → 加载 product-intro-business-writer 中的商务版模板
+  → 加载 templates/product/intro-business.md 中的商务版模板
   → 15-25 页 PPT 草稿
 
 Step 3: 命名与版式

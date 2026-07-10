@@ -1,11 +1,9 @@
----
-name: product-bid-params-writer
-description: >
-  招投标参数写作知识库（单一职责）。仅覆盖一类文档：招投标参数 Excel（内部保密，
-  完整版 + 精简版双套，含 A/B/C/D 优势分类）。其他文档类型见同目录其他 product-*-writer Skill。
-  触发词：招投标参数、投标参数、标书参数、技术参数库、参数对照表。
-user-invocable: false
-effort: medium
+<!-- templates/product/bid-params.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-bid-params-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+
+# 投标参数应答 — 结构模板
+
+> 逐条应答带偏离说明
+
 ---
 
 # 招投标参数写作知识库
@@ -78,16 +76,3 @@ effort: medium
 - **标注**：封面 + 页眉必须含"内部资料 禁止外传"
 - **归档**：仅限投标知识库 + 权限系统
 
----
-
-## 与相邻文档的区别
-
-| 文档 | 用途 | 密级 |
-|------|------|------|
-| **招投标参数（本 Skill）** | 投标参数库 / 含优势分类 | 内部保密 |
-| 产品型号及功能清单 | 对外速查 | 可公开 |
-| RFP 应答 | 针对特定标书 | 跟随标书密级 |
-| 竞品分析 | 销售应对剧本 | 内部保密 |
-
-发现是对外速查 → 转 `product-function-list-writer`
-发现是针对单份特定标书 → 用 `/rfp-response` 命令

@@ -1,12 +1,9 @@
----
-name: product-sales-faq-writer
-description: >
-  销售常见问题（FAQ）写作知识库（单一职责）。仅覆盖一类文档：销售 FAQ（覆盖技术
-  原理 / 竞品对比 / 部署运维 / 价格授权 / 服务支持五大类）。其他文档类型见同目录
-  其他 product-*-writer Skill。
-  触发词：销售 FAQ、销售常见问题、销售应答库、客户提问。
-user-invocable: false
-effort: low
+<!-- templates/product/sales-faq.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-sales-faq-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+
+# 销售 FAQ — 结构模板
+
+> 按客户类型分组的 30-60 条问答
+
 ---
 
 # 销售常见问题（FAQ）写作知识库
@@ -118,15 +115,3 @@ effort: low
 - **文件名**：`[产品名]【版本号】销售常见问题_版本号.docx`
 - **密级**：可公开
 
----
-
-## 与相邻文档的区别
-
-| 文档 | 内容范围 | 用途 |
-|------|---------|------|
-| **销售 FAQ（本 Skill）** | 五大类高频问答 | 销售随身参考 |
-| 销售一页禅 | 完整销售方法（场景 / 对比 / 案例 / FAQ） | 销售完整培训 |
-| 竞品分析 | 系统竞争盘点 | 战略层销售对策 |
-
-发现需要完整销售方法 → 转 `sales-guide-writer` Skill / `/sales-guide` 命令
-发现是系统竞品盘点 → 转 `product-competitive-writer`

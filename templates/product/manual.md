@@ -1,11 +1,9 @@
----
-name: product-manual-writer
-description: >
-  产品操作手册写作知识库（单一职责）。仅覆盖一类文档：产品操作手册（面向终端用户 /
-  运维的可公开 Word 文档）。其他文档类型见同目录其他 product-*-writer Skill。
-  触发词：操作手册、用户手册、使用指南、操作步骤。
-user-invocable: false
-effort: low
+<!-- templates/product/manual.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-manual-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+
+# 用户手册 — 结构模板
+
+> 面向最终用户的操作说明书
+
 ---
 
 # 产品操作手册写作知识库
@@ -135,15 +133,3 @@ effort: low
 - **文件名**：`[产品名]【版本号】产品操作手册_版本号.docx`
 - **密级**：可公开
 
----
-
-## 与相邻文档的区别
-
-| 文档 | 受众 | 内容侧重 |
-|------|------|---------|
-| **操作手册（本 Skill）** | 终端用户 / 运维 | 日常使用 |
-| 部署及配置手册 | 实施工程师 | 安装部署 / 初始化 / 升级 |
-| 培训材料 | 学员 / 渠道商 | 课件 + 实操题 |
-
-发现是安装部署 → 转 `product-deploy-writer`
-发现是培训场景 → 转 `product-training-writer`

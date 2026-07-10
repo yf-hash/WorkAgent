@@ -149,11 +149,15 @@ WorkAgent/
 
 > B 端严格 12 章另走 `/pm-prd-enterprise`。
 
-### 产品资料（16 类原子 Skill）
+### 产品资料（4 rich skills + 1 router + 12 templates）
 
-`product-whitepaper-writer` / `product-tech-whitepaper-writer` / `product-brochure-writer` / `product-intro-business-writer` / `product-intro-tech-writer` / `product-function-list-writer` / `product-sales-faq-writer` / `product-competitive-writer` / `product-bid-params-writer` / `product-solution-writer` / `product-case-writer` / `product-manual-writer` / `product-deploy-writer` / `product-compat-writer` / `product-release-note-writer` / `product-training-writer`
+**4 类 rich skill**（重内容，独立职责）：
+`product-whitepaper-writer`（8-15 章白皮书） / `product-tech-whitepaper-writer`（技术架构侧重） / `product-solution-writer`（客户场景侧重） / `product-case-writer`（客户故事结构）
 
-> 每个 Skill 对应 `/product-*` 命令，覆盖单一文档类型。详细分工见 `commands/presales/` 各文件 frontmatter。
+**12 类轻量文档**（共享 `product-writer-router` skill + `templates/product/*.md` 结构模板）：
+产品彩页 / 商务介绍 PPT / 技术介绍 PPT / 功能清单 / 销售FAQ / 竞品分析 / 投标参数 / 用户手册 / 部署 / 兼容性 / 发布说明 / 培训
+
+> 命令层面依旧是 16 个 `/product-*` 原子命令（用户熟悉的名字不变）。底层从 16 skill × 各自复读的写作规范，收敛为 1 router skill（共享规范）+ 12 template（结构模板）+ 4 独立 skill（rich 内容）。上下文按需加载，共享规范只写一处。
 
 ### 数据看板（7 类原子 Skill）
 

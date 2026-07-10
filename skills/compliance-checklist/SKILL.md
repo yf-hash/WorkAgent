@@ -352,4 +352,4 @@ T+30 天：完整 PIR + 长期改进
 |--------|------|
 | `prd-standard` | 合规作为非功能需求 |
 | `security-questionnaire` | 客户安全问卷应答 |
-| `product-bid-params-writer` / `product-solution-writer` | 合规参数承载 / 行业方案合规承诺 |
+| `product-writer-router` + `templates/product/bid-params.md` / `product-solution-writer` | 合规参数承载 / 行业方案合规承诺 |

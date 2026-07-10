@@ -10,7 +10,7 @@ argument-hint: "<产品名称> [--version v1.0] [--industry fintech|gov|healthca
 
 # /product-bid-params — 招投标参数生成器
 
-加载技能：`skills/product-bid-params-writer/SKILL.md`
+加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/bid-params.md`
 配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
@@ -43,7 +43,7 @@ Step 1: 信息采集
   → 哪些指标在最近版本有变化（需要说明）
 
 Step 2: 结构填充
-  → 加载 product-bid-params-writer 中的 Excel 双版本结构
+  → 加载 templates/product/bid-params.md 中的 Excel 双版本结构
   → 生成完整版（全量参数）+ 精简版（核心指标）
   → 每条指标标 A/B/C/D 优势分类
 

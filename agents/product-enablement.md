@@ -202,7 +202,7 @@ Q5: 目前已有哪些成功案例？（可匿名）
 |-------|------|---------|
 | `doc-auditor` | 14 项自查清单和质量标准 | 跨文档一致性检查时（具体单文档由各原子命令自调用） |
 
-**说明**：本 Agent 不直接加载任何 writer Skill。各原子命令自行加载对应 `product-*-writer` Skill，保证上下文按需加载，不为编排器一次性加载 16 类文档结构。
+**说明**：本 Agent 不直接加载任何 writer Skill。各原子命令自行加载对应的写作 skill：4 类 rich 型（`product-whitepaper-writer` / `product-tech-whitepaper-writer` / `product-solution-writer` / `product-case-writer`）走各自专职 skill；其余 12 类轻量型（brochure / intro-business / intro-tech / function-list / sales-faq / competitive / bid-params / manual / deploy / compat / release-note / training）走 `product-writer-router` skill + `templates/product/<type>.md` 结构模板。上下文按需加载，不为编排器一次性加载全 16 类结构。
 
 ---
 

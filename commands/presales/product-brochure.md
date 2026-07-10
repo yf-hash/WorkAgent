@@ -9,7 +9,7 @@ argument-hint: "<产品名称> [--format a4-double|trifold] [--industry fintech|
 
 # /product-brochure — 产品彩页生成器
 
-加载技能：`skills/product-brochure-writer/SKILL.md`
+加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/brochure.md`
 配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
@@ -41,7 +41,7 @@ Step 1: 信息采集
   → 二维码 / 联系方式
 
 Step 2: 版式填充
-  → 加载 product-brochure-writer 中对应版式模板
+  → 加载 templates/product/brochure.md 中对应版式模板
   → 内容压缩到 ≤2 页
 
 Step 3: 命名与版式

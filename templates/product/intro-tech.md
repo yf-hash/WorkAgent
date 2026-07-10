@@ -1,11 +1,9 @@
----
-name: product-intro-tech-writer
-description: >
-  产品介绍-技术版 PPT 写作知识库（单一职责）。仅覆盖一类文档：技术版 PPT（20-40 页，
-  面向技术决策层）。其他文档类型见同目录其他 product-*-writer Skill。
-  触发词：技术版 PPT、产品介绍技术版、架构演讲、CTO 介绍。
-user-invocable: false
-effort: low
+<!-- templates/product/intro-tech.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-intro-tech-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+
+# 产品介绍-技术版 PPT — 结构模板
+
+> 20-40 页技术演讲，面向 IT / 技术决策层
+
 ---
 
 # 产品介绍-技术版 PPT 写作知识库
@@ -106,16 +104,3 @@ P25: 硬件参考配置
 - **文件名**：`[产品名]【版本号】产品介绍_技术版_版本号.pptx`
 - **密级**：可公开
 
----
-
-## 与相邻文档的区别
-
-| 文档 | 篇幅 | 形态 | 深度 |
-|------|------|------|------|
-| **技术版 PPT（本 Skill）** | 20-40 页 | PPT | 架构 + 高层实现 |
-| 技术白皮书 | ≥30 页 | Word，**内部保密** | 算法 + 实现细节 |
-| 商务版 PPT | 15-25 页 | PPT | 价值 + ROI |
-| 产品白皮书 | ≥20 页 | Word，可公开 | 是什么 + 怎么做 |
-
-发现需要 Word 长文档 → 转 `product-whitepaper-writer`
-发现内容包含内部算法 → 转 `product-tech-whitepaper-writer`

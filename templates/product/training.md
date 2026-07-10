@@ -1,11 +1,9 @@
----
-name: product-training-writer
-description: >
-  产品培训材料写作知识库（单一职责）。仅覆盖一类文档：培训套件（课件 PPT + 实操
-  指南 + 培训试题）。其他文档类型见同目录其他 product-*-writer Skill。
-  触发词：培训材料、培训课件、培训试题、实操指南、培训套件。
-user-invocable: false
-effort: low
+<!-- templates/product/training.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-training-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+
+# 培训材料 — 结构模板
+
+> 销售 / 交付 / 运维培训体系
+
 ---
 
 # 产品培训材料写作知识库
@@ -181,15 +179,3 @@ D. ...
 - `[产品名]【版本号】培训试题_[受众]_版本号.docx`
 - **密级**：可公开
 
----
-
-## 与相邻文档的区别
-
-| 文档 | 用途 | 内容 |
-|------|------|------|
-| **培训材料（本 Skill）** | 系统培训 | 课件 + 实操 + 试题 |
-| 操作手册 | 自助参考 | 全功能查找 |
-| 商务版 PPT | 销售演讲 | 单一场景 |
-
-发现是销售演讲 → 转 `product-intro-business-writer`
-发现是自助参考 → 转 `product-manual-writer`

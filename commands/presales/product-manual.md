@@ -10,7 +10,7 @@ argument-hint: "<产品名称> [--version v1.0]"
 
 # /product-manual — 产品操作手册生成器
 
-加载技能：`skills/product-manual-writer/SKILL.md`
+加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/manual.md`
 配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
@@ -41,7 +41,7 @@ Step 1: 信息采集
   → 主要告警类型
 
 Step 2: 结构填充
-  → 加载 product-manual-writer 中的五章标准结构
+  → 加载 templates/product/manual.md 中的五章标准结构
   → 每个功能步骤必须配截图占位（标注 [截图：xxx]）
   → 操作步骤用数字编号
 

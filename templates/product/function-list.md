@@ -1,11 +1,9 @@
----
-name: product-function-list-writer
-description: >
-  产品型号及功能清单写作知识库（单一职责）。仅覆盖一类文档：型号-功能矩阵 Excel。
-  其他文档类型见同目录其他 product-*-writer Skill。
-  触发词：功能清单、型号清单、功能矩阵、Excel 速查表。
-user-invocable: false
-effort: low
+<!-- templates/product/function-list.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-function-list-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+
+# 产品功能清单 — 结构模板
+
+> 带优先级 / 密级的功能全景表
+
 ---
 
 # 产品型号及功能清单写作知识库
@@ -68,15 +66,3 @@ effort: low
 - **文件名**：`[产品名]【版本号】产品型号及功能清单_版本号.xlsx`
 - **密级**：可公开
 
----
-
-## 与相邻文档的区别
-
-| 文档 | 用途 | 形态 |
-|------|------|------|
-| **功能清单（本 Skill）** | 销售速查 / 客户对比 | Excel 矩阵 |
-| 招投标参数 | 投标技术应答 | Excel，**内部保密**，含 A/B/C/D 优势分类 |
-| 产品白皮书 | 深度功能说明 | Word，每个功能 1-2 页 |
-
-发现需要内部投标专用 → 转 `product-bid-params-writer`
-发现需要每个功能 1-2 页深度 → 转 `product-whitepaper-writer`

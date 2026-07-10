@@ -10,7 +10,7 @@ argument-hint: "<产品名称> [--version v1.0]"
 
 # /product-function-list — 产品型号及功能清单生成器
 
-加载技能：`skills/product-function-list-writer/SKILL.md`
+加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/function-list.md`
 配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
@@ -41,7 +41,7 @@ Step 1: 信息采集
   → 各功能在各型号中的支持情况
 
 Step 2: 表格生成
-  → 加载 product-function-list-writer 中的标准 Excel 结构
+  → 加载 templates/product/function-list.md 中的标准 Excel 结构
   → 形成型号-功能矩阵
 
 Step 3: 命名

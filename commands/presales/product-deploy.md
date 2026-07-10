@@ -10,7 +10,7 @@ argument-hint: "<产品名称> [--version v1.0] [--deploy-mode standalone|cluste
 
 # /product-deploy — 产品部署及配置手册生成器
 
-加载技能：`skills/product-deploy-writer/SKILL.md`
+加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/deploy.md`
 配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
@@ -43,7 +43,7 @@ Step 1: 信息采集
   → 升级路径（哪些版本可直接升、哪些要中转）
 
 Step 2: 结构填充
-  → 加载 product-deploy-writer 中的六章标准结构
+  → 加载 templates/product/deploy.md 中的六章标准结构
   → 命令行操作必须用代码块呈现
   → 关键配置项用表格说明（项 / 默认值 / 说明 / 必填）
 

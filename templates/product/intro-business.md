@@ -1,11 +1,9 @@
----
-name: product-intro-business-writer
-description: >
-  产品介绍-商务版 PPT 写作知识库（单一职责）。仅覆盖一类文档：商务版 PPT（15-25 页，
-  面向商务决策层）。其他文档类型见同目录其他 product-*-writer Skill。
-  触发词：商务版 PPT、产品介绍 PPT、采购委员会、商务路演。
-user-invocable: false
-effort: low
+<!-- templates/product/intro-business.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-intro-business-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+
+# 产品介绍-商务版 PPT — 结构模板
+
+> 15-25 页商务路演，面向业务决策层
+
 ---
 
 # 产品介绍-商务版 PPT 写作知识库
@@ -91,16 +89,3 @@ effort: low
 - **文件名**：`[产品名]【版本号】产品介绍_商务版_版本号.pptx`
 - **密级**：可公开
 
----
-
-## 与相邻文档的区别
-
-| 文档 | 受众 | 内容侧重 |
-|------|------|---------|
-| **商务版 PPT（本 Skill）** | 商务决策层 | 为什么买 / ROI / 商业价值 |
-| 技术版 PPT | 技术决策层 | 怎么实现 / 架构 / 性能 |
-| 培训版 PPT | 渠道商 / 学员 | 怎么用 / 实操步骤 |
-| 产品白皮书 Word | 技术负责人 | 是什么 + 怎么做 + 为什么 |
-
-发现客户是技术决策层 → 转 `product-intro-tech-writer`
-发现是培训场景 → 转 `product-training-writer`

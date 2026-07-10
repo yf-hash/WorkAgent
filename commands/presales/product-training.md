@@ -10,7 +10,7 @@ argument-hint: "<产品名称> [--audience channel|customer|internal] [--version
 
 # /product-training — 产品培训材料生成器
 
-加载技能：`skills/product-training-writer/SKILL.md`
+加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/training.md`
 配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
@@ -50,7 +50,7 @@ Step 1: 信息采集
   → 是否含实操环境
 
 Step 2: 套件填充
-  → 加载 product-training-writer 中的培训套件模板
+  → 加载 templates/product/training.md 中的培训套件模板
   → 生成三件套：课件 PPT + 实操指南 Word + 试题 Word
 
 Step 3: 命名

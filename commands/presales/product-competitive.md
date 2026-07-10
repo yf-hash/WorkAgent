@@ -10,7 +10,7 @@ argument-hint: "<产品名称> [--competitors <对手1,对手2,对手3>] [--indu
 
 # /product-competitive — 竞品分析生成器
 
-加载技能：`skills/product-competitive-writer/SKILL.md`
+加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/competitive.md`
 配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
@@ -43,7 +43,7 @@ Step 1: 信息采集
   → 我方 D 级劣势在哪里
 
 Step 2: 结构填充
-  → 加载 product-competitive-writer 中的竞品分析结构
+  → 加载 templates/product/competitive.md 中的竞品分析结构
   → 形成 A/B/C/D 四级优势分类矩阵
   → 为每个 D 级劣势准备应对话术
 
