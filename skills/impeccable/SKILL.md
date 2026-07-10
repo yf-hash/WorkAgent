@@ -2,13 +2,16 @@
 name: impeccable
 description: >
   Impeccable 设计语言知识库 — 让 AI 生成的 UI 不再像"AI 做的"。集成 Paul Bakaus 的 impeccable.style
-  设计语言：7 个领域参考文件（typography / color / motion / spatial / interaction / responsive / ux-writing）
-  + 27 条反 AI slop 反模式规则 + brand-vs-product 双轨寄存器。触发词：UI 设计、前端设计、网页设计、
-  AI slop、设计语言、设计规范、OKLCH、tinted neutrals、8px baseline grid、fluid typography、
-  vertical rhythm、impeccable、design vocabulary、frontend design、视觉规范、配色规范、字体规范、
-  动效规范、间距规范、响应式规范、UX 文案、按钮设计、卡片设计、表单设计、登录页、落地页、
-  仪表盘、editorial、tech-minimal、消除 AI 味、去 AI 感、不要紫色渐变、不要 Inter 字体、
-  不要嵌套卡片、不要纯黑纯白。
+  设计语言：7 个 WorkAgent 领域 vocabulary（typography / color / motion / spatial / interaction / responsive /
+  ux-writing）+ 32 个上游 flow 参考（craft / shape / audit / critique / polish / bolder / quieter / distill /
+  harden / onboard / brand / product / animate / layout / typeset / adapt / colorize / clarify / delight /
+  document / extract / init / interaction-design / live / optimize / overdrive / hooks / codex / ios / android /
+  adapt.native / audit.native）+ 27 条反 AI slop 反模式规则 + brand-vs-product 双轨寄存器 +
+  impeccable-manual-edit-applier 伴生 agent。触发词：UI 设计、前端设计、网页设计、AI slop、设计语言、
+  设计规范、OKLCH、tinted neutrals、8px baseline grid、fluid typography、vertical rhythm、impeccable、
+  design vocabulary、frontend design、视觉规范、配色规范、字体规范、动效规范、间距规范、响应式规范、
+  UX 文案、按钮设计、卡片设计、表单设计、登录页、落地页、仪表盘、editorial、tech-minimal、消除 AI 味、
+  去 AI 感、不要紫色渐变、不要 Inter 字体、不要嵌套卡片、不要纯黑纯白。
 user-invocable: false
 effort: high
 ---
@@ -123,6 +126,66 @@ Brief（用户的模糊意图："给我做个 SaaS 落地页"）
 | [interaction.md](references/interaction.md) | 按钮 / 表单 / 输入 / 焦点状态 / 键盘 / 手势 | 交互组件、状态机、焦点设计 |
 | [responsive.md](references/responsive.md) | 移动优先、container queries、fluid typography、断点策略 | 任何需要多屏适配的场景 |
 | [ux-writing.md](references/ux-writing.md) | 微文案、空状态模板、错误消息公式、按钮文案 | 文案撰写、按钮命名、错误处理 |
+
+> 上面 7 个是 WorkAgent 起初翻译好的**领域 vocabulary**（横向切分：什么设计问题）。下面 32 个是**上游 flow 参考**（纵向切分：设计流程走到哪一步），两者互补，都放在 `references/` 下。
+
+---
+
+## 32 个上游 flow 参考文件（v2 拉齐 pbakaus/impeccable）
+
+上游 impeccable 现在把 vocabulary 组织为**流程动词**而不是**问题领域**，把每个子命令的执行手册单独拉出来。全部落在 `references/` 下，`impeccable-designer` agent 和 `/impeccable <sub>` 命令按需 Read。**不要 Read 全部**：一个任务一般只需要 1-3 个 flow 文件 + 1-3 个领域文件。
+
+### 创作全流程（core flow）
+| 文件 | 定位 |
+|------|------|
+| [init.md](references/init.md) | 项目首次配置（对应本地 SKILL 里的 `teach`） |
+| [product.md](references/product.md) | 写 PRODUCT.md（产品上下文，喂给 Impeccable 的记忆） |
+| [document.md](references/document.md) | 从代码反向生成 DESIGN.md |
+| [extract.md](references/extract.md) | 抽离可复用组件 + tokens |
+| [shape.md](references/shape.md) | 写代码前只出规划、不出代码 |
+| [craft.md](references/craft.md) | shape → build 完整闭环 |
+| [polish.md](references/polish.md) | 收尾，ship-ready |
+| [harden.md](references/harden.md) | error / i18n / 边界工程性兜底 |
+| [onboard.md](references/onboard.md) | 首次使用流 / 空状态 / 激活路径 |
+| [audit.md](references/audit.md) | 确定性 a11y / 性能 / 反模式检查 |
+| [audit.native.md](references/audit.native.md) | iOS/Android native app audit 变体 |
+| [critique.md](references/critique.md) | LLM 主观 UX review（12 条） |
+| [clarify.md](references/clarify.md) | brief 不清晰时的强制访谈流 |
+
+### 调节强度（intensity dial）
+| 文件 | 定位 |
+|------|------|
+| [bolder.md](references/bolder.md) | 太平淡：放大对比、加粗、加密 |
+| [quieter.md](references/quieter.md) | 太喧闹：降强度但保留元素 |
+| [distill.md](references/distill.md) | 太散乱：删元素到本质 |
+| [overdrive.md](references/overdrive.md) | 高压情境模拟测试 |
+| [optimize.md](references/optimize.md) | 性能收敛 |
+
+### 领域深挖（domain deep-dive）
+| 文件 | 定位 |
+|------|------|
+| [brand.md](references/brand.md) | Brand register 深挖 |
+| [interaction-design.md](references/interaction-design.md) | 交互设计流（补 `interaction.md` 静态词汇） |
+| [layout.md](references/layout.md) | 布局系统专项（补 `spatial.md`） |
+| [typeset.md](references/typeset.md) | 排印执行（补 `typography.md`） |
+| [colorize.md](references/colorize.md) | 颜色应用流（补 `color.md`） |
+| [animate.md](references/animate.md) | 动效执行流（补 `motion.md`） |
+| [delight.md](references/delight.md) | delighter 微交互 |
+| [adapt.md](references/adapt.md) | 响应式适配 web 变体（补 `responsive.md`） |
+| [adapt.native.md](references/adapt.native.md) | 响应式适配 native 变体 |
+
+### 平台 / 载体（platform）
+| 文件 | 定位 |
+|------|------|
+| [ios.md](references/ios.md) | iOS Human Interface Guidelines 对齐 |
+| [android.md](references/android.md) | Android Material / Wear 对齐 |
+| [live.md](references/live.md) | live preview manual-edit 反向回源码流（需要伴生 agent `impeccable-manual-edit-applier`） |
+| [hooks.md](references/hooks.md) | Claude Code hook 集成点（上游装了 hook-before-edit 阻断 slop） |
+| [codex.md](references/codex.md) | 面向 Codex / OpenAI CLI 的适配层 |
+
+**跨切矩阵示例**：做一个 B 端 SaaS dashboard 的 hero → 建议 Read `craft.md` + `shape.md` + `layout.md` + `typeset.md` + 本地 `interaction.md` + 本地 `responsive.md`。总量 ~10k tokens，比 Read 全部 39 个（>50k）省得多。
+
+**伴生 agent**：`impeccable-manual-edit-applier`（在 `agents/`）用于 `live.md` 流的下游 — 从 live preview UI 上手改的文字/尺寸反向 patch 回真实源码。当前 WorkAgent 未装 live-browser Node.js scripts，所以仅作占位保留，未来接入 preview 环境时可直接启用。
 
 ---
 

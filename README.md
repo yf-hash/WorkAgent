@@ -94,7 +94,7 @@ WorkAgent/
 | `data-analyst` | 综合 TaskWeaver + Chat2DB 的数据分析 Agent | 数据查询、分析、报表生成 |
 | `article-illustrator` | 文章内联配图 — HTML 图表 + Mermaid + Stable Diffusion 三合一，专为 .md 文章自动批量配图 | 文章/博客自动配图 |
 | `diagram-architect` | 统一图表编排，自动路由至 Mermaid/PlantUML/Markmap/diagrams/Visio 最优引擎 | 图表类型不确定、需要多图表套件、格式互转时 |
-| `impeccable-designer` | **反 AI Slop 的前端设计语言总指挥** — 集成 [Paul Bakaus 的 impeccable.style](https://impeccable.style/)，7 领域 reference + 27 条反模式 + 12 条 critique，让 AI 写的 UI 不再像 AI | landing page / dashboard / 组件设计、AI 味 UI 修复、上线前设计审查 |
+| `impeccable-designer` | **反 AI Slop 的前端设计语言总指挥** — 集成 [Paul Bakaus 的 impeccable.style](https://impeccable.style/)，7 领域 vocabulary + 32 上游 flow 参考 + 27 条反模式 + 12 条 critique，让 AI 写的 UI 不再像 AI | landing page / dashboard / 组件设计、AI 味 UI 修复、上线前设计审查 |
 | `web-search-analyst` | 多引擎联网研究分析师（Bing / 百度 / CSDN / DuckDuckGo / Brave / 掘金等 9 大引擎并行 + 跨源三角验证） | 热点解读、技术调研、竞品快照、错误排查 |
 | `xqy-spec-writer` | 银行/金融 XQY 需求规格说明书（8 章模板 + 5 张强制表格） | 银行/保险/证券/国企/运营商/政府类甲乙方交付场景 |
 
@@ -195,7 +195,7 @@ WorkAgent/
 | `visio-builder` | Visio 图表创建与格式互转 | `/visio` |
 | `ai-illustrator` | AI 智能插图（article / thesis-figure / document 子流程） | 对话触发 |
 | `stable-diffusion` | SD WebUI 文生图 / 图生图 | `/illustrate --backend sd` |
-| `impeccable` | 反 AI Slop 前端设计语言（7 领域 reference + 27 反模式 + 12 critique） | `/impeccable` |
+| `impeccable` | 反 AI Slop 前端设计语言（7 领域 vocabulary + 32 上游 flow 参考 + 27 反模式 + 12 critique） | `/impeccable` |
 | `md-poster` | Markdown 转海报/分享卡片 | `/md-poster` |
 | `md-table-image` | Markdown 表格转图片 | `/md-table-image` |
 | `table-from-text` | 层级文本 → Markdown/CSV/Excel 表格 | `/table-from-text` |
@@ -239,6 +239,12 @@ WorkAgent/
 | `proposal-generator` | 企业项目型方案文档 | `/proposal` |
 | `sales-guide-writer` | B2B 销售赋能 | `/sales-guide` |
 | `doc-auditor` | 产品文档质量审核 | `/doc-audit` |
+
+### 工具与集成（tools）
+
+| Skill | 描述 | 触发方式 |
+|-------|------|---------|
+| `od-contribute` | 一键向 [nexu-io/open-design](https://github.com/nexu-io/open-design) 提交贡献（Skill / Design System / 翻译 / 文档 / bug）——即使不会写代码 | `/od-contribute` |
 
 ---
 
