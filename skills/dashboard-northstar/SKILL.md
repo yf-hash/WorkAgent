@@ -12,7 +12,7 @@ effort: low
 # Dashboard NorthStar — 北极星看板
 
 > 单一职责：北极星看板模板与查询。
-> 不做：北极星指标设计本身（→ `pm-north-star`）、AARRR 漏斗看板（→ `dashboard-aarrr`）
+> 不做：北极星指标设计本身（→ `pm-metrics-frameworks` §一）、AARRR 漏斗看板（→ `dashboard-aarrr`）
 
 ## 看板模板
 

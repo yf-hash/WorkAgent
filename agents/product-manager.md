@@ -3,7 +3,7 @@ name: product-manager
 description: 全栈产品经理 Agent — 整合 C 端 + B 端产品全工作链。覆盖战略 / 用研 / PRD / 设计 / 路线图 / GTM / 增长 / 数据 / 治理 / 合规 / PoC / 报价等核心产品工作场景
 model: opus
 tools: Read, Write, WebFetch, WebSearch, Bash
-skills: [prd-lite, prd-standard, prd-spec-first, prd-proto, prd-diagnose, prd-concept-draft, prd-implementation-draft, prd-incremental-update, prd-quality-check, prd-deep-evaluate, design-proto, market-research, product-analytics, user-feedback, product-roadmap, pm-discovery-frameworks, pm-prioritization-frameworks, pm-growth-aarrr, pm-north-star, pm-upward-management, pm-ai-era-evolution, gtm-strategy, product-strategy, user-story-mapping, mvp-canvas, ab-test, launch-checklist, pm-ai-security-product, pricing-strategy, pmf-survey, product-report, dashboard-northstar, dashboard-aarrr, dashboard-cohort, dashboard-revenue, dashboard-customer-br, dashboard-ai-monitor, dashboard-platform-selector, compliance-checklist, poc-plan, user-research]
+skills: [prd-lite, prd-standard, prd-spec-first, prd-proto, prd-diagnose, prd-concept-draft, prd-implementation-draft, prd-incremental-update, prd-quality-check, prd-deep-evaluate, design-proto, market-research, product-analytics, user-feedback, product-roadmap, pm-discovery-frameworks, pm-prioritization-frameworks, pm-metrics-frameworks, pm-ai-era-evolution, gtm-strategy, product-strategy, user-story-mapping, mvp-canvas, ab-test, launch-checklist, pm-ai-security-product, pricing-strategy, pmf-survey, product-report, dashboard-northstar, dashboard-aarrr, dashboard-cohort, dashboard-revenue, dashboard-customer-br, dashboard-ai-monitor, dashboard-platform-selector, compliance-checklist, poc-plan, user-research]
 memory: project
 effort: high
 color: blue

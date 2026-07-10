@@ -10,7 +10,7 @@ effort: low
 # Dashboard AARRR — 海盗指标漏斗看板
 
 > 单一职责：AARRR 漏斗看板模板与查询。
-> 不做：AARRR 指标设计本身（→ `pm-growth-aarrr`）、北极星看板（→ `dashboard-northstar`）
+> 不做：AARRR 指标设计本身（→ `pm-metrics-frameworks` §二）、北极星看板（→ `dashboard-northstar`）
 
 ## 看板模板
 

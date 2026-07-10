@@ -9,7 +9,6 @@ tools: Read, Write, AskUserQuestion
 skills:
   - pm-discovery-frameworks
   - pm-prioritization-frameworks
-  - pm-upward-management
   - product-strategy
   - product-roadmap
   - prd-standard

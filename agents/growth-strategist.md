@@ -13,8 +13,7 @@ skills:
   - product-analytics
   - pricing-strategy
   - user-feedback
-  - pm-growth-aarrr
-  - pm-north-star
+  - pm-metrics-frameworks
   - dashboard-northstar
   - dashboard-aarrr
   - dashboard-cohort

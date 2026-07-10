@@ -178,7 +178,7 @@ WorkAgent/
 - 数据：`product-analytics` / `user-research` / `market-research` / `user-feedback` / `product-roadmap`
 - 设计与运营：`design-proto` / `pricing-strategy` / `product-report` / `compliance-checklist` / `tech-debt`
 - AI 产品：`ai-red-team` / `pm-ai-security-product`
-- PM 框架：`pm-discovery-frameworks` / `pm-prioritization-frameworks` / `pm-growth-aarrr` / `pm-north-star` / `pm-upward-management` / `pm-ai-era-evolution` / `pm-qa-acceptance`
+- PM 框架：`pm-discovery-frameworks` / `pm-prioritization-frameworks`（含向上管理） / `pm-metrics-frameworks`（北极星 + AARRR） / `pm-ai-era-evolution` / `pm-qa-acceptance`
 
 ### PPT 与可视化
 

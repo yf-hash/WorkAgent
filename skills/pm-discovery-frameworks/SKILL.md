@@ -12,7 +12,7 @@ effort: low
 # PM Discovery Frameworks — 发现阶段框架
 
 > 单一职责：发现阶段（Discovery）的 4 个核心框架。
-> 不做：优先级排序（→ `pm-prioritization-frameworks`）、增长漏斗（→ `pm-growth-aarrr`）
+> 不做：优先级排序（→ `pm-prioritization-frameworks`）、指标框架（→ `pm-metrics-frameworks`）
 
 ## 框架速查
 
