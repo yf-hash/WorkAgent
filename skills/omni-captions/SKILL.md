@@ -131,5 +131,5 @@ pip install google-generativeai
 /caption video.mp4 --translate zh --format srt
 
 # 再用字幕渲染视频
-/remotion-native --template ai-company-intro --subtitles video.srt --render
+/video-gen --engine native --template ai-company-intro --subtitles video.srt --render
 ```

@@ -236,7 +236,7 @@ Win-Back 转化率 B 端通常 5-15%，远高于冷启动新客户。
 ## 九、关联资源
 - 产品改进：`/pm-intake` → 优先级排序
 - 定价调整：`/pricing-strategy`
-- 后续看板：`/dashboard-customer-br`
+- 后续看板：`/dashboard --metric customer-br`
 ```
 
 ## 反模式
@@ -249,6 +249,6 @@ Win-Back 转化率 B 端通常 5-15%，远高于冷启动新客户。
 
 ## 配套资源
 
-- 数据看板：`/dashboard-customer-br` / `/dashboard-revenue`
+- 数据看板：`/dashboard --metric customer-br` / `/dashboard --metric revenue`
 - 用户研究：`/user-research`
 - 销售对账：参考 `win-loss-analysis` Skill

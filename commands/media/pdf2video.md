@@ -74,6 +74,6 @@ npm install -g @remotion/cli
 
 ## 相关命令
 
-- `/remotion-native` / `/remotion-prompt2video` / `/remotion-vidosy` — 从提示词或模板生成视频
+- `/video-gen --engine native|prompt2video|vidosy` — 从提示词或模板生成视频
 - `/caption` — 为视频生成多语言字幕
 - `/ppt` — PPT 生成（反向：内容→PPT）

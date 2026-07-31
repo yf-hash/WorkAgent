@@ -167,12 +167,12 @@
 | `/prd-writer` | `/prd-diagnose` `/prd-concept` `/prd-impl` `/prd-update` `/prd-quality` `/prd-deep-evaluate` |
 | `/self-evolve` | `/style-extract` `/style-create` `/style-refine` |
 | `/humanize` | `/humanize-scan` `/humanize-soul` `/humanize-academic` |
-| `/remotion-generate` | `/remotion-native` `/remotion-prompt2video` `/remotion-vidosy` |
+| `/remotion-generate` | v2.6 拆分：`/remotion-native` `/remotion-prompt2video` `/remotion-vidosy` → v2.8 重新合并入口：`/video-gen --engine <name>`（skills 保留） |
 | `/diagram` | `/diagram-mindmap` `/diagram-uml`（mermaid-chart 命令保持）|
-| `/md-visual` | `/md-poster` `/md-table-image` |
+| `/md-visual` | v2.6 拆分：`/md-poster` `/md-table-image` → v2.8 重新合并入口：`/md-render --format poster\|table`（skills 保留） |
 | `/table` | `/table-from-text` `/table-csv` |
-| `/data-dashboard` | `/dashboard-northstar` `/dashboard-aarrr` `/dashboard-cohort` `/dashboard-revenue` `/dashboard-customer-br` `/dashboard-ai-monitor` `/dashboard-platform-selector` |
-| `/bid` | `/bid-analyze` `/bid-clarify` `/bid-outline` `/bid-write` `/bid-review` `/bid-check` `/bid-export` |
+| `/data-dashboard` | v2.6 拆分：`/dashboard-northstar` 等 7 个 → v2.8 重新合并入口：`/dashboard --metric <name>`（skills 保留） |
+| `/bid` | v2.6 拆分：`/bid-analyze` `/bid-clarify` `/bid-outline` `/bid-write` `/bid-review` `/bid-check` `/bid-export` → v2.8 恢复统一入口：`/bid --phase <name>`（skills 保留） |
 | `/product-doc` | `/product-whitepaper` 等 16 个原子命令 |
 
 ---
@@ -240,20 +240,26 @@ WorkAgent/
 
 ### Dashboard 系列
 
+> v2.8 起命令入口统一为 `/dashboard --metric <name>`。Skills 层拆分保留。
+
 | 看板类型 | 命令 |
 |---|---|
-| 北极星 | `/dashboard-northstar` |
-| AARRR 漏斗 | `/dashboard-aarrr` |
-| Cohort 留存 | `/dashboard-cohort` |
-| 收入（MRR/ARR/NRR）| `/dashboard-revenue` |
-| 客户 BR / QBR | `/dashboard-customer-br` |
-| AI 功能监控 | `/dashboard-ai-monitor` |
-| 平台选型决策 | `/dashboard-platform-selector` |
+| 北极星 | `/dashboard --metric northstar` |
+| AARRR 漏斗 | `/dashboard --metric aarrr` |
+| Cohort 留存 | `/dashboard --metric cohort` |
+| 收入（MRR/ARR/NRR）| `/dashboard --metric revenue` |
+| 客户 BR / QBR | `/dashboard --metric customer-br` |
+| AI 功能监控 | `/dashboard --metric ai-monitor` |
+| 平台选型决策 | `/dashboard --metric platform-selector` |
 
 ### Bid 系列（七阶段串行）
 
+> v2.8 起命令入口统一为 `/bid --phase <name>`。Skills 层 7 阶段拆分保留。
+
 ```
-/bid-analyze → /bid-clarify → /bid-outline → /bid-write → /bid-review → /bid-check → /bid-export
+/bid --phase analyze → clarify → outline → write → review → check → export
+# 或一键：
+/bid RFP.pdf --phase all
 ```
 
 ### Diagram 系列

@@ -28,7 +28,7 @@ MaxTurns: 60
 
 ## 阶段路由
 
-接收 `/bid-analyze` / `/bid-clarify` / `/bid-outline` / `/bid-write` / `/bid-review` / `/bid-check` / `/bid-export` 后，按以下逻辑路由：
+接收 `/bid --phase <1..7|analyze|clarify|outline|write|review|check|export|all>` 后，按以下逻辑路由：
 
 ```
 analyze   → 执行第1阶段
@@ -38,7 +38,7 @@ write     → 执行第4阶段
 review    → 执行第5阶段
 check     → 执行第6阶段
 export    → 执行第7阶段
-full      → 顺序执行第1-7阶段，每阶段结束暂停确认
+all       → 顺序执行第1-7阶段，每阶段结束暂停确认
 kb        → 管理知识库（add/list/clear）
 ```
 

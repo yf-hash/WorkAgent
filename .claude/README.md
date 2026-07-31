@@ -120,15 +120,17 @@ WorkAgent/
 
 ### 标书编制（7 阶段拆分，7 Skill）
 
-| Skill | 阶段 | 触发命令 |
+> v2.8 起命令入口统一为 `/bid --phase <1..7|analyze|clarify|outline|write|review|check|export|all>`。Skills 层拆分保留。
+
+| Skill | 阶段 | 触发 |
 |-------|------|---------|
-| `bid-analyze` | 1. 拆解 + 三色标记 | `/bid-analyze` |
-| `bid-clarify` | 2. 澄清问题清单 | `/bid-clarify` |
-| `bid-outline` | 3. 大纲 + 偏离表 | `/bid-outline` |
-| `bid-write` | 4. 分模块撰写 | `/bid-write` |
-| `bid-review` | 5. 双轮评审 | `/bid-review` |
-| `bid-check` | 6. 合规核查 | `/bid-check` |
-| `bid-export` | 7. 移交导出 | `/bid-export` |
+| `bid-analyze` | 1. 拆解 + 三色标记 | `/bid --phase analyze` |
+| `bid-clarify` | 2. 澄清问题清单 | `/bid --phase clarify` |
+| `bid-outline` | 3. 大纲 + 偏离表 | `/bid --phase outline` |
+| `bid-write` | 4. 分模块撰写 | `/bid --phase write` |
+| `bid-review` | 5. 双轮评审 | `/bid --phase review` |
+| `bid-check` | 6. 合规核查 | `/bid --phase check` |
+| `bid-export` | 7. 移交导出 | `/bid --phase export` |
 
 ### PRD 全光谱（10 Skill）
 
@@ -160,15 +162,17 @@ WorkAgent/
 
 ### 数据看板（7 类原子 Skill）
 
-| Skill | 看板类型 | 触发命令 |
+> v2.8 起命令入口统一为 `/dashboard --metric <name>`。Skills 层拆分保留。
+
+| Skill | 看板类型 | 触发 |
 |-------|---------|---------|
-| `dashboard-northstar` | 北极星 | `/dashboard-northstar` |
-| `dashboard-aarrr` | AARRR 漏斗 | `/dashboard-aarrr` |
-| `dashboard-cohort` | Cohort 留存 | `/dashboard-cohort` |
-| `dashboard-revenue` | 收入（MRR/ARR/NRR） | `/dashboard-revenue` |
-| `dashboard-customer-br` | 客户 BR / QBR | `/dashboard-customer-br` |
-| `dashboard-ai-monitor` | AI 功能监控 | `/dashboard-ai-monitor` |
-| `dashboard-platform-selector` | 平台选型决策 | `/dashboard-platform-selector` |
+| `dashboard-northstar` | 北极星 | `/dashboard --metric northstar` |
+| `dashboard-aarrr` | AARRR 漏斗 | `/dashboard --metric aarrr` |
+| `dashboard-cohort` | Cohort 留存 | `/dashboard --metric cohort` |
+| `dashboard-revenue` | 收入（MRR/ARR/NRR） | `/dashboard --metric revenue` |
+| `dashboard-customer-br` | 客户 BR / QBR | `/dashboard --metric customer-br` |
+| `dashboard-ai-monitor` | AI 功能监控 | `/dashboard --metric ai-monitor` |
+| `dashboard-platform-selector` | 平台选型决策 | `/dashboard --metric platform-selector` |
 
 ### 产品管理（核心方法论 + 框架）
 
@@ -200,8 +204,8 @@ WorkAgent/
 | `ai-illustrator` | AI 智能插图（article / thesis-figure / document 子流程） | 对话触发 |
 | `stable-diffusion` | SD WebUI 文生图 / 图生图 | `/illustrate --backend sd` |
 | `impeccable` | 反 AI Slop 前端设计语言（7 领域 vocabulary + 32 上游 flow 参考 + 27 反模式 + 12 critique） | `/impeccable` |
-| `md-poster` | Markdown 转海报/分享卡片 | `/md-poster` |
-| `md-table-image` | Markdown 表格转图片 | `/md-table-image` |
+| `md-poster` | Markdown 转海报/分享卡片 | `/md-render --format poster` |
+| `md-table-image` | Markdown 表格转图片 | `/md-render --format table` |
 | `table-from-text` | 层级文本 → Markdown/CSV/Excel 表格 | `/table-from-text` |
 | `table-csv-md` | CSV ↔ Markdown 表格互转 | `/table-csv` |
 
@@ -219,9 +223,9 @@ WorkAgent/
 
 | Skill | 描述 | 触发方式 |
 |-------|------|---------|
-| `remotion-native` | Remotion 原生模板渲染 | `/remotion-native` |
-| `remotion-prompt2video` | 提示词 → 视频 | `/remotion-prompt2video` |
-| `remotion-vidosy` | Vidosy JSON → 视频 | `/remotion-vidosy` |
+| `remotion-native` | Remotion 原生模板渲染 | `/video-gen --engine native` |
+| `remotion-prompt2video` | 提示词 → 视频 | `/video-gen --engine prompt2video` |
+| `remotion-vidosy` | Vidosy JSON → 视频 | `/video-gen --engine vidosy` |
 | `pdf2video` | PDF/PPT 转动态视频 | `/pdf2video` |
 | `omni-captions` | 视频字幕生成 | `/caption` |
 | `videocut` | AI 视频智能剪辑 | `/videocut` |
@@ -275,14 +279,14 @@ WorkAgent/
 /polish thesis.pdf --tone academic --intensity max
 /marketing-copy AI 安全运营平台 --type wechat --audience tob --industry fintech --cta demo
 
-# 标书七阶段（原子命令串行）
-/bid-analyze 招标文件.pdf --color --clarify-list
-/bid-clarify
-/bid-outline --from 要求清单.xlsx --with-deviation
-/bid-write --section solution --kb company-docs/ --figures
-/bid-review
-/bid-check
-/bid-export
+# 标书七阶段（v2.8 统一入口）
+/bid 招标文件.pdf --phase analyze --color --clarify-list
+/bid --phase clarify
+/bid --phase outline --from 要求清单.xlsx --with-deviation
+/bid --phase write --section solution --kb company-docs/ --figures
+/bid --phase review
+/bid --phase check
+/bid --phase export
 ```
 
 ### 产品管理类
@@ -312,14 +316,14 @@ WorkAgent/
 /feedback "AI 写作助手 v2.3" --mode voc     # 用户反馈 VoC 报告
 /analytics 用户注册漏斗分析
 
-# 数据看板（7 类原子）
-/dashboard-northstar
-/dashboard-aarrr
-/dashboard-cohort
-/dashboard-revenue
-/dashboard-customer-br
-/dashboard-ai-monitor
-/dashboard-platform-selector
+# 数据看板（v2.8 统一入口）
+/dashboard --metric northstar
+/dashboard --metric aarrr
+/dashboard --metric cohort
+/dashboard --metric revenue
+/dashboard --metric customer-br
+/dashboard --metric ai-monitor
+/dashboard --metric platform-selector
 
 # 战略决策
 /working-backwards "新功能想法"
@@ -410,10 +414,10 @@ WorkAgent/
 /illustrate --mode single --backend mermaid --type sequence --desc "微服务调用链"
 /illustrate --mode single --backend sd --desc "AI 协作封面图" --sd-style digital-art
 
-# Remotion 三引擎拆分
-/remotion-native --template ai-native-company-intro --render
-/remotion-prompt2video "30秒展示产品核心价值"
-/remotion-vidosy story.json --render
+# Remotion 三引擎（v2.8 统一入口）
+/video-gen --engine native --template ai-native-company-intro --render
+/video-gen --engine prompt2video "30秒展示产品核心价值"
+/video-gen --engine vidosy story.json --render
 
 /pdf2video report.pdf --render
 /caption video.mp4 --translate zh --bilingual --format ass
@@ -427,9 +431,9 @@ WorkAgent/
 /visio 用户注册流程 --type flowchart
 /visio diagram.mmd --mode convert --from mermaid --output vsdx
 
-# Markdown 转图 + 表格
-/md-poster article.md --theme gradient
-/md-table-image table.md
+# Markdown 转图 + 表格（v2.8 统一入口）
+/md-render article.md --format poster --theme gradient
+/md-render table.md --format table
 /table-from-text "层级文本..." --to md
 /table-csv data.csv --to md
 
@@ -471,13 +475,13 @@ WorkAgent/
 ### 场景二：标书全流程编制（v2.6 七阶段原子命令）
 
 ```bash
-/bid-analyze 招标文件.pdf --color --clarify-list   # 1. 拆解 + 三色标记
-/bid-clarify                                       # 2. 澄清问题清单
-/bid-outline --from 要求清单.xlsx --with-deviation # 3. 大纲 + 偏离表
-/bid-write --section solution --kb company-docs/   # 4. 分模块撰写
-/bid-review                                        # 5. 双轮评审
-/bid-check                                         # 6. 合规核查
-/bid-export                                        # 7. 移交导出
+/bid 招标文件.pdf --phase analyze --color --clarify-list   # 1. 拆解 + 三色标记
+/bid --phase clarify                                        # 2. 澄清问题清单
+/bid --phase outline --from 要求清单.xlsx --with-deviation  # 3. 大纲 + 偏离表
+/bid --phase write --section solution --kb company-docs/    # 4. 分模块撰写
+/bid --phase review                                         # 5. 双轮评审
+/bid --phase check                                          # 6. 合规核查
+/bid --phase export                                         # 7. 移交导出
 ```
 
 三色标记规则：🔴 一票否决项 / 🟡 高分项 / 🔵 基础合规项
@@ -523,7 +527,7 @@ WorkAgent/
 # Stage 4 应答
 /rfp-response ./Bank_Tender.xlsx --industry fintech
 /security-questionnaire ./Bank_VSQ.xlsx --standard custom
-/bid-analyze 招标文件.pdf                         # 标书走 /bid-* 七阶段
+/bid 招标文件.pdf --phase analyze                # 标书走 /bid --phase 七阶段
 
 # Stage 5 演示 + PoC
 /demo-design 某城商行 --mode rehearse
@@ -549,10 +553,10 @@ WorkAgent/
 ### 场景七：视频全链路处理
 
 ```bash
-# Remotion 三引擎
-/remotion-native --template ai-native-company-intro --render
-/remotion-prompt2video "30秒展示产品核心价值"
-/remotion-vidosy story.json
+# Remotion 三引擎（v2.8 统一入口）
+/video-gen --engine native --template ai-native-company-intro --render
+/video-gen --engine prompt2video "30秒展示产品核心价值"
+/video-gen --engine vidosy story.json
 
 # 文档转视频 + 智能剪辑 + 字幕
 /pdf2video report.pdf --render

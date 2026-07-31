@@ -1,6 +1,8 @@
 ---
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, AskUserQuestion, Skill
+name: caption
 description: 视频字幕自动生成 — 转录+翻译+双语输出，支持30+格式，YouTube下载，Claude翻译无需额外API
+user-invocable: true
+allowed-tools: Bash, Read, Write, Edit, Glob, Grep, AskUserQuestion, Skill
 argument-hint: "<video_url|filepath> [--lang <代码>] [--translate <目标语言>] [--bilingual] [--format srt|vtt|ass|json] [--engine whisper|gemini]"
 ---
 
@@ -74,6 +76,6 @@ pip install google-generativeai
 
 ## 相关命令
 
-- `/remotion-native` / `/remotion-prompt2video` / `/remotion-vidosy` — 生成动态视频（可传入字幕文件）
+- `/video-gen --engine native|prompt2video|vidosy` — 生成动态视频（可传入字幕文件）
 - `/videocut` — AI 视频剪辑
 - `/pdf2video` — 文档转视频

@@ -81,5 +81,5 @@ pip install openai-whisper
 ## 相关命令
 
 - `/caption` — 为视频生成字幕
-- `/remotion-native` / `/remotion-prompt2video` / `/remotion-vidosy` — 生成动态视频
+- `/video-gen --engine native|prompt2video|vidosy` — 生成动态视频
 - `/pdf2video` — 文档转视频

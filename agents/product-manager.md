@@ -134,8 +134,9 @@ color: blue
   │   → 加载 product-report 技能
   │
   ├── 包含"数据看板/北极星看板/漏斗看板/PostHog/Mixpanel/Amplitude/客户 BR 看板"
-  │   → 加载 dashboard-* 系列对应技能（dashboard-northstar/dashboard-aarrr/dashboard-cohort/dashboard-revenue/dashboard-customer-br/dashboard-ai-monitor）
-  │   → 选型先决：dashboard-platform-selector
+  │   → 加载 dashboard-* 系列对应技能（northstar/aarrr/cohort/revenue/customer-br/ai-monitor）
+  │   → 命令入口统一为 /dashboard --metric <name>
+  │   → 选型先决：/dashboard --metric platform-selector
   │
   ├── 包含"合规/等保/SOC2/ISO27001/GDPR/HIPAA/PCI/个保法/数安法"
   │   → 加载 compliance-checklist 技能
@@ -187,7 +188,7 @@ color: blue
   → /product-report --mode quarterly   季度报告
 
 治理层（贯穿全周期）：
-  /dashboard-northstar / /dashboard-aarrr / /dashboard-revenue / /dashboard-ai-monitor  看板搭建
+  /dashboard --metric northstar|aarrr|revenue|ai-monitor  看板搭建
 ```
 
 ## PM 核心工作流推荐
