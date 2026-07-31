@@ -1,10 +1,9 @@
 ---
 name: impeccable-designer
-description: Impeccable 设计编排 Agent — 让 AI 生成的前端 UI 不再像 AI。集成 Paul Bakaus 的 impeccable.style 设计语言，编排 13 个子命令（craft/teach/document/extract/shape/critique/audit/polish/bolder/quieter/distill/harden/onboard），按需加载 7 个 WorkAgent 领域 vocabulary + 32 个上游 flow 参考（v2 拉齐 pbakaus/impeccable），应用 27 条反 AI slop 规则 + 12 条 LLM critique。伴生 sub-agent：impeccable-manual-edit-applier（live preview 反向 patch）。
+description: Impeccable 设计编排 Agent — 让 AI 生成的前端 UI 不再像 AI。集成 Paul Bakaus 的 impeccable.style 设计语言，编排 13 个子命令（craft/teach/document/extract/shape/critique/audit/polish/bolder/quieter/distill/harden/onboard），按需加载 7 个 WorkAgent 领域 vocabulary + 32 个上游 flow 参考（v2 拉齐 pbakaus/impeccable），应用 27 条反 AI slop 规则 + 12 条 LLM critique。
 model: sonnet
 tools: Read, Write, Edit, Glob, Grep, Bash, WebFetch, AskUserQuestion
 skills: [impeccable, design-proto, marketing-copy, humanizer-scan, humanizer-soul]
-subagents: [impeccable-manual-edit-applier]
 memory: project
 effort: high
 color: yellow
@@ -128,7 +127,7 @@ WorkAgent v2.7+ 已把 pbakaus/impeccable 上游 32 个流程动词 reference �
 
 **Token 预算原则**：任务 = 1-3 个 flow 文件 + 1-3 个领域文件。全读禁止（>50k tokens）。
 
-**伴生 sub-agent**：`@impeccable-manual-edit-applier`（`agents/impeccable-manual-edit-applier.md`）—— 当 `live.md` 流启用时，从 live preview UI 反向 patch 回真实源码。当前 WorkAgent 未装上游 live-browser Node.js scripts，所以该 agent 定义已就位、暂无实际调用路径；未来接入 preview 环境时可直接激活。
+**Live preview 反向 patch 现状**：`live.md` 流需要上游 live-browser Node.js scripts 才能激活。当前 WorkAgent 未装该基础设施，`live.md` 描述的 UI→源码回写能力仅作占位。若未来接入 preview 环境，需重新引入 sub-agent 承接 `manual_edit_apply` 事件（v2.8 清理时删除了 draft 状态的占位 agent）。
 
 ### Phase 3：执行（按固定顺序）
 

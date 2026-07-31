@@ -6,8 +6,8 @@ description: >
   ux-writing）+ 32 个上游 flow 参考（craft / shape / audit / critique / polish / bolder / quieter / distill /
   harden / onboard / brand / product / animate / layout / typeset / adapt / colorize / clarify / delight /
   document / extract / init / interaction-design / live / optimize / overdrive / hooks / codex / ios / android /
-  adapt.native / audit.native）+ 27 条反 AI slop 反模式规则 + brand-vs-product 双轨寄存器 +
-  impeccable-manual-edit-applier 伴生 agent。触发词：UI 设计、前端设计、网页设计、AI slop、设计语言、
+  adapt.native / audit.native）+ 27 条反 AI slop 反模式规则 + brand-vs-product 双轨寄存器。
+  触发词：UI 设计、前端设计、网页设计、AI slop、设计语言、
   设计规范、OKLCH、tinted neutrals、8px baseline grid、fluid typography、vertical rhythm、impeccable、
   design vocabulary、frontend design、视觉规范、配色规范、字体规范、动效规范、间距规范、响应式规范、
   UX 文案、按钮设计、卡片设计、表单设计、登录页、落地页、仪表盘、editorial、tech-minimal、消除 AI 味、
@@ -179,13 +179,13 @@ Brief（用户的模糊意图："给我做个 SaaS 落地页"）
 |------|------|
 | [ios.md](references/ios.md) | iOS Human Interface Guidelines 对齐 |
 | [android.md](references/android.md) | Android Material / Wear 对齐 |
-| [live.md](references/live.md) | live preview manual-edit 反向回源码流（需要伴生 agent `impeccable-manual-edit-applier`） |
+| [live.md](references/live.md) | live preview manual-edit 反向回源码流（需要上游 live-browser scripts + 承接 sub-agent，当前未激活） |
 | [hooks.md](references/hooks.md) | Claude Code hook 集成点（上游装了 hook-before-edit 阻断 slop） |
 | [codex.md](references/codex.md) | 面向 Codex / OpenAI CLI 的适配层 |
 
 **跨切矩阵示例**：做一个 B 端 SaaS dashboard 的 hero → 建议 Read `craft.md` + `shape.md` + `layout.md` + `typeset.md` + 本地 `interaction.md` + 本地 `responsive.md`。总量 ~10k tokens，比 Read 全部 39 个（>50k）省得多。
 
-**伴生 agent**：`impeccable-manual-edit-applier`（在 `agents/`）用于 `live.md` 流的下游 — 从 live preview UI 上手改的文字/尺寸反向 patch 回真实源码。当前 WorkAgent 未装 live-browser Node.js scripts，所以仅作占位保留，未来接入 preview 环境时可直接启用。
+**Live preview 反向 patch 现状**：`live.md` 流的下游需要一个能承接 `manual_edit_apply` 事件的 sub-agent，把 live preview UI 上手改的文字/尺寸反向 patch 回真实源码。当前 WorkAgent 未装 live-browser Node.js scripts，该 sub-agent 已在 v2.8 清理时删除（AUDIT 死代码裁剪）；未来接入 preview 环境时需重新引入。
 
 ---
 
