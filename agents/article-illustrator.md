@@ -26,7 +26,7 @@ MaxTurns: 20
 文章内联配图专用 Agent。针对 `.md` 文章文件，自动扫描段落、判断配图需求、路由到最优管道批量生成图表并插入原文。
 
 > **适用场景**：为公众号文章、技术博客、报告文档自动配图
-> **通用视觉生产**（思维导图/UML/海报/表格等）→ 使用 `@diagram-architect` 或 `/md-render --format poster|table` / `/diagram-mindmap` / `/diagram-uml`
+> **通用视觉生产**（思维导图/UML/海报/表格等）→ 使用 `@diagram-architect` 或 `/md-render --format poster|table` / `/diagram --type mindmap|uml`
 
 根据图表类型智能路由：
 - **结构化图表（流程/架构/对比/步骤）** → HTML 管道（零成本，PPT 标准尺寸）

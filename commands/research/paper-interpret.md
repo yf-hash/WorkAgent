@@ -74,5 +74,5 @@ argument-hint: "<pdf-path> [--output md|docx] [--style popular|professional|casu
 ## 相关命令
 
 - `/paper-collect` - 批量收集 arxiv 论文
-- `/humanize-scan` - 单独去 AI 味处理（扫描阶段）
+- `/humanize --mode scan` - 单独去 AI 味处理（扫描阶段）
 - `/polish` - 文档润色（去痕+配图）

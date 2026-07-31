@@ -237,13 +237,13 @@ WorkAgent/
 
 以下几个 explore 代理提议的裁剪已经 **主动撤回**：
 
-| 提议 | 撤回理由 |
-|---|---|
-| 删 `content-sync` | v2.6 HEALTH_REPORT §五 明确保留为 driver/adapter 模式 |
-| 删 `sunset-plan` | `/sunset` 命令直接加载它，无法拆离 |
-| 删 `chat2db` | `@data-analyst` agent 依赖它作为 SQL backend |
-| 删 `pm-ai-security-product` | 15+ 处依赖，含 templates 和多 agent，删除代价过大 |
-| 删 `ppt-architect` | `@ppt-generator` 的核心调度层，多处引用 |
-| 参数化 `humanize-*/style-*/diagram-*` 回 --mode | 与 v2.6 拆原子命令的方向相反，会破坏用户习惯 |
-| 拆 `product-manager` agent | 主管全栈是它的价值所在，拆分会破坏"一站式" |
-| 合 `prd-*` 11 个 | 每个适用场景清晰，合并会牺牲精度 |
+| 提议 | 撤回理由 | v2.8 状态 |
+|---|---|---|
+| 删 `content-sync` | v2.6 HEALTH_REPORT §五 明确保留为 driver/adapter 模式 | 保持撤回 |
+| 删 `sunset-plan` | `/sunset` 命令直接加载它，无法拆离 | 保持撤回 |
+| 删 `chat2db` | `@data-analyst` agent 依赖它作为 SQL backend | 保持撤回 |
+| 删 `pm-ai-security-product` | 15+ 处依赖，含 templates 和多 agent，删除代价过大 | 保持撤回 |
+| 删 `ppt-architect` | `@ppt-generator` 的核心调度层，多处引用 | 保持撤回 |
+| ~~参数化 `humanize-*/style-*/diagram-*` 回 --mode~~ | 与 v2.6 拆原子命令的方向相反 | **v2.8 已推翻**：`/humanize --mode` + `/diagram --type` 已实施（skills 层仍保持原子，命令层入口收敛）。`style-*` 仍保持独立命令 |
+| 拆 `product-manager` agent | 主管全栈是它的价值所在，拆分会破坏"一站式" | 保持撤回 |
+| 合 `prd-*` 11 个 | 每个适用场景清晰，合并会牺牲精度 | 保持撤回 |

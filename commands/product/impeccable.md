@@ -249,7 +249,7 @@ PRD 阶段：
 
 去 AI 味闭环：
   UI 走 /impeccable critique
-  文案走 /humanize-scan → /humanize-soul
+  文案走 /humanize --mode scan → --mode soul
 ```
 
 ---

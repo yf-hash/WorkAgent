@@ -1,6 +1,8 @@
 ---
-allowed-tools: Read, Write, Edit, Bash, AskUserQuestion, Skill
+name: polish
 description: 文档智能润色 — AI 去痕 + 自动配图一键闭环，输入 Markdown/PDF/DOCX，自动完成人性化改写和专业配图生成
+user-invocable: true
+allowed-tools: Read, Write, Edit, Bash, AskUserQuestion, Skill
 argument-hint: "<filepath> [--tone casual|formal|technical|academic] [--intensity low|medium|high|max] [--style <风格>] [--mode auto|staged|iterative] [--output <路径>]"
 ---
 
@@ -89,5 +91,5 @@ Phase 4: 输出完整文档 [自动]
 
 ## 相关命令
 
-- `/humanize-scan` `/humanize-soul` `/humanize-academic` — 单独执行 AI 去痕的三个阶段
+- `/humanize --mode scan|soul|academic` — 单独执行 AI 去痕的三个阶段
 - `/illustrate` — 单独执行文章配图

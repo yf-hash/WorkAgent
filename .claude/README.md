@@ -113,9 +113,9 @@ WorkAgent/
 | `style-card-extractor` | 从参考文章提炼风格卡片 | `/style-extract` |
 | `style-writer-reviewer` | 基于风格卡片 + Writer-Reviewer 互搏创作 | `/style-create` |
 | `style-refine` | 已有文章按风格卡片优化 | `/style-refine` |
-| `humanizer-scan` | AI 痕迹扫描（29 模式 / 五维评分） | `/humanize-scan` |
-| `humanizer-soul` | 灵魂注入（6 大人性原则） | `/humanize-soul` |
-| `humanizer-academic` | 学术深度强化（30 条指令） | `/humanize-academic` |
+| `humanizer-scan` | AI 痕迹扫描（29 模式 / 五维评分） | `/humanize --mode scan` |
+| `humanizer-soul` | 灵魂注入（6 大人性原则） | `/humanize --mode soul` |
+| `humanizer-academic` | 学术深度强化（30 条指令） | `/humanize --mode academic` |
 | `marketing-copy` | 9 大营销文体（公众号软文 / 小红书 / 知乎 / 朋友圈 / 短视频 / 落地页 / EDM / PR 稿 / 客户故事 / Demo 脚本） | `/marketing-copy` |
 
 ### 标书编制（7 阶段拆分，7 Skill）
@@ -197,8 +197,8 @@ WorkAgent/
 | `ppt-web-researcher` | PPT 多源内容搜集（官方/媒体/学术/产业/社区） | `/ppt --research` |
 | `html-chart` | HTML+Playwright 截图，4 种风格 | `/illustrate` |
 | `mermaid-chart` | Mermaid 图表生成 | `/illustrate --backend mermaid` |
-| `diagram-markmap` | Markmap 思维导图 | `/diagram-mindmap` |
-| `diagram-plantuml` | PlantUML 全系 UML | `/diagram-uml` |
+| `diagram-markmap` | Markmap 思维导图 | `/diagram --type mindmap` |
+| `diagram-plantuml` | PlantUML 全系 UML | `/diagram --type uml` |
 | `arch-diagram` | 云架构图（AWS/GCP/Azure/K8s/阿里云） | `/arch-diagram` |
 | `visio-builder` | Visio 图表创建与格式互转 | `/visio` |
 | `ai-illustrator` | AI 智能插图（article / thesis-figure / document 子流程） | 对话触发 |
@@ -271,10 +271,10 @@ WorkAgent/
 /style-create --title "文章标题" --style-card style.md
 /style-refine article.md --style-card style.md
 
-# 去 AI 味三段式：扫描 → 灵魂 → 学术
-/humanize-scan article.md
-/humanize-soul article.md
-/humanize-academic thesis.md
+# 去 AI 味三段式：scan → soul → academic（v2.8 统一入口）
+/humanize article.md --mode scan
+/humanize article.md --mode soul
+/humanize thesis.md --mode academic
 
 /polish thesis.pdf --tone academic --intensity max
 /marketing-copy AI 安全运营平台 --type wechat --audience tob --industry fintech --cta demo
@@ -424,9 +424,9 @@ WorkAgent/
 /videocut lecture.mp4 --mode review
 /sync article.md --platforms wechat,zhihu,juejin
 
-# 图表五引擎独立
-/diagram-mindmap "用户注册流程"
-/diagram-uml --type sequence --desc "微服务调用链"
+# 图表统一入口（v2.8）
+/diagram "用户注册流程" --type mindmap
+/diagram --type uml --subtype sequence --desc "微服务调用链"
 /arch-diagram 用户→CloudFront→ALB→EC2集群→RDS --provider aws
 /visio 用户注册流程 --type flowchart
 /visio diagram.mmd --mode convert --from mermaid --output vsdx
@@ -464,9 +464,9 @@ WorkAgent/
 /style-create --title "我的新文章标题" --style-card style.md
 /style-refine article.md --style-card style.md
 
-# 去 AI 味三段式
-/humanize-scan article.md
-/humanize-soul article.md
+# 去 AI 味三段式（v2.8 统一入口）
+/humanize article.md --mode scan
+/humanize article.md --mode soul
 
 # 访谈稿：Writer-Reviewer 互搏迭代
 /interview-writer --target-score 88 --max-rounds 3
@@ -568,9 +568,9 @@ WorkAgent/
 ### 场景八：图表五引擎
 
 ```bash
-# 思维导图 / UML / 云架构 / Visio / 通用配图
-/diagram-mindmap "产品设计流程"
-/diagram-uml --type sequence --desc "微服务调用链"
+# 思维导图 / UML / 云架构 / Visio / 通用配图（v2.8 统一入口）
+/diagram "产品设计流程" --type mindmap
+/diagram --type uml --subtype sequence --desc "微服务调用链"
 /arch-diagram 用户→CloudFront→ALB→EC2集群→RDS --provider aws
 /visio 用户注册流程 --type flowchart
 /illustrate article.md
@@ -685,7 +685,7 @@ claude .
 /ppt 产品季度汇报 --style business --pages 10
 /arch-diagram 用户→CloudFront→ALB→EC2集群→RDS --provider aws
 /pdf2video report.pdf --render
-/diagram-mindmap "产品设计流程"
+/diagram "产品设计流程" --type mindmap
 ```
 
 **4. 查看详细分工**

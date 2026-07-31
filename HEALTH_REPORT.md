@@ -166,9 +166,9 @@
 | `/product-spec --mode {prd, spec, proto, lite}` | `/prd-standard` `/prd-spec-first` `/prd-proto` `/prd-lite` |
 | `/prd-writer` | `/prd-diagnose` `/prd-concept` `/prd-impl` `/prd-update` `/prd-quality` `/prd-deep-evaluate` |
 | `/self-evolve` | `/style-extract` `/style-create` `/style-refine` |
-| `/humanize` | `/humanize-scan` `/humanize-soul` `/humanize-academic` |
+| `/humanize` | v2.6 拆分：`/humanize-scan` `/humanize-soul` `/humanize-academic` → v2.8 重新合并入口：`/humanize --mode scan\|soul\|academic\|all`（skills 保留） |
 | `/remotion-generate` | v2.6 拆分：`/remotion-native` `/remotion-prompt2video` `/remotion-vidosy` → v2.8 重新合并入口：`/video-gen --engine <name>`（skills 保留） |
-| `/diagram` | `/diagram-mindmap` `/diagram-uml`（mermaid-chart 命令保持）|
+| `/diagram` | v2.6 拆分：`/diagram-mindmap` `/diagram-uml` → v2.8 重新合并入口：`/diagram --type mindmap\|uml\|json`（skills 保留，mermaid/arch/visio 保持独立命令） |
 | `/md-visual` | v2.6 拆分：`/md-poster` `/md-table-image` → v2.8 重新合并入口：`/md-render --format poster\|table`（skills 保留） |
 | `/table` | `/table-from-text` `/table-csv` |
 | `/data-dashboard` | v2.6 拆分：`/dashboard-northstar` 等 7 个 → v2.8 重新合并入口：`/dashboard --metric <name>`（skills 保留） |
@@ -234,9 +234,9 @@ WorkAgent/
 | 提炼风格卡片 | `/style-extract` |
 | 风格驱动从零创作 | `/style-create` |
 | 已有文章风格优化 | `/style-refine` |
-| AI 痕迹扫描去除 | `/humanize-scan` |
-| 灵魂注入 | `/humanize-soul` |
-| 学术深度强化 | `/humanize-academic` |
+| AI 痕迹扫描去除 | `/humanize --mode scan` |
+| 灵魂注入 | `/humanize --mode soul` |
+| 学术深度强化 | `/humanize --mode academic` |
 
 ### Dashboard 系列
 
@@ -267,8 +267,8 @@ WorkAgent/
 | 引擎 | 命令 |
 |---|---|
 | Mermaid（流程/甘特/状态/ER 等）| `/illustrate --backend mermaid` |
-| PlantUML（全系 UML）| `/diagram-uml` |
-| Markmap（思维导图）| `/diagram-mindmap` |
+| PlantUML（全系 UML）| `/diagram --type uml` |
+| Markmap（思维导图）| `/diagram --type mindmap` |
 | 云架构图（diagrams 库）| `/arch-diagram` |
 | Visio 创建 / 格式互转 | `/visio` |
 

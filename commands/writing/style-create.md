@@ -26,6 +26,6 @@ allowed-tools: [Read, Write, Edit, WebFetch, AskUserQuestion]
 
 ```
 创作完成后必跑：
-  → /humanize-scan（消除 29 模式）
-  → /humanize-soul（六大人性原则注入）
+  → /humanize --mode scan（消除 29 模式）
+  → /humanize --mode soul（六大人性原则注入）
 ```

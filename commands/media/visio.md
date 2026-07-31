@@ -134,7 +134,7 @@ pip install pywin32
 ## 与其他命令的协同
 
 ```
-/visio ←→ /diagram-uml  → Mermaid/PlantUML ↔ Visio 双向转换
+/visio ←→ /diagram --type uml  → Mermaid/PlantUML ↔ Visio 双向转换
 /visio  →  /illustrate  → 将 Visio 导出图嵌入文章配图
 /visio  →  /ppt         → 将 Visio 图表插入 PPT
 @diagram-architect      → 统一图表编排 Agent，自动选择最优格式

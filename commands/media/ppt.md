@@ -948,8 +948,8 @@ D5 受众匹配改进（当D5最弱时）：
 ```
 /ppt (研究阶段)     → /market-research   更深度的竞品/市场研究
 /ppt (图表阶段)     → /arch-diagram      专业云架构图生成
-                    → /diagram-uml       PlantUML 轻量图表
-                    → /diagram-mindmap   Markmap 思维导图
+                    → /diagram --type uml       PlantUML 轻量图表
+                    → /diagram --type mindmap   Markmap 思维导图
 /ppt (美化阶段)     → @article-illustrator    图表+配图一体化美化
 /ppt (学术场景)     → /paper-collect     论文搜集与整理
 /ppt (汇报场景)     → /prd-standard      产品文档一键转PPT
