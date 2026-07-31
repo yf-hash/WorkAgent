@@ -9,8 +9,8 @@ argument-hint: "[产品/功能/需求描述]"
 
 $ARGUMENTS
 
-> 与 `/prd-standard` 的边界：本命令使用**企业级严格模板**（多租户/审计/隔离/合规口径默认必填），
-> 适合 B 端 SaaS / 私有化项目；`/prd-standard` 适合 C 端 / 通用产品快速生成。
+> 与 `/prd --mode standard` 的边界：本命令使用**企业级严格模板**（多租户/审计/隔离/合规口径默认必填），
+> 适合 B 端 SaaS / 私有化项目；`/prd --mode standard` 适合 C 端 / 通用产品快速生成。
 > 输出模板见 `templates/prd-template.md`。
 
 ## 必须包含
@@ -47,8 +47,8 @@ $ARGUMENTS
 
 | 场景 | 推荐 |
 |------|------|
-| 想法模糊，需要对话引导 | `@prd-coach` 或 `/prd-diagnose` → `/prd-concept` → `/prd-impl` |
-| 想法清晰，C 端通用产品 | `/prd-standard` |
+| 想法模糊，需要对话引导 | `@prd-coach` 或 `/prd --mode diagnose` → `/prd --mode concept` → `/prd --mode impl` |
+| 想法清晰，C 端通用产品 | `/prd --mode standard` |
 | 想法清晰，**B 端 SaaS / 私有化** | **本命令** `/pm-prd-enterprise` |
 | 包含 LLM/Agent/RAG 功能 | `@ai-product-architect`（套用 pm-ai-security-product 方法论） |
 | 安全 + AI 融合产品 | `pm-ai-security-product` Skill |

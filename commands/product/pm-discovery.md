@@ -48,7 +48,7 @@ $ARGUMENTS
 
 ## 推荐后续
 
-- 立项通过 → `/product-strategy` → `/prd-standard`（C 端）或 `/pm-prd-enterprise`（B 端 SaaS）
+- 立项通过 → `/product-strategy` → `/prd --mode standard`（C 端）或 `/pm-prd-enterprise`（B 端 SaaS）
 - 需要更深市场情报 → `@research-analyst §Market Intelligence Focus Mode`
 - 需要客户访谈设计 → `/user-research`
 - 综合多领域研究 → `@research-analyst`

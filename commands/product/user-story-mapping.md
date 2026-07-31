@@ -128,14 +128,14 @@ R1 包含的故事：[故事列表 + 简述]
   ├── /user-research → 提供 Persona 和 JTBD
   ├── /product-strategy → 提供 Vision 决定地图聚焦
   ├── /mvp-canvas → R1 切片即 MVP 范围
-  ├── /prd-standard / /prd-spec-first → 故事卡 → 详细 PRD
+  ├── /prd --mode standard / /prd --mode spec-first → 故事卡 → 详细 PRD
   └── /roadmap → 切片 → 路线图里程碑
 
 推荐工作流：
   新功能立项：
     /user-research --mode persona
     → /user-story-mapping --mode full
-    → /prd-spec-first --stage spec
+    → /prd --mode spec-first --stage spec
 ```
 
 ---

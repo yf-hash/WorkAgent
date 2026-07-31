@@ -66,9 +66,9 @@ WorkAgent/
 │   ├── data/              # 2（product-analytics / ab-test）
 │   ├── strategy/          # 19（gtm/build-vs-buy/sunset/win-loss/churn/tech-debt 等）
 │   └── tools/             # 1（od-contribute）
-├── commands/              # 97 个（v2.8 合并 6 类 stub 群后）
+├── commands/              # 87 个（v2.8.1 再合并 prd-* 11→1 后）
 │   ├── writing/           # 9（style-* 3 + humanize + polish + marketing + article + interview + sync）
-│   ├── product/           # 41（PM + prd-* 11 + dashboard + 战略决策）
+│   ├── product/           # 31（PM + prd 统一入口 + dashboard + 战略决策）
 │   ├── presales/          # 29（含 bid 统一 + product-* 16 类）
 │   ├── research/          # 5
 │   ├── media/             # 12（ppt/illustrate/video-gen/diagram/arch-diagram/visio/md-render/table/caption/pdf2video/videocut）
@@ -153,17 +153,17 @@ WorkAgent/
 
 | Skill | 用途 | 触发命令 |
 |-------|------|---------|
-| `prd-lite` | 1 页对齐方向 | `/prd-lite` |
-| `prd-standard` | 标准 8 章 PRD | `/prd-standard` |
-| `prd-spec-first` | Spec-First 四件套 | `/prd-spec-first` |
-| `prd-proto` | 含 ASCII 线框图 | `/prd-proto` |
-| `prd-quality-check` | 5 维度评分 | `/prd-quality` |
-| `prd-deep-evaluate` | 23 节模板差距分析 | `/prd-deep-evaluate` |
-| `prd-diagnose` | 三镜诊断（想法模糊） | `/prd-diagnose` |
-| `prd-concept-draft` | 概念稿 | `/prd-concept` |
-| `prd-implementation-draft` | 实现稿 | `/prd-impl` |
-| `prd-incremental-update` | 已有 PRD 增量更新 | `/prd-update` |
-| `prd-xqy` | 银行/金融 XQY 需规格 8 章模板（接口/菜单/批处理） | `/prd-xqy` |
+| `prd-lite` | 1 页对齐方向 | `/prd --mode lite` |
+| `prd-standard` | 标准 8 章 PRD | `/prd --mode standard` |
+| `prd-spec-first` | Spec-First 四件套 | `/prd --mode spec-first` |
+| `prd-proto` | 含 ASCII 线框图 | `/prd --mode proto` |
+| `prd-quality-check` | 5 维度评分 | `/prd --mode quality` |
+| `prd-deep-evaluate` | 23 节模板差距分析 | `/prd --mode evaluate` |
+| `prd-diagnose` | 三镜诊断（想法模糊） | `/prd --mode diagnose` |
+| `prd-concept-draft` | 概念稿 | `/prd --mode concept` |
+| `prd-implementation-draft` | 实现稿 | `/prd --mode impl` |
+| `prd-incremental-update` | 已有 PRD 增量更新 | `/prd --mode update` |
+| `prd-xqy` | 银行/金融 XQY 需规格 8 章模板（接口/菜单/批处理） | `/prd --mode xqy` |
 
 > B 端严格 12 章另走 `/pm-prd-enterprise`。
 
@@ -310,22 +310,22 @@ WorkAgent/
 
 ```bash
 # PRD 全光谱
-/prd-lite "AI 写作助手"                     # 1 页对齐方向
-/prd-standard "AI 写作助手"                 # 标准 8 章
-/prd-spec-first "API 网关重构"              # Spec-First 四件套
-/prd-proto "新功能页面" --wireframe         # 含 ASCII 线框图
+/prd --mode lite "AI 写作助手"                     # 1 页对齐方向
+/prd --mode standard "AI 写作助手"                 # 标准 8 章
+/prd --mode spec-first "API 网关重构"              # Spec-First 四件套
+/prd --mode proto "新功能页面" --wireframe         # 含 ASCII 线框图
 /pm-prd-enterprise "多租户 RBAC 后台"       # B 端严格 12 章
-/prd-xqy "对公开户流程" --module-type mixed # 银行/金融 XQY 8 章需规格
+/prd --mode xqy "对公开户流程" --module-type mixed # 银行/金融 XQY 8 章需规格
 
 # 对话渐进 PRD（想法模糊时）
-/prd-diagnose "我有个模糊的想法..."
-/prd-concept                                # 概念稿
-/prd-impl                                   # 实现稿
-/prd-update prd-v1.md                       # 增量更新
+/prd --mode diagnose "我有个模糊的想法..."
+/prd --mode concept                                # 概念稿
+/prd --mode impl                                   # 实现稿
+/prd --mode update prd-v1.md                       # 增量更新
 
 # PRD 质量
-/prd-quality prd.md                         # 5 维度评分
-/prd-deep-evaluate prd.md                   # 23 节模板差距
+/prd --mode quality prd.md                         # 5 维度评分
+/prd --mode evaluate prd.md                   # 23 节模板差距
 
 # 调研类
 /market-research AI 写作工具市场 --mode competitive
@@ -516,7 +516,7 @@ WorkAgent/
 
 ```bash
 /pm-discovery "AI 写作助手浏览器插件"             # 一次性发现报告
-/prd-standard "AI 写作助手浏览器插件"            # 标准 8 章 PRD（C 端）
+/prd --mode standard "AI 写作助手浏览器插件"            # 标准 8 章 PRD（C 端）
 /pm-prd-enterprise "多租户企业版"                # B 端严格 12 章
 /market-research AI 写作工具市场 --mode competitive
 /analytics 用户注册漏斗分析
@@ -670,8 +670,8 @@ claude .
 # PM 全流程入门
 /pm-intake "你脑子里那个模糊的想法"
 /pm-discovery "你的产品方向"
-/prd-diagnose "想法模糊"                      # 想法模糊时
-/prd-standard "你的产品名"                    # 直接写
+/prd --mode diagnose "想法模糊"                      # 想法模糊时
+/prd --mode standard "你的产品名"                    # 直接写
 /working-backwards "你的功能想法"
 @qa-acceptance-designer "MVP 范围 v0.1"
 
@@ -698,7 +698,7 @@ claude .
 
 # 通用任务
 /article-writer 帮我写一篇关于 AI 工具提效的文章
-/prd-lite "团队协作工具"
+/prd --mode lite "团队协作工具"
 /ppt 产品季度汇报 --style business --pages 10
 /arch-diagram 用户→CloudFront→ALB→EC2集群→RDS --provider aws
 /pdf2video report.pdf --render
@@ -712,6 +712,20 @@ claude .
 ---
 
 ## 更新日志
+
+### v2.8.1（PRD 全光谱合并，2026-07）
+
+- **Commands 再合并**（-10 net）：11 个 `prd-*` 命令合并成 1 个 `/prd --mode <mode>` 统一入口
+  - 生成类 5：`--mode lite|standard|spec-first|proto|xqy`
+  - 渐进类 3：`--mode diagnose|concept|impl` + `--flow discovery` 一键跑
+  - 评估类 2：`--mode quality|evaluate`
+  - 变更类 1：`--mode update`
+  - 保留原有二级参数：`--stage`（spec-first）/ `--fidelity`（proto）/ `--module-type` / `--system`（xqy）
+  - 强顺序 gate 保留：concept 检查 diagnose 输出、impl 检查 concept 输出
+- Skills 层 11 个保持原子，精度不减
+- AUDIT.md「合 prd-* 11 个」撤回项标记为 v2.8.1 已推翻
+- 15 处下游引用批量替换（agents/prd-coach、agents/product-manager、agents/xqy-spec-writer、agents/ai-product-architect、templates/prd-template 等）
+- 最终规模：**24 Agents / 115 Skills / 87 Commands / 25 Templates**
 
 ### v2.8（Commands 主题合并 + Skills 分子目录 + Agents 索引，2026-07）
 

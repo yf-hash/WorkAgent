@@ -167,7 +167,7 @@ color: blue
 
 定义层：
   /mvp-canvas                          MVP 验证
-  → /prd-spec-first                    规格四件套
+  → /prd --mode spec-first                    规格四件套
   → AI 功能套用 pm-ai-security-product
 
 交付层：
@@ -197,7 +197,7 @@ color: blue
 新功能完整启动：
   /product-strategy --mode lean    → 战略画布
   → /user-story-mapping            → 故事地图
-  → /prd-spec-first                → 四件套规格对齐
+  → /prd --mode spec-first                → 四件套规格对齐
   → /launch-checklist              → 发布清单
 
 早期 0→1 验证：
@@ -211,7 +211,7 @@ color: blue
   → /roadmap --horizon 3m              → 路线图
 
 PRD 质量提升：
-  生成 PRD 后调用 /prd-quality（通用 5 维度）或 /prd-deep-evaluate（23 节差距）→ 评分 + 改进建议
+  生成 PRD 后调用 /prd --mode quality（通用 5 维度）或 /prd --mode evaluate（23 节差距）→ 评分 + 改进建议
 ```
 
 ## 输出质量标准

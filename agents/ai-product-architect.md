@@ -103,7 +103,7 @@ color: "#7e57c2"
 
 ```
 Phase 0：可行性验证（POC，1-2 周）
-  - /prd-spec-first --stage spec（套用 pm-ai-security-product 的 AI 任务规范章）
+  - /prd --mode spec-first --stage spec（套用 pm-ai-security-product 的 AI 任务规范章）
   - 选 5-10 个真实 query 手工跑
   - 评估"够不够好"
   - 决策：Pivot / 继续

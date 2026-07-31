@@ -283,13 +283,13 @@ Agent: 好的，我来评估一下...
 
 ```
 @prd-coach（本 Agent）
-  ├── 概念稿确认后 → /prd-spec-first  深度规格化（四件套文档）
+  ├── 概念稿确认后 → /prd --mode spec-first  深度规格化（四件套文档）
   ├── 需要 GTM 章节 → /gtm-strategy
-  ├── 需要原型验证 → /prd-proto  ASCII 线框图深化
+  ├── 需要原型验证 → /prd --mode proto  ASCII 线框图深化
   └── 需要竞品分析 → @product-manager       完整 PM 工作流
 
 推荐完整工作流：
   想法 → @prd-coach（Mode A，引导对话）
-       → /prd-spec-first（规格化）
+       → /prd --mode spec-first（规格化）
        → @qa-acceptance-designer（验收方案）
 ```

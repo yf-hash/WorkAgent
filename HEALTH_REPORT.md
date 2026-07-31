@@ -54,7 +54,7 @@
 | skill | `open-websearch` | `web-search-analyst` 的底层引擎 |
 | skill | `prd-xqy` | XQY 8 章模板方法论 |
 | command | `/web-search` | 触发 web-search-analyst |
-| command | `/prd-xqy` | 触发 xqy-spec-writer |
+| command | `/prd --mode xqy` | 触发 xqy-spec-writer |
 
 ### C. 根仓库清理
 
@@ -86,7 +86,7 @@
 | `skills/media/omni-captions/SKILL.md` | `remotion-generator`, `/remotion-generate` | `Remotion 系列命令`, `/remotion-native` |
 | `skills/pm-core-framework/SKILL.md` | `pm-skills`, `pm-full-cycle`, `/prd-writer`, `/product-spec`, `/sales-guide` 等 7 处 | 重写定位为「前置思考层」+ 链接到 6 个原子 PM 框架 Skill |
 | `skills/pm/pm-qa-acceptance/SKILL.md` | `product-spec / prd-writer` | `prd-standard / prd-implementation-draft` |
-| `skills/pm/working-backwards/SKILL.md` | `/product-spec` × 2 | `/prd-standard` |
+| `skills/pm/working-backwards/SKILL.md` | `/product-spec` × 2 | `/prd --mode standard` |
 | `skills/strategy/user-story-mapping/SKILL.md` | `product-spec` | `prd-standard` |
 | `skills/pm/product-strategy/SKILL.md` | `product-spec` | `prd-standard` |
 | `skills/strategy/compliance-checklist/SKILL.md` | `product-spec` | `prd-standard` |
@@ -101,17 +101,17 @@
 | `commands/media/caption.md` | `/remotion-generate` | `/remotion-native / /remotion-prompt2video / /remotion-vidosy` |
 | `commands/media/videocut.md` | `/remotion-generate` | 同上 |
 | `commands/media/pdf2video.md` | `/remotion-generate` | 同上 |
-| `commands/media/arch-diagram.md` | `/diagram`, `/prd` | `/diagram-mindmap / /diagram-uml`, `/prd-standard` |
+| `commands/media/arch-diagram.md` | `/diagram`, `/prd` | `/diagram-mindmap / /diagram-uml`, `/prd --mode standard` |
 | `commands/media/visio.md` | `/diagram` | `/diagram-uml` |
-| `commands/media/ppt.md` | `/diagram`, `/prd` | `/diagram-uml / /diagram-mindmap`, `/prd-standard` |
+| `commands/media/ppt.md` | `/diagram`, `/prd` | `/diagram-uml / /diagram-mindmap`, `/prd --mode standard` |
 | `commands/presales/proposal.md` | `/bid` + 失效路径 `commands/writing/bid.md` | `/bid-* 七阶段` |
 | `commands/presales/rfp-response.md` | `/bid full` | `/bid-analyze → /bid-export 七阶段` |
 | `commands/presales/security-questionnaire.md` | `/bid full` | 同上 |
 | `commands/writing/sync.md` | `/humanize` | `/humanize-scan → /humanize-soul` |
 | `commands/product/impeccable.md` | `/humanize` | `/humanize-scan → /humanize-soul` |
 | `commands/product/pm-discovery.md` | `competitor-analysis`（不存在的 skill 名） | `market-research`（含 `--mode competitive`） |
-| `commands/product/gtm-strategy.md` | `/prd --mode gtm` | `/prd-standard` |
-| `templates/prd-template.md` | 配套 Skill: `prd-writer`，配套命令: `/prd-writer` | 配套 Agent: `@prd-coach`，配套命令: `/prd-diagnose → /prd-concept → /prd-impl` 或 `/prd-standard` |
+| `commands/product/gtm-strategy.md` | `/prd --mode gtm` | `/prd --mode standard` |
+| `templates/prd-template.md` | 配套 Skill: `prd-writer`，配套命令: `/prd-writer` | 配套 Agent: `@prd-coach`，配套命令: `/prd --mode diagnose → /prd --mode concept → /prd --mode impl` 或 `/prd --mode standard` |
 
 ### B. 冗余 Agent 清理
 
@@ -163,8 +163,8 @@
 
 | 原命令 | 拆分为 |
 |---|---|
-| `/product-spec --mode {prd, spec, proto, lite}` | `/prd-standard` `/prd-spec-first` `/prd-proto` `/prd-lite` |
-| `/prd-writer` | `/prd-diagnose` `/prd-concept` `/prd-impl` `/prd-update` `/prd-quality` `/prd-deep-evaluate` |
+| `/product-spec --mode {prd, spec, proto, lite}` | `/prd --mode standard` `/prd --mode spec-first` `/prd --mode proto` `/prd --mode lite` |
+| `/prd-writer` | `/prd --mode diagnose` `/prd --mode concept` `/prd --mode impl` `/prd --mode update` `/prd --mode quality` `/prd --mode evaluate` |
 | `/self-evolve` | `/style-extract` `/style-create` `/style-refine` |
 | `/humanize` | v2.6 拆分：`/humanize-scan` `/humanize-soul` `/humanize-academic` → v2.8 重新合并入口：`/humanize --mode scan\|soul\|academic\|all`（skills 保留） |
 | `/remotion-generate` | v2.6 拆分：`/remotion-native` `/remotion-prompt2video` `/remotion-vidosy` → v2.8 重新合并入口：`/video-gen --engine <name>`（skills 保留） |
@@ -192,7 +192,7 @@
 
 ---
 
-## 六、当前文件结构（v2.8）
+## 六、当前文件结构（v2.8.1）
 
 ```
 WorkAgent/
@@ -203,9 +203,9 @@ WorkAgent/
 │   ├── ppt/  media/  diagram/
 │   ├── research/  data/  strategy/
 │   └── tools/
-├── commands/           # 97
+├── commands/           # 87（v2.8.1 再合并 prd-* 11→1）
 │   ├── writing/        # 9  （合并 humanize 3→1）
-│   ├── product/        # 41 （合并 dashboard 7→1）
+│   ├── product/        # 31 （合并 dashboard 7→1、prd 11→1）
 │   ├── presales/       # 29 （合并 bid 7→1）
 │   ├── research/       # 5
 │   ├── media/          # 12 （合并 md 2→1, remotion 3→1, diagram 2→1）
@@ -226,15 +226,15 @@ WorkAgent/
 
 | 场景 | 命令 |
 |---|---|
-| 1 页对齐方向 | `/prd-lite` |
-| 标准 8 章 PRD | `/prd-standard` |
-| Spec-First 四件套 | `/prd-spec-first` |
-| 含 ASCII 线框图 | `/prd-proto` |
+| 1 页对齐方向 | `/prd --mode lite` |
+| 标准 8 章 PRD | `/prd --mode standard` |
+| Spec-First 四件套 | `/prd --mode spec-first` |
+| 含 ASCII 线框图 | `/prd --mode proto` |
 | B 端严格 12 章 | `/pm-prd-enterprise` |
-| 通用 5 维度评分 | `/prd-quality` |
-| 23 节模板差距分析 | `/prd-deep-evaluate` |
-| 对话式渐进生成（想法模糊）| `/prd-diagnose` → `/prd-concept` → `/prd-impl` |
-| 已有 PRD 增量变更 | `/prd-update` |
+| 通用 5 维度评分 | `/prd --mode quality` |
+| 23 节模板差距分析 | `/prd --mode evaluate` |
+| 对话式渐进生成（想法模糊）| `/prd --mode diagnose` → `/prd --mode concept` → `/prd --mode impl` |
+| 已有 PRD 增量变更 | `/prd --mode update` |
 
 ### Style / Humanizer 系列
 

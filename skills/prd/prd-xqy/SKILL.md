@@ -419,6 +419,6 @@ sequenceDiagram
 | Spec-First 工程化四件套 | `prd-spec-first` |
 | 含 ASCII 线框图深化 | `prd-proto` |
 | 通用 B 端 SaaS 严格 12 章 | `/pm-prd-enterprise` |
-| **银行/金融/企业 XQY 强模板** | **本 Skill（`/prd-xqy` + `@xqy-spec-writer`）** |
+| **银行/金融/企业 XQY 强模板** | **本 Skill（`/prd --mode xqy` + `@xqy-spec-writer`）** |
 | 含 LLM/Agent/RAG | `@ai-product-architect` |
 | 完成后做质量自检 | `prd-quality-check` |

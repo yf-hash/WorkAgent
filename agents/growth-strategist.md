@@ -123,7 +123,7 @@ color: green
 ```
 @growth-strategist（本 Agent）
   ├── 早期 PMF 阶段 → @product-manager（先确认 PMF 再做增长）
-  ├── 需要做 PRD → @product-manager 或 /prd-standard
+  ├── 需要做 PRD → @product-manager 或 /prd --mode standard
   ├── 需要市场情报 → @research-analyst §Market Intelligence Focus Mode
   ├── 需要 GTM 战略 → @gtm-strategist
   ├── AI 功能增长 → @ai-product-architect

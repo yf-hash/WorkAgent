@@ -245,4 +245,4 @@ WorkAgent/
 | 删 `ppt-architect` | `@ppt-generator` 的核心调度层，多处引用 | 保持撤回 |
 | ~~参数化 `humanize-*/style-*/diagram-*` 回 --mode~~ | 与 v2.6 拆原子命令的方向相反 | **v2.8 已推翻**：`/humanize --mode` + `/diagram --type` 已实施（skills 层仍保持原子，命令层入口收敛）。`style-*` 仍保持独立命令 |
 | 拆 `product-manager` agent | 主管全栈是它的价值所在，拆分会破坏"一站式" | 保持撤回 |
-| 合 `prd-*` 11 个 | 每个适用场景清晰，合并会牺牲精度 | 保持撤回 |
+| ~~合 `prd-*` 11 个~~ | 曾以"场景清晰、合并会牺牲精度"撤回 | **v2.8.1 已推翻**：合并为 `/prd --mode lite\|standard\|spec-first\|proto\|xqy\|diagnose\|concept\|impl\|quality\|evaluate\|update`。skills 层 11 个保持原子，精度不减；`prd-spec-first --stage` 已是先例证明多模式单命令可行。加 `--flow discovery` 一键跑三段渐进 |

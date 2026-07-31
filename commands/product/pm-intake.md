@@ -49,7 +49,7 @@ $ARGUMENTS
 
 ## 推荐路由
 
-- 信息已经清晰 → `/prd-standard`（C 端）/ `/pm-prd-enterprise`（B 端）
-- 想法模糊 → `@prd-coach` 进行多轮对话，或 `/prd-diagnose` 三镜诊断
+- 信息已经清晰 → `/prd --mode standard`（C 端）/ `/pm-prd-enterprise`（B 端）
+- 想法模糊 → `@prd-coach` 进行多轮对话，或 `/prd --mode diagnose` 三镜诊断
 - 跨团队复杂任务 → `@product-director` 评审
 - 端到端从想法到方案 → `@product-manager` Agent 编排全流程

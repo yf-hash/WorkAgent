@@ -952,7 +952,7 @@ D5 受众匹配改进（当D5最弱时）：
                     → /diagram --type mindmap   Markmap 思维导图
 /ppt (美化阶段)     → @article-illustrator    图表+配图一体化美化
 /ppt (学术场景)     → /paper-collect     论文搜集与整理
-/ppt (汇报场景)     → /prd-standard      产品文档一键转PPT
+/ppt (汇报场景)     → /prd --mode standard      产品文档一键转PPT
 /ppt (报告场景)     → @content-director  长文拆解+叙事优化
 /ppt (批量图表)     → @diagram-architect 批量图表套件生成
 ```

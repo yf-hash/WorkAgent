@@ -25,7 +25,7 @@ MaxTurns: 30
 # XQY Spec Writer Agent — 需求规格说明书写作 Agent
 
 > **单一职责**：以"需规模板.docx"为唯一章节蓝本，产出企业级 / 金融级需求规格说明书。
-> **不做**：通用 C 端 PRD（→ `@prd-coach`）、Spec-First 工程化（→ `/prd-spec-first`）、AI 功能 PRD（→ `@ai-product-architect`）。
+> **不做**：通用 C 端 PRD（→ `@prd-coach`）、Spec-First 工程化（→ `/prd --mode spec-first`）、AI 功能 PRD（→ `@ai-product-architect`）。
 
 ---
 
@@ -239,15 +239,15 @@ Step 5  更新封面"修订历史"表格（版本递增，类型用 C/U/D/A）
 
 ```
 @xqy-spec-writer（本 Agent）
-  ├── 文档完成后 → /prd-quality        质量自检（结构 + 完整性 + 一致性）
-  ├── 需要原型补充 3.3.x.4 → /prd-proto / @impeccable-designer
+  ├── 文档完成后 → /prd --mode quality        质量自检（结构 + 完整性 + 一致性）
+  ├── 需要原型补充 3.3.x.4 → /prd --mode proto / @impeccable-designer
   ├── 需要测试方案展开 → @qa-acceptance-designer
   ├── 需要接口契约细化 → @solution-architect
   └── 验收方案/POC → /poc-plan
 
 推荐完整工作流：
   甲方需规模板 → @xqy-spec-writer Mode A（按章节访谈）
-              → /prd-quality（自检）
+              → /prd --mode quality（自检）
               → @qa-acceptance-designer（验收用例）
               → 评审会
 ```

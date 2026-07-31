@@ -55,9 +55,9 @@ $ARGUMENTS
 | 场景 | 推荐 |
 |------|------|
 | 新产品立项 / 大功能 / 跨团队战略 | ✅ 用本命令 |
-| 已 PMF 后的小迭代 | ❌ 直接 `/prd-standard` 或 `/prd-update` |
+| 已 PMF 后的小迭代 | ❌ 直接 `/prd --mode standard` 或 `/prd --mode update` |
 | 想法模糊 / 缺信息 | 先 `/pm-intake` 收集 |
-| PR-FAQ 评审过 → 进入 PRD | `/pm-prd-enterprise`（B 端）/ `/prd-standard`（C 端）|
+| PR-FAQ 评审过 → 进入 PRD | `/pm-prd-enterprise`（B 端）/ `/prd --mode standard`（C 端）|
 
 ## 评审清单
 

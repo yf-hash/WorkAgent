@@ -19,7 +19,7 @@
 
 ```
 收集 → /pm-intake（信息澄清）
-     → /prd-diagnose（需求拆解）
+     → /prd --mode diagnose（需求拆解）
      → /roadmap（优先级与版本）
      → 同步到 Linear / Jira / GitHub Projects / 飞书
 ```

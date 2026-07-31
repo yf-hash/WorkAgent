@@ -163,6 +163,6 @@ with Diagram("Web Architecture", direction="TB", filename="arch"):
 /arch-diagram → /diagram --type mindmap|uml → 轻量架构图用 PlantUML/Mermaid
 /arch-diagram → /visio         → 导出为 Visio 格式供企业使用
 /arch-diagram → /illustrate    → 将架构图嵌入技术文章
-/arch-diagram → /prd-standard  → 为 PRD 技术方案章节配架构图
+/arch-diagram → /prd --mode standard  → 为 PRD 技术方案章节配架构图
 @diagram-architect             → 统一图表编排，自动选择最优工具
 ```

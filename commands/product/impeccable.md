@@ -233,7 +233,7 @@ Genre Awareness / Microcopy Voice / Real Content Stress Test / Reading the Room
 
 ```
 PRD 阶段：
-  /prd-standard → /design-proto → /impeccable craft
+  /prd --mode standard → /design-proto → /impeccable craft
 
 营销页阶段：
   /marketing-copy → /impeccable craft（用 copy 做页面）

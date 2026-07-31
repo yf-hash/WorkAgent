@@ -315,7 +315,7 @@ ICP 定义
 ```
 /gtm-strategy（B2B GTM 主入口）
   ├── /market-research        → 阶段 0：竞品研究、TAM/SAM/SOM、行业场景
-  ├── /prd-standard           → PRD GTM 章节、ICP / 场景需求
+  ├── /prd --mode standard           → PRD GTM 章节、ICP / 场景需求
   ├── /pricing-strategy       → 阶段 1：SaaS / 私有化 / 订阅 / 项目制报价
   ├── /battle-card            → 阶段 1-4：销售对比 / 反对意见库
   ├── /sales-guide-writer     → 阶段 1-4：销售话术 / FAQ / 售前 PPT
