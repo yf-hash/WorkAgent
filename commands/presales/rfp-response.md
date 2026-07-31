@@ -10,8 +10,8 @@ argument-hint: "<RFP 文件路径或描述> [--mode draft|review|kb-build] [--in
 
 # /rfp-response — RFP / RFI 应答生成器
 
-加载技能：`skills/rfp-response/SKILL.md`
-配套 Skill：`skills/security-questionnaire/SKILL.md`（含安全题时自动联动）
+加载技能：`skills/presales/rfp-response/SKILL.md`
+配套 Skill：`skills/presales/security-questionnaire/SKILL.md`（含安全题时自动联动）
 
 ## 触发条件
 客户给了一份结构化问题清单（Excel / Word / 在线问卷）需要逐条应答。

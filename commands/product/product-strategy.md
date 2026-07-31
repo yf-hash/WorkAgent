@@ -11,7 +11,7 @@ argument-hint: "<产品/业务描述> [--mode bmc|lean|vpc|vision|northstar|full
 
 # /product-strategy — 产品战略画布
 
-加载技能：`skills/product-strategy/SKILL.md`
+加载技能：`skills/pm/product-strategy/SKILL.md`
 
 ## 触发条件
 需要做产品战略对齐、定义商业模式、提炼价值主张、设定北极星指标、撰写产品愿景，或为融资/立项准备战略材料时。

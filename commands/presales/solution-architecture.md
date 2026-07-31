@@ -10,7 +10,7 @@ argument-hint: "<客户公司或项目名> [--mode blueprint|as-is|to-be|nfr|roa
 
 # /solution-architecture — 解决方案架构设计
 
-加载技能：`skills/solution-architecture/SKILL.md`
+加载技能：`skills/presales/solution-architecture/SKILL.md`
 配套 Skill：`arch-diagram`（生成架构图）、`gap-analysis`（差距分析）、`business-case`（财务模型）
 
 ## 触发条件

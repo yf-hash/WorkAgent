@@ -8,7 +8,7 @@ allowed-tools: [Read, Write, Edit, AskUserQuestion]
 
 # /prd-impl — PRD 实现稿
 
-加载技能：`skills/prd-implementation-draft/SKILL.md`
+加载技能：`skills/prd/prd-implementation-draft/SKILL.md`
 
 ## 用法
 

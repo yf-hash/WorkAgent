@@ -10,8 +10,8 @@ argument-hint: "<产品名称> [--version v1.0] [--industry fintech|gov|healthca
 
 # /product-bid-params — 招投标参数生成器
 
-加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/bid-params.md`
-配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
+加载技能：`skills/product/product-writer-router/SKILL.md` + 结构模板 `templates/product/bid-params.md`
+配套核验：`skills/presales/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
 需要为标书编写、技术应答、参数对照表准备一份完整的产品技术参数库时。

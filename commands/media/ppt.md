@@ -10,9 +10,9 @@ allowed-tools: [Read, Write, Edit, Bash, WebSearch, WebFetch, AskUserQuestion]
 # /ppt — 演示文稿全流程生成
 
 加载技能（按需）：
-- 素材获取：`skills/ppt-rag-indexer/SKILL.md`（已有材料） · `skills/ppt-web-researcher/SKILL.md`（联网研究）
-- 结构与制作：`skills/ppt-architect/SKILL.md` · `skills/ppt-master/SKILL.md` · `skills/academic-pptx/SKILL.md` · `skills/marp/SKILL.md`
-- 图表配套：`skills/mermaid-chart/SKILL.md` · `skills/diagram-plantuml/SKILL.md` · `skills/diagram-markmap/SKILL.md` · `skills/arch-diagram/SKILL.md`
+- 素材获取：`skills/ppt/ppt-rag-indexer/SKILL.md`（已有材料） · `skills/ppt/ppt-web-researcher/SKILL.md`（联网研究）
+- 结构与制作：`skills/ppt/ppt-architect/SKILL.md` · `skills/ppt/ppt-master/SKILL.md` · `skills/ppt/academic-pptx/SKILL.md` · `skills/ppt/marp/SKILL.md`
+- 图表配套：`skills/diagram/mermaid-chart/SKILL.md` · `skills/diagram/diagram-plantuml/SKILL.md` · `skills/diagram/diagram-markmap/SKILL.md` · `skills/diagram/arch-diagram/SKILL.md`
 
 ---
 

@@ -13,7 +13,7 @@ argument-hint: "<产品/功能> [--mode survey|analyze|signals|action|fullset] [
 
 # /pmf-survey — PMF 评估
 
-加载技能：`skills/pmf-survey/SKILL.md`
+加载技能：`skills/strategy/pmf-survey/SKILL.md`
 
 ## 触发条件
 新产品/新版本上线后想验证 PMF、定位调整后想验证有效性、融资前需要 PMF 数据，或团队对"是否到 PMF"有分歧时。

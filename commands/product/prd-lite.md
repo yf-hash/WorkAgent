@@ -8,7 +8,7 @@ allowed-tools: [Read, Write, Edit, AskUserQuestion]
 
 # /prd-lite — 一页纸 PRD
 
-加载技能：`skills/prd-lite/SKILL.md`
+加载技能：`skills/prd/prd-lite/SKILL.md`
 
 ## 用法
 

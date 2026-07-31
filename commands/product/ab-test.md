@@ -8,7 +8,7 @@ argument-hint: "<实验目标> [--mode design|sizing|analyze|guardrails|fullset]
 
 # /ab-test — A/B 实验设计与分析
 
-加载技能：`skills/ab-test/SKILL.md`
+加载技能：`skills/data/ab-test/SKILL.md`
 
 ## 触发条件
 需要设计 A/B 实验、估算样本量、定义实验护栏指标、解读实验结果，或避免 A/B 实验常见陷阱（SRM/辛普森悖论/抢跑停车）时。

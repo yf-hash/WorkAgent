@@ -1,11 +1,13 @@
 ---
+name: win-loss
 description: Win/Loss 赢单失单分析 — 把销售结果转化为产品 / 定价 / 营销改进（含访谈结构 + 根因聚类 + ICP 修正）
+user-invocable: true
 argument-hint: "[时间区间 / 客户群 / 产品线]"
 ---
 
 # /win-loss — Win/Loss 赢单失单分析
 
-加载技能：`skills/win-loss-analysis/SKILL.md`
+加载技能：`skills/strategy/win-loss-analysis/SKILL.md`
 
 请基于以下输入做 Win/Loss 分析：
 

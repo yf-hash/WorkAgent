@@ -15,7 +15,7 @@ argument-hint: "<分析目标> [--mode metrics|funnel|cohort|event] [--platform 
 
 # /analytics — 产品数据指标设计
 
-加载技能：`skills/product-analytics/SKILL.md`
+加载技能：`skills/data/product-analytics/SKILL.md`
 
 ## 触发条件
 设计指标体系、定义漏斗、规划埋点 Schema，或为后续看板 / 实验提供数据基础时。

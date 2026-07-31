@@ -43,7 +43,7 @@ MaxTurns: 30
 
 ## B2B GTM 六阶段（阶段名索引）
 
-> **不在 agent 内重复 SOP 细节。** 完整六阶段 SOP、12 周甘特图、发布前 checklist 见 `skills/gtm-strategy/SKILL.md`（skill 由触发词自动加载）；闸门 checklist、决策链 6 角色、行业垂直、销售方法论 见 `skills/gtm-strategy/references/*.md`（按需 Read）。以下只列阶段名，路由用：
+> **不在 agent 内重复 SOP 细节。** 完整六阶段 SOP、12 周甘特图、发布前 checklist 见 `skills/strategy/gtm-strategy/SKILL.md`（skill 由触发词自动加载）；闸门 checklist、决策链 6 角色、行业垂直、销售方法论 见 `skills/strategy/gtm-strategy/references/*.md`（按需 Read）。以下只列阶段名，路由用：
 >
 > **阶段 0 · 筹备期**（T-8~T-6，卖给谁）· **阶段 1 · 产品包装期**（T-6~T-4）· **阶段 2 · 内测样板期**（T-4~T-1，POC）· **阶段 3 · 正式发布期**（T 周）· **阶段 4 · 销售转化期**（T+1~T+8）· **阶段 5 · 规模化增长期**（T+8~）
 

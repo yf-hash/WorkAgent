@@ -30,9 +30,9 @@ Remotion 三引擎一个入口。用 `--engine` 分派。
 
 | `--engine` | 加载技能 | 场景 |
 |---|---|---|
-| `native` | `skills/remotion-native/SKILL.md` | 自定义 React 动画、内置模板、精细控制 |
-| `prompt2video` | `skills/remotion-prompt2video/SKILL.md` | 15-60 秒 TikTok/Instagram/视频号短视频 |
-| `vidosy` | `skills/remotion-vidosy/SKILL.md` | 多场景企业宣传、产品功能逐步展示、培训片 |
+| `native` | `skills/media/remotion-native/SKILL.md` | 自定义 React 动画、内置模板、精细控制 |
+| `prompt2video` | `skills/media/remotion-prompt2video/SKILL.md` | 15-60 秒 TikTok/Instagram/视频号短视频 |
+| `vidosy` | `skills/media/remotion-vidosy/SKILL.md` | 多场景企业宣传、产品功能逐步展示、培训片 |
 
 ## 与其他视频命令的边界
 

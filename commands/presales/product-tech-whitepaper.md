@@ -8,8 +8,8 @@ argument-hint: "<产品名称> [--version v1.0] [--industry fintech|gov|healthca
 
 # /product-tech-whitepaper — 技术白皮书生成器
 
-加载技能：`skills/product-tech-whitepaper-writer/SKILL.md`
-配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
+加载技能：`skills/product/product-tech-whitepaper-writer/SKILL.md`
+配套核验：`skills/presales/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
 需要编写面向客户技术团队 / 核心研发的深度技术文档，包含算法、实现机制、安全设计的内部保密资料时。

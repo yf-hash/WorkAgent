@@ -10,8 +10,8 @@ argument-hint: "<产品名称> [--version v1.0] [--industry fintech|gov|healthca
 
 # /product-whitepaper — 产品白皮书生成器
 
-加载技能：`skills/product-whitepaper-writer/SKILL.md`
-配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
+加载技能：`skills/product/product-whitepaper-writer/SKILL.md`
+配套核验：`skills/presales/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
 需要编写面向客户技术决策层、可公开传播的产品白皮书时。

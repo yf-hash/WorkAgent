@@ -8,7 +8,7 @@ allowed-tools: [Read, Write, Edit, AskUserQuestion]
 
 # /prd-xqy — 需求规格说明书（XQY 8 章模板）
 
-加载技能：`skills/prd-xqy/SKILL.md`
+加载技能：`skills/prd/prd-xqy/SKILL.md`
 模板源文件：`commands/product/需规模板.docx`
 
 ## 用途

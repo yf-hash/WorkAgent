@@ -27,8 +27,8 @@ allowed-tools: [Read, Write, Edit, Bash]
 
 | `--format` | 加载技能 | 后端可选 |
 |---|---|---|
-| `poster` | `skills/md-poster/SKILL.md` | `mark-pic`（40+ 渐变） / `madopic`（长图含 KaTeX/Mermaid/ECharts） |
-| `table` | `skills/md-table-image/SKILL.md` | `tablesnap`（CLI） / `imagifier`（浏览器） / `flask-api` |
+| `poster` | `skills/media/md-poster/SKILL.md` | `mark-pic`（40+ 渐变） / `madopic`（长图含 KaTeX/Mermaid/ECharts） |
+| `table` | `skills/media/md-table-image/SKILL.md` | `tablesnap`（CLI） / `imagifier`（浏览器） / `flask-api` |
 
 ## 判据
 

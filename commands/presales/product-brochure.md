@@ -9,8 +9,8 @@ argument-hint: "<产品名称> [--format a4-double|trifold] [--industry fintech|
 
 # /product-brochure — 产品彩页生成器
 
-加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/brochure.md`
-配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
+加载技能：`skills/product/product-writer-router/SKILL.md` + 结构模板 `templates/product/brochure.md`
+配套核验：`skills/presales/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
 展会、客户拜访、商务路演等需要一份能快速传递产品价值的宣传物料时。

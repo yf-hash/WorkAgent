@@ -8,7 +8,7 @@ allowed-tools: [Read, Write, AskUserQuestion]
 
 # /prd-concept — PRD 概念稿
 
-加载技能：`skills/prd-concept-draft/SKILL.md`
+加载技能：`skills/prd/prd-concept-draft/SKILL.md`
 
 ## 用法
 

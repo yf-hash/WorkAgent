@@ -58,7 +58,7 @@ argument-hint: "<video_url|filepath> [--lang <代码>] [--translate <目标语�
 
 ## 执行流程
 
-1. 加载 `skills/omni-captions/SKILL.md` 完整规范
+1. 加载 `skills/media/omni-captions/SKILL.md` 完整规范
 2. 输入处理（YouTube下载 / 本地文件读取）
 3. 语音转录（Whisper / Gemini）
 4. 翻译（Claude，无需额外 API Key）

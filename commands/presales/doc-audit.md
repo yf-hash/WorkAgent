@@ -11,7 +11,7 @@ argument-hint: "<文档路径或产品名> [--mode single|fullset|format|naming]
 
 # /doc-audit — 产品文档自查审核
 
-加载技能：`skills/doc-auditor/SKILL.md`
+加载技能：`skills/presales/doc-auditor/SKILL.md`
 
 ## 触发条件
 需要对产品文档进行质量审核、检查文档完整性、校验命名规范、审查内容合规时。适用于文档发布前的自查、版本更新后的核验、新产品资料首次评审。

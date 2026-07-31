@@ -10,8 +10,8 @@ argument-hint: "<产品名称> [--version v1.0] [--industry fintech|gov|healthca
 
 # /product-sales-faq — 销售常见问题生成器
 
-加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/sales-faq.md`
-配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
+加载技能：`skills/product/product-writer-router/SKILL.md` + 结构模板 `templates/product/sales-faq.md`
+配套核验：`skills/presales/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
 需要为销售在客户现场提供高频问题的标准应答库时。

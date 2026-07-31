@@ -60,7 +60,7 @@ AI 驱动的口播视频智能剪辑，自动去除停顿、重复、口误片�
 
 ## 执行流程
 
-1. 加载 `skills/videocut/SKILL.md` 完整规范
+1. 加载 `skills/media/videocut/SKILL.md` 完整规范
 2. FFmpeg 提取音频轨道
 3. ASR 转录（Whisper / Volcano Engine）
 4. Claude 语义分析，生成 `cuts.json`

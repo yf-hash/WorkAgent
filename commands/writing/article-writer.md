@@ -26,7 +26,7 @@ argument-hint: "[主题/素材] [--style-card path]"
 
 ## 执行流程
 
-1. 加载 `skills/article-writer/SKILL.md` 完整规范
+1. 加载 `skills/writing/article-writer/SKILL.md` 完整规范
 2. HKR 质检选题（Happy / Knowledge / Resonance）
 3. 判断文章原型（调查实验型/产品体验型/现象解读型/工具分享型/方法论分享型）
 4. 按文章结构模板创作（4000-8000 字）
@@ -63,5 +63,5 @@ L4 活人感 ✅
 
 ## 参考资料
 
-- 风格示例：`skills/article-writer/references/style_examples.md`
-- 内容方法论：`skills/article-writer/references/content_methodology.md`
+- 风格示例：`skills/writing/article-writer/references/style_examples.md`
+- 内容方法论：`skills/writing/article-writer/references/content_methodology.md`

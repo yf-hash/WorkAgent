@@ -11,7 +11,7 @@ argument-hint: "<产品名称> [--mode full|scenarios|faq|competitive|value] [--
 
 # /sales-guide — 销售一页禅生成器
 
-加载技能：`skills/sales-guide-writer/SKILL.md`
+加载技能：`skills/presales/sales-guide-writer/SKILL.md`
 
 ## 触发条件
 需要编写产品销售指南（销售一页禅）、行业化销售剧本、销售常见问题解答（FAQ）、竞争应对话术，或提炼产品销售价值时。适用于软件、硬件、SaaS、消费品、工业品、服务类等各类产品。

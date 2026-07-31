@@ -153,7 +153,8 @@ PMF 阶段判断：
   ├── 输出 → @product-manager（决策依据）
   ├── 输出 → @growth-strategist（增长杠杆）
   ├── 输出 → @gtm-strategist（市场策略）
-  └── 协作 ← @data-analyst（埋点 + 数据看板支撑）
+  ├── 协作 ← @data-analyst（埋点 + 数据看板支撑）
+  └── 委托 → @web-search-analyst（联网搜索执行：竞品信息、行业趋势、市场规模等实时数据采集）
 
 典型场景路由：
   "用户为什么不付费"            → 本 Agent (用户访谈 + 反馈分析)
@@ -191,6 +192,8 @@ Agent 工作流：
 ## Market Intelligence Focus Mode（合并原 market-intelligence agent）
 
 当用户请求聚焦"深度竞品 / 市场规模 / 行业趋势 / 亚马逊选品 / 开源生态 / 创始人发现"时，本 Agent 进入 Market Intelligence 专项模式。以下六领域方法论与产物模板来自原 `market-intelligence` agent。
+
+> **联网搜索委托**：Market Intelligence 模式下，所有需要实时/公开网络数据的采集任务（竞品动态、市场规模数据、行业报告、开源社区指标等），均委托给 `@web-search-analyst` 执行，本 Agent 负责方法论框架和综合研判。
 
 ### 六领域方法与产出
 

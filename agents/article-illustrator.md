@@ -58,7 +58,7 @@ ELSE（模糊需求）:
 
 ## 管道一：HTML 图表（主力）
 
-**加载：`skills/html-chart/SKILL.md`**
+**加载：`skills/diagram/html-chart/SKILL.md`**
 
 ### 适用图表类型
 | 类型 | ASCII 模板 | 说明 |
@@ -75,7 +75,7 @@ Step 1: 根据图表类型和描述生成 ASCII 草图
   → 输出草图供用户预览（staged 模式下等待确认）
 
 Step 2: 将 ASCII 转换为 HTML
-  → 选择 skills/html-chart/SKILL.md 中对应的 HTML 模板
+  → 选择 skills/diagram/html-chart/SKILL.md 中对应的 HTML 模板
   → 注入风格 CSS 变量（默认 business-blue）
   → 保存到 workspace/.tmp/html/chart-<timestamp>.html
 
@@ -102,7 +102,7 @@ minimal:               #0F172A 近黑 + #FFFFFF 纯白 → 教程文档
 
 ## 管道二：Mermaid 图表
 
-**加载：`skills/mermaid-chart/SKILL.md`**
+**加载：`skills/diagram/mermaid-chart/SKILL.md`**
 
 ### 适用图表类型
 `sequence`（时序图）、`er`（实体关系）、`gantt`（甘特图）、`class`（类图）、`mindmap`（思维导图）、`pie`（饼图）、`state`（状态机）、`flowchart`（复杂拓扑流程）
@@ -134,7 +134,7 @@ Step 4: 输出 Mermaid 代码 + PNG 路径
 
 ## 管道三：Stable Diffusion
 
-**加载：`skills/stable-diffusion/SKILL.md`**
+**加载：`skills/diagram/stable-diffusion/SKILL.md`**
 
 **前置条件**：本地运行 SD WebUI（`http://127.0.0.1:7860`）
 

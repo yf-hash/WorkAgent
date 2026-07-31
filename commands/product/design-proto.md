@@ -11,7 +11,7 @@ argument-hint: "<设计需求> [--mode wireframe|prototype|component|onboarding|
 
 # /design-proto — 设计与原型工具台
 
-加载技能：`skills/design-proto/SKILL.md`
+加载技能：`skills/strategy/design-proto/SKILL.md`
 
 ## 触发条件
 需要设计产品原型、选择 UI 组件库、设计用户引导流程、添加动效，或评估设计工具选型时。

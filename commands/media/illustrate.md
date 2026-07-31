@@ -17,13 +17,13 @@ allowed-tools:
 # /illustrate — 文章配图生成
 
 加载技能：
-- `skills/html-chart/SKILL.md`（主管道：ASCII → HTML → 截图）
-- `skills/mermaid-chart/SKILL.md`（备选：精确图表）
-- `skills/diagram-plantuml/SKILL.md` · `skills/diagram-markmap/SKILL.md`（扩展：UML 系列与思维导图）
-- `skills/ai-illustrator/SKILL.md`（AI插图：article-illustrator/document-illustrator/thesis-figure）
-- `skills/stable-diffusion/SKILL.md`（备选：创意图像，需本地 SD WebUI）
-- `skills/mermaid-chart/SKILL.md`（备选：精确图表）
-- `skills/stable-diffusion/SKILL.md`（备选：创意图像，需本地 SD WebUI）
+- `skills/diagram/html-chart/SKILL.md`（主管道：ASCII → HTML → 截图）
+- `skills/diagram/mermaid-chart/SKILL.md`（备选：精确图表）
+- `skills/diagram/diagram-plantuml/SKILL.md` · `skills/diagram/diagram-markmap/SKILL.md`（扩展：UML 系列与思维导图）
+- `skills/diagram/ai-illustrator/SKILL.md`（AI插图：article-illustrator/document-illustrator/thesis-figure）
+- `skills/diagram/stable-diffusion/SKILL.md`（备选：创意图像，需本地 SD WebUI）
+- `skills/diagram/mermaid-chart/SKILL.md`（备选：精确图表）
+- `skills/diagram/stable-diffusion/SKILL.md`（备选：创意图像，需本地 SD WebUI）
 
 ---
 
@@ -215,7 +215,7 @@ Step 4: 截图/保存 → 输出文件路径
 ### Step B：生成 HTML
 ```
 1. 解析 ASCII 草图的结构数据
-2. 选择对应的 HTML 模板（来自 skills/html-chart/SKILL.md）
+2. 选择对应的 HTML 模板（来自 skills/diagram/html-chart/SKILL.md）
 3. 注入风格 CSS 变量（business-blue / tech / warm / minimal）
 4. 填充内容数据
 5. 保存到 workspace/.tmp/html/chart-<timestamp>.html

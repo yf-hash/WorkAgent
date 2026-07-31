@@ -14,7 +14,7 @@ argument-hint: "<产品/功能描述> [--mode collect|analyze|nps|vote|voc] [--s
 
 # /feedback — 用户反馈管理
 
-加载技能：`skills/user-feedback/SKILL.md`
+加载技能：`skills/strategy/user-feedback/SKILL.md`
 
 ## 触发条件
 需要设计反馈收集机制、分析用户反馈数据、生成用户之声报告，或整合多渠道反馈时。

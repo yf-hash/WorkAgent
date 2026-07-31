@@ -225,7 +225,7 @@ curl -s http://localhost:3000/health || {
   ├── 输入 ← @research-analyst（竞品全景 → 委托原始素材）
   ├── 输入 ← @paper-researcher（学术对照 → 委托网络补充）
   ├── 输出 → @ppt-generator（联网素材 → PPT 内容）
-  └── 输出 → @article-writer（资料 → 文章选题）
+  └── 输出 → @content-director（资料 → 文章选题）
 
 典型场景：
   "RAG 最佳实践是什么"        → 本 Agent (research 模式)

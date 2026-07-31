@@ -1,4 +1,4 @@
-<!-- templates/product/manual.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-manual-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+<!-- templates/product/manual.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-manual-writer` 提炼，共享写作规范见 `skills/product/product-writer-router/SKILL.md`。 -->
 
 # 用户手册 — 结构模板
 

@@ -8,7 +8,7 @@ allowed-tools: [Read, Write, Edit, Bash]
 
 # /table-from-text — 层级文本转表格
 
-加载技能：`skills/table-from-text/SKILL.md`
+加载技能：`skills/strategy/table-from-text/SKILL.md`
 
 ## 用法
 

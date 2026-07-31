@@ -11,7 +11,7 @@ argument-hint: "<产品/主题> [--type wechat|xhs|zhihu|moments|video|landing|e
 
 # /marketing-copy — 产品营销推广内容生成器
 
-加载技能：`skills/marketing-copy/SKILL.md`
+加载技能：`skills/writing/marketing-copy/SKILL.md`
 
 ## 触发条件
 需要生成带营销目的的产品推广内容（区别于个人风格的公众号长文 `/article-writer`、内部资料体系 `/product-*` 系列、客户响应方案 `/proposal`）：

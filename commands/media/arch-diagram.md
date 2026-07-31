@@ -11,7 +11,7 @@ allowed-tools: [Read, Write, Edit, Bash, AskUserQuestion]
 
 # /arch-diagram — 云架构图生成
 
-加载技能：`skills/arch-diagram/SKILL.md`
+加载技能：`skills/diagram/arch-diagram/SKILL.md`
 
 ## 触发条件
 需要绘制云基础设施架构图、可视化 IaC 代码结构、生成多云混合架构图、

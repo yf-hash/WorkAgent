@@ -33,7 +33,7 @@ argument-hint: "<pdf-path> [--output md|docx] [--style popular|professional|casu
 
 ## 执行流程
 
-1. 加载 `skills/paper-interpreter/SKILL.md` 解读规范
+1. 加载 `skills/research/paper-interpreter/SKILL.md` 解读规范
 2. 读取论文 PDF，提取文本和关键图表
 3. 按九大模块提取结构化信息（简介/目的/贡献/引言/相关工作/核心方法/实验/讨论/结论）
 4. 按指定风格和字数生成公众号长文（段落式，非列表）

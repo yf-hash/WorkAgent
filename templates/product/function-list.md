@@ -1,4 +1,4 @@
-<!-- templates/product/function-list.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-function-list-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+<!-- templates/product/function-list.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-function-list-writer` 提炼，共享写作规范见 `skills/product/product-writer-router/SKILL.md`。 -->
 
 # 产品功能清单 — 结构模板
 

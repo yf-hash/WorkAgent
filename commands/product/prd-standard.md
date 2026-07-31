@@ -8,7 +8,7 @@ allowed-tools: [Read, Write, Edit, AskUserQuestion]
 
 # /prd-standard — 标准 PRD
 
-加载技能：`skills/prd-standard/SKILL.md`
+加载技能：`skills/prd/prd-standard/SKILL.md`
 
 ## 用法
 

@@ -12,7 +12,7 @@ argument-hint: "<客户名/产品> [--mode scope|sow|review|convert|fullset] [--
 
 # /poc-plan — PoC / 试点管理
 
-加载技能：`skills/poc-plan/SKILL.md`
+加载技能：`skills/presales/poc-plan/SKILL.md`
 
 ## 触发条件
 新客户在销售周期中要求 PoC 验证、技术 POC 启动需要范围谈判、PoC 进行中需要里程碑验收、PoC 结束转正式合同、批量 PoC 管理。

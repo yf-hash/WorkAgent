@@ -11,7 +11,7 @@ allowed-tools: [Read, Write, Edit, Bash, AskUserQuestion]
 
 # /visio — Visio 图表创建与转换
 
-加载技能：`skills/visio-builder/SKILL.md`
+加载技能：`skills/diagram/visio-builder/SKILL.md`
 
 ## 触发条件
 需要创建/编辑 .vsdx 文件、将 Mermaid/PlantUML 转为 Visio 格式、批量导出 Visio 图表为图片，

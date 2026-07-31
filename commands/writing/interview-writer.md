@@ -26,7 +26,7 @@ argument-hint: "[访谈素材] [--target-score 85] [--max-rounds 3] [--mode full
 
 ## 执行流程
 
-1. 加载 `skills/interview-writer/SKILL.md` 完整规范
+1. 加载 `skills/writing/interview-writer/SKILL.md` 完整规范
 2. Phase 1：素材解析（提取核心观点 3-5 个，识别金句和故事，设计框架）
 3. Phase 2：Writer 初稿（按访谈写作规范创作，输出自评）
 4. Phase 3：Reviewer 评审（四层评分，找出最弱层，给出 3 条具体建议）

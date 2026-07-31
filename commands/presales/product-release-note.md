@@ -10,8 +10,8 @@ argument-hint: "<产品名称> --version <新版本号> [--from <旧版本号>] 
 
 # /product-release-note — 产品版本说明生成器
 
-加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/release-note.md`
-配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
+加载技能：`skills/product/product-writer-router/SKILL.md` + 结构模板 `templates/product/release-note.md`
+配套核验：`skills/presales/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
 产品发布新版本，需要向全员 / 渠道 / 客户同步本次更新内容时。

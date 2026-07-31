@@ -10,8 +10,8 @@ argument-hint: "<产品名称> [--version v1.0]"
 
 # /product-manual — 产品操作手册生成器
 
-加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/manual.md`
-配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
+加载技能：`skills/product/product-writer-router/SKILL.md` + 结构模板 `templates/product/manual.md`
+配套核验：`skills/presales/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
 需要为终端用户 / 运维提供"如何使用产品"的指引文档时。

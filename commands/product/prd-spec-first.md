@@ -8,7 +8,7 @@ allowed-tools: [Read, Write, Edit, AskUserQuestion]
 
 # /prd-spec-first — Spec-First 四件套
 
-加载技能：`skills/prd-spec-first/SKILL.md`
+加载技能：`skills/prd/prd-spec-first/SKILL.md`
 
 ## 用法
 

@@ -10,7 +10,7 @@ argument-hint: "<安全问卷文件或描述> [--mode draft|review|kb-build|annu
 
 # /security-questionnaire — 安全问卷应答
 
-加载技能：`skills/security-questionnaire/SKILL.md`
+加载技能：`skills/presales/security-questionnaire/SKILL.md`
 配套 Skill：`compliance-checklist`（合规证据映射）
 
 ## 触发条件

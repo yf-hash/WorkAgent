@@ -1,4 +1,4 @@
-<!-- templates/product/training.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-training-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+<!-- templates/product/training.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-training-writer` 提炼，共享写作规范见 `skills/product/product-writer-router/SKILL.md`。 -->
 
 # 培训材料 — 结构模板
 

@@ -14,7 +14,7 @@ argument-hint: "<研究主题> [--mode competitive|trend|tam|amazon|oss] [--outp
 
 # /market-research — 竞争情报 & 市场研究
 
-加载技能：`skills/market-research/SKILL.md`
+加载技能：`skills/research/market-research/SKILL.md`
 
 ## 触发条件
 需要进行竞品分析、市场机会评估、行业趋势研究、开源生态分析或亚马逊选品研究时。

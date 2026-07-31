@@ -59,7 +59,7 @@ argument-hint: "<filepath|url> [--platforms <平台列表>] [--mode draft|publis
 
 ## 执行流程
 
-1. 加载 `skills/content-sync/SKILL.md` 完整规范
+1. 加载 `skills/media/content-sync/SKILL.md` 完整规范
 2. 内容准备（URL抓取 / 文件读取 / 格式转换）
 3. 平台适配（字数截断/图片上传/标签提取）
 4. 分发到各平台（草稿/直接发布）

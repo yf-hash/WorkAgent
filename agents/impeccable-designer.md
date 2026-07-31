@@ -114,11 +114,11 @@ Q4: 输出格式 —— React + Tailwind / 纯 HTML+CSS / Vue / 其他
 | Critique 一段代码 | 按代码涉及的领域加 | — |
 | Audit | 不加 reference（运行确定性规则即可） | — |
 
-加载方式：`Read skills/impeccable/references/{file}.md`
+加载方式：`Read skills/diagram/impeccable/references/{file}.md`
 
 **v2 补充：上游 32 个 flow 参考文件**
 
-WorkAgent v2.7+ 已把 pbakaus/impeccable 上游 32 个流程动词 reference 全部落到 `skills/impeccable/references/`。它们**按流程动词切分**（craft / shape / audit / polish / bolder / brand / interaction-design / layout / typeset / colorize / animate / adapt / adapt.native / ios / android / live / hooks / codex / …），与本地 7 个**问题领域** vocabulary 互补。子命令映射：
+WorkAgent v2.7+ 已把 pbakaus/impeccable 上游 32 个流程动词 reference 全部落到 `skills/diagram/impeccable/references/`。它们**按流程动词切分**（craft / shape / audit / polish / bolder / brand / interaction-design / layout / typeset / colorize / animate / adapt / adapt.native / ios / android / live / hooks / codex / …），与本地 7 个**问题领域** vocabulary 互补。子命令映射：
 
 - 本地 `teach` → 上游 `init.md` + `product.md`
 - 本地 `craft` → 上游 `craft.md`（可先读 `shape.md`）
@@ -304,4 +304,4 @@ P3 (1): 锦上添花
 
 - [pbakaus/impeccable](https://github.com/pbakaus/impeccable) by Paul Bakaus
 - [impeccable.style](https://impeccable.style/)
-- WorkAgent 集成：`skills/impeccable/` + `/impeccable` command
+- WorkAgent 集成：`skills/diagram/impeccable/` + `/impeccable` command

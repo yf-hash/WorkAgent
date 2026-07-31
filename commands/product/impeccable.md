@@ -21,8 +21,8 @@ allowed-tools:
 > 改编自 [pbakaus/impeccable](https://github.com/pbakaus/impeccable) by Paul Bakaus。完整文档：[impeccable.style](https://impeccable.style/)
 
 加载技能：
-- `skills/impeccable/SKILL.md`（设计语言核心 + 27 条反模式 + 12 条 critique）
-- `skills/impeccable/references/{typography,color,spatial,motion,interaction,responsive,ux-writing}.md`（按需）
+- `skills/diagram/impeccable/SKILL.md`（设计语言核心 + 27 条反模式 + 12 条 critique）
+- `skills/diagram/impeccable/references/{typography,color,spatial,motion,interaction,responsive,ux-writing}.md`（按需）
 - 必要时编排：`@impeccable-designer` Agent
 
 ## 触发条件
@@ -206,7 +206,7 @@ Phase 6: Polish（设计系统对齐 + ship-ready）
 
 字体 8 / 颜色 10 / 间距 5 / 动效 3 / 兜底 1
 
-完整清单见 `skills/impeccable/SKILL.md`。
+完整清单见 `skills/diagram/impeccable/SKILL.md`。
 
 ### 12 条 LLM critique
 

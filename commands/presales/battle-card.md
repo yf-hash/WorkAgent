@@ -11,7 +11,7 @@ argument-hint: "<对手名称> [--mode build|update|library] [--tier 1|2|3] [--i
 
 # /battle-card — 竞品作战卡生成器
 
-加载技能：`skills/battle-card/SKILL.md`
+加载技能：`skills/presales/battle-card/SKILL.md`
 配套 Skill：`market-research`（深度对手分析支撑）、`win-loss-analysis`（赛后情报回流）
 
 ## 触发条件

@@ -10,7 +10,7 @@ argument-hint: "<客户公司或场景> [--mode storyline|data|rehearse|review|k
 
 # /demo-design — Demo 设计与沙盘演练
 
-加载技能：`skills/demo-design/SKILL.md`
+加载技能：`skills/presales/demo-design/SKILL.md`
 配套 Skill：`marketing-copy --type demo`（写脚本）、`discovery-call`（提取客户痛点）
 
 ## 触发条件

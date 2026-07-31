@@ -33,13 +33,13 @@ allowed-tools: [Read, Write, Edit, AskUserQuestion, Bash]
 
 | Phase | 别名 | 技能 | 交付物 |
 |---|---|---|---|
-| 1 | `analyze` | `skills/bid-analyze/SKILL.md` | 三色标记（🔴 废标 / 🟡 高分 / 🔵 基础）+ 技术要求清单 |
-| 2 | `clarify` | `skills/bid-clarify/SKILL.md` | 内部评审 + 正式澄清问题 + 最终技术要求清单 |
-| 3 | `outline` | `skills/bid-outline/SKILL.md` | 技术偏离表骨架 + 按评分细则的章节顺序 + 字数配比 |
-| 4 | `write` | `skills/bid-write/SKILL.md` | 9 模块（understanding/solution/implementation/management/quality/service/performance/team/commercial） |
-| 5 | `review` | `skills/bid-review/SKILL.md` | 第一轮五视角（business/technical/delivery/risk/competitive）+ 第二轮专家评审 |
-| 6 | `check` | `skills/bid-check/SKILL.md` | 合规性核查 + 一致性验证 + 查重检测 |
-| 7 | `export` | `skills/bid-export/SKILL.md` | 最终通读 + 文档生成规范 + 移交清单 |
+| 1 | `analyze` | `skills/bid/bid-analyze/SKILL.md` | 三色标记（🔴 废标 / 🟡 高分 / 🔵 基础）+ 技术要求清单 |
+| 2 | `clarify` | `skills/bid/bid-clarify/SKILL.md` | 内部评审 + 正式澄清问题 + 最终技术要求清单 |
+| 3 | `outline` | `skills/bid/bid-outline/SKILL.md` | 技术偏离表骨架 + 按评分细则的章节顺序 + 字数配比 |
+| 4 | `write` | `skills/bid/bid-write/SKILL.md` | 9 模块（understanding/solution/implementation/management/quality/service/performance/team/commercial） |
+| 5 | `review` | `skills/bid/bid-review/SKILL.md` | 第一轮五视角（business/technical/delivery/risk/competitive）+ 第二轮专家评审 |
+| 6 | `check` | `skills/bid/bid-check/SKILL.md` | 合规性核查 + 一致性验证 + 查重检测 |
+| 7 | `export` | `skills/bid/bid-export/SKILL.md` | 最终通读 + 文档生成规范 + 移交清单 |
 
 ## 分派规则
 

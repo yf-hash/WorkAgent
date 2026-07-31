@@ -10,7 +10,7 @@ argument-hint: "<query> [--engines <列表>] [--limit <n>] [--mode search|fetch|
 
 基于 [open-webSearch](https://github.com/Aas-ee/open-webSearch) 的多引擎联网搜索命令，无需 API Key，自部署本地 MCP/HTTP 服务后即可跨 9 大搜索引擎并行检索，并支持对常见技术站点（CSDN、掘金、GitHub README、Linux.do）的正文抓取。
 
-加载技能：`skills/open-websearch/SKILL.md`
+加载技能：`skills/research/open-websearch/SKILL.md`
 
 ## 用法
 

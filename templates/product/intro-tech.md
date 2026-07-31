@@ -1,4 +1,4 @@
-<!-- templates/product/intro-tech.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-intro-tech-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+<!-- templates/product/intro-tech.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-intro-tech-writer` 提炼，共享写作规范见 `skills/product/product-writer-router/SKILL.md`。 -->
 
 # 产品介绍-技术版 PPT — 结构模板
 

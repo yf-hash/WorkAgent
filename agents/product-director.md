@@ -11,8 +11,6 @@ skills:
   - pm-prioritization-frameworks
   - product-strategy
   - product-roadmap
-  - prd-standard
-  - prd-spec-first
 memory: project
 effort: high
 color: red

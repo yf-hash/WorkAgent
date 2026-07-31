@@ -8,7 +8,7 @@ allowed-tools: [Read, Write, Edit, AskUserQuestion]
 
 # /prd-update — PRD 增量更新
 
-加载技能：`skills/prd-incremental-update/SKILL.md`
+加载技能：`skills/prd/prd-incremental-update/SKILL.md`
 
 ## 用法
 

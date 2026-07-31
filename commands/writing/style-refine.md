@@ -8,7 +8,7 @@ allowed-tools: [Read, Write, Edit, AskUserQuestion]
 
 # /style-refine — 已有内容风格优化
 
-加载技能：`skills/style-refine/SKILL.md`
+加载技能：`skills/writing/style-refine/SKILL.md`
 
 ## 用法
 

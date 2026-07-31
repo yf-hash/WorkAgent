@@ -10,7 +10,7 @@ argument-hint: "<客户公司名> [--mode prep|mom|email|score] [--type first-ca
 
 # /discovery-call — 售前需求挖掘工作流
 
-加载技能：`skills/discovery-call/SKILL.md`
+加载技能：`skills/presales/discovery-call/SKILL.md`
 
 ## 触发条件
 - 拜访客户前要做议程设计 + 客户背调

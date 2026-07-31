@@ -8,7 +8,7 @@ allowed-tools: [Read, Write, Edit]
 
 # /prd-quality — PRD 通用质量自检
 
-加载技能：`skills/prd-quality-check/SKILL.md`
+加载技能：`skills/prd/prd-quality-check/SKILL.md`
 
 ## 用法
 

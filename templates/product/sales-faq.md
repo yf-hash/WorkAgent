@@ -1,4 +1,4 @@
-<!-- templates/product/sales-faq.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-sales-faq-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+<!-- templates/product/sales-faq.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-sales-faq-writer` 提炼，共享写作规范见 `skills/product/product-writer-router/SKILL.md`。 -->
 
 # 销售 FAQ — 结构模板
 

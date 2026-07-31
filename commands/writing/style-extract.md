@@ -8,7 +8,7 @@ allowed-tools: [Read, Write, WebFetch]
 
 # /style-extract — 风格卡片提炼
 
-加载技能：`skills/style-card-extractor/SKILL.md`
+加载技能：`skills/writing/style-card-extractor/SKILL.md`
 
 ## 用法
 

@@ -5,7 +5,7 @@ argument-hint: "[产品/功能想法]"
 
 # /working-backwards — Amazon 逆向工作法
 
-加载技能：`skills/working-backwards/SKILL.md`
+加载技能：`skills/pm/working-backwards/SKILL.md`
 
 请基于以下输入，使用 Working Backwards 方法倒推产品价值：
 

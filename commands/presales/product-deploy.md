@@ -10,8 +10,8 @@ argument-hint: "<产品名称> [--version v1.0] [--deploy-mode standalone|cluste
 
 # /product-deploy — 产品部署及配置手册生成器
 
-加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/deploy.md`
-配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
+加载技能：`skills/product/product-writer-router/SKILL.md` + 结构模板 `templates/product/deploy.md`
+配套核验：`skills/presales/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
 需要为实施工程师 / 运维提供"如何安装、配置、升级、监控产品"的指引文档时。

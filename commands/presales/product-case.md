@@ -10,8 +10,8 @@ argument-hint: "<产品名称> --customer <客户名称> [--industry fintech|gov
 
 # /product-case — 产品成功案例生成器
 
-加载技能：`skills/product-case-writer/SKILL.md`
-配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
+加载技能：`skills/product/product-case-writer/SKILL.md`
+配套核验：`skills/presales/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
 需要编写对外可发布、用于销售场景或合规验证的客户成功案例时。

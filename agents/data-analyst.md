@@ -1,7 +1,7 @@
 ---
 name: data-analyst
 description: 数据分析 Agent，综合运用 TaskWeaver（代码执行）和 Chat2DB（SQL查询）完成复杂数据分析任务
-model: claude-opus-4-6
+model: opus
 tools:
   - code_execution
   - file_read

@@ -8,7 +8,7 @@ allowed-tools: [Read, Write, Edit, AskUserQuestion]
 
 # /prd-proto — 线框图 + PRD 融合
 
-加载技能：`skills/prd-proto/SKILL.md`
+加载技能：`skills/prd/prd-proto/SKILL.md`
 
 ## 用法
 

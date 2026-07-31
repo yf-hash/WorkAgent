@@ -8,7 +8,7 @@ argument-hint: "<合规框架/产品> [--mode assess|gap|roadmap|questionnaire|i
 
 # /compliance-checklist — 合规检查与认证规划
 
-加载技能：`skills/compliance-checklist/SKILL.md`
+加载技能：`skills/strategy/compliance-checklist/SKILL.md`
 
 ## 触发条件
 合规自查、客户合规问卷应答、规划下一个合规认证、监管要求落地、违约事件响应、跨境业务合规审议、新行业（金融 / 医疗 / 政府）拓展前评估。

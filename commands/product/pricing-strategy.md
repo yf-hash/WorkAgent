@@ -12,7 +12,7 @@ argument-hint: "<产品/服务描述> [--mode tier|psm|conjoint|increase|decreas
 
 # /pricing-strategy — 产品定价策略
 
-加载技能：`skills/pricing-strategy/SKILL.md`
+加载技能：`skills/strategy/pricing-strategy/SKILL.md`
 
 ## 触发条件
 新产品定价、设计套餐结构、做用户价格敏感度调研、涨价/降价决策、付费转化优化，或单位经济（LTV/CAC）健康检查时。

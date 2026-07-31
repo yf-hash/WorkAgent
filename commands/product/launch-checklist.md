@@ -13,7 +13,7 @@ argument-hint: "<产品/功能名> [--mode full|tracks|timebox|risk|gono] [--lau
 
 # /launch-checklist — 发布检查清单
 
-加载技能：`skills/launch-checklist/SKILL.md`
+加载技能：`skills/strategy/launch-checklist/SKILL.md`
 
 ## 触发条件
 新功能/产品/版本即将发布、需要跨团队协同对齐、需要建立可复用的发布 SOP，或需要做 Go/No-Go 决策时。

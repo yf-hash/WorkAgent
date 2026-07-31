@@ -11,7 +11,7 @@ argument-hint: "<功能/产品描述> [--mode full|backbone|skeleton|slices|stor
 
 # /user-story-mapping — 用户故事地图
 
-加载技能：`skills/user-story-mapping/SKILL.md`
+加载技能：`skills/strategy/user-story-mapping/SKILL.md`
 
 ## 触发条件
 需要把模糊需求拆解为可发布的故事切片、定义 MVP 范围、为 Sprint 规划做准备、或开 Three Amigos 评审会时。

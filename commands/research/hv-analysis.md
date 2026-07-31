@@ -27,7 +27,7 @@ argument-hint: "[研究对象] [--title 标题] [--author 作者]"
 
 ## 执行流程
 
-1. 加载 `skills/hv-analysis/SKILL.md` 完整方法论
+1. 加载 `skills/writing/hv-analysis/SKILL.md` 完整方法论
 2. 明确研究对象（产品/公司/概念/人物）
 3. 联网信息收集（并行搜索：纵向历史 + 横向竞品 + 补充信息）
 4. 纵向分析（6000-15000 字）：起源追溯 → 诞生节点 → 演进历程 → 决策逻辑 → 阶段划分

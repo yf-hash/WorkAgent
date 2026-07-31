@@ -10,8 +10,8 @@ argument-hint: "<产品名称> [--competitors <对手1,对手2,对手3>] [--indu
 
 # /product-competitive — 竞品分析生成器
 
-加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/competitive.md`
-配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
+加载技能：`skills/product/product-writer-router/SKILL.md` + 结构模板 `templates/product/competitive.md`
+配套核验：`skills/presales/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
 需要系统性盘点本产品与 3-5 个核心竞品的优劣势，并形成销售应对剧本时。

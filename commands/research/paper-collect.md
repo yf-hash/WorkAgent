@@ -10,7 +10,7 @@ argument-hint: "--since <YYYY-MM-DD> [--until <YYYY-MM-DD>] [--domain <领域>] 
 
 从 arxiv.org 搜集指定学科领域最新论文，按时间范围过滤，输出结构化中文摘要。
 
-加载技能：`skills/paper-collector/SKILL.md`
+加载技能：`skills/research/paper-collector/SKILL.md`
 
 ## 用法
 

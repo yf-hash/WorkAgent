@@ -50,17 +50,34 @@ WorkAgent 是一套以 **风格驱动 + 单一职责** 为核心设计理念的 
 
 ```
 WorkAgent/
-├── agents/             # 25 个自治代理（编排原子命令完成完整业务流程）
-├── skills/             # 127 个原子 Skill（v2.7 二次裁剪后，严格单一职责）
-├── commands/           # 114 个原子命令入口
-│   ├── writing/        # 11 个（含 style-* / humanize-* 拆分系列）
-│   ├── product/        # 47 个（PM 全流程 + 战略决策 + dashboard-* + prd-* 拆分系列）
-│   ├── presales/       # 35 个（售前 / 方案 / RFP / Demo / 竞品 / PoC + bid-* 七阶段 + product-* 16 类）
-│   ├── research/       # 5 个（含 /web-search）
-│   └── media/          # 16 个（PPT / 配图 / 视频 / 字幕 / 图表 + remotion-* / diagram-* / table-* / md-* 拆分）
-├── templates/          # 13 个标准模板
-├── AUDIT.md            # 后续裁剪与结构优化 checklist
-├── HEALTH_REPORT.md    # 仓库整体健康度 + 修复记录
+├── agents/                # 24 个自治代理（含 README.md 分层索引）
+├── skills/                # 115 个原子 Skill（v2.8 分入 14 子域）
+│   ├── writing/           # 10（article-writer / interview / marketing-copy / style-* / humanizer-*）
+│   ├── prd/               # 11（prd-lite/standard/spec-first/proto/quality/deep-eval/diagnose/concept/impl/incremental/xqy）
+│   ├── pm/                # 8（pm-* 6 + product-strategy + working-backwards）
+│   ├── product/           # 5（4 rich writer + 1 router）
+│   ├── presales/          # 12（discovery/gap/SA/BC/RFP/security/battle/demo/PoC/sales-guide/doc-auditor/proposal-generator）
+│   ├── bid/               # 7（bid-analyze/clarify/outline/write/review/check/export）
+│   ├── dashboard/         # 7（northstar/aarrr/cohort/revenue/customer-br/ai-monitor/platform-selector）
+│   ├── ppt/               # 8（ppt-master/architect/rag/researcher + academic/slidetailor/slidev/marp）
+│   ├── media/             # 9（remotion-* / pdf2video / omni-captions / videocut / content-sync / md-* ）
+│   ├── diagram/           # 9（arch/markmap/plantuml/mermaid/visio/html/ai-illustrator/SD/impeccable）
+│   ├── research/          # 7（market/user/paper-*/taskweaver/chat2db/open-websearch）
+│   ├── data/              # 2（product-analytics / ab-test）
+│   ├── strategy/          # 19（gtm/build-vs-buy/sunset/win-loss/churn/tech-debt 等）
+│   └── tools/             # 1（od-contribute）
+├── commands/              # 97 个（v2.8 合并 6 类 stub 群后）
+│   ├── writing/           # 9（style-* 3 + humanize + polish + marketing + article + interview + sync）
+│   ├── product/           # 41（PM + prd-* 11 + dashboard + 战略决策）
+│   ├── presales/          # 29（含 bid 统一 + product-* 16 类）
+│   ├── research/          # 5
+│   ├── media/             # 12（ppt/illustrate/video-gen/diagram/arch-diagram/visio/md-render/table/caption/pdf2video/videocut）
+│   └── tools/             # 1
+├── templates/             # 25（含 templates/product/ 12 个）
+├── AGENT_ROUTING.md       # agent 边界规则（v2.8）
+├── AUDIT.md               # 优化 checklist
+├── HEALTH_REPORT.md       # 健康度 + 修复记录
+├── CONSOLIDATION_PLAN.md  # v2.8 收敛方案（本轮执行）
 └── README.md
 ```
 
@@ -695,6 +712,21 @@ claude .
 ---
 
 ## 更新日志
+
+### v2.8（Commands 主题合并 + Skills 分子目录 + Agents 索引，2026-07）
+
+- **Commands 合并**（-17 net）：将 24 个 stub 命令合并成 6 个主题入口
+  - dashboard 7 → 1（`/dashboard --metric`）
+  - bid 7 → 1（`/bid --phase`）
+  - md 2 → 1（`/md-render --format`）
+  - remotion 3 → 1（`/video-gen --engine`）
+  - humanize 3 → 1（`/humanize --mode`，⚠️ 覆盖 AUDIT 247 撤回项）
+  - diagram 2 → 1（`/diagram --type`，⚠️ 覆盖 AUDIT 247 撤回项）
+- **Skills 分子目录**：115 skill 全部迁入 14 子域（writing/prd/pm/product/presales/bid/dashboard/ppt/media/diagram/research/data/strategy/tools），184 处引用批量替换
+- **Agents 收敛**（25 → 24）：删除 `impeccable-manual-edit-applier`（status: draft，无调用路径）
+- **新增治理文档**：`agents/README.md`（分层索引）+ `AGENT_ROUTING.md`（7 组边界规则）+ `CONSOLIDATION_PLAN.md`（本轮方案）
+- **AUDIT.md**：C1（skills 分子目录）标记为已执行；「未做事项」新增 "v2.8 状态" 列
+- 最终规模：**24 Agents / 115 Skills / 97 Commands / 25 Templates**
 
 ### v2.7（二次裁剪 + 文档漂移修正，2026-07）
 

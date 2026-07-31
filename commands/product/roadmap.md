@@ -12,7 +12,7 @@ argument-hint: "<产品/团队描述> [--mode prioritize|plan|gantt|github] [--h
 
 # /roadmap — 产品路线图规划
 
-加载技能：`skills/product-roadmap/SKILL.md`
+加载技能：`skills/strategy/product-roadmap/SKILL.md`
 
 ## 触发条件
 规划季度 / 半年 / 年度产品路线图、对 Backlog 做需求优先级排序、生成 Gantt 图、同步 GitHub Projects 时。

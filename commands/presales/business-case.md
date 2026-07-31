@@ -11,7 +11,7 @@ argument-hint: "<客户公司或项目名> [--mode onepage|full|tco|roi|review] 
 
 # /business-case — 客户价值证明（ROI / TCO）
 
-加载技能：`skills/business-case/SKILL.md`
+加载技能：`skills/presales/business-case/SKILL.md`
 配套 Skill：`pricing-strategy`、`solution-architecture`
 
 ## 触发条件

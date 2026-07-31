@@ -19,7 +19,7 @@ argument-hint: "<项目描述> [--type presale|feasibility|design] [--industry g
 
 # /proposal — 企业方案文档生成
 
-加载技能：`skills/proposal-generator/SKILL.md`
+加载技能：`skills/presales/proposal-generator/SKILL.md`
 
 ## 触发条件
 需要撰写售前解决方案、可行性研究报告、初步设计方案，或生成方案目录、章节内容、报价单时。

@@ -10,8 +10,8 @@ argument-hint: "<产品名称> [--industry fintech|gov|healthcare|edu|mfg|retail
 
 # /product-solution — 产品解决方案生成器
 
-加载技能：`skills/product-solution-writer/SKILL.md`
-配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
+加载技能：`skills/product/product-solution-writer/SKILL.md`
+配套核验：`skills/presales/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
 需要为某一行业生成标准化、可复用的产品解决方案，作为售前对接的基础物料时。

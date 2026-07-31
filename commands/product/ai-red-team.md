@@ -5,7 +5,7 @@ argument-hint: "[AI 功能/模型/上线版本]"
 
 # /ai-red-team — AI 产品红队测试
 
-加载技能：`skills/ai-red-team/SKILL.md`
+加载技能：`skills/strategy/ai-red-team/SKILL.md`
 
 请基于以下 AI 功能 / 模型版本，制定红队测试计划：
 

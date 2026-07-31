@@ -8,7 +8,7 @@ allowed-tools: [Read, Write, Edit, WebFetch, AskUserQuestion]
 
 # /style-create — 风格驱动从零创作
 
-加载技能：`skills/style-writer-reviewer/SKILL.md`
+加载技能：`skills/writing/style-writer-reviewer/SKILL.md`
 
 ## 用法
 

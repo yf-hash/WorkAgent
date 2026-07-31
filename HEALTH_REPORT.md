@@ -42,7 +42,7 @@
 | skill | `pm-core-framework` | 仅 1 处引用（`product-director`），v2.6.1 已改写为"前置思考层"仍是名存实亡 | product-director skills 列表移除；PM 方法论直接引用原子 pm-* Skill |
 | skill | `doc-formatter` | 仅 2 处引用，`humanizer-scan/soul` 已覆盖排版 | doc-polisher skills 列表移除 |
 | skill | `bid-rewriter` | v2.6 已声明"内嵌于 bid-write" | bid-writer agent skills 列表和路由描述移除 |
-| skill | `pptx-sdk` | skill 自身已声明降级，能力已迁移到 `skills/ppt-master/references/pptx-sdk.md` | ppt-generator agent 路由指向 ppt-master |
+| skill | `pptx-sdk` | skill 自身已声明降级，能力已迁移到 `skills/ppt/ppt-master/references/pptx-sdk.md` | ppt-generator agent 路由指向 ppt-master |
 | agent | `visual-suite` | 能力被 `@diagram-architect`（图表路由）+ `@article-illustrator`（文章配图）+ `/md-poster` / `/md-table-image` 完全覆盖 | article-illustrator 边界说明更新为 `@diagram-architect` |
 
 ### B. 补录（v2.6 遗漏）
@@ -69,7 +69,7 @@
 | `agents/bid-writer.md` | skills 列表含 `bid-rewriter` + "rewrite → 调用 bid-rewriter skill" 路由 | 移除 |
 | `agents/ppt-generator.md` | skills 列表含 `pptx-sdk` + description 提"6 种引擎" + 路由指向 pptx-sdk | 移除，改为"5 种引擎+ ppt-master 内嵌 SDK" |
 | `agents/article-illustrator.md` | description + 边界说明引用 `visual-suite` | 改为 `@diagram-architect` |
-| `skills/ppt-master/references/pptx-sdk.md` | 说明"原独立技能路径" | 改为"原独立 skill 已删除，能力完全内嵌" |
+| `skills/ppt/ppt-master/references/pptx-sdk.md` | 说明"原独立技能路径" | 改为"原独立 skill 已删除，能力完全内嵌" |
 | `README.md` | 数量表 / agent 表 / skill 表 / 更新日志 | 全量刷新 |
 
 ---
@@ -82,19 +82,19 @@
 
 | 文件 | 原断链 | 替换为 |
 |---|---|---|
-| `skills/churn-analysis/SKILL.md` | `/data-dashboard --mode customer-health`, `/data-dashboard`, `/user-research --mode interview` | `/dashboard-customer-br`, `/dashboard-revenue`, `/user-research` |
-| `skills/omni-captions/SKILL.md` | `remotion-generator`, `/remotion-generate` | `Remotion 系列命令`, `/remotion-native` |
+| `skills/strategy/churn-analysis/SKILL.md` | `/data-dashboard --mode customer-health`, `/data-dashboard`, `/user-research --mode interview` | `/dashboard-customer-br`, `/dashboard-revenue`, `/user-research` |
+| `skills/media/omni-captions/SKILL.md` | `remotion-generator`, `/remotion-generate` | `Remotion 系列命令`, `/remotion-native` |
 | `skills/pm-core-framework/SKILL.md` | `pm-skills`, `pm-full-cycle`, `/prd-writer`, `/product-spec`, `/sales-guide` 等 7 处 | 重写定位为「前置思考层」+ 链接到 6 个原子 PM 框架 Skill |
-| `skills/pm-qa-acceptance/SKILL.md` | `product-spec / prd-writer` | `prd-standard / prd-implementation-draft` |
-| `skills/working-backwards/SKILL.md` | `/product-spec` × 2 | `/prd-standard` |
-| `skills/user-story-mapping/SKILL.md` | `product-spec` | `prd-standard` |
-| `skills/product-strategy/SKILL.md` | `product-spec` | `prd-standard` |
-| `skills/compliance-checklist/SKILL.md` | `product-spec` | `prd-standard` |
+| `skills/pm/pm-qa-acceptance/SKILL.md` | `product-spec / prd-writer` | `prd-standard / prd-implementation-draft` |
+| `skills/pm/working-backwards/SKILL.md` | `/product-spec` × 2 | `/prd-standard` |
+| `skills/strategy/user-story-mapping/SKILL.md` | `product-spec` | `prd-standard` |
+| `skills/pm/product-strategy/SKILL.md` | `product-spec` | `prd-standard` |
+| `skills/strategy/compliance-checklist/SKILL.md` | `product-spec` | `prd-standard` |
 | `skills/product-sales-faq-writer/SKILL.md` | `/sales-guide` | `sales-guide-writer / /sales-guide` |
-| `skills/arch-diagram/SKILL.md` | `diagram-suite` | `mermaid-chart / diagram-plantuml` |
-| `skills/visio-builder/SKILL.md` | `diagram-suite` | `diagram-plantuml / arch-diagram` |
-| `skills/solution-architecture/SKILL.md` | `diagram-suite` | `mermaid-chart / diagram-plantuml` |
-| `skills/impeccable/SKILL.md` | `humanizer skill` | `humanizer-scan / humanizer-soul` |
+| `skills/diagram/arch-diagram/SKILL.md` | `diagram-suite` | `mermaid-chart / diagram-plantuml` |
+| `skills/diagram/visio-builder/SKILL.md` | `diagram-suite` | `diagram-plantuml / arch-diagram` |
+| `skills/presales/solution-architecture/SKILL.md` | `diagram-suite` | `mermaid-chart / diagram-plantuml` |
+| `skills/diagram/impeccable/SKILL.md` | `humanizer skill` | `humanizer-scan / humanizer-soul` |
 | `skills/doc-formatter/SKILL.md` | `humanizer` | `humanizer-scan / humanizer-soul` |
 | `agents/bid-writer.md` | `/bid <子命令>` | `/bid-analyze / /bid-clarify / ... / /bid-export` |
 | `agents/visual-suite.md` | `document-illustrator`, `thesis-figure-skill`, `paper-banana`（不存在的 skill）+ `/mermaid`（不存在的命令） | 改写为 `ai-illustrator` 内部子流程 + `/diagram-uml` |
@@ -115,7 +115,7 @@
 
 ### B. 冗余 Agent 清理
 
-- **删除 `agents/writer-reviewer.md`**（188 行）— 已被 `skills/style-writer-reviewer/SKILL.md`（139 行）完全覆盖。该 Agent 与 Skill 的 Writer-Reviewer 互搏流程一致，无独立编排价值，删除后由 `@content-director` 和 `@style-evolver` 直接调用 Skill。
+- **删除 `agents/writer-reviewer.md`**（188 行）— 已被 `skills/writing/style-writer-reviewer/SKILL.md`（139 行）完全覆盖。该 Agent 与 Skill 的 Writer-Reviewer 互搏流程一致，无独立编排价值，删除后由 `@content-director` 和 `@style-evolver` 直接调用 Skill。
 
 ### C. 单一职责（SR）违规描述修正
 
@@ -192,19 +192,28 @@
 
 ---
 
-## 六、当前文件结构
+## 六、当前文件结构（v2.8）
 
 ```
 WorkAgent/
-├── agents/             # 24
-├── skills/             # 129（严格单一职责）
-├── commands/
-│   ├── writing/        # 11（含 style-*/humanize-* 拆分）
-│   ├── product/        # 46（含 prd-*/dashboard-*/pm-* 拆分）
-│   ├── presales/       # 35（含 bid-* 七阶段 + product-* 16 类）
-│   ├── research/       # 4
-│   └── media/          # 16（含 remotion-*/diagram-*/md-*/table-* 拆分）
-├── templates/          # 13
+├── agents/             # 24（+ README.md 分层索引）
+├── skills/             # 115（v2.8 分入 14 子域）
+│   ├── writing/  prd/  pm/  product/
+│   ├── presales/  bid/  dashboard/
+│   ├── ppt/  media/  diagram/
+│   ├── research/  data/  strategy/
+│   └── tools/
+├── commands/           # 97
+│   ├── writing/        # 9  （合并 humanize 3→1）
+│   ├── product/        # 41 （合并 dashboard 7→1）
+│   ├── presales/       # 29 （合并 bid 7→1）
+│   ├── research/       # 5
+│   ├── media/          # 12 （合并 md 2→1, remotion 3→1, diagram 2→1）
+│   └── tools/          # 1
+├── templates/          # 25
+├── AGENT_ROUTING.md（v2.8）
+├── AUDIT.md
+├── CONSOLIDATION_PLAN.md（v2.8）
 ├── HEALTH_REPORT.md（本文件）
 └── README.md
 ```

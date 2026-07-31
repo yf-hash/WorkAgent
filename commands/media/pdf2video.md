@@ -58,7 +58,7 @@ argument-hint: "<filepath.pdf|.pptx> [--scene-type stack|focus|zoom|fan] [--styl
 
 ## 执行流程
 
-1. 加载 `skills/pdf2video/SKILL.md` 完整规范
+1. 加载 `skills/media/pdf2video/SKILL.md` 完整规范
 2. 解析文件（PDF → pdfplumber / PPTX → python-pptx）
 3. 分析每页内容，自动选择最优动画类型
 4. 生成 `scenes.json` 场景配置

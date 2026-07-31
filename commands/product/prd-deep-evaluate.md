@@ -8,7 +8,7 @@ allowed-tools: [Read, Write, Edit]
 
 # /prd-deep-evaluate — PRD 23 节深度评估
 
-加载技能：`skills/prd-deep-evaluate/SKILL.md`
+加载技能：`skills/prd/prd-deep-evaluate/SKILL.md`
 
 ## 用法
 

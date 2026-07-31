@@ -1,4 +1,4 @@
-<!-- templates/product/bid-params.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-bid-params-writer` 提炼，共享写作规范见 `skills/product-writer-router/SKILL.md`。 -->
+<!-- templates/product/bid-params.md — 由 product-writer-router skill 按需 Read。 从原 `skills/product-bid-params-writer` 提炼，共享写作规范见 `skills/product/product-writer-router/SKILL.md`。 -->
 
 # 投标参数应答 — 结构模板
 

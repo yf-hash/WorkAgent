@@ -8,7 +8,7 @@ allowed-tools: [Read, Write, Edit, Bash]
 
 # /table-csv — CSV/Markdown 表格互转
 
-加载技能：`skills/table-csv-md/SKILL.md`
+加载技能：`skills/strategy/table-csv-md/SKILL.md`
 
 ## 用法
 

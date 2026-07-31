@@ -103,37 +103,36 @@
 
 ## C 阶段：目录结构调整
 
-### C1. `skills/` 分子目录（改动最大，需慎重）
+### C1. `skills/` 分子目录 ✅ **v2.8 已执行**
 
-**现状**：131 个 skill 全平铺在 `skills/`，检索困难。
+**执行结果**：115 个 skill 全部迁入 14 个子目录（writing / prd / pm / product / presales / bid / dashboard / ppt / media / diagram / research / data / strategy / tools）。184 处引用批量替换完毕，`grep` 校验无残留平铺路径。
 
-**改造方案**：按 command 分类映射，把 skills 分入子目录：
+**改造方案（执行版）**：按 command 分类映射，把 skills 分入子目录：
 
 ```
 skills/
-├── writing/           # article-writer, hv-analysis, interview-writer, marketing-copy, humanizer-*, style-*
-├── prd/               # prd-* 11 个
-├── pm/                # pm-* 剩余 5 个 + product-strategy / working-backwards 等
-├── product/           # 16 个 product-*-writer（若 B1 未做）或 4 个（若 B1 已做）
-├── presales/          # discovery-call, gap-analysis, solution-architecture, business-case, rfp-response, security-questionnaire, battle-card, demo-design, poc-plan, sales-guide-writer, doc-auditor, proposal-generator
-├── bid/               # bid-* 7 个
-├── dashboard/         # dashboard-* 7 个
-├── ppt/               # ppt-*, academic-pptx, slidetailor, slidev, marp
-├── media/             # remotion-*, pdf2video, omni-captions, videocut, content-sync
-├── diagram/           # arch-diagram, diagram-*, mermaid-chart, visio-builder, html-chart, ai-illustrator, stable-diffusion, impeccable, md-poster, md-table-image
-├── research/          # market-research, user-research, paper-*, taskweaver, chat2db, open-websearch, hv-analysis
-├── data/              # product-analytics, ab-test
-└── strategy/          # gtm-strategy, build-vs-buy, sunset-plan, win-loss-analysis, churn-analysis, tech-debt, ai-red-team, mvp-canvas, user-story-mapping, launch-checklist, pmf-survey, pricing-strategy, compliance-checklist, product-report, product-roadmap, design-proto, user-feedback, table-*
+├── writing/           # 10：article-writer, hv-analysis, interview-writer, marketing-copy, humanizer-*, style-*
+├── prd/               # 11：prd-* 全部
+├── pm/                # 8：pm-* 6 个 + product-strategy + working-backwards
+├── product/           # 5：4 rich writer + product-writer-router
+├── presales/          # 12：discovery-call, gap-analysis, solution-architecture, business-case, rfp-response, security-questionnaire, battle-card, demo-design, poc-plan, sales-guide-writer, doc-auditor, proposal-generator
+├── bid/               # 7：bid-* 全部
+├── dashboard/         # 7：dashboard-* 全部
+├── ppt/               # 8：ppt-*, academic-pptx, slidetailor, slidev, marp
+├── media/             # 9：remotion-*, pdf2video, omni-captions, videocut, content-sync, md-*
+├── diagram/           # 9：arch-diagram, diagram-*, mermaid-chart, visio-builder, html-chart, ai-illustrator, stable-diffusion, impeccable
+├── research/          # 7：market-research, user-research, paper-*, taskweaver, chat2db, open-websearch
+├── data/              # 2：product-analytics, ab-test
+├── strategy/          # 19：gtm, build-vs-buy, sunset, win-loss, churn, tech-debt, ai-red-team, mvp, user-story, launch, pmf, pricing, compliance, product-report, product-roadmap, design-proto, user-feedback, table-*
+└── tools/             # 1：od-contribute
 ```
 
 **影响面**：
-- 所有 agent 的 `skills:` 列表需要更新为新路径（若使用相对路径 `skills/xxx` 需要改成 `skills/domain/xxx`）
-- 所有 command `加载技能：skills/xxx/SKILL.md` 需要更新
-- 所有 skill 之间的 `[[link]]` 需要检查
+- 所有 agent 的 `skills:` 列表用 bare skill name，无需改（Claude Code 按 name 索引）
+- 所有 command `加载技能：skills/xxx/SKILL.md` 已批量替换为 `skills/<domain>/xxx/SKILL.md`
+- 所有 skill 之间的 `Read skills/xxx/references/` 已批量替换
 
-**验收标准**：`grep -r "skills/" agents/ commands/ | grep -v "skills/[a-z]*/[a-z]"` 结果为空（都指向新子目录）。
-
-**风险**：改动量估计 200+ 处引用。建议单独用一个分支执行，先做迁移脚本再手工核验。
+**验收标准**（v2.8 已通过）：`grep -rn "skills/[a-z-]*/SKILL\.md" --include="*.md" . | grep -vE "skills/(writing|prd|pm|product|presales|bid|dashboard|ppt|media|diagram|research|data|strategy|tools)/"` 结果为空。
 
 ---
 

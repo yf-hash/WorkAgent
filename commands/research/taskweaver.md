@@ -8,8 +8,8 @@ argument-hint: "<任务描述> [--backend sql|python|auto] [--db mysql|postgresq
 # /taskweaver — 数据分析 Agent
 
 加载技能：
-- `skills/taskweaver/SKILL.md`（Python 代码执行）
-- `skills/chat2db/SKILL.md`（SQL 生成与优化）
+- `skills/research/taskweaver/SKILL.md`（Python 代码执行）
+- `skills/research/chat2db/SKILL.md`（SQL 生成与优化）
 
 ---
 

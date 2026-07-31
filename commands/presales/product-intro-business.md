@@ -10,8 +10,8 @@ argument-hint: "<产品名称> [--version v1.0] [--industry fintech|gov|healthca
 
 # /product-intro-business — 产品介绍-商务版 PPT 生成器
 
-加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/intro-business.md`
-配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
+加载技能：`skills/product/product-writer-router/SKILL.md` + 结构模板 `templates/product/intro-business.md`
+配套核验：`skills/presales/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
 需要面向客户高管 / 采购委员会做 30-45 分钟商务路演时。

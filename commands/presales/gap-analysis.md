@@ -11,7 +11,7 @@ argument-hint: "<客户需求清单文件或描述> [--mode analyze|score|plan|r
 
 # /gap-analysis — 功能差异分析
 
-加载技能：`skills/gap-analysis/SKILL.md`
+加载技能：`skills/presales/gap-analysis/SKILL.md`
 配套 Skill：`solution-architecture`、`rfp-response`
 
 ## 触发条件

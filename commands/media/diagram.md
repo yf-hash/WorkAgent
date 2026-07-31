@@ -31,9 +31,9 @@ allowed-tools: [Read, Write, Edit, Bash]
 
 | `--type` | 加载技能 | 二级参数 |
 |---|---|---|
-| `mindmap` | `skills/diagram-markmap/SKILL.md` | — |
-| `uml` | `skills/diagram-plantuml/SKILL.md` | `--subtype sequence\|class\|component\|usecase\|deployment\|activity\|state` |
-| `json` | `skills/diagram-plantuml/SKILL.md`（PlantUML JSON 语法） | — |
+| `mindmap` | `skills/diagram/diagram-markmap/SKILL.md` | — |
+| `uml` | `skills/diagram/diagram-plantuml/SKILL.md` | `--subtype sequence\|class\|component\|usecase\|deployment\|activity\|state` |
+| `json` | `skills/diagram/diagram-plantuml/SKILL.md`（PlantUML JSON 语法） | — |
 
 ## 与其他图表命令的边界
 

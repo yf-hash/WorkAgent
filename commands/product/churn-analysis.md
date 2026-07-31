@@ -5,7 +5,7 @@ argument-hint: "[时间区间 / 客户群]"
 
 # /churn-analysis — 流失分析 + 挽留剧本
 
-加载技能：`skills/churn-analysis/SKILL.md`
+加载技能：`skills/strategy/churn-analysis/SKILL.md`
 
 请基于以下输入做 Churn 分析：
 

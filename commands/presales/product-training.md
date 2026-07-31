@@ -10,8 +10,8 @@ argument-hint: "<产品名称> [--audience channel|customer|internal] [--version
 
 # /product-training — 产品培训材料生成器
 
-加载技能：`skills/product-writer-router/SKILL.md` + 结构模板 `templates/product/training.md`
-配套核验：`skills/doc-auditor/SKILL.md`（生成后自动调用）
+加载技能：`skills/product/product-writer-router/SKILL.md` + 结构模板 `templates/product/training.md`
+配套核验：`skills/presales/doc-auditor/SKILL.md`（生成后自动调用）
 
 ## 触发条件
 需要为渠道商认证培训、客户上线培训、内部员工新人培训准备一整套培训材料时。

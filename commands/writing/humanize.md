@@ -28,9 +28,9 @@ allowed-tools: [Read, Write, Edit]
 
 | `--mode` | 加载技能 | 一句话 | 前置 |
 |---|---|---|---|
-| `scan` | `skills/humanizer-scan/SKILL.md` | 29 种 AI 模式扫描去除 + 中文高频词 + 7 项句式微策略 + 中文排版校正 | 无 |
-| `soul` | `skills/humanizer-soul/SKILL.md` | 六大人性原则 H1-H6 + 声音校准 + 33 领域情绪预设 | scan 已完成 |
-| `academic` | `skills/humanizer-academic/SKILL.md` | 30 条高级学术去痕指令（9 大类），顶刊/学位论文/严格检测 | soul 已完成 |
+| `scan` | `skills/writing/humanizer-scan/SKILL.md` | 29 种 AI 模式扫描去除 + 中文高频词 + 7 项句式微策略 + 中文排版校正 | 无 |
+| `soul` | `skills/writing/humanizer-soul/SKILL.md` | 六大人性原则 H1-H6 + 声音校准 + 33 领域情绪预设 | scan 已完成 |
+| `academic` | `skills/writing/humanizer-academic/SKILL.md` | 30 条高级学术去痕指令（9 大类），顶刊/学位论文/严格检测 | soul 已完成 |
 | `all` | 依次加载三个 skill | scan → soul → academic 完整流水线，每段 gate 提示 | 无 |
 
 ## 推荐流程

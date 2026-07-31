@@ -8,7 +8,7 @@ argument-hint: "<产品/业务描述> [--mode sop|diagnose|strategy|launch|optim
 
 # /gtm-strategy — B2B 产品 Go-to-Market 上市战略
 
-加载技能：`skills/gtm-strategy/SKILL.md`
+加载技能：`skills/strategy/gtm-strategy/SKILL.md`
 
 > **核心理念**：B2B 产品 GTM 的本质，不是「做一次发布」，而是把产品从「能用」推向「有人买、能交付、可复制增长」的全过程。
 > 整体可以分为 **市场验证 → 产品包装 → 样板客户 → 正式发布 → 规模化销售 → 持续增长** 六个阶段。

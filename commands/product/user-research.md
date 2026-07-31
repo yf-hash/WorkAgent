@@ -15,7 +15,7 @@ argument-hint: "<研究目标> [--mode interview|survey|card-sort|journey|person
 
 # /user-research — 用户研究工作台
 
-加载技能：`skills/user-research/SKILL.md`
+加载技能：`skills/research/user-research/SKILL.md`
 
 ## 触发条件
 设计用户访谈脚本、问卷、卡片分类、用户旅程地图、用户画像，或寻找早期 Adopter / 创始人级用户时。

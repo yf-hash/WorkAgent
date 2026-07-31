@@ -11,7 +11,7 @@ argument-hint: "<时间窗口/产品> [--mode weekly|monthly|quarterly|board|cus
 
 # /product-report — 产品周报/月报/季度报告
 
-加载技能：`skills/product-report/SKILL.md`
+加载技能：`skills/strategy/product-report/SKILL.md`
 
 ## 触发条件
 需要写产品周报、月度高管汇报、季度董事会报告、客户 Business Review，或想建立可复用的产品报告模板时。

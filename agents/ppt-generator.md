@@ -8,7 +8,7 @@ description: >
   RAG模式：对本地文件(PDF/DOCX/PPTX/MD/Excel)和在线URL进行向量化索引，
   语义检索后归纳为PPT素材；质量评分机制（100分5维度）自动驱动3-5轮自迭代优化。
   根据用户起点（有无素材、有无论文PDF、有无RAG材料）和目标自动选择最优路径。
-model: claude-sonnet-4-6
+model: sonnet
 tools:
   - Read
   - Write

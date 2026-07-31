@@ -41,13 +41,13 @@ allowed-tools: [Read, Write, Edit]
 
 | `--metric` | 加载技能 | 一句话 |
 |---|---|---|
-| `northstar` | `skills/dashboard-northstar/SKILL.md` | NSM 当前值/趋势/季度目标/完成率/Counter Metric/NSM 拆解/实验影响 |
-| `aarrr` | `skills/dashboard-aarrr/SKILL.md` | 5 层 KPI + 漏斗图 + Benchmark + Drill-down + 流失节点 Top 3 |
-| `cohort` | `skills/dashboard-cohort/SKILL.md` | D1/D7/D30 KPI + 留存矩阵热力图 + 多 Cohort 曲线 + Power User 占比 |
-| `revenue` | `skills/dashboard-revenue/SKILL.md` | MRR/ARR/NRR/Churn/LTV·CAC/Payback + MRR 瀑布 + Cohort Rev Retention + 大客户 Top 10 |
-| `customer-br` | `skills/dashboard-customer-br/SKILL.md` | 合同金额/用户/续约日 + 价值履约 + 关键模块使用 + ROI + 健康度评分 |
-| `ai-monitor` | `skills/dashboard-ai-monitor/SKILL.md` | 质量（有用率/引用准确率）+ 成本（日成本/单次/vs 预算）+ 安全（拒答率/越权/Refusal） |
-| `platform-selector` | `skills/dashboard-platform-selector/SKILL.md` | PostHog/Mixpanel/Amplitude/Matomo/GA4/Heap 六大平台对比 + 决策树 |
+| `northstar` | `skills/dashboard/dashboard-northstar/SKILL.md` | NSM 当前值/趋势/季度目标/完成率/Counter Metric/NSM 拆解/实验影响 |
+| `aarrr` | `skills/dashboard/dashboard-aarrr/SKILL.md` | 5 层 KPI + 漏斗图 + Benchmark + Drill-down + 流失节点 Top 3 |
+| `cohort` | `skills/dashboard/dashboard-cohort/SKILL.md` | D1/D7/D30 KPI + 留存矩阵热力图 + 多 Cohort 曲线 + Power User 占比 |
+| `revenue` | `skills/dashboard/dashboard-revenue/SKILL.md` | MRR/ARR/NRR/Churn/LTV·CAC/Payback + MRR 瀑布 + Cohort Rev Retention + 大客户 Top 10 |
+| `customer-br` | `skills/dashboard/dashboard-customer-br/SKILL.md` | 合同金额/用户/续约日 + 价值履约 + 关键模块使用 + ROI + 健康度评分 |
+| `ai-monitor` | `skills/dashboard/dashboard-ai-monitor/SKILL.md` | 质量（有用率/引用准确率）+ 成本（日成本/单次/vs 预算）+ 安全（拒答率/越权/Refusal） |
+| `platform-selector` | `skills/dashboard/dashboard-platform-selector/SKILL.md` | PostHog/Mixpanel/Amplitude/Matomo/GA4/Heap 六大平台对比 + 决策树 |
 
 ## 决策树
 

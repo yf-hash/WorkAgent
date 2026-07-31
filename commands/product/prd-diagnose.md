@@ -8,7 +8,7 @@ allowed-tools: [Read, Write, AskUserQuestion]
 
 # /prd-diagnose — 三镜诊断
 
-加载技能：`skills/prd-diagnose/SKILL.md`
+加载技能：`skills/prd/prd-diagnose/SKILL.md`
 
 ## 用法
 

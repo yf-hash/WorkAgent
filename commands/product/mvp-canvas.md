@@ -9,7 +9,7 @@ argument-hint: "<产品/功能描述> [--mode canvas|assumption|type|validation|
 
 # /mvp-canvas — MVP 设计画布
 
-加载技能：`skills/mvp-canvas/SKILL.md`
+加载技能：`skills/strategy/mvp-canvas/SKILL.md`
 
 ## 触发条件
 需要定义 MVP 范围、识别最致命假设、选择 MVP 形态、设定验证标准，或避免落入"大爆炸 MVP"陷阱时。
