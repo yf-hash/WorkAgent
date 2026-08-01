@@ -1,4 +1,5 @@
 {
+  "$schema-note": "WorkAgent v3.1 harness-ready settings. 详见 ../HARNESS_FRAMEWORK.md 与 harness/security/policies.md",
   "autoCompact": true,
   "permissions": {
     "allow": [
@@ -27,9 +28,57 @@
     "deny": [
       "Bash(rm -rf /)",
       "Bash(rm -rf ~)",
+      "Bash(rm -rf .*)",
+      "Bash(rm -rf $HOME)",
       "Bash(dd *)",
       "Bash(mkfs *)",
-      "Bash(:(){ :|:& };:)"
+      "Bash(:(){ :|:& };:)",
+      "Bash(sudo *)",
+      "Bash(git push --force main)",
+      "Bash(git push --force master)"
     ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/pre-write-sensitive-guard.sh" }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/pre-bash-danger.sh" }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/harness-context-inject.sh" }
+        ]
+      }
+    ],
+    "_examples_backup_and_audit": {
+      "_note": "以下 hook 默认未启用（磁盘占用 / 日志噪声），如需按需拷贝到上面 hooks 对象",
+      "PreToolUse": [
+        {
+          "matcher": "Write|Edit",
+          "hooks": [
+            { "type": "command", "command": "bash .claude/hooks/post-write-backup.sh" }
+          ]
+        }
+      ],
+      "PostToolUse": [
+        {
+          "matcher": "Bash",
+          "hooks": [
+            { "type": "command", "command": "bash .claude/hooks/audit.sh" }
+          ]
+        }
+      ]
+    }
   }
 }
