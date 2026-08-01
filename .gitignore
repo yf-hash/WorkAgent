@@ -1,2 +1,36 @@
+# WorkAgent .gitignore
+#
+# 运行时目录：hook 生成，不入 Git
+.claude/audit/
+.claude/backups/
+
+# 备份 / 临时文件
+*.bak
+*.tmp
+*.swp
+*~
+
+# 系统 / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# 用户本地覆盖（不入库）
+.claude/settings.local.json
+
+# 原有条目（历史遗留，图像生成产物）
 general_poster*.py
 general_poster*.png
