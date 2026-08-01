@@ -10,6 +10,18 @@ description: >
   40% 法则、High-Expectation Customer、HXC、PMF 信号、Pivot
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # PMF Survey — Product-Market Fit 评估知识库

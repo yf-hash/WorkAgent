@@ -7,6 +7,18 @@ description: >
   触发词：标书大纲、偏离表、bid outline、评分对标
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Bid Outline — 标书 Phase 3 偏离表与大纲

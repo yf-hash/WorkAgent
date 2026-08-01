@@ -9,6 +9,18 @@ description: >
   假设验证、伪 MVP、产品验证、Smoke Test、Wizard of Oz
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # MVP Canvas — MVP 设计画布知识库

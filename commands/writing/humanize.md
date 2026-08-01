@@ -4,6 +4,21 @@ description: 三段式 AI 去痕流水线（scan → soul → academic）。--mo
 user-invocable: true
 argument-hint: "[filepath|text] --mode scan|soul|academic|all [--intensity low|medium|high] [--voice-sample <path>] [--domain <name>]"
 allowed-tools: [Read, Write, Edit]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: iterative
+    max-iterations: 3
+    convergence-check: "AI 味识别 < 5%"
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /humanize — AI 去痕三段式

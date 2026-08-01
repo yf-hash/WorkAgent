@@ -7,6 +7,19 @@ description: >
 user-invocable: false
 effort: high
 argument-hint: "[filepath|text]"
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: iterative
+    max-iterations: 3
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Humanizer Academic — 学术深度强化

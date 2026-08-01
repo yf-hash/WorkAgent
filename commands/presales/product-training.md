@@ -6,6 +6,20 @@ description: >
   /product-intro-business 或 /product-intro-tech。
 user-invocable: true
 argument-hint: "<产品名称> [--audience channel|customer|internal] [--version v1.0]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /product-training — 产品培训材料生成器

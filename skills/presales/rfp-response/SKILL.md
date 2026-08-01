@@ -10,6 +10,19 @@ description: >
   客户问询答复、问询表、招投标问答、招标响应表、需求矩阵应答。
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: pipeline
+    gate-between: true
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # RFP / RFI 应答知识库

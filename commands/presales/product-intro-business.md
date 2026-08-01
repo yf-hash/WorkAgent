@@ -6,6 +6,20 @@ description: >
   /product-intro-tech。
 user-invocable: true
 argument-hint: "<产品名称> [--version v1.0] [--industry fintech|gov|healthcare|edu|mfg|retail|saas]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /product-intro-business — 产品介绍-商务版 PPT 生成器

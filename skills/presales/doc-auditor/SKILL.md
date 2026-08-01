@@ -7,6 +7,18 @@ description: >
   版本检查、内容合规、上传检查
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: read-only
+  constrain:
+    profile: read-only
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # 产品文档质量审核知识库

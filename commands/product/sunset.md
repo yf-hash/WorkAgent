@@ -1,6 +1,20 @@
 ---
 description: 产品 / 功能下线（Sunset / Deprecation）playbook — 把"做减法"做得有尊严（含 90/60/30/0 天客户通知节奏 + 迁移路径 + 数据归属）
 argument-hint: "[要下线的产品/功能名称]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /sunset — Sunset / Deprecation Playbook

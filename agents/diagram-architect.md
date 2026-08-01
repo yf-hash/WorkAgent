@@ -7,6 +7,19 @@ skills: [diagram-markmap, diagram-plantuml, mermaid-chart, arch-diagram, visio-b
 memory: project
 effort: high
 color: blue
+harness:
+  execute:
+    preset: agent-orchestrator
+  constrain:
+    profile: writing-safe
+    gates: [before-write, before-loop-restart]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context, user-preferences]
+  security:
+    danger-level: medium
 ---
 
 # diagram-architect — 统一图表编排 Agent

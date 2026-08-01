@@ -6,6 +6,18 @@ description: >
   转换和导出，可将 Mermaid/PlantUML 语法双向转换为 Visio 格式，批量处理 .vsdx 文件
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # visio-builder — Visio 图表构建技能

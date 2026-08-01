@@ -6,6 +6,18 @@ description: >
   触发词：PlantUML、UML、时序图、类图、用例图、组件图、部署图、活动图、JSON 可视化
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Diagram PlantUML — UML 全系

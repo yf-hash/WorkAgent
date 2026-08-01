@@ -7,6 +7,19 @@ description: >
 user-invocable: true
 argument-hint: "<描述或.vsdx文件> [--mode create|edit|convert|export|analyze] [--backend python|dotnet|auto] [--type flowchart|network|org|swimlane|er|rack] [--from mermaid|plantuml|text] [--output vsdx|svg|png|pdf]"
 allowed-tools: [Read, Write, Edit, Bash, AskUserQuestion]
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+    gates: [before-write, before-destructive]
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /visio — Visio 图表创建与转换

@@ -2,6 +2,19 @@
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, AskUserQuestion, Skill
 description: AI 视频智能剪辑 — 自动检测并剪除停顿/重复/口误/卡顿，支持人工审核模式，FFmpeg精准剪切
 argument-hint: "<video_filepath> [--mode auto|review] [--silence-threshold <dB>] [--min-silence <ms>] [--dict <filepath>] [--asr whisper|volcano]"
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+    gates: [before-write, before-destructive]
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /videocut

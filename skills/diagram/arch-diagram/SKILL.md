@@ -6,6 +6,18 @@ description: >
   渲染 PNG，支持 Cluster 分组、Edge 标签、多云混合、自定义节点图标
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # arch-diagram — 云架构图生成技能

@@ -11,6 +11,20 @@ memory: project
 effort: high
 color: purple
 MaxTurns: 30
+harness:
+  execute:
+    preset: agent-orchestrator
+  constrain:
+    profile: writing-safe
+    gates: [before-write, before-loop-restart]
+  loop:
+    mode: pipeline
+    gate-between: true
+  memory:
+    scope: project
+    reads: [project-context, user-preferences]
+  security:
+    danger-level: medium
 ---
 
 # Proposal Writer Agent — 企业方案撰写全链路编排

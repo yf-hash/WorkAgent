@@ -4,6 +4,19 @@ description: CSV ↔ Markdown 表格互转（mdtable Python CLI / 浏览器粘�
 user-invocable: true
 argument-hint: "<input> [--direction csv-to-md|md-to-csv] [--tool mdtable|generator|csv-md|markdown-table]"
 allowed-tools: [Read, Write, Edit, Bash]
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+    gates: [before-write, before-destructive]
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /table-csv — CSV/Markdown 表格互转

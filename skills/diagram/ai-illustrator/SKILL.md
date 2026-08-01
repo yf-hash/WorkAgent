@@ -9,6 +9,18 @@ description: >
   Markdown 转海报（→ md-poster）。
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # AI Illustrator — AI 智能插图生成知识库

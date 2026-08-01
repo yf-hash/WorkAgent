@@ -31,10 +31,10 @@ WorkAgent 是一套以 **风格驱动 + 单一职责** 为核心设计理念的 
 
 | 模块 | 数量 | 说明 |
 |------|------|------|
-| Agents | 25 个 | 自治代理，编排原子命令完成完整业务流程 |
-| Skills | 127 个 | 可复用知识库，**严格单一职责**（v2.7 二次裁剪后） |
-| Commands | 114 个 | 统一命令入口，**原子命令**为主，不再用 `--mode` 路由 |
-| Templates | 13 个 | PRD/BRD/MRD/Roadmap/PM-Discovery/验收/Release/Sales/需求池/PR-FAQ/6-pager/Model Card/Eval Rubric |
+| Agents | 24 个 | 自治代理，编排原子命令完成完整业务流程（v3.0 全部带 harness 元数据） |
+| Skills | 115 个 | 可复用知识库，**严格单一职责**（v3.0 全部带 harness 元数据） |
+| Commands | 86 个 | 统一命令入口（v2.8.2 收敛后，v3.0 全部带 harness 元数据） |
+| Templates | 22 活跃（+ 3 归档） | PRD/PM-Discovery/验收/Release/Sales/PR-FAQ/6-pager/Model Card/Eval Rubric 等；孤儿模板归档到 `templates/archive/` |
 
 **设计原则**：
 
@@ -73,19 +73,23 @@ WorkAgent/
 │   ├── research/          # 5
 │   ├── media/             # 12（ppt/illustrate/video-gen/diagram/arch-diagram/visio/md-render/table/caption/pdf2video/videocut）
 │   └── tools/             # 1
-├── templates/             # 25（含 templates/product/ 12 个）
-├── AGENT_ROUTING.md       # agent 边界规则（v2.8）
-├── AUDIT.md               # 优化 checklist
-├── HEALTH_REPORT.md       # 健康度 + 修复记录
-├── CONSOLIDATION_PLAN.md  # v2.8 收敛方案（本轮执行）
-└── README.md
+├── templates/             # 22 活跃（含 templates/product/ 12 个）+ 3 归档（archive/）
+├── HARNESS_FRAMEWORK.md   # ★ v3.0：五能力分层锚点（execute/constrain/loop/memory/security）
+├── docs/                  # ★ v3.0：元文档归档（AGENT_ROUTING/AUDIT/HEALTH_REPORT/CONSOLIDATION_PLAN）
+└── .claude/
+    ├── CLAUDE.md          # ★ v3.0：项目级说明（每次会话必读）
+    ├── settings.json      # 全局权限 + hooks 位（骨架就绪）
+    ├── harness/           # ★ v3.0：五能力原语（execute/constrain/loop/memory/security）
+    ├── hooks/             # ★ v3.0：hook 脚本骨架
+    ├── memory/            # ★ v3.0：项目级记忆（MEMORY.md 索引 + 分文件）
+    └── README.md
 ```
 
 ---
 
 ## 智能体系统
 
-25 个自治 Agent，覆盖产品、内容、标书、数据、研究、媒体、GTM、方案、视觉、**售前 / 解决方案**全域：
+24 个自治 Agent，覆盖产品、内容、标书、数据、研究、媒体、GTM、方案、视觉、**售前 / 解决方案**全域：
 
 | Agent | 职责 | 调用时机 |
 |-------|------|---------|
@@ -116,9 +120,9 @@ WorkAgent/
 
 ---
 
-## Skill 系统（v2.7 二次裁剪后）
+## Skill 系统
 
-127 个原子 Skill。下方按域列出，每个 Skill **单一职责**、**有边界声明**。
+115 个原子 Skill（v2.8 分入 14 子域，v3.0 全部带 harness 元数据）。下方按域列出，每个 Skill **单一职责**、**有边界声明**。
 
 ### 写作与内容（10）
 
@@ -165,7 +169,7 @@ WorkAgent/
 | `prd-incremental-update` | 已有 PRD 增量更新 | `/prd --mode update` |
 | `prd-xqy` | 银行/金融 XQY 需规格 8 章模板（接口/菜单/批处理） | `/prd --mode xqy` |
 
-> B 端严格 12 章另走 `/pm-prd-enterprise`。
+> B 端严格 12 章另走 `/prd --mode enterprise`。
 
 ### 产品资料（4 rich skills + 1 router + 12 templates）
 
@@ -314,7 +318,7 @@ WorkAgent/
 /prd --mode standard "AI 写作助手"                 # 标准 8 章
 /prd --mode spec-first "API 网关重构"              # Spec-First 四件套
 /prd --mode proto "新功能页面" --wireframe         # 含 ASCII 线框图
-/pm-prd-enterprise "多租户 RBAC 后台"       # B 端严格 12 章
+/prd "多租户 RBAC 后台" --mode enterprise          # B 端严格 12 章
 /prd --mode xqy "对公开户流程" --module-type mixed # 银行/金融 XQY 8 章需规格
 
 # 对话渐进 PRD（想法模糊时）
@@ -517,7 +521,7 @@ WorkAgent/
 ```bash
 /pm-discovery "AI 写作助手浏览器插件"             # 一次性发现报告
 /prd --mode standard "AI 写作助手浏览器插件"            # 标准 8 章 PRD（C 端）
-/pm-prd-enterprise "多租户企业版"                # B 端严格 12 章
+/prd "多租户企业版" --mode enterprise                # B 端严格 12 章
 /market-research AI 写作工具市场 --mode competitive
 /analytics 用户注册漏斗分析
 /roadmap Q2 路线图规划 --horizon 3m
@@ -707,11 +711,24 @@ claude .
 
 **4. 查看详细分工**
 
-每个命令、Skill、Agent 的 frontmatter 都明确写明「不做什么 / 流转到哪个组件」。仓库健康度见 `HEALTH_REPORT.md`。
+每个命令、Skill、Agent 的 frontmatter 都明确写明「不做什么 / 流转到哪个组件」。仓库健康度见 `../docs/HEALTH_REPORT.md`。
 
 ---
 
 ## 更新日志
+
+### v3.0（Harness 五能力分层，2026-08）
+
+- **架构升级**：引入 harness 五能力分层（Execute / Constrain / Loop / Memory / Security），把"模型思考"与"执行调度"显式分开。顶层锚点 [`../HARNESS_FRAMEWORK.md`](../HARNESS_FRAMEWORK.md)
+- **全量补齐**：86 commands + 24 agents + 115 skills = **225 个组件 100% 带 `harness:` 块**
+- **新增基础设施**：
+  - `.claude/CLAUDE.md`（项目级说明，每次会话必读）
+  - `.claude/harness/`（execute/constrain/loop/memory/security 五子目录 + 原语规格）
+  - `.claude/hooks/`（4 个骨架脚本：pre-write-sensitive-guard、pre-bash-danger、post-write-backup、audit）
+  - `.claude/memory/`（MEMORY.md 索引 + project-context / conventions / decisions）
+  - `.claude/scripts/`（migrate.py 统一迁移入口 + validate-harness.py 校验）
+- **元文档归档**：AGENT_ROUTING / AUDIT / HEALTH_REPORT / CONSOLIDATION_PLAN 迁到 `docs/`
+- **新增根 README**：作为外部第一入口，指向 HARNESS_FRAMEWORK.md 和本文件
 
 ### v2.8.1（PRD 全光谱合并，2026-07）
 
@@ -723,7 +740,7 @@ claude .
   - 保留原有二级参数：`--stage`（spec-first）/ `--fidelity`（proto）/ `--module-type` / `--system`（xqy）
   - 强顺序 gate 保留：concept 检查 diagnose 输出、impl 检查 concept 输出
 - Skills 层 11 个保持原子，精度不减
-- AUDIT.md「合 prd-* 11 个」撤回项标记为 v2.8.1 已推翻
+- AUDIT.md「合 prd-* 11 个」撤回项标记为 v2.8.1 已推翻（详见 `../docs/AUDIT.md`）
 - 15 处下游引用批量替换（agents/prd-coach、agents/product-manager、agents/xqy-spec-writer、agents/ai-product-architect、templates/prd-template 等）
 - 最终规模：**24 Agents / 115 Skills / 87 Commands / 25 Templates**
 
@@ -738,7 +755,7 @@ claude .
   - diagram 2 → 1（`/diagram --type`，⚠️ 覆盖 AUDIT 247 撤回项）
 - **Skills 分子目录**：115 skill 全部迁入 14 子域（writing/prd/pm/product/presales/bid/dashboard/ppt/media/diagram/research/data/strategy/tools），184 处引用批量替换
 - **Agents 收敛**（25 → 24）：删除 `impeccable-manual-edit-applier`（status: draft，无调用路径）
-- **新增治理文档**：`agents/README.md`（分层索引）+ `AGENT_ROUTING.md`（7 组边界规则）+ `CONSOLIDATION_PLAN.md`（本轮方案）
+- **新增治理文档**：`agents/README.md`（分层索引）+ `../docs/AGENT_ROUTING.md`（7 组边界规则）+ `../docs/CONSOLIDATION_PLAN.md`（本轮方案）
 - **AUDIT.md**：C1（skills 分子目录）标记为已执行；「未做事项」新增 "v2.8 状态" 列
 - 最终规模：**24 Agents / 115 Skills / 97 Commands / 25 Templates**
 

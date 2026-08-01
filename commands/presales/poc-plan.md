@@ -8,6 +8,20 @@ description: >
   适用于：销售推进新客户、技术 PoC 启动、试点项目治理、PoC 转化率优化。
 user-invocable: true
 argument-hint: "<客户名/产品> [--mode scope|sow|review|convert|fullset] [--type technical|business|hybrid] [--duration 2w|4w|8w|12w]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /poc-plan — PoC / 试点管理

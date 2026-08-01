@@ -13,6 +13,18 @@ description: >
   Demo 演练、销售演示、技术演示、Demo 异常应对。
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Demo Design — Demo 设计与沙盘演练知识库

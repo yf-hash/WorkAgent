@@ -10,6 +10,18 @@ description: >
 user-invocable: true
 effort: medium
 argument-hint: "[时间区间/团队]"
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Tech Debt Prioritization Skill

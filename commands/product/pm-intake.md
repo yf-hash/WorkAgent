@@ -1,6 +1,20 @@
 ---
 description: 产品需求 Intake — 信息收集与澄清入口。判断任务类型、提取已知信息、标注缺口、给出下一步建议
 argument-hint: "[原始需求/客户反馈/老板想法/销售反馈]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /pm-intake — 产品需求信息收集
@@ -49,7 +63,7 @@ $ARGUMENTS
 
 ## 推荐路由
 
-- 信息已经清晰 → `/prd --mode standard`（C 端）/ `/pm-prd-enterprise`（B 端）
+- 信息已经清晰 → `/prd --mode standard`（C 端）/ `/prd --mode enterprise`（B 端）
 - 想法模糊 → `@prd-coach` 进行多轮对话，或 `/prd --mode diagnose` 三镜诊断
 - 跨团队复杂任务 → `@product-director` 评审
 - 端到端从想法到方案 → `@product-manager` Agent 编排全流程

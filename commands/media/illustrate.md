@@ -12,6 +12,19 @@ allowed-tools:
   - mcp__playwright__browser_take_screenshot
   - mcp__playwright__browser_snapshot
   - mcp__playwright__browser_close
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+    gates: [before-write, before-destructive]
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /illustrate — 文章配图生成

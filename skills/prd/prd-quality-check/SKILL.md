@@ -6,6 +6,18 @@ description: >
   触发词：PRD 评分、PRD 质量、PRD 自检、PRD 评估、prd validate、prd review
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Prd Quality Check — PRD 质量自检

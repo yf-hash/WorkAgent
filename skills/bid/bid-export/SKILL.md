@@ -6,6 +6,18 @@ description: >
   触发词：标书定稿、标书移交、bid export、最终通读、移交包
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Bid Export — 标书 Phase 7 定稿移交

@@ -9,6 +9,20 @@ description: >
   适用于：新功能上线、版本发布、大改版前对齐、跨团队协同。
 user-invocable: true
 argument-hint: "<产品/功能名> [--mode full|tracks|timebox|risk|gono] [--launch-type soft|hard|gradual|beta|stealth] [--scale small|medium|large]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /launch-checklist — 发布检查清单

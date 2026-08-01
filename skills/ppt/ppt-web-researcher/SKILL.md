@@ -6,6 +6,18 @@ description: >
   触发词：PPT 联网研究、ppt research、PPT 资料调研、PPT 素材搜集、多源搜索
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # PPT Web Researcher — 多源联网研究

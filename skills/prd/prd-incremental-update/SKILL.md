@@ -6,6 +6,18 @@ description: >
   触发词：PRD 增量更新、PRD 合并更新、prd update、PRD 变更、需求新增
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Prd Incremental Update — PRD 增量合并更新

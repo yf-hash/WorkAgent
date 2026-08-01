@@ -5,6 +5,18 @@ description: >
   快速出片、HTML幻灯片、PDF幻灯片、VSCode幻灯片预览。
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Marp — Markdown Presentation Ecosystem

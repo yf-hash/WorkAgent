@@ -7,6 +7,20 @@ description: >
   适用于：早期需求快速沟通、研发对接前的设计、Onboarding 优化、动效规划。
 user-invocable: true
 argument-hint: "<设计需求> [--mode wireframe|prototype|component|onboarding|motion] [--tool penpot|figma|pencil]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /design-proto — 设计与原型工具台

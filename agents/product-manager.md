@@ -7,6 +7,20 @@ skills: [prd-lite, prd-standard, prd-spec-first, prd-proto, prd-diagnose, prd-co
 memory: project
 effort: high
 color: blue
+harness:
+  execute:
+    preset: agent-orchestrator
+  constrain:
+    profile: writing-safe
+    gates: [before-write, before-loop-restart]
+  loop:
+    mode: iterative
+    max-iterations: 5
+  memory:
+    scope: project
+    reads: [project-context, user-preferences]
+  security:
+    danger-level: medium
 ---
 
 # Product Manager Agent

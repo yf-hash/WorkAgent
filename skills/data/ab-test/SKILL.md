@@ -9,6 +9,18 @@ description: >
   样本量计算、Power Analysis、护栏指标、SRM、p-hacking、Peeking
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # A/B Test — A/B 实验方法论知识库

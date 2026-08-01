@@ -15,6 +15,21 @@ description: >
   适用于：客户响应型方案、项目立项报告、技术方案确认。
 user-invocable: true
 argument-hint: "<项目描述> [--type presale|feasibility|design] [--industry gov|finance|mfg|saas|general] [--section all|outline|chapter] [--output md|outline|brief]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: pipeline
+    gate-between: true
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /proposal — 企业方案文档生成

@@ -1,6 +1,20 @@
 ---
 description: Build vs Buy 决策框架 — 把"自研 vs 购买 vs 开源"这类技术 / 商业决策结构化输出（含 TCO 3 年模型 + Vendor 评估清单）
 argument-hint: "[决策主题，如 自建身份系统 vs 用 Auth0]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /build-vs-buy — Build vs Buy 决策评估

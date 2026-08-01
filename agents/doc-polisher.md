@@ -8,6 +8,20 @@ memory: project
 effort: high
 color: blue
 MaxTurns: 20
+harness:
+  execute:
+    preset: agent-orchestrator
+  constrain:
+    profile: writing-safe
+    gates: [before-write, before-loop-restart]
+  loop:
+    mode: iterative
+    max-iterations: 4
+  memory:
+    scope: project
+    reads: [project-context, user-preferences]
+  security:
+    danger-level: medium
 ---
 
 # 文档智能润色代理

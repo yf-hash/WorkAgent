@@ -8,6 +8,18 @@ description: >
 user-invocable: false
 effort: high
 argument-hint: "[--rag <文件/URL>...] [--rag-dir <目录>] [--rag-index <名称>] [--rag-mode replace|supplement] [--rag-top-k <n>] [--rag-list] [--rag-backend chroma|faiss|bm25|auto]"
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # PPT RAG Indexer — 已有材料索引与检索

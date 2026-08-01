@@ -9,6 +9,18 @@ description: >
   Release Slices、用户故事、JTBD 故事化、需求拆分、产品骨架
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # User Story Mapping — 用户故事地图知识库

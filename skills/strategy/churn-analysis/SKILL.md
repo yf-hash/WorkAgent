@@ -10,6 +10,18 @@ description: >
 user-invocable: true
 effort: high
 argument-hint: "[时间区间/客户群]"
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Churn 流失分析 + Save Playbook

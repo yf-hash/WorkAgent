@@ -5,6 +5,18 @@ description: >
   Vue幻灯片、交互式演示、Markdown+Vue、实时代码展示、技术演讲。
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Slidev — 开发者演示框架

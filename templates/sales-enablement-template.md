@@ -160,7 +160,7 @@
 
 ## 配套资源
 
-- PRD 草稿：`/pm-prd-enterprise "<产品名>"`
+- PRD 草稿：`/prd "<产品名>" --mode enterprise`
 - 验收方案：`@qa-acceptance-designer "MVP 范围 v0.1"`
 - 售前编排：`@solution-architect`（拜访→Gap→方案→Business Case→Demo→PoC→合同）
 - 合规问卷应答：`/security-questionnaire` / `/compliance-checklist --mode questionnaire`

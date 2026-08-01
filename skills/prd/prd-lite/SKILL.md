@@ -6,6 +6,18 @@ description: >
   触发词：一页纸 PRD、Lite PRD、最小 PRD、快速对齐、立项沟通、prd lite
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Prd Lite — 一页纸 PRD
@@ -59,7 +71,7 @@ effort: low
   - 详细 PRD → `prd-standard`
   - Spec-First 工作流 → `prd-spec-first`
   - 含线框图 → `prd-proto`
-  - 企业 B 端 SaaS → `/pm-prd-enterprise`
+  - 企业 B 端 SaaS → `/prd --mode enterprise`
 
 ## 适用与不适用
 

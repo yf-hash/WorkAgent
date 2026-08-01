@@ -6,6 +6,22 @@ description: >
   安全合规 / 路线图 / 商业模型 / 风险）+ 客户化定制 + NFR 清单 + 三档报价。
 user-invocable: true
 argument-hint: "<客户公司或项目名> [--mode blueprint|as-is|to-be|nfr|roadmap|review] [--industry fintech|gov|healthcare|mfg|saas] [--deployment saas|private|hybrid] [--out path]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: pipeline
+    stages: [discovery, gap, sa-blueprint, business-case, rfp, demo, poc]
+    gate-between: true
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /solution-architecture — 解决方案架构设计
@@ -93,6 +109,6 @@ Step 8: 评审清单
 |------|-------|-------|
 | `/solution-architecture` vs `/proposal` | 技术架构方案（SA 主笔）| 商业方案三大类 |
 | `/solution-architecture` vs `/arch-diagram` | 完整方案文档 | 单纯生成架构图 |
-| `/solution-architecture` vs `/pm-prd-enterprise` | 售前面向客户 | PM 内部产品规格 |
+| `/solution-architecture` vs `/prd --mode enterprise` | 售前面向客户 | PM 内部产品规格 |
 | `/solution-architecture` vs `/discovery-call` | 第 3+ 次会议（架构落地）| 第 1-2 次（需求挖掘）|
 | `/solution-architecture` vs `/gap-analysis` | 完整方案蓝图 | 客户需求 vs 产品能力对照表 |

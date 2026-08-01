@@ -6,6 +6,20 @@ description: >
   仅做部署手册一件事，终端用户操作请用 /product-manual。
 user-invocable: true
 argument-hint: "<产品名称> [--version v1.0] [--deploy-mode standalone|cluster|container|cloud]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /product-deploy — 产品部署及配置手册生成器

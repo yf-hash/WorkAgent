@@ -6,6 +6,18 @@ description: >
   触发词：标书评审、bid review、标书审查、技术方案评审
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Bid Review — 标书 Phase 5 双轮评审

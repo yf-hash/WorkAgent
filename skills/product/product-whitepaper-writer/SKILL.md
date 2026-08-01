@@ -7,6 +7,18 @@ description: >
   触发词：产品白皮书、白皮书结构、白皮书模板。
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # 产品白皮书写作知识库

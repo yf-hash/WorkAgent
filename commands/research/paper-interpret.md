@@ -2,6 +2,19 @@
 allowed-tools: Bash, Read, Write, Edit, AskUserQuestion, Skill
 description: 论文深度解读，将学术论文PDF转化为通俗易懂的公众号长文（4000-6000字）
 argument-hint: "<pdf-path> [--output md|docx] [--style popular|professional|casual] [--length short|medium|long]"
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /paper-interpret

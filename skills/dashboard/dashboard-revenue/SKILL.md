@@ -7,6 +7,18 @@ description: >
   触发词：收入看板、MRR 看板、ARR 看板、NRR 看板、SaaS 看板、订阅业务看板
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: read-only
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Dashboard Revenue — 收入看板

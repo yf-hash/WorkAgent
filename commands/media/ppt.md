@@ -5,6 +5,19 @@ description: >
 user-invocable: true
 argument-hint: "<任务描述> [--mode full|rag|research|outline|diagram|make] [--backend academic|ppt-master|slidev|marp|slidetailor|sdk] [--rag <文件或URL>...] [--rag-dir <目录>] [--rag-index <名称>] [--rag-mode replace|supplement] [--style <风格>] [--format ppt169|4:3] [--source <路径>] [--output <文件名>] [--lang zh|en] [--pages <数量>] [--duration <分钟>] [--iter 0|1|auto] [--score-pass <分数>]"
 allowed-tools: [Read, Write, Edit, Bash, WebSearch, WebFetch, AskUserQuestion]
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+    gates: [before-write, before-destructive]
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /ppt — 演示文稿全流程生成

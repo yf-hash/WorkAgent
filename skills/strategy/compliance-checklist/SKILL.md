@@ -10,6 +10,18 @@ description: >
   合规审计、DPIA、TPRM、合规检查、监管、数据驻留、合规认证
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Compliance Checklist — 合规检查知识库

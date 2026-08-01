@@ -5,6 +5,20 @@ description: >
   仅生成产品彩页一件事，不超过 2 页图文并茂。其他文档类型见同目录其他 product-* 命令。
 user-invocable: true
 argument-hint: "<产品名称> [--format a4-double|trifold] [--industry fintech|gov|healthcare|edu|mfg|retail|saas]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /product-brochure — 产品彩页生成器

@@ -12,6 +12,18 @@ description: >
   marketing copy、landing page、product hunt、PR release、case study。
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Marketing Copy — 产品营销推广内容知识库

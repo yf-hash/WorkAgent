@@ -10,6 +10,20 @@ description: >
   适用于：产品反馈数据治理、月度 VoC 报告、新功能优先级、流失原因分析。
 user-invocable: true
 argument-hint: "<产品/功能描述> [--mode collect|analyze|nps|vote|voc] [--source <文件或URL>]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /feedback — 用户反馈管理

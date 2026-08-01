@@ -3,6 +3,20 @@ name: hv-analysis
 description: 用横纵分析法深度研究产品/公司/概念/人物，输出 PDF 报告（10000-30000字）
 user-invocable: true
 argument-hint: "[研究对象] [--title 标题] [--author 作者]"
+allowed-tools: [Read, Write, Grep, Glob, WebSearch, WebFetch, AskUserQuestion]
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /hv-analysis

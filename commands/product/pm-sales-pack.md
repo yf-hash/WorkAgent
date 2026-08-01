@@ -1,6 +1,20 @@
 ---
 description: PM Sales Pack — 销售与售前赋能材料一次性生成（定位/痛点/价值/Demo/异议/成交）
 argument-hint: "[产品/功能名称及目标客户]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /pm-sales-pack — 销售与售前赋能材料

@@ -6,6 +6,20 @@ description: >
   触发词：三镜诊断、产品想法诊断、prd diagnose、需求诊断、PM 资质核查
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: pipeline
+    pipeline-stages: [diagnose, concept, impl]
+    gate-between: true
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Prd Diagnose — 产品想法三镜诊断

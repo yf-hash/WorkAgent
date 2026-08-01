@@ -7,6 +7,18 @@ description: >
   触发词：标书分析、招标文件分析、三色标记、废标项、bid analyze
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Bid Analyze — 标书 Phase 1 招标文件拆解

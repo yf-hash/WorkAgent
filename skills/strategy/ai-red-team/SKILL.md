@@ -10,6 +10,18 @@ description: >
 user-invocable: true
 effort: high
 argument-hint: "[AI 功能/模型/上线版本]"
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # AI Red Team Skill

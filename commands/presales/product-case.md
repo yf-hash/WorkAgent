@@ -6,6 +6,20 @@ description: >
   内部赢单失单分析请用 /win-loss，其他文档类型见同目录其他 product-* 命令。
 user-invocable: true
 argument-hint: "<产品名称> --customer <客户名称> [--industry fintech|gov|healthcare|edu|mfg|retail|saas] [--anonymous]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /product-case — 产品成功案例生成器

@@ -6,6 +6,18 @@ description: >
   触发词：分析平台选型、PostHog vs Mixpanel、数据看板平台、BI 工具选型
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: read-only
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Dashboard Platform Selector — 平台选型决策

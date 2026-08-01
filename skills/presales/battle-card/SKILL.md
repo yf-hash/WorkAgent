@@ -10,6 +10,18 @@ description: >
   对手 X 怎么打、客户在比较 X 和 Y、竞争性销售、竞品 FAQ、竞争矩阵。
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Battle Card — 竞品作战卡知识库

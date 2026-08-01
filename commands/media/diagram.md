@@ -4,6 +4,19 @@ description: 图表统一入口（Mermaid/PlantUML/Markmap 等）。--type mindm
 user-invocable: true
 argument-hint: "<描述或路径> --type mindmap|uml|json [--subtype sequence|class|component|usecase|deployment|activity|state]"
 allowed-tools: [Read, Write, Edit, Bash]
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+    gates: [before-write, before-destructive]
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /diagram — 图表统一入口

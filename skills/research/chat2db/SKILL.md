@@ -5,6 +5,18 @@ description: >
   Chat2DB、SQL优化、数据库分析、NL2SQL、数据库操作。
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: shell-restricted
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Chat2DB - AI Database Assistant

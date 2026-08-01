@@ -11,6 +11,20 @@ description: >
   - vs /pmf-survey：PMF 是用户研究的特殊形式（专项 Sean Ellis 测试）。
 user-invocable: true
 argument-hint: "<研究目标> [--mode interview|survey|card-sort|journey|persona|founder] [--participants <N>]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /user-research — 用户研究工作台

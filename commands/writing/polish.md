@@ -4,6 +4,20 @@ description: 文档智能润色 — AI 去痕 + 自动配图一键闭环，输�
 user-invocable: true
 allowed-tools: Read, Write, Edit, Bash, AskUserQuestion, Skill
 argument-hint: "<filepath> [--tone casual|formal|technical|academic] [--intensity low|medium|high|max] [--style <风格>] [--mode auto|staged|iterative] [--output <路径>]"
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: iterative
+    max-iterations: 3
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /polish

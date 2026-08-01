@@ -9,6 +9,18 @@ description: >
   PoC 转正、Pilot Project
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # PoC Plan — PoC / 试点管理知识库

@@ -14,6 +14,19 @@ allowed-tools:
   - Bash
   - WebFetch
   - AskUserQuestion
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /impeccable — 反 AI Slop 的设计语言入口

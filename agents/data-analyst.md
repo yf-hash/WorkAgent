@@ -13,6 +13,19 @@ memory: agents/data-analyst-memory.md
 effort: high
 color: "#1e88e5"
 MaxTurns: 20
+harness:
+  execute:
+    preset: agent-orchestrator
+  constrain:
+    profile: writing-safe
+    gates: [before-write, before-loop-restart]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context, user-preferences]
+  security:
+    danger-level: medium
 ---
 
 # Data Analyst Agent

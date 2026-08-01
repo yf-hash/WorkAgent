@@ -6,6 +6,20 @@ description: >
   生成后自动调用 doc-auditor 做 14 项自查。仅做产品白皮书一件事，其他文档类型见同目录其他 product-* 命令。
 user-invocable: true
 argument-hint: "<产品名称> [--version v1.0] [--industry fintech|gov|healthcare|edu|mfg|retail|saas]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /product-whitepaper — 产品白皮书生成器

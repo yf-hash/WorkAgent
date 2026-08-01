@@ -20,6 +20,20 @@ memory: project
 effort: high
 color: "#1565c0"
 MaxTurns: 30
+harness:
+  execute:
+    preset: agent-orchestrator
+  constrain:
+    profile: writing-safe
+    gates: [before-write, before-loop-restart]
+  loop:
+    mode: pipeline
+    gate-between: true
+  memory:
+    scope: project
+    reads: [project-context, user-preferences]
+  security:
+    danger-level: medium
 ---
 
 # XQY Spec Writer Agent — 需求规格说明书写作 Agent

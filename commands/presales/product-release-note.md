@@ -6,6 +6,20 @@ description: >
   七大章节。仅做版本说明一件事，技术细节请用 /product-tech-whitepaper。
 user-invocable: true
 argument-hint: "<产品名称> --version <新版本号> [--from <旧版本号>] [--format ppt|word]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /product-release-note — 产品版本说明生成器

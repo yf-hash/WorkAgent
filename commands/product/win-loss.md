@@ -3,6 +3,20 @@ name: win-loss
 description: Win/Loss 赢单失单分析 — 把销售结果转化为产品 / 定价 / 营销改进（含访谈结构 + 根因聚类 + ICP 修正）
 user-invocable: true
 argument-hint: "[时间区间 / 客户群 / 产品线]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /win-loss — Win/Loss 赢单失单分析

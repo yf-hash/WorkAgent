@@ -7,6 +7,18 @@ description: >
   触发词：线框图、proto PRD、原型 PRD、wireframe、ASCII 线框、界面草图
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Prd Proto — 线框图 + PRD 融合

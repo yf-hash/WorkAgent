@@ -9,6 +9,18 @@ description: >
   战略画布、BMC、Lean Canvas、VPC、NSM、立项、融资BP
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Product Strategy — 产品战略画布知识库

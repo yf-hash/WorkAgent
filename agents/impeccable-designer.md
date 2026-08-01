@@ -7,6 +7,20 @@ skills: [impeccable, design-proto, marketing-copy, humanizer-scan, humanizer-sou
 memory: project
 effort: high
 color: yellow
+harness:
+  execute:
+    preset: agent-orchestrator
+  constrain:
+    profile: writing-safe
+    gates: [before-write, before-loop-restart]
+  loop:
+    mode: iterative
+    max-iterations: 4
+  memory:
+    scope: project
+    reads: [project-context, user-preferences]
+  security:
+    danger-level: medium
 ---
 
 # impeccable-designer — 反 AI Slop 的设计语言总指挥
@@ -24,7 +38,7 @@ color: yellow
 | 准备上线，过一遍质量检查 | ✅ `audit` + `harden` |
 | 一个 design 太单调 / 太喧闹 | ✅ `bolder` / `quieter` / `distill` |
 | 项目散乱想抽象出设计系统 | ✅ `extract` + `document` |
-| 写产品文档 / PRD | ❌ 用 prd-standard / prd-spec-first / pm-prd-enterprise |
+| 写产品文档 / PRD | ❌ 用 prd-standard / prd-spec-first / prd --mode enterprise |
 | 配图 / 插图 | ❌ 用 article-illustrator |
 | PPT 设计 | ❌ 用 ppt-master |
 | 纯文案改写 | ❌ 用 humanizer-scan / humanizer-soul / marketing-copy |

@@ -5,6 +5,18 @@ description: >
 触发词：AARRR 看板、漏斗看板、转化漏斗、海盗指标看板
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: read-only
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Dashboard AARRR — 海盗指标漏斗看板

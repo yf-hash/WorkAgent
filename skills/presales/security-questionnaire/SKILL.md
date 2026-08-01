@@ -12,6 +12,18 @@ description: >
   Security Assessment、信息安全问卷、问卷应答、问卷回答。
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Security Questionnaire — 安全问卷应答知识库

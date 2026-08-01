@@ -230,7 +230,7 @@ WorkAgent/
 | 标准 8 章 PRD | `/prd --mode standard` |
 | Spec-First 四件套 | `/prd --mode spec-first` |
 | 含 ASCII 线框图 | `/prd --mode proto` |
-| B 端严格 12 章 | `/pm-prd-enterprise` |
+| B 端严格 12 章 | `/prd --mode enterprise` |
 | 通用 5 维度评分 | `/prd --mode quality` |
 | 23 节模板差距分析 | `/prd --mode evaluate` |
 | 对话式渐进生成（想法模糊）| `/prd --mode diagnose` → `/prd --mode concept` → `/prd --mode impl` |

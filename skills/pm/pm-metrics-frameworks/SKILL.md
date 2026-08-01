@@ -8,6 +8,18 @@ description: >
   增长漏斗、CAC、激活率、Aha Moment、留存、ARPU、LTV、NPS、K-factor、护栏指标。
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # PM Metrics Frameworks — 北极星 + AARRR 指标框架

@@ -6,6 +6,18 @@ description: >
   触发词：标书澄清、技术需求确认、招标澄清、bid clarify
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Bid Clarify — 标书 Phase 2 澄清

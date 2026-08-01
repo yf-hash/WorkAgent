@@ -5,6 +5,18 @@ description: >
   用户旅程图、Git图、饼图、思维导图、Mermaid、mermaid代码。
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Mermaid Chart Generator

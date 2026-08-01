@@ -4,6 +4,20 @@ description: >
   B2B 产品 Go-to-Market 上市战略规划，以「T-8 ~ T+8 周」六阶段SOP为主框架（GTM准备/产品包装/内测样板/正式发布/销售转化/规模化增长），覆盖ICP与场景、价值主张、产品包装、POC验收、发布物料、线索分级、商机推进、渠道与定价、客户成功与行业复制；同时兼容SaaS/平台/解决方案/中国央国企等多种B2B场景。
 user-invocable: true
 argument-hint: "<产品/业务描述> [--mode sop|diagnose|strategy|launch|optimize|fullplan] [--stage prep|package|pilot|launch|convert|scale|auto] [--motion saas|solution|platform|service|auto] [--market cn|global|cn-enterprise|cn-soe] [--output brief|doc|gantt|checklist|deck]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /gtm-strategy — B2B 产品 Go-to-Market 上市战略

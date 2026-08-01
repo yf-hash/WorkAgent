@@ -1,6 +1,20 @@
 ---
 description: 技术债优先级与还本计划 — 把"工程觉得该重构 vs 业务觉得该出新功能"的拉锯结构化（含 WSJF + 20% 规则 + SLO 守门）
 argument-hint: "[团队 / 季度]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /tech-debt — 技术债优先级评审

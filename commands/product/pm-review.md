@@ -1,6 +1,20 @@
 ---
 description: PM 视角产品方案质量评审 — 对 PRD / 需求列表 / 方案做问题清单 + 修改建议 + 优化版本
 argument-hint: "[PRD/方案/需求列表 文件路径或内容]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /pm-review — 产品方案质量评审

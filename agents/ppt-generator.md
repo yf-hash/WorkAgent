@@ -36,6 +36,19 @@ memory: project
 effort: high
 color: "#5c6bc0"
 MaxTurns: 50
+harness:
+  execute:
+    preset: agent-orchestrator
+  constrain:
+    profile: writing-safe
+    gates: [before-write, before-loop-restart]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context, user-preferences]
+  security:
+    danger-level: medium
 ---
 
 # PPT Generator Agent

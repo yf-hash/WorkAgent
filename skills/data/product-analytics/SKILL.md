@@ -6,6 +6,18 @@ description: >
   数据看板、A/B 测试、增长诊断、用户分群。
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Product Analytics — 产品数据分析知识库

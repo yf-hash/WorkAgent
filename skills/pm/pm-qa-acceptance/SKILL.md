@@ -9,6 +9,18 @@ description: >
 user-invocable: true
 effort: medium
 argument-hint: "[PRD/功能/版本]"
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # 测试验收设计 Skill

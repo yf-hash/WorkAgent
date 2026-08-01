@@ -23,6 +23,20 @@ skills:
 memory: project
 effort: high
 color: "#7B1FA2"
+harness:
+  execute:
+    preset: agent-orchestrator
+  constrain:
+    profile: writing-safe
+    gates: [before-write, before-loop-restart]
+  loop:
+    mode: parallel
+    fanout: 3-5
+  memory:
+    scope: project
+    reads: [project-context, user-preferences]
+  security:
+    danger-level: medium
 ---
 
 # Research Analyst Agent

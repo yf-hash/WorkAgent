@@ -5,6 +5,18 @@ description: >
   Stable Diffusion、创意图像、封面图、插图、写实风格、艺术风格、提示词。
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Stable Diffusion Image Generator

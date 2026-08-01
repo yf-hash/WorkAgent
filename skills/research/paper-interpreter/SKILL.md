@@ -7,6 +7,18 @@ description: >
 user-invocable: false
 effort: high
 argument-hint: "<pdf-path> [--style popular|professional|casual] [--length short|medium|long]"
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # 论文解读技能

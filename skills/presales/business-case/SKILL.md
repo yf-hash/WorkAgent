@@ -12,6 +12,18 @@ description: >
   量化收益、为什么买、CFO 看的方案、给老板汇报。
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Business Case — 客户价值证明知识库

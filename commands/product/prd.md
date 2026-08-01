@@ -1,16 +1,30 @@
 ---
 name: prd
-description: PRD 统一入口（11 种模式）。生成类：lite（1 页）/ standard（8 章）/ spec-first（四件套）/ proto（含线框图）/ xqy（银行金融 8 章需规）。渐进类：diagnose → concept → impl（对话式三段）。评估类：quality（5 维评分）/ evaluate（23 节差距）。变更类：update（增量合并）。
+description: PRD 统一入口（12 种模式）。生成类：lite（1 页）/ standard（8 章）/ enterprise（B 端严格 12 章）/ spec-first（四件套）/ proto（含线框图）/ xqy（银行金融 8 章需规）。渐进类：diagnose → concept → impl（对话式三段）。评估类：quality（5 维评分）/ evaluate（23 节差距）。变更类：update（增量合并）。
 user-invocable: true
 argument-hint: "<需求描述或 PRD 文件路径> --mode <mode> [--stage <s>] [--fidelity <f>] [--module-type <m>] [--system <name>] [--flow discovery] [--lang zh|en]"
 allowed-tools: [Read, Write, Edit, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+    # 备注：--flow discovery 时切 pipeline，stages: [diagnose, concept, impl]
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /prd — PRD 统一入口
 
 ## 一句话
 
-11 个 PRD skill 一个命令。`--mode` 分派到对应 skill；无 `--mode` 时按输入类型（描述 / 文件路径）自动推断。
+11 个 PRD skill + 1 个模板（enterprise）合入一个命令。`--mode` 分派到对应 skill/模板；无 `--mode` 时按输入类型（描述 / 文件路径）自动推断。
 
 ## 用法
 
@@ -18,6 +32,7 @@ allowed-tools: [Read, Write, Edit, AskUserQuestion]
 # ─── 生成类（输入是需求描述） ─────────────────────────
 /prd 用户可以查看消费明细 --mode lite
 /prd 开发 AI 写作助手浏览器插件 --mode standard
+/prd 多租户 SaaS 权限中心 --mode enterprise
 /prd 用户可以在 App 内直接购买会员 --mode spec-first
 /prd 用户可以在 App 内直接购买会员 --mode spec-first --stage propose
 /prd 新用户注册引导流程 --mode proto --fidelity mid
@@ -44,6 +59,7 @@ allowed-tools: [Read, Write, Edit, AskUserQuestion]
 |---|---|---|---|---|
 | `lite` | `skills/prd/prd-lite/SKILL.md` | 需求描述 | 1 页纸 PRD（背景/用户/方案/指标/不在范围）10-15 分钟 | 无 |
 | `standard` | `skills/prd/prd-standard/SKILL.md` | 需求描述 | 标准 8 章 PRD + Given/When/Then 验收 | 无 |
+| `enterprise` | `templates/prd-template.md`（模板直填，无独立 skill） | 需求描述 | B 端严格 12 章 PRD（含多租户/审计/隔离/合规/私有化默认必填），适合 B 端 SaaS / 私有化 | 无 |
 | `spec-first` | `skills/prd/prd-spec-first/SKILL.md` | 需求描述 | Spec-First 四件套（proposal/specs/design/tasks），受 `--stage` 约束 | 无 |
 | `proto` | `skills/prd/prd-proto/SKILL.md` | 需求描述 | PRD + ASCII 线框图（4 状态：默认/空/加载/错误），受 `--fidelity` 约束 | 无 |
 | `xqy` | `skills/prd/prd-xqy/SKILL.md` | 需求描述 | 银行/金融 8 章需规说明书（含 5 张强制表格），受 `--module-type` / `--system` 约束 | 无 |
@@ -62,7 +78,8 @@ allowed-tools: [Read, Write, Edit, AskUserQuestion]
 输入是 <需求描述>（文本，非路径）
   → 问：想要哪种 PRD？
     - lite（1 页对齐）
-    - standard（8 章）
+    - standard（C 端 8 章）
+    - enterprise（B 端严格 12 章，含审计/隔离/合规）
     - spec-first（四件套）
     - proto（含线框图）
     - xqy（银行/金融需规）
@@ -112,7 +129,7 @@ allowed-tools: [Read, Write, Edit, AskUserQuestion]
 | 场景 | 用 |
 |---|---|
 | C 端通用 PRD | 本命令 `--mode lite/standard/spec-first/proto` |
-| B 端严格 12 章 | `/pm-prd-enterprise` |
+| B 端 SaaS / 私有化严格 12 章 | 本命令 `--mode enterprise` |
 | 银行 / 金融 / 政府核心系统需规 | 本命令 `--mode xqy` 或 `@xqy-spec-writer` |
 | LLM / Agent / RAG 类 AI 功能 PRD | `@ai-product-architect` |
 | 想法模糊、需要对话教练 | 本命令 `--flow discovery` 或 `@prd-coach` |
@@ -123,14 +140,25 @@ allowed-tools: [Read, Write, Edit, AskUserQuestion]
 - `--mode proto` 输出 ASCII 线框图 + PRD 融合稿（用于对齐需求）
 - 高保真原型（视觉设计层）走 `/design-proto` 或 `@impeccable-designer`
 
-## 迁移说明（v2.8.1）
+## `--mode enterprise` 输出约束（无 skill 时的最小规则）
 
-以下 11 个旧命令已合并至本命令，映射如下（skills 层完全不变，能力保留）：
+模板路径：`templates/prd-template.md`（当前目录不可读时按同结构直接生成）。除模板 12 章结构外，强制遵守：
+
+- 用清晰编号；字段 / 权限 / 状态 / 验收项一律表格化
+- **对研发友好**：流程 / 规则 / 字段 / 状态 / 异常必须完整
+- **对测试可验收**：每条业务规则都能写成一条用例
+- **对交付可解释**：默认包含审计、多租户隔离、私有化部署口径
+- 不只写功能说明，同时写清 **业务规则** 与 **实现边界**
+
+## 迁移说明（v2.8.2）
+
+以下 12 个旧命令已合并至本命令，映射如下（skills / template 层完全不变，能力保留）：
 
 | 旧命令 | 新写法 |
 |---|---|
 | `/prd-lite <需求>` | `/prd <需求> --mode lite` |
 | `/prd-standard <需求>` | `/prd <需求> --mode standard` |
+| `/pm-prd-enterprise <需求>` | `/prd <需求> --mode enterprise` |
 | `/prd-spec-first <需求> [--stage X]` | `/prd <需求> --mode spec-first [--stage X]` |
 | `/prd-proto <需求> [--fidelity X]` | `/prd <需求> --mode proto [--fidelity X]` |
 | `/prd-xqy <需求> [--module-type X]` | `/prd <需求> --mode xqy [--module-type X]` |
@@ -141,8 +169,8 @@ allowed-tools: [Read, Write, Edit, AskUserQuestion]
 | `/prd-deep-evaluate <PRD 路径>` | `/prd <PRD 路径> --mode evaluate` |
 | `/prd-update <PRD 路径> <变更>` | `/prd <PRD 路径> --mode update <变更>` |
 
-**⚠️ 覆盖 AUDIT.md "合 prd-* 11 个"撤回项**：AUDIT 曾以"场景清晰、合并会牺牲精度"为由撤回。v2.8.1 推翻此决定，理由：
-1. skills 层保持独立，精度不减
+**⚠️ 覆盖 AUDIT.md "合 prd-* 11 个"撤回项**：AUDIT 曾以"场景清晰、合并会牺牲精度"为由撤回。v2.8.1 推翻此决定，v2.8.2 进一步吸收 `/pm-prd-enterprise`，理由：
+1. skills / template 层保持独立，精度不减
 2. 与 `/humanize` `/bid` `/dashboard` 同一收敛思路（v2.8 已验证可行）
 3. `prd-spec-first --stage` 已是先例，多模式单命令行得通
-4. 用户从记 11 前缀降到 1 个前缀 + `--mode`
+4. 用户从记 12 个前缀降到 1 个前缀 + `--mode`

@@ -6,6 +6,20 @@ description: >
   异常）、5 类异常应对剧本、5 类反对意见库、Demo 评分自检（节奏 / 情感 / 信息 / 防御）。
 user-invocable: true
 argument-hint: "<客户公司或场景> [--mode storyline|data|rehearse|review|kit] [--type business|technical|poc|demo-day] [--industry fintech|gov|healthcare|saas] [--duration 30|60|90]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /demo-design — Demo 设计与沙盘演练

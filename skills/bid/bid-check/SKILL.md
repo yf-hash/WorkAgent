@@ -6,6 +6,18 @@ description: >
   触发词：标书核查、bid check、合规检查、一致性验证、标书查重
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Bid Check — 标书 Phase 6 合规与一致性核查

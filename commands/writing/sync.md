@@ -2,6 +2,19 @@
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, AskUserQuestion, Skill
 description: 内容多平台一键分发 — 同步发布到微信/知乎/掘金/小红书/抖音/B站/Twitter等30+平台，支持草稿模式
 argument-hint: "<filepath|url> [--platforms <平台列表>] [--mode draft|publish] [--tags <标签>] [--title <标题>]"
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /sync

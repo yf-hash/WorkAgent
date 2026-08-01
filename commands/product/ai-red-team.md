@@ -1,6 +1,20 @@
 ---
 description: AI 产品 Red Team 红队测试 — 把"我们 AI 安全吗"变成可执行测试计划（OWASP LLM Top 10 + 10 个必测场景 + 红队报告）
 argument-hint: "[AI 功能/模型/上线版本]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /ai-red-team — AI 产品红队测试

@@ -6,6 +6,18 @@ description: >
   触发词：markdown 转图片、md 转海报、mark-pic、Madopic、代码卡片、分享图片、技术博客长图
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # MD Poster — Markdown 转海报/分享卡片

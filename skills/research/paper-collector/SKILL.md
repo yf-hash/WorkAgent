@@ -7,6 +7,18 @@ description: >
 user-invocable: false
 effort: medium
 argument-hint: "--since <YYYY-MM-DD> [--until <YYYY-MM-DD>] [--domain <学科领域>] [--topic <关键词>] [--limit <n>]"
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # arXiv 论文搜集技能

@@ -7,6 +7,18 @@ description: >
 user-invocable: false
 effort: medium
 argument-hint: "[--learn <urls>] [--save-card <路径>]"
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Style Card Extractor — 风格卡片提炼

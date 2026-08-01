@@ -7,6 +7,18 @@ description: >
   触发词：客户 BR 看板、Customer Business Review、QBR、续约看板、客户健康度、CSM 看板
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: read-only
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Dashboard Customer BR — 客户业务评审看板

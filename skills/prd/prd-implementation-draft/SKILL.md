@@ -7,6 +7,19 @@ description: >
   触发词：PRD 实现稿、23 节 PRD、企业级 PRD、prd implementation、详细 PRD
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: pipeline
+    gate-between: true
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Prd Implementation Draft — PRD 实现稿（23 节）

@@ -7,6 +7,18 @@ description: >
   触发词：AI 监控看板、LLM 监控、AI 质量监控、AI 成本看板、AI 安全监控、AI Eval 看板
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: read-only
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Dashboard AI Monitor — AI 功能监控看板

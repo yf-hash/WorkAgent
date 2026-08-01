@@ -10,6 +10,21 @@ description: >
     /product-strategy 接收数据后做"战略画布"决策。
 user-invocable: true
 argument-hint: "<研究主题> [--mode competitive|trend|tam|amazon|oss] [--output brief|report|matrix]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: parallel
+    fanout: 3
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /market-research — 竞争情报 & 市场研究

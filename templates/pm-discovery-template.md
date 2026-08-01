@@ -150,14 +150,14 @@
 | 客户访谈（决策角色 + 使用角色 + 法务）| PM | N 份访谈纪要 | T+2 周 |
 | 法律 / 合规责任边界 | 外部律师 + 法务总监 | 责任分层 SOP | T+3 周 |
 | 知识库 PoC（N 份语料 + 客户题库） | 算法 | 准确率 / 召回率基线 | T+4 周 |
-| 输出 PRD（V0.1）| PM | `/pm-prd-enterprise` 输出 | T+5 周 |
+| 输出 PRD（V0.1）| PM | `/prd --mode enterprise` 输出 | T+5 周 |
 | MVP 立项评审 | `@product-director` | Go / No-Go 决议 | T+6 周 |
 
 ---
 
 ## 10. 关联资源
 
-- PRD 草稿：`/pm-prd-enterprise "[产品名]"`
+- PRD 草稿：`/prd "[产品名]" --mode enterprise`
 - 销售评估：`/pm-sales-pack "[产品名] / [目标客户]"`
 - 验收方案：`@qa-acceptance-designer "MVP 范围 v0.1"`
 - 售前承接：`@solution-architect`（PoC → 合同）

@@ -7,6 +7,18 @@ description: >
   触发词：成功案例、客户案例、case study、STAR 结构、案例脱敏。
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # 产品成功案例写作知识库

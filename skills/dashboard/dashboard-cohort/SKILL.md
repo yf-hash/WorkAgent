@@ -6,6 +6,18 @@ description: >
   触发词：留存看板、Cohort 看板、留存矩阵、留存曲线、Cohort retention
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: read-only
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Dashboard Cohort — 留存看板

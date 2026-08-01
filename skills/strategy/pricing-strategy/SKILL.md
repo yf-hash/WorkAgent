@@ -9,6 +9,19 @@ description: >
   PSM、Conjoint、定价 A/B、涨价、降价、企业合同、套餐设计
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: iterative
+    max-iterations: 3
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Pricing Strategy — 定价策略知识库

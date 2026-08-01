@@ -3,6 +3,22 @@ name: article-writer
 description: 用内置文章风格写一篇公众号长文（4000-8000字）
 user-invocable: true
 argument-hint: "[主题/素材] [--style-card path]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: iterative
+    max-iterations: 4
+    convergence-check: "L1-L4 四层自检全部 ✅ 或用户确认"
+  memory:
+    scope: project
+    reads: [user-preferences, project-context]
+  security:
+    danger-level: low
 ---
 
 # /article-writer

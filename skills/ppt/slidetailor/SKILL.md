@@ -5,6 +5,18 @@ description: >
   SlideTailor、NLP论文转幻灯片、学术演讲、科学论文幻灯片骨架生成。
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # SlideTailor — AI 学术幻灯片内容生成

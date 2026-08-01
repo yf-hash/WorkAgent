@@ -7,6 +7,18 @@ description: >
 user-invocable: true
 effort: high
 argument-hint: "[访谈素材/主题] [--style-card path] [--target-score 85] [--max-rounds 3] [--mode full|draft]"
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # 访谈写作技能 v2.0

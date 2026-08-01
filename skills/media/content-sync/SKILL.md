@@ -7,6 +7,18 @@ description: >
 user-invocable: false
 effort: medium
 argument-hint: "<filepath|url> [--platforms <平台列表>] [--mode draft|publish] [--convert-md]"
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # 内容多平台分发技能

@@ -4,6 +4,19 @@ description: Writer-Reviewer 双 Agent 互搏迭代创作。基于风格卡片 +
 user-invocable: true
 argument-hint: "[--title <标题>] [--framework <框架>] [--style-card <路径>] [--target-score 85] [--max-rounds 3] [--mode quality|humanize|balance]"
 allowed-tools: [Read, Write, Edit, WebFetch, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /style-create — 风格驱动从零创作

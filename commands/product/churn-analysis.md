@@ -1,6 +1,20 @@
 ---
 description: Churn 流失分析与 Save Playbook — 把客户流失转化为产品/体验/商业改进（含 CHI 客户健康度 + Save Play 三级 + Win-Back）
 argument-hint: "[时间区间 / 客户群]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /churn-analysis — 流失分析 + 挽留剧本

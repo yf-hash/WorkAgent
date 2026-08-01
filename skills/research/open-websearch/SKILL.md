@@ -8,6 +8,19 @@ description: >
   fetchWebContent、CSDN 抓取、掘金抓取、GitHub README 抓取
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: read-only
+  loop:
+    mode: parallel
+    fanout: 3-5
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # open-webSearch — 多引擎联网搜索技能

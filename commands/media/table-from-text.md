@@ -4,6 +4,19 @@ description: 层级文本 / 缩进文本 → 多格式表格（YAML/JSON/CSV/HTM
 user-invocable: true
 argument-hint: "<input.txt> [--format yaml|json|csv|html|excel|markdown] [--output output.xxx]"
 allowed-tools: [Read, Write, Edit, Bash]
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+    gates: [before-write, before-destructive]
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /table-from-text — 层级文本转表格

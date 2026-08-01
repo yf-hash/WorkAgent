@@ -10,6 +10,18 @@ allowed-tools:
   - TaskCreate
   - TaskUpdate
   - WebFetch
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # od-contribute — first-contribution flow for Open Design

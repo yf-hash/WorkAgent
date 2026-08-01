@@ -7,6 +7,18 @@ description: >
 user-invocable: false
 effort: high
 argument-hint: "[--template <name>] [--style <style>] [--duration <seconds>] [--preview|--render] [--subtitles] [--tts]"
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Remotion Native — 原生 React 视频生成

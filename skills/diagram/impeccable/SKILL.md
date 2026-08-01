@@ -14,6 +14,19 @@ description: >
   去 AI 感、不要紫色渐变、不要 Inter 字体、不要嵌套卡片、不要纯黑纯白。
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: iterative
+    max-iterations: 4
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Impeccable — 让你的 AI 写前端不再像 AI

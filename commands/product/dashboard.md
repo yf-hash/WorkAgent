@@ -4,6 +4,19 @@ description: 统一数据看板入口（7 类：northstar / aarrr / cohort / rev
 user-invocable: true
 argument-hint: "[--metric northstar|aarrr|cohort|revenue|customer-br|ai-monitor|platform-selector] [--platform posthog|mixpanel|amplitude] [<客户名>]"
 allowed-tools: [Read, Write, Edit]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /dashboard — 统一数据看板

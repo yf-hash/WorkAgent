@@ -9,6 +9,19 @@ description: >
   Hard Launch、灰度发布、回滚预案、发布日历、D-Day、上线 SOP
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: pipeline
+    gate-between: true
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Launch Checklist — 产品发布检查清单知识库

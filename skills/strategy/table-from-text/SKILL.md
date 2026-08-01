@@ -6,6 +6,18 @@ description: >
   触发词：文本转表格、text2table、层级转表格、缩进转表格、大纲转表格
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Table From Text — 层级文本转表格

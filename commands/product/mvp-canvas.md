@@ -5,6 +5,20 @@ description: >
   适用于：早期产品立项、新功能验证、增长实验前置、避免大爆炸式开发。
 user-invocable: true
 argument-hint: "<产品/功能描述> [--mode canvas|assumption|type|validation|fullset] [--budget low|mid|high] [--timebox 1w|2w|4w|8w]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /mvp-canvas — MVP 设计画布

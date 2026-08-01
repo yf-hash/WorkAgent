@@ -8,6 +8,18 @@ description: >
   向上管理、汇报技巧、BLUF、周报、月报、向老板汇报、PM 沟通、风险升级。
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # PM Decision & Communication Frameworks — 优先级排序 + 向上沟通

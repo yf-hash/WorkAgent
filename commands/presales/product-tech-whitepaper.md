@@ -4,6 +4,20 @@ description: >
   技术白皮书生成器（单一职责）— 面向技术专家 / 架构师的内部保密 Word 文档。覆盖算法原理、核心模块实现逻辑、安全机制说明，深度高于产品白皮书。仅做技术白皮书一件事，可公开的版本请用 /product-whitepaper。
 user-invocable: true
 argument-hint: "<产品名称> [--version v1.0] [--industry fintech|gov|healthcare|edu|mfg|retail|saas]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /product-tech-whitepaper — 技术白皮书生成器

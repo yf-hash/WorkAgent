@@ -20,6 +20,20 @@ memory: project
 effort: high
 color: green
 MaxTurns: 30
+harness:
+  execute:
+    preset: agent-orchestrator
+  constrain:
+    profile: writing-safe
+    gates: [before-write, before-loop-restart]
+  loop:
+    mode: iterative
+    max-iterations: 4
+  memory:
+    scope: project
+    reads: [project-context, user-preferences]
+  security:
+    danger-level: medium
 ---
 
 # GTM Strategist Agent — B2B 上市战略全链路编排

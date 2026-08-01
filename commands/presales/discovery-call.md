@@ -6,6 +6,20 @@ description: >
   二访 / kickoff 全场景。
 user-invocable: true
 argument-hint: "<客户公司名> [--mode prep|mom|email|score] [--type first-call|deep-dive|second|kickoff] [--industry fintech|gov|healthcare|saas]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /discovery-call — 售前需求挖掘工作流

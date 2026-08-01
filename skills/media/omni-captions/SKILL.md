@@ -8,6 +8,18 @@ description: >
 user-invocable: false
 effort: medium
 argument-hint: "<video_url|filepath> [--lang <语言代码>] [--bilingual] [--format srt|vtt|ass|json] [--translate <目标语言>]"
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # 视频字幕自动生成技能

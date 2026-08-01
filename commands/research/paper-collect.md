@@ -4,6 +4,19 @@ user-invocable: true
 allowed-tools: WebSearch, WebFetch, Read, Write, AskUserQuestion
 description: 从 arxiv.org 搜集指定学科领域最新论文，按时间范围和主题过滤，输出结构化中文摘要
 argument-hint: "--since <YYYY-MM-DD> [--until <YYYY-MM-DD>] [--domain <领域>] [--topic <关键词>] [--limit <n>] [--output <路径>]"
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /paper-collect

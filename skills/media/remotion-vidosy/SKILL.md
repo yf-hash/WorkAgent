@@ -6,6 +6,18 @@ description: >
   触发词：vidosy、JSON 场景配置、无代码视频、配置驱动视频、多场景演示
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Remotion Vidosy — JSON 场景配置视频生成

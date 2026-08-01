@@ -7,6 +7,20 @@ description: >
   适用于：产品立项、战略复盘、融资BP、季度方向对齐。
 user-invocable: true
 argument-hint: "<产品/业务描述> [--mode bmc|lean|vpc|vision|northstar|fullset] [--biz saas|b2b|b2c|platform|hw|service] [--stage 0to1|1to10|10to100] [--output canvas|doc|deck]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /product-strategy — 产品战略画布

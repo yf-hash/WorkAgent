@@ -11,6 +11,18 @@ description: >
   客户角色、决策链、会议纪要、MoM、minutes、回声邮件、二访、kickoff。
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Discovery Call — 售前需求挖掘知识库

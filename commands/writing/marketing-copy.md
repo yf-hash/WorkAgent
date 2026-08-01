@@ -7,6 +7,20 @@ description: >
   避雷词清单、CTA 设计、SEO 关键词嵌入。
 user-invocable: true
 argument-hint: "<产品/主题> [--type wechat|xhs|zhihu|moments|video|landing|edm|pr|case|demo] [--audience tob|toc] [--industry fintech|gov|healthcare|saas|...] [--length short|medium|long] [--cta demo|whitepaper|wechat|purchase]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /marketing-copy — 产品营销推广内容生成器

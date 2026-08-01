@@ -1,0 +1,3 @@
+- [Project Context](project-context.md) — WorkAgent 是什么、为谁而做、核心场景
+- [Conventions](conventions.md) — 命名 / 目录 / frontmatter 规范
+- [Decisions](decisions.md) — 关键设计决策历史（含 v3.0/v3.1/v3.2 harness 演进）

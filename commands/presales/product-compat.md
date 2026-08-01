@@ -6,6 +6,20 @@ description: >
   部署步骤请用 /product-deploy。
 user-invocable: true
 argument-hint: "<产品名称> [--version v1.0]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /product-compat — 兼容性支持文档生成器

@@ -4,6 +4,24 @@ description: 标书七阶段全流程（analyze / clarify / outline / write / re
 user-invocable: true
 argument-hint: "[--phase 1..7|analyze|clarify|outline|write|review|check|export|all] [<输入路径>] [其他 phase 特定参数]"
 allowed-tools: [Read, Write, Edit, AskUserQuestion, Bash]
+harness:
+  execute:
+    preset: writing-scoped
+    tools: [Bash]
+  constrain:
+    profile: writing-safe
+    gates: [before-write, before-loop-restart]
+  loop:
+    mode: pipeline
+    stages: [analyze, clarify, outline, write, review, check, export]
+    gate-between: true
+  memory:
+    scope: project
+    reads: [project-context]
+    writes: [output-history]
+  security:
+    danger-level: medium
+    audit: true
 ---
 
 # /bid — 标书全流程

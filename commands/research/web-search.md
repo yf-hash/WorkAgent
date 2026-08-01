@@ -4,6 +4,20 @@ user-invocable: true
 allowed-tools: WebSearch, WebFetch, Bash, Read, Write, AskUserQuestion, Skill
 description: 基于 open-webSearch 的多引擎免 API Key 联网搜索 — 跨 Bing/百度/CSDN/DuckDuckGo/Brave/掘金/Sogou 并行检索，支持结构化结果聚合与正文抓取
 argument-hint: "<query> [--engines <列表>] [--limit <n>] [--mode search|fetch|research] [--fetch] [--url <url>] [--server <地址>] [--proxy <url>] [--lang zh|en|all] [--output <路径>]"
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: read-only
+    gates: [before-write]
+  loop:
+    mode: parallel
+    fanout: 3
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /web-search

@@ -8,6 +8,20 @@ description: >
     Roadmap 是"主题 × 季度交付"。前者细到故事卡，后者粗到主题。
 user-invocable: true
 argument-hint: "<产品/团队描述> [--mode prioritize|plan|gantt|github] [--horizon 1m|3m|6m|1y]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /roadmap — 产品路线图规划

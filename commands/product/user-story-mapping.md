@@ -7,6 +7,20 @@ description: >
   适用于：新功能拆分、MVP 范围对齐、Sprint 规划前置、需求评审。
 user-invocable: true
 argument-hint: "<功能/产品描述> [--mode full|backbone|skeleton|slices|stories] [--persona <角色>] [--release-count <N>]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /user-story-mapping — 用户故事地图

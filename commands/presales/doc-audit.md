@@ -7,6 +7,20 @@ description: >
   适用于：发布前文档自查、版本更新核验、新产品资料首次入库审议。
 user-invocable: true
 argument-hint: "<文档路径或产品名> [--mode single|fullset|format|naming] [--strict]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /doc-audit — 产品文档自查审核

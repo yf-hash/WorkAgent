@@ -8,6 +8,20 @@ memory: project
 effort: high
 color: orange
 MaxTurns: 30
+harness:
+  execute:
+    preset: agent-orchestrator
+  constrain:
+    profile: writing-safe
+    gates: [before-write, before-loop-restart]
+  loop:
+    mode: iterative
+    max-iterations: 3
+  memory:
+    scope: project
+    reads: [project-context, user-preferences]
+  security:
+    danger-level: medium
 ---
 
 # 产品赋能 Agent（原子命令编排器）

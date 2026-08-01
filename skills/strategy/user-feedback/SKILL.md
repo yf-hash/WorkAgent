@@ -6,6 +6,18 @@ description: >
   LogChimp、Backfeed、用户访谈、定性分析。
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # User Feedback — 用户反馈管理知识库

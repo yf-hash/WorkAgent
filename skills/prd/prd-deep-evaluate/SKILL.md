@@ -6,6 +6,18 @@ description: >
   触发词：PRD 23 节评估、PRD 深度评估、prd deep evaluate、企业 PRD 差距分析
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Prd Deep Evaluate — PRD 23 节深度评估

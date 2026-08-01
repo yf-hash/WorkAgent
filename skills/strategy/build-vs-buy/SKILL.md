@@ -10,6 +10,19 @@ description: >
 user-invocable: true
 effort: medium
 argument-hint: "[决策主题]"
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: iterative
+    max-iterations: 3
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Build vs Buy Skill — 决策框架

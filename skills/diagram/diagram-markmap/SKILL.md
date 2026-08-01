@@ -6,6 +6,18 @@ description: >
   触发词：思维导图、mindmap、Markmap、知识树、大纲可视化、产品功能树
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Diagram Markmap — 思维导图

@@ -21,6 +21,20 @@ skills:
 memory: project
 effort: high
 color: "#7e57c2"
+harness:
+  execute:
+    preset: agent-orchestrator
+  constrain:
+    profile: writing-safe
+    gates: [before-write, before-loop-restart]
+  loop:
+    mode: pipeline
+    gate-between: true
+  memory:
+    scope: project
+    reads: [project-context, user-preferences]
+  security:
+    danger-level: medium
 ---
 
 # AI Product Architect Agent
@@ -109,7 +123,7 @@ Phase 0：可行性验证（POC，1-2 周）
   - 决策：Pivot / 继续
 
 Phase 1：Pilot 设计（2-4 周）
-  - /pm-prd-enterprise（B 端严格 12 章 PRD，含 AI 维度）
+  - /prd --mode enterprise（B 端严格 12 章 PRD，含 AI 维度）
   - 黄金集 60 条（参考 templates/ai-eval-rubric-template.md）
   - Prompt v2 + Few-shot
   - 失败模式覆盖 80%

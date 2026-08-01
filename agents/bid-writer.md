@@ -8,6 +8,21 @@ memory: project
 effort: high
 color: yellow
 MaxTurns: 60
+harness:
+  execute:
+    preset: agent-orchestrator
+  constrain:
+    profile: writing-safe
+    gates: [before-write, before-loop-restart]
+  loop:
+    mode: pipeline
+    stages: [analyze, clarify, outline, write, review, check, export]
+    gate-between: true
+  memory:
+    scope: project
+    reads: [project-context, user-preferences]
+  security:
+    danger-level: medium
 ---
 
 # 标书全流程编制代理

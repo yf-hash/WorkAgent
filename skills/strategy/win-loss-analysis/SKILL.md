@@ -9,6 +9,18 @@ description: >
 user-invocable: true
 effort: medium
 argument-hint: "[时间区间/客户群/产品线]"
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Win/Loss Analysis Skill
@@ -217,4 +229,4 @@ Deal 关闭后 **2-6 周内**访谈最有效：
 
 - 客户访谈：`/user-research`
 - ICP 修正：`/product-strategy --mode lean`
-- 产品改进：`/pm-intake` → `/pm-prd-enterprise`
+- 产品改进：`/pm-intake` → `/prd --mode enterprise`

@@ -7,6 +7,18 @@ description: >
   输出适配PPT的PNG/SVG文件，整合Mermaid/PlantUML/diagrams三大引擎。
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # PPT Architect — PPT场景图表构建技能

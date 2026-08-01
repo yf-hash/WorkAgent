@@ -7,6 +7,20 @@ description: >
   一页纸 + 完整版双模板、行业 ROI 锚点。
 user-invocable: true
 argument-hint: "<客户公司或项目名> [--mode onepage|full|tco|roi|review] [--industry fintech|gov|healthcare|mfg|saas] [--baseline statusquo|diy|competitor] [--out path]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /business-case — 客户价值证明（ROI / TCO）

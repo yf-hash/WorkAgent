@@ -1,6 +1,6 @@
 # Agents 索引（24 个）
 
-> 按职责分层组织，用户按场景选择入口。详细能力见每个 agent 文件的 frontmatter 和正文；agent 之间的边界与协作规则见 [`../AGENT_ROUTING.md`](../AGENT_ROUTING.md)。
+> 按职责分层组织，用户按场景选择入口。详细能力见每个 agent 文件的 frontmatter 和正文；agent 之间的边界与协作规则见 [`../docs/AGENT_ROUTING.md`](../docs/AGENT_ROUTING.md)。
 
 ---
 
@@ -81,12 +81,12 @@
 - 「数据」 → `data-analyst`（SQL + Python）
 - 「上市」 → `gtm-strategist`（战略） + `growth-strategist`（执行）
 
-模糊边界（PM vs GTM、Research vs Web-search 等）见 [`../AGENT_ROUTING.md`](../AGENT_ROUTING.md)。
+模糊边界（PM vs GTM、Research vs Web-search 等）见 [`../docs/AGENT_ROUTING.md`](../docs/AGENT_ROUTING.md)。
 
 ---
 
 ## 变更历史
 
-- **v2.8（2026-07）**：删除 `impeccable-manual-edit-applier`（draft，无调用路径）；新增本索引 + `AGENT_ROUTING.md`。25 → 24。
+- **v2.8（2026-07）**：删除 `impeccable-manual-edit-applier`（draft，无调用路径）；新增本索引 + `../docs/AGENT_ROUTING.md`。25 → 24。
 - **v2.7**：合并 `market-intelligence` → `research-analyst`；补录 `web-search-analyst` / `xqy-spec-writer`。
 - **v2.6**：删除 `writer-reviewer`（被 `style-writer-reviewer` skill 覆盖）。

@@ -3,6 +3,21 @@ name: taskweaver
 description: 数据分析与查询 Agent — 自然语言转 SQL（Chat2DB）+ Python 代码执行（TaskWeaver），覆盖数据库查询、SQL 优化、文件分析、自动化工作流，支持 MySQL/PostgreSQL/MongoDB 等主流数据库
 user-invocable: true
 argument-hint: "<任务描述> [--backend sql|python|auto] [--db mysql|postgresql|sqlite|oracle|mongodb] [--mode query|optimize|explain|analyze|schema] [--input <文件路径>] [--output <输出路径>] [--schema <表结构>] [--verify]"
+allowed-tools: [Read, Write, Grep, Glob, WebSearch, WebFetch, AskUserQuestion]
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: parallel
+    fanout: 3-5
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /taskweaver — 数据分析 Agent

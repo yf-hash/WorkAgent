@@ -4,6 +4,19 @@ description: 从 1-5 篇优质文章提炼共性写作风格，输出标准化�
 user-invocable: true
 argument-hint: "<urls 列表> [--save-card <路径>]"
 allowed-tools: [Read, Write, WebFetch]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /style-extract — 风格卡片提炼

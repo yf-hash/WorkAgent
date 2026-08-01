@@ -8,6 +8,18 @@ description: >
   不做：拆解（→ bid-analyze）/ 大纲（→ bid-outline）/ 评审（→ bid-review）/ 核查（→ bid-check）/ 导出（→ bid-export）。
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Bid Write — 标书 Phase 4 分模块撰写

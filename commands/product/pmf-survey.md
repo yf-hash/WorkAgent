@@ -9,6 +9,20 @@ description: >
   适用于：早期产品 PMF 验证、迭代后再测、定位调整后再验证、融资材料准备。
 user-invocable: true
 argument-hint: "<产品/功能> [--mode survey|analyze|signals|action|fullset] [--users-source user-list|wechat|email]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /pmf-survey — PMF 评估

@@ -4,6 +4,19 @@ description: Markdown 转图片渲染（--format poster：mark-pic 40+ 渐变背
 user-invocable: true
 argument-hint: "<Markdown 路径或内容> --format poster|table [--tool <backend>] [--theme dark|light]"
 allowed-tools: [Read, Write, Edit, Bash]
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+    gates: [before-write, before-destructive]
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /md-render — Markdown 转图

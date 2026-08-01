@@ -3,6 +3,20 @@ name: interview-writer
 description: 基于访谈素材创作公众号长文，通过 Writer-Reviewer 互搏机制迭代优化
 user-invocable: true
 argument-hint: "[访谈素材] [--target-score 85] [--max-rounds 3] [--mode full]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /interview-writer

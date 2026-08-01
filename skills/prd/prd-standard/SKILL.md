@@ -6,12 +6,24 @@ description: >
   触发词：标准 PRD、Full PRD、产品需求文档、用户故事、验收标准、Given When Then
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Prd Standard — 标准 PRD（Full PRD）
 
 > 单一职责：生成标准 8 章 PRD 文档。
-> 不做：一页纸（→ `prd-lite`）、Spec-First 四件套（→ `prd-spec-first`）、线框图（→ `prd-proto`）、B 端严格 12 章（→ `/pm-prd-enterprise`）
+> 不做：一页纸（→ `prd-lite`）、Spec-First 四件套（→ `prd-spec-first`）、线框图（→ `prd-proto`）、B 端严格 12 章（→ `/prd --mode enterprise`）
 
 ## 黄金原则
 
@@ -135,6 +147,6 @@ As a [用户角色], I want to [行为], so that [目的].
 | 1 页内对齐方向 | `prd-lite` |
 | Spec-First 工程化（proposal/specs/design/tasks） | `prd-spec-first` |
 | 含线框图 + 状态图 | `prd-proto` |
-| B 端 SaaS / 私有化 / 多租户 | `/pm-prd-enterprise` + `templates/prd-template.md` |
+| B 端 SaaS / 私有化 / 多租户 | `/prd --mode enterprise` + `templates/prd-template.md` |
 | 含 LLM/Agent/RAG | `@ai-product-architect` |
 | 完成后做质量自检 | `prd-quality-check` |

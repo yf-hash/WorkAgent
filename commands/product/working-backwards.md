@@ -1,6 +1,20 @@
 ---
 description: Working Backwards 逆向工作法 — 生成 PR-FAQ（默认）或 6-pager 备忘录（--mode six-pager），倒推客户价值与产品需求
 argument-hint: "[产品/功能想法]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /working-backwards — Amazon 逆向工作法
@@ -57,7 +71,7 @@ $ARGUMENTS
 | 新产品立项 / 大功能 / 跨团队战略 | ✅ 用本命令 |
 | 已 PMF 后的小迭代 | ❌ 直接 `/prd --mode standard` 或 `/prd --mode update` |
 | 想法模糊 / 缺信息 | 先 `/pm-intake` 收集 |
-| PR-FAQ 评审过 → 进入 PRD | `/pm-prd-enterprise`（B 端）/ `/prd --mode standard`（C 端）|
+| PR-FAQ 评审过 → 进入 PRD | `/prd --mode enterprise`（B 端）/ `/prd --mode standard`（C 端）|
 
 ## 评审清单
 

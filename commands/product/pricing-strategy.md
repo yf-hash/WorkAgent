@@ -8,6 +8,20 @@ description: >
   适用于：新产品定价、套餐重设计、涨价/降价决策、付费转化优化。
 user-invocable: true
 argument-hint: "<产品/服务描述> [--mode tier|psm|conjoint|increase|decrease|fullset] [--biz saas|hw|service|consumer|api] [--stage launch|growth|mature]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /pricing-strategy — 产品定价策略

@@ -7,6 +7,20 @@ description: >
   继续投 vs 弃单决策树、Gap Closure Plan、客户验收口径同步。
 user-invocable: true
 argument-hint: "<客户需求清单文件或描述> [--mode analyze|score|plan|review] [--industry fintech|gov|healthcare|saas] [--out path]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /gap-analysis — 功能差异分析

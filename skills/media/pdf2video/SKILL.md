@@ -7,6 +7,18 @@ description: >
 user-invocable: false
 effort: high
 argument-hint: "<filepath.pdf|.pptx> [--scene-type stack|focus|zoom|fan] [--music] [--duration <seconds>] [--render]"
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # PDF/PPT 转动态视频技能

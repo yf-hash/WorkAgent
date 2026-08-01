@@ -7,6 +7,18 @@ description: >
   "生成PPT", "做PPT", "制作演示文稿", or mentions "ppt-master".
 user-invocable: true
 effort: high
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # PPT Master Skill

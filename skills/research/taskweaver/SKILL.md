@@ -5,6 +5,19 @@ description: >
   TaskWeaver、代码执行、自动化数据处理、复杂数据任务、微软Agent框架。
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: parallel
+    fanout: 3-5
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # TaskWeaver - Code-First AI Agent

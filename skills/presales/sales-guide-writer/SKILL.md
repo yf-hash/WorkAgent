@@ -7,6 +7,18 @@ description: >
   销售价值、连带商机、销售赋能、行业化销售
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # 产品销售赋能知识库

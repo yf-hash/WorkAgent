@@ -6,6 +6,20 @@ description: >
   仅做竞品分析一件事，单个对手的一页纸作战卡请用 /battle-card。
 user-invocable: true
 argument-hint: "<产品名称> [--competitors <对手1,对手2,对手3>] [--industry fintech|gov|healthcare|edu|mfg|retail|saas]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /product-competitive — 竞品分析生成器

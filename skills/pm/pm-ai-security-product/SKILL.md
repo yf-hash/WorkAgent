@@ -12,6 +12,18 @@ description: >
 user-invocable: true
 effort: high
 argument-hint: "[AI/安全产品/客户场景]"
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # AI / 网络安全产品 Skill

@@ -19,6 +19,19 @@ memory: agents/article-illustrator-memory.md
 effort: medium
 color: "#7b1fa2"
 MaxTurns: 20
+harness:
+  execute:
+    preset: agent-orchestrator
+  constrain:
+    profile: writing-safe
+    gates: [before-write, before-loop-restart]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context, user-preferences]
+  security:
+    danger-level: medium
 ---
 
 # Article Illustrator Agent

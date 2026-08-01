@@ -6,6 +6,20 @@ description: >
   合规证据映射、敏感问题红线、应答 KB 复用、年度续答 SOP。
 user-invocable: true
 argument-hint: "<安全问卷文件或描述> [--mode draft|review|kb-build|annual] [--standard caiq|sig|vsa|custom] [--out path]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /security-questionnaire — 安全问卷应答

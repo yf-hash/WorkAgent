@@ -6,6 +6,18 @@ description: >
   触发词：产品解决方案、行业解决方案、建设方案、系统方案、方案模板。
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # 产品解决方案写作知识库

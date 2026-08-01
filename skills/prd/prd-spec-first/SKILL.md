@@ -7,6 +7,18 @@ description: >
   触发词：Spec-First、规格优先、proposal、specs、design、tasks、四件套、OpenSpec
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Prd Spec-First — 规格优先工作流

@@ -8,6 +8,20 @@ description: >
 user-invocable: true
 effort: high
 argument-hint: "[产品/功能想法]"
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: pipeline
+    stages: [pr-faq, six-pager]
+    gate-between: true
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Working Backwards Skill — 逆向工作法
@@ -79,7 +93,7 @@ argument-hint: "[产品/功能想法]"
    ↓
 （6-pager 评审过 → 立项）
    ↓
-/pm-prd-enterprise / /prd --mode standard   ← 进入 PRD
+/prd --mode enterprise / /prd --mode standard   ← 进入 PRD
    ↓
 @qa-acceptance-designer + /launch-checklist ← 发布
 ```
@@ -122,4 +136,4 @@ argument-hint: "[产品/功能想法]"
 - 模板：`templates/pr-faq-template.md`、`templates/six-pager-template.md`
 - 命令：`/working-backwards`
 - 上游：`/pm-intake`、`/pm-discovery`
-- 下游：`/pm-prd-enterprise`、`/prd --mode standard`、`@product-director`
+- 下游：`/prd --mode enterprise`、`/prd --mode standard`、`@product-director`

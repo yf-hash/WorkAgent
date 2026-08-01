@@ -7,6 +7,20 @@ description: >
   内部文档。
 user-invocable: true
 argument-hint: "<对手名称> [--mode build|update|library] [--tier 1|2|3] [--industry fintech|gov|healthcare|saas]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /battle-card — 竞品作战卡生成器

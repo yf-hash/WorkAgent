@@ -7,6 +7,18 @@ description: >
 user-invocable: false
 effort: high
 argument-hint: "<video_filepath> [--mode auto|review] [--silence-threshold <dB>] [--min-silence <ms>] [--output <path>]"
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # AI 视频智能剪辑技能

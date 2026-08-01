@@ -7,6 +7,19 @@ description: >
 user-invocable: true
 argument-hint: "<架构描述> [--provider aws|gcp|azure|k8s|alibaba|onprem|multi] [--mode generate|code|render|update] [--style default|dark|minimal] [--output png|pdf|code] [--direction TB|LR|BT|RL]"
 allowed-tools: [Read, Write, Edit, Bash, AskUserQuestion]
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+    gates: [before-write, before-destructive]
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /arch-diagram — 云架构图生成

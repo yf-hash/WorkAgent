@@ -1,6 +1,20 @@
 ---
 description: PM 全流程发现阶段编排 — 一次性输出市场 + 用户 + 竞品 + 场景 + 机会 + MVP + 风险
 argument-hint: "[产品方向/客户线索/业务想法]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /pm-discovery — 产品发现阶段一次性产出
@@ -48,7 +62,7 @@ $ARGUMENTS
 
 ## 推荐后续
 
-- 立项通过 → `/product-strategy` → `/prd --mode standard`（C 端）或 `/pm-prd-enterprise`（B 端 SaaS）
+- 立项通过 → `/product-strategy` → `/prd --mode standard`（C 端）或 `/prd --mode enterprise`（B 端 SaaS）
 - 需要更深市场情报 → `@research-analyst §Market Intelligence Focus Mode`
 - 需要客户访谈设计 → `/user-research`
 - 综合多领域研究 → `@research-analyst`

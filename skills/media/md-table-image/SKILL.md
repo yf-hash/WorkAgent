@@ -7,6 +7,18 @@ description: >
   触发词：表格转图片、tablesnap、表格截图、md 表格 PNG、markdown table image
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # MD Table Image — Markdown 表格转图

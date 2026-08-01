@@ -6,6 +6,18 @@ description: >
   可用性测试、空状态设计、表单设计、响应式设计、设计交付。
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Design Proto — 产品设计与原型知识库

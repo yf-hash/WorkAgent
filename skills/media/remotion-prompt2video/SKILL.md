@@ -6,6 +6,18 @@ description: >
   触发词：提示词转视频、prompt 转视频、短视频生成、TikTok 风格、AI 一键视频
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Remotion Prompt2Video — 提示词全链路视频生成

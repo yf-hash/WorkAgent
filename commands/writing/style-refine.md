@@ -4,6 +4,20 @@ description: 以风格卡片为基准，对已有文章做风格优化（不重�
 user-invocable: true
 argument-hint: "<文档路径> [--style-card <路径>] [--mode quality|humanize|balance] [--target-score 85] [--max-rounds 3]"
 allowed-tools: [Read, Write, Edit, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: iterative
+    max-iterations: 4
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /style-refine — 已有内容风格优化

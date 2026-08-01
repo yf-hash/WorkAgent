@@ -6,6 +6,18 @@ description: >
   产品节奏、功能排期、研发资源分配、Backlog 梳理。
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Product Roadmap — 路线图规划知识库
@@ -221,3 +233,8 @@ Subject: [路线图更新] Q2 计划调整
 影响评估：[说明对 OKR 的影响]
 下一步：[会议/文档/确认事项]
 ```
+
+
+## 配套模板
+
+- `templates/roadmap-template.md` — Now/Next/Later 填充式模板 + 对外/对内变更通知格式

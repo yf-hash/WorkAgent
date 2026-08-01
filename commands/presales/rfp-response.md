@@ -6,6 +6,21 @@ description: >
   分工矩阵、应答 KB 复用、风险措辞红线、提交前评审清单。
 user-invocable: true
 argument-hint: "<RFP 文件路径或描述> [--mode draft|review|kb-build] [--industry fintech|gov|healthcare|saas] [--themes <核心讯息1,讯息2,讯息3>] [--out path]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: pipeline
+    gate-between: true
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /rfp-response — RFP / RFI 应答生成器

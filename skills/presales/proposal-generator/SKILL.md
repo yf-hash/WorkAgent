@@ -9,6 +9,19 @@ description: >
   纯架构 SA Blueprint（→ solution-architecture）。
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: pipeline
+    gate-between: true
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Proposal Generator — 企业方案撰写知识库

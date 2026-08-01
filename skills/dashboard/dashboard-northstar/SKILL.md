@@ -7,6 +7,18 @@ description: >
   触发词：北极星看板、NorthStar Dashboard、NSM 看板
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: read-only
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Dashboard NorthStar — 北极星看板

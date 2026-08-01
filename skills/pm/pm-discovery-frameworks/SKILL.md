@@ -7,6 +7,18 @@ description: >
   触发词：JTBD、5Whys、Opportunity Solution Tree、Problem Solution Fit、产品发现、用户洞察框架
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # PM Discovery Frameworks — 发现阶段框架
@@ -97,3 +109,8 @@ OST → 梳理机会与解法
   ↓
 PSF → 验证 → 进入定义阶段（→ `pm-prioritization-frameworks`）
 ```
+
+
+## 配套模板
+
+- `templates/pm-discovery-template.md` — Discovery 阶段结构化产出模板（问题定义 / 用户画像 / 场景 / 竞品 / 假设 / MVP 边界）

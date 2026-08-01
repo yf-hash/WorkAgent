@@ -2,6 +2,19 @@
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, AskUserQuestion, Skill
 description: PDF/PPT 文档转动态视频 — 自动解析文档内容，生成 stack/focus/zoom/fan 四种场景动画，输出 MP4
 argument-hint: "<filepath.pdf|.pptx> [--scene-type stack|focus|zoom|fan] [--style corporate|tech|minimal|academic] [--music] [--duration <seconds>] [--render]"
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+    gates: [before-write, before-destructive]
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /pdf2video

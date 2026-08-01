@@ -9,6 +9,18 @@ description: >
   触发词：需求规格说明书、需规模板、XQY、银行需求、金融系统需求、批处理需求、接口需求、甲方评审模板。
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Prd XQY — 需求规格说明书（XQY 8 章模板）
@@ -418,7 +430,7 @@ sequenceDiagram
 | C 端通用 8 章 PRD | `prd-standard` |
 | Spec-First 工程化四件套 | `prd-spec-first` |
 | 含 ASCII 线框图深化 | `prd-proto` |
-| 通用 B 端 SaaS 严格 12 章 | `/pm-prd-enterprise` |
+| 通用 B 端 SaaS 严格 12 章 | `/prd --mode enterprise` |
 | **银行/金融/企业 XQY 强模板** | **本 Skill（`/prd --mode xqy` + `@xqy-spec-writer`）** |
 | 含 LLM/Agent/RAG | `@ai-product-architect` |
 | 完成后做质量自检 | `prd-quality-check` |

@@ -6,6 +6,19 @@ description: >
   支持竞品矩阵、趋势分析、规模估算、选品研究、开源生态分析。
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: parallel
+    fanout: 3
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Market Research — 市场研究与竞争情报知识库

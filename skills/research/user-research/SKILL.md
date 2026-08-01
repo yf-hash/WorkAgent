@@ -11,6 +11,19 @@ description: >
   用户画像、Persona、JTBD、亲和图、Affinity Map
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: parallel
+    fanout: 3
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # User Research — 用户研究知识库

@@ -7,6 +7,20 @@ description: >
 user-invocable: false
 effort: medium
 argument-hint: "[filepath|text] [--intensity low|medium|high]"
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: iterative
+    max-iterations: 3
+    convergence-check: "AI 味 < 5%"
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Humanizer Scan — AI 痕迹扫描去除

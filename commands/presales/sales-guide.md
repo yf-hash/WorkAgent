@@ -7,6 +7,20 @@ description: >
   适用于：新产品销售赋能、销售培训材料、行业话术库、竞争应对手册。
 user-invocable: true
 argument-hint: "<产品名称> [--mode full|scenarios|faq|competitive|value] [--industry fintech|gov|healthcare|edu|mfg|retail|consumer|saas] [--scenes <场景数量>]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /sales-guide — 销售一页禅生成器

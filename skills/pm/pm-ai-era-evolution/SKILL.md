@@ -6,6 +6,18 @@ description: >
   触发词：AI 时代 PM、AI 产品经理、PM 技能演变、Prompt Engineering、LLM 产品设计、AI 指标
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # PM AI Era Evolution — AI 时代 PM 技能演变

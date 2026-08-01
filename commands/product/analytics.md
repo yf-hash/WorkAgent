@@ -11,6 +11,20 @@ description: >
   - vs /ab-test：本命令是"宏观指标"，/ab-test 是"实验级 OEC + 护栏指标"。
 user-invocable: true
 argument-hint: "<分析目标> [--mode metrics|funnel|cohort|event] [--platform posthog|matomo|countly|jitsu]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /analytics — 产品数据指标设计

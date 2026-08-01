@@ -8,6 +8,18 @@ description: |
   不要用于简单的名词解释（用户只是问"XX是什么"）、不要用于公众号写作（那个用article-writer）、不要用于纯标题摘要生成（用wechat-title）。
 user-invocable: true
 effort: high
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # 横纵分析法深度研究

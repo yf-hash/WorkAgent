@@ -7,6 +7,20 @@ description: >
   适用于：双周邮件、月度高管汇报、季度董事会、客户 Business Review。
 user-invocable: true
 argument-hint: "<时间窗口/产品> [--mode weekly|monthly|quarterly|board|customer-br] [--audience team|exec|board|customer] [--length brief|standard|detailed]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # /product-report — 产品周报/月报/季度报告

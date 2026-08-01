@@ -9,6 +9,18 @@ description: >
 user-invocable: true
 effort: high
 argument-hint: "[要下线的产品/功能名]"
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Sunset / Deprecation Playbook

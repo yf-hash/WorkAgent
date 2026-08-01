@@ -6,6 +6,19 @@ description: >
   触发词：PRD 概念稿、概念文档、prd concept、方向对齐文档
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: pipeline
+    gate-between: true
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Prd Concept Draft — PRD 概念稿

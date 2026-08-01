@@ -8,6 +8,19 @@ memory: project
 effort: high
 color: purple
 MaxTurns: 40
+harness:
+  execute:
+    preset: agent-orchestrator
+  constrain:
+    profile: writing-safe
+    gates: [before-write, before-loop-restart]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context, user-preferences]
+  security:
+    danger-level: medium
 ---
 
 # 视频生成代理

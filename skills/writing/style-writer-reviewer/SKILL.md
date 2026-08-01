@@ -8,6 +8,20 @@ description: >
 user-invocable: false
 effort: high
 argument-hint: "[--title <标题>] [--framework <框架>] [--style-card <路径>] [--target-score 85] [--max-rounds 3] [--mode quality|humanize|balance]"
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: iterative
+    max-iterations: 5
+    convergence-check: "Reviewer 通过"
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Style Writer-Reviewer — 双 Agent 迭代创作

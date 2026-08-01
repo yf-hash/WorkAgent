@@ -4,6 +4,19 @@ description: Remotion 视频生成统一入口（native / prompt2video / vidosy 
 user-invocable: true
 argument-hint: "[--engine native|prompt2video|vidosy] [各引擎参数]"
 allowed-tools: [Read, Write, Edit, Bash]
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+    gates: [before-write, before-destructive]
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /video-gen — Remotion 视频生成

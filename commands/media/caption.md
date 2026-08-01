@@ -4,6 +4,19 @@ description: 视频字幕自动生成 — 转录+翻译+双语输出，支持30+
 user-invocable: true
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, AskUserQuestion, Skill
 argument-hint: "<video_url|filepath> [--lang <代码>] [--translate <目标语言>] [--bilingual] [--format srt|vtt|ass|json] [--engine whisper|gemini]"
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+    gates: [before-write, before-destructive]
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /caption

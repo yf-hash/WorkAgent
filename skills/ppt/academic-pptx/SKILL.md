@@ -4,6 +4,18 @@ description: "Use this skill whenever the user wants to create or improve a pres
 user-invocable: true
 effort: high
 license: Proprietary. LICENSE.txt has complete terms
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # Academic Presentations Skill

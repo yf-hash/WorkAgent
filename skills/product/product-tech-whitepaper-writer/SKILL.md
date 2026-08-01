@@ -6,6 +6,18 @@ description: >
   触发词：技术白皮书、深度技术文档、算法原理、内部保密技术文档。
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # 技术白皮书写作知识库

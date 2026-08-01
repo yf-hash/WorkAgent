@@ -6,6 +6,20 @@ description: >
   /product-whitepaper。
 user-invocable: true
 argument-hint: "<产品名称> [--version v1.0]"
+allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+    gates: [before-write]
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # /product-function-list — 产品型号及功能清单生成器

@@ -1,7 +1,7 @@
 # PRD：{{产品/功能名称}}
 
 > 企业级 PRD 标准模板（融合产品视角 + 工程实现视角）。
-> 配套 Agent：`@prd-coach`；配套命令：`/prd --mode diagnose` → `/prd --mode concept` → `/prd --mode impl`（对话渐进），或直接 `/prd --mode standard`、`/pm-prd-enterprise`。
+> 配套 Agent：`@prd-coach`；配套命令：`/prd --mode diagnose` → `/prd --mode concept` → `/prd --mode impl`（对话渐进），或直接 `/prd --mode standard`（C 端 8 章）、`/prd --mode enterprise`（B 端严格 12 章）。
 > 信息不足时用 `[待补充]` 标注，禁止编造。
 
 ---

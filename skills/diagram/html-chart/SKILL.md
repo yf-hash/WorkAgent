@@ -5,6 +5,18 @@ description: >
   对比表、步骤图、Playwright截图、零成本配图、1600x900图表。
 user-invocable: false
 effort: medium
+harness:
+  execute:
+    preset: media-heavy
+  constrain:
+    profile: shell-restricted
+  loop:
+    mode: one-shot
+  memory:
+    scope: session
+    reads: [project-context]
+  security:
+    danger-level: medium
 ---
 
 # HTML Chart Generator — 结构化图表生成器

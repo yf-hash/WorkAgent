@@ -8,6 +8,19 @@ description: >
   定位声明、销售使能、央国企招投标、信创、解决方案包装、客户案例沉淀。
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: iterative
+    max-iterations: 4
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # GTM Strategy — B2B 上市战略知识库

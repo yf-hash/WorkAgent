@@ -7,6 +7,18 @@ description: >
   触发词：CSV 转 Markdown、Markdown 转 CSV、TSV、Excel 数据转表格、mdtable、表格转换
 user-invocable: false
 effort: low
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Table CSV-MD — CSV/Markdown 表格互转

@@ -7,6 +7,19 @@ description: >
 user-invocable: false
 effort: medium
 argument-hint: "[filepath|text] [--voice-sample filepath] [--domain 领域名]"
+harness:
+  execute:
+    preset: writing-scoped
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: iterative
+    max-iterations: 3
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Humanizer Soul — 灵魂注入

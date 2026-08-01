@@ -9,6 +9,18 @@ description: >
   Business Review、BR、董事会汇报、产品报告、产品状态更新
 user-invocable: false
 effort: high
+harness:
+  execute:
+    preset: research
+  constrain:
+    profile: writing-safe
+  loop:
+    mode: one-shot
+  memory:
+    scope: project
+    reads: [project-context]
+  security:
+    danger-level: low
 ---
 
 # Product Report — 产品报告写作知识库
