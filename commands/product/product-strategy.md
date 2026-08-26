@@ -145,12 +145,10 @@ Step 5: 战略风险与对策
   ├── /market-research → 验证客户细分、TAM/SAM/SOM
   ├── /user-research   → 验证 Problem 假设
   ├── /pricing-strategy → 收入模型深化
-  ├── /pmf-survey      → 验证 UVP 是否对齐
   └── /gtm-strategy    → 战略落地为上市计划
 
 推荐工作流：
   立项阶段：/product-strategy --mode lean --stage 0to1
-         → /pmf-survey（PMF 验证）
          → /product-strategy --mode bmc（PMF 后切换商业模式视角）
 
   季度规划：/product-strategy --mode northstar

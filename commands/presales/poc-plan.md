@@ -298,7 +298,6 @@ Future：6 个月后重启评估（如改进达成）
 
 ```
 /poc-plan（本命令）
-  ├── /sales-guide → PoC 销售物料
   └── /pricing-strategy → PoC 转正定价
 
 推荐工作流：

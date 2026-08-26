@@ -24,7 +24,6 @@ harness:
 $ARGUMENTS
 
 > 单产品场景一次性出包。复杂矩阵（多产品 + 多行业 + 多卖点）请用 `@product-enablement`。
-> 与 `/sales-guide` 的边界：本命令是**单产品快速出包**；`/sales-guide` 是销售一页禅设计方法论。
 
 ## 输出内容
 

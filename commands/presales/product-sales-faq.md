@@ -3,7 +3,6 @@ name: product-sales-faq
 description: >
   销售常见问题（FAQ）生成器（单一职责）— 面向销售 / 售前的可公开 Word 文档。
   覆盖技术原理、竞品对比、部署运维、价格授权、服务支持五大类常见问答。
-  仅做销售 FAQ 一件事，完整销售一页禅请用 /sales-guide。
 user-invocable: true
 argument-hint: "<产品名称> [--version v1.0] [--industry fintech|gov|healthcare|edu|mfg|retail|saas]"
 allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
@@ -68,12 +67,10 @@ Step 4: 14 项自查（doc-auditor 自动调用）
 
 Step 5: 输出
   → FAQ 文档 + 自查报告
-  → 建议下一步：完整销售一页禅（/sales-guide）
 ```
 
 ## 与其他命令的边界
 
 | 选择 | 用本命令 | 用其他 |
 |------|---------|-------|
-| `/product-sales-faq` vs `/sales-guide` | 单独 FAQ 文档 | 完整销售一页禅（含场景 / 对比） |
 | `/product-sales-faq` vs `/product-competitive` | 客户高频问答 | 系统化竞品对比 |

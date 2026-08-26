@@ -31,10 +31,10 @@ WorkAgent 是一套以 **风格驱动 + 单一职责** 为核心设计理念的 
 
 | 模块 | 数量 | 说明 |
 |------|------|------|
-| Agents | 24 个 | 自治代理，编排原子命令完成完整业务流程（v3.0 全部带 harness 元数据） |
-| Skills | 115 个 | 可复用知识库，**严格单一职责**（v3.0 全部带 harness 元数据） |
-| Commands | 86 个 | 统一命令入口（v2.8.2 收敛后，v3.0 全部带 harness 元数据） |
-| Templates | 22 活跃（+ 3 归档） | PRD/PM-Discovery/验收/Release/Sales/PR-FAQ/6-pager/Model Card/Eval Rubric 等；孤儿模板归档到 `templates/archive/` |
+| Agents | 23 个 | 自治代理，编排原子命令完成完整业务流程（v3.0 全部带 harness 元数据） |
+| Skills | 104 个 | 可复用知识库，**严格单一职责**（v3.0 全部带 harness 元数据） |
+| Commands | 68 个 | 统一命令入口（v3.1 精简产品/售前低频后） |
+| Templates | 17 活跃（+ 3 归档） | PRD/PM-Discovery/验收/Release/Sales/PR-FAQ/Model Card/Eval Rubric 等；孤儿模板归档到 `templates/archive/` |
 
 **设计原则**：
 
@@ -50,30 +50,30 @@ WorkAgent 是一套以 **风格驱动 + 单一职责** 为核心设计理念的 
 
 ```
 WorkAgent/
-├── agents/                # 24 个自治代理（含 README.md 分层索引）
-├── skills/                # 115 个原子 Skill（v2.8 分入 14 子域）
+├── agents/                # 23 个自治代理（含 README.md 分层索引）
+├── skills/                # 104 个原子 Skill（v2.8 分入 14 子域）
 │   ├── writing/           # 10（article-writer / interview / marketing-copy / style-* / humanizer-*）
 │   ├── prd/               # 11（prd-lite/standard/spec-first/proto/quality/deep-eval/diagnose/concept/impl/incremental/xqy）
-│   ├── pm/                # 8（pm-* 6 + product-strategy + working-backwards）
+│   ├── pm/                # 7（pm-* 6 + product-strategy）
 │   ├── product/           # 5（4 rich writer + 1 router）
-│   ├── presales/          # 12（discovery/gap/SA/BC/RFP/security/battle/demo/PoC/sales-guide/doc-auditor/proposal-generator）
+│   ├── presales/          # 10（gap/SA/BC/RFP/security/battle/demo/PoC/doc-auditor/proposal-generator）
 │   ├── bid/               # 7（bid-analyze/clarify/outline/write/review/check/export）
 │   ├── dashboard/         # 7（northstar/aarrr/cohort/revenue/customer-br/ai-monitor/platform-selector）
 │   ├── ppt/               # 8（ppt-master/architect/rag/researcher + academic/slidetailor/slidev/marp）
 │   ├── media/             # 9（remotion-* / pdf2video / omni-captions / videocut / content-sync / md-* ）
 │   ├── diagram/           # 9（arch/markmap/plantuml/mermaid/visio/html/ai-illustrator/SD/impeccable）
 │   ├── research/          # 7（market/user/paper-*/taskweaver/chat2db/open-websearch）
-│   ├── data/              # 2（product-analytics / ab-test）
-│   ├── strategy/          # 19（gtm/build-vs-buy/sunset/win-loss/churn/tech-debt 等）
+│   ├── data/              # 1（product-analytics）
+│   ├── strategy/          # 13（gtm/win-loss/mvp/roadmap/pricing/launch/design-proto/compliance/report/user-feedback/table-csv-md/table-from-text）
 │   └── tools/             # 1（od-contribute）
-├── commands/              # 87 个（v2.8.1 再合并 prd-* 11→1 后）
+├── commands/              # 68 个（v3.1 精简产品/售前低频后）
 │   ├── writing/           # 9（style-* 3 + humanize + polish + marketing + article + interview + sync）
-│   ├── product/           # 31（PM + prd 统一入口 + dashboard + 战略决策）
-│   ├── presales/          # 29（含 bid 统一 + product-* 16 类）
+│   ├── product/           # 20（PM + prd 统一入口 + dashboard + 战略决策）
+│   ├── presales/          # 21（含 bid 统一 + product-* 8 类）
 │   ├── research/          # 5
 │   ├── media/             # 12（ppt/illustrate/video-gen/diagram/arch-diagram/visio/md-render/table/caption/pdf2video/videocut）
 │   └── tools/             # 1
-├── templates/             # 22 活跃（含 templates/product/ 12 个）+ 3 归档（archive/）
+├── templates/             # 17 活跃（含 templates/product/ 7 个）+ 3 归档（archive/）
 ├── HARNESS_FRAMEWORK.md   # ★ v3.0：五能力分层锚点（execute/constrain/loop/memory/security）
 ├── docs/                  # ★ v3.0：元文档归档（AGENT_ROUTING/AUDIT/HEALTH_REPORT/CONSOLIDATION_PLAN）
 └── .claude/
@@ -89,7 +89,7 @@ WorkAgent/
 
 ## 智能体系统
 
-24 个自治 Agent，覆盖产品、内容、标书、数据、研究、媒体、GTM、方案、视觉、**售前 / 解决方案**全域：
+23 个自治 Agent，覆盖产品、内容、标书、数据、研究、媒体、GTM、方案、视觉、**售前 / 解决方案**全域：
 
 | Agent | 职责 | 调用时机 |
 |-------|------|---------|
@@ -99,11 +99,10 @@ WorkAgent/
 | `prd-coach` | PRD 对话教练 — 三镜诊断 + 两阶段交付（概念稿→实现稿），对话式引导非 PM 用户写出可开发的需求文档 | 想法模糊/非 PM/需要引导式写需求文档时 |
 | `qa-acceptance-designer` | 测试验收设计 — PRD → 验收方案（功能/权限/异常/数据/审计/客户口径），输出上线阻断项 | PRD/版本验收、UAT 设计、上线 Go/No-Go 阻断项确认 |
 | `ai-product-architect` | AI 产品架构师 — 专注 LLM/Agent/RAG 类功能的规格、Prompt、Eval、失败模式管理 | AI 功能 PRD、Prompt 工程交付、AI 功能上线评审 |
-| `growth-strategist` | 增长战略 — 统筹 PMF / 漏斗诊断 / A/B 实验 / 定价 | PMF 验证、增长瓶颈诊断、实验设计、定价优化 |
-| `research-analyst` | 综合研究分析师 — 用户研究 + 市场情报 + 反馈分析 + PMF 验证 + Market Intelligence Focus Mode（深度竞品 / TAM / OSS 生态 / 选品，合并原 market-intelligence agent） | 早期 0→1 探索、立项验证、PMF 测量、深度竞品分析 |
+| `research-analyst` | 综合研究分析师 — 用户研究 + 市场情报 + 反馈分析 + Market Intelligence Focus Mode（深度竞品 / TAM / OSS 生态 / 选品，合并原 market-intelligence agent） | 早期 0→1 探索、立项验证、深度竞品分析 |
 | `gtm-strategist` | GTM 全链路战略（增长模型/ICP/定位/渠道/定价/90天计划） | 新产品上市规划、GTM 诊断与优化 |
 | `proposal-writer` | 企业方案撰写全链路（售前方案/可研报告/初步设计，多行业定制） | 售前解决方案、项目建议书 |
-| `product-enablement` | 产品赋能（销售指南/文档审计/16 类产品资料编排） | 产品赋能、销售支持 |
+| `product-enablement` | 产品赋能（8 类产品资料编排） | 产品赋能、销售支持 |
 | `bid-writer` | 标书七阶段编制（接收 /bid-* 系列子命令） | 标书/投标/招标文件编制 |
 | `content-director` | 全流程内容创作编排（风格分析→框架→写作→QA→迭代） | 需要完整写作流程 |
 | `style-evolver` | 风格学习 → 风格卡片确认 → Writer-Reviewer 迭代创作 | 风格迁移、参考文章仿写 |
@@ -122,7 +121,7 @@ WorkAgent/
 
 ## Skill 系统
 
-115 个原子 Skill（v2.8 分入 14 子域，v3.0 全部带 harness 元数据）。下方按域列出，每个 Skill **单一职责**、**有边界声明**。
+104 个原子 Skill（v2.8 分入 14 子域，v3.0 全部带 harness 元数据）。下方按域列出，每个 Skill **单一职责**、**有边界声明**。
 
 ### 写作与内容（10）
 
@@ -197,11 +196,11 @@ WorkAgent/
 
 ### 产品管理（核心方法论 + 框架）
 
-- 战略决策：`product-strategy` / `working-backwards` / `build-vs-buy` / `sunset-plan` / `win-loss-analysis` / `churn-analysis`
-- 流程方法：`mvp-canvas` / `user-story-mapping` / `ab-test` / `launch-checklist` / `pmf-survey`
+- 战略决策：`product-strategy` / `win-loss-analysis`
+- 流程方法：`mvp-canvas` / `launch-checklist`
 - 数据：`product-analytics` / `user-research` / `market-research` / `user-feedback` / `product-roadmap`
-- 设计与运营：`design-proto` / `pricing-strategy` / `product-report` / `compliance-checklist` / `tech-debt`
-- AI 产品：`ai-red-team` / `pm-ai-security-product`
+- 设计与运营：`design-proto` / `pricing-strategy` / `product-report` / `compliance-checklist`
+- AI 产品：`pm-ai-security-product`
 - PM 框架：`pm-discovery-frameworks` / `pm-prioritization-frameworks`（含向上管理） / `pm-metrics-frameworks`（北极星 + AARRR） / `pm-ai-era-evolution` / `pm-qa-acceptance`
 
 ### PPT 与可视化
@@ -256,7 +255,6 @@ WorkAgent/
 
 | Skill | 描述 | 触发方式 |
 |-------|------|---------|
-| `discovery-call` | 客户拜访与需求挖掘 | `/discovery-call` |
 | `gap-analysis` | 客户需求 vs 产品能力对照 | `/gap-analysis` |
 | `solution-architecture` | SA Blueprint 12 章 | `/solution-architecture` |
 | `business-case` | 客户价值证明（ROI / TCO / Payback / NPV） | `/business-case` |
@@ -267,8 +265,7 @@ WorkAgent/
 | `poc-plan` | PoC/试点管理 | `/poc-plan` |
 | `gtm-strategy` | GTM 上市战略 | `/gtm-strategy` |
 | `proposal-generator` | 企业项目型方案文档 | `/proposal` |
-| `sales-guide-writer` | B2B 销售赋能 | `/sales-guide` |
-| `doc-auditor` | 产品文档质量审核 | `/doc-audit` |
+| `doc-auditor` | 产品文档质量审核（被 `/product-*` 命令生成后自动核验调用） |
 
 ### 工具与集成（tools）
 
@@ -347,13 +344,7 @@ WorkAgent/
 /dashboard --metric platform-selector
 
 # 战略决策
-/working-backwards "新功能想法"
-/build-vs-buy "自研 vs 用 Auth0"
-/sunset "Legacy Feature X"
 /win-loss --quarter Q2
-/churn-analysis --quarter Q2
-/tech-debt --quarter Q2
-/ai-red-team "v2.0 模型"
 
 # PM 流程
 /pm-intake "客户工单"
@@ -366,10 +357,6 @@ WorkAgent/
 ### 售前 / 解决方案类
 
 ```bash
-# 客户接触 + 需求挖掘
-/discovery-call 某城商行 --mode prep --type first-call
-/discovery-call 某医疗集团 --mode mom
-
 # 需求评估 + 方案设计
 /gap-analysis ./Requirements.xlsx --industry fintech
 /solution-architecture 某城商行 SOC --industry fintech --deployment private
@@ -388,12 +375,10 @@ WorkAgent/
 # PoC + 售前物料
 /poc-plan 某客户试点 --industry fintech
 /proposal 智慧城市交通 --type feasibility --industry gov
-/sales-guide 数据安全产品 --industry fintech
 
-# 16 类产品资料（原子命令）
+# 8 类产品资料（原子命令）
 /product-whitepaper AI 客服平台 --industry saas
 /product-tech-whitepaper AI 客服平台
-/product-brochure AI 客服平台
 /product-intro-business AI 客服平台
 /product-intro-tech AI 客服平台
 /product-function-list AI 客服平台
@@ -402,13 +387,7 @@ WorkAgent/
 /product-bid-params AI 客服平台
 /product-solution AI 客服平台
 /product-case AI 客服平台 --customer 某城商行
-/product-manual AI 客服平台
 /product-deploy AI 客服平台
-/product-compat AI 客服平台
-/product-release-note v2.0
-/product-training AI 客服平台
-
-/doc-audit ./product-docs/
 
 # 售前总指挥
 @solution-architect 某城商行 SOC 项目从首访到合同的完整推进
@@ -532,25 +511,21 @@ WorkAgent/
 ### 场景五：售前 / 解决方案全链路
 
 ```bash
-# Stage 1 接触
-/discovery-call 某城商行 --mode prep --type first-call
-/discovery-call 某城商行 --mode mom
-
-# Stage 2 评估
+# Stage 1 评估
 /gap-analysis ./Bank_Reqs.xlsx --industry fintech
 /battle-card Splunk --tier 1 --industry fintech
 
-# Stage 3 方案
+# Stage 2 方案
 /solution-architecture 某城商行 SOC --deployment private
 /business-case 某城商行 SOC --baseline statusquo
 /demo-design 某城商行 --duration 30
 
-# Stage 4 应答
+# Stage 3 应答
 /rfp-response ./Bank_Tender.xlsx --industry fintech
 /security-questionnaire ./Bank_VSQ.xlsx --standard custom
 /bid 招标文件.pdf --phase analyze                # 标书走 /bid --phase 七阶段
 
-# Stage 5 演示 + PoC
+# Stage 4 演示 + PoC
 /demo-design 某城商行 --mode rehearse
 /poc-plan 某城商行 PoC
 
@@ -676,12 +651,10 @@ claude .
 /pm-discovery "你的产品方向"
 /prd --mode diagnose "想法模糊"                      # 想法模糊时
 /prd --mode standard "你的产品名"                    # 直接写
-/working-backwards "你的功能想法"
 @qa-acceptance-designer "MVP 范围 v0.1"
 
 # 售前入门
 @solution-architect "客户名 / 项目名"
-/discovery-call 某客户 --mode prep
 /gap-analysis ./Requirements.xlsx
 /solution-architecture 项目名
 /business-case 项目名
@@ -695,10 +668,7 @@ claude .
 /marketing-copy 客户名 --type case
 
 # 战略决策
-/build-vs-buy "自研 vs 用 Auth0"
-/sunset "Legacy Feature X"
 /win-loss --quarter Q2
-/churn-analysis --quarter Q2
 
 # 通用任务
 /article-writer 帮我写一篇关于 AI 工具提效的文章

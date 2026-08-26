@@ -257,7 +257,6 @@ D+30：商业指标复盘
 |--------|---------|
 | `gtm-strategy` | Marketing/Sales 轨道的内容来源 |
 | `roadmap` | 发布日期来自路线图 |
-| `ab-test` | 灰度阶段的实验设计 |
 | `product-release-note` / `product-training` | Release Notes / 培训 PPT 等资料 |
 | `analytics` | D-Day 监控指标埋点设计 |
 | `pm-qa-acceptance` | 上线阻断项与客户验收口径 |

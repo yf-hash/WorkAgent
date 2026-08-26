@@ -1,11 +1,11 @@
 ---
 name: product-writer-router
 description: >
-  产品资料写作路由 skill — 承载 12 类"轻量产品资料"（彩页 / 商务 PPT / 技术 PPT /
-  功能清单 / 销售 FAQ / 竞品分析 / 投标参数 / 用户手册 / 部署 / 兼容性 / 发布说明 / 培训）的
+  产品资料写作路由 skill — 承载 7 类"轻量产品资料"（商务 PPT / 技术 PPT /
+  功能清单 / 销售 FAQ / 竞品分析 / 投标参数 / 部署）的
   **共享写作规范** + **模板路由表**。收到 `/product-*` 命令时，本 skill 决定加载哪一份
-  `templates/product/*.md` 结构模板，然后按共享规范执行。触发词：产品彩页、销售 FAQ、
-  投标参数、用户手册、部署说明、兼容性说明、发布说明、培训材料、产品介绍 PPT、竞品分析、
+  `templates/product/*.md` 结构模板，然后按共享规范执行。触发词：销售 FAQ、
+  投标参数、部署说明、产品介绍 PPT、竞品分析、
   功能清单、product-writer。
 user-invocable: false
 effort: low
@@ -25,7 +25,7 @@ harness:
 
 # 产品资料写作路由
 
-> **单一职责**：为 12 类轻量产品资料承载**共享写作规范** + **模板路由**。
+> **单一职责**：为 7 类轻量产品资料承载**共享写作规范** + **模板路由**。
 > 4 类"重内容"资料（whitepaper / tech-whitepaper / solution / case）保留各自专职 skill，本 skill 不覆盖。
 
 ---
@@ -34,18 +34,13 @@ harness:
 
 | 命令 | 加载模板 | 一句话定位 |
 |------|---------|-----------|
-| `/product-brochure` | [templates/product/brochure.md](../../templates/product/brochure.md) | A4 双面 / 三折页展会物料 |
 | `/product-intro-business` | [templates/product/intro-business.md](../../templates/product/intro-business.md) | 15-25 页商务路演 PPT |
 | `/product-intro-tech` | [templates/product/intro-tech.md](../../templates/product/intro-tech.md) | 20-40 页技术演讲 PPT |
 | `/product-function-list` | [templates/product/function-list.md](../../templates/product/function-list.md) | 带优先级 / 密级的功能全景表 |
 | `/product-sales-faq` | [templates/product/sales-faq.md](../../templates/product/sales-faq.md) | 30-60 条按客户类型分组的问答 |
 | `/product-competitive` | [templates/product/competitive.md](../../templates/product/competitive.md) | 3-5 家竞品对照表 |
 | `/product-bid-params` | [templates/product/bid-params.md](../../templates/product/bid-params.md) | 逐条投标参数应答（含偏离） |
-| `/product-manual` | [templates/product/manual.md](../../templates/product/manual.md) | 最终用户操作手册 |
 | `/product-deploy` | [templates/product/deploy.md](../../templates/product/deploy.md) | 运维部署配置指南 |
-| `/product-compat` | [templates/product/compat.md](../../templates/product/compat.md) | 兼容矩阵（OS / DB / 浏览器 / 硬件） |
-| `/product-release-note` | [templates/product/release-note.md](../../templates/product/release-note.md) | 版本 changelog |
-| `/product-training` | [templates/product/training.md](../../templates/product/training.md) | 销售 / 交付 / 运维培训体系 |
 
 > 4 类**保留独立 skill** 的 rich 类型（本 skill 不介入）：
 > - `/product-whitepaper` → `skills/product/product-whitepaper-writer/`
@@ -55,7 +50,7 @@ harness:
 
 ---
 
-## 二、共享写作规范（所有 12 类都要遵守）
+## 二、共享写作规范（所有 7 类都要遵守）
 
 ### 客户视角（第一原则）
 

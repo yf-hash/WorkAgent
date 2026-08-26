@@ -255,5 +255,4 @@ T+0：
 |------|-------|-------|
 | `gap-analysis` vs `rfp-response` | 主动梳理需求 vs 能力 | 被动逐条作答 |
 | `gap-analysis` vs `solution-architecture` | 需求适配度评估 | 完整方案蓝图 |
-| `gap-analysis` vs `build-vs-buy` | 客户的需求 vs 我方产品 | 客户的需求 vs（自建 / 买）通用决策 |
 | `gap-analysis` vs `compliance-checklist` | 客户全维度需求 | 仅合规维度 |

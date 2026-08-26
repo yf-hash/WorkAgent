@@ -270,7 +270,6 @@ harness:
 /product-report（本命令）
   ├── /roadmap → 月报里程碑
   ├── /analytics → 北极星 / 漏斗数据
-  └── /ab-test → 本月实验复盘
 
 推荐节奏：
   每周一上午：/product-report --mode weekly

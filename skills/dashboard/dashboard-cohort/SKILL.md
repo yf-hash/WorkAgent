@@ -23,7 +23,6 @@ harness:
 # Dashboard Cohort — 留存看板
 
 > 单一职责：Cohort 留存看板模板与查询。
-> 不做：留存策略本身（→ `pm-metrics-frameworks` §二·A3 留存）、流失分析（→ `churn-analysis`）
 
 ## 看板模板
 

@@ -1,6 +1,6 @@
 # WorkAgent
 
-> 以 **Claude Code 为算力入口**、以 **harness 五能力分层为执行框架**、以 **86 commands + 24 agents + 115 skills** 为业务组件的 AI 工作智能体系。
+> 以 **Claude Code 为算力入口**、以 **harness 五能力分层为执行框架**、以 **68 commands + 23 agents + 104 skills** 为业务组件的 AI 工作智能体系。
 >
 > 服务对象：产品经理、售前工程师、市场营销、内容作者、售前 SA。
 
@@ -43,16 +43,16 @@ WorkAgent/
 │   ├── scripts/                  # 维护脚本（migrate / validate）
 │   └── README.md                 # 完整命令 / 组件索引
 │
-├── commands/                     # 86 个斜杠命令（用户直接调用的入口）
+├── commands/                     # 68 个斜杠命令（用户直接调用的入口）
 │   ├── writing/                  # 9  写作类
-│   ├── product/                  # 30 产品管理
-│   ├── presales/                 # 29 售前 / 方案
+│   ├── product/                  # 20 产品管理
+│   ├── presales/                 # 21 售前 / 方案
 │   ├── media/                    # 12 PPT / 视频 / 图表
 │   ├── research/                 # 5  调研
 │   └── tools/                    # 1  工具
 │
-├── agents/                       # 24 个业务角色代理（编排多 skill）
-├── skills/                       # 115 个原子知识模块（14 子域）
+├── agents/                       # 23 个业务角色代理（编排多 skill）
+├── skills/                       # 104 个原子知识模块（14 子域）
 ├── templates/                    # 25 个填充模板
 │
 └── docs/                         # 元文档归档（AGENT_ROUTING / AUDIT / HEALTH / CONSOLIDATION）

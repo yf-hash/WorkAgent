@@ -268,6 +268,5 @@ Tier 3（一次性，遇单制作）：
 | 选择 | 用前者 | 用后者 |
 |------|-------|-------|
 | `battle-card` vs `market-research` | 一页纸销售弹药 | 几千字深度报告 |
-| `battle-card` vs `sales-guide-writer` | 对手专项作战卡 | 销售一页禅（产品总体）|
 | `battle-card` vs `win-loss-analysis` | 实时应对（赛前）| 复盘学习（赛后）|
 | `battle-card` vs `gtm-strategy` | 销售前线弹药 | 整体上市战略 |

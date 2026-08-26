@@ -4,7 +4,6 @@ description: >
   产品路线图规划 — 主题 × 时间的可视化路径。
   
   与相邻命令的边界（防混淆）：
-  - vs /user-story-mapping：故事地图是"用户旅程 × 故事切片"，
     Roadmap 是"主题 × 季度交付"。前者细到故事卡，后者粗到主题。
 user-invocable: true
 argument-hint: "<产品/团队描述> [--mode prioritize|plan|gantt|github] [--horizon 1m|3m|6m|1y]"

@@ -25,7 +25,6 @@ harness:
 # /demo-design — Demo 设计与沙盘演练
 
 加载技能：`skills/presales/demo-design/SKILL.md`
-配套 Skill：`marketing-copy --type demo`（写脚本）、`discovery-call`（提取客户痛点）
 
 ## 触发条件
 - 客户化关键 Demo 需要专门设计故事线
@@ -77,7 +76,7 @@ harness:
 ### `--mode storyline`（客户化故事线）
 ```
 Step 1: 客户场景对齐
-  → 加载 discovery-call 输出（如有）
+  → 加载客户拜访/需求挖掘记录（如有）
   → 提炼客户业务场景 + 客户原话 + 痛点
 
 Step 2: 故事线四件套
@@ -145,6 +144,4 @@ Step 4: 防御性（10 分）
 | 选择 | 用前者 | 用后者 |
 |------|-------|-------|
 | `/demo-design` vs `/marketing-copy --type demo` | Demo 设计与演练方法论 | Demo 脚本撰写 |
-| `/demo-design` vs `/sales-guide` | Demo 这一具体场景 | 销售一页禅（产品总体）|
-| `/demo-design` vs `/discovery-call` | 第 3+ 次会议（产品演示）| 第 1-2 次（需求挖掘）|
 | `/demo-design` vs `/poc-plan` | 30-90 分钟现场演示 | 4-12 周完整 PoC |

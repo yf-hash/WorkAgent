@@ -164,8 +164,6 @@ Step 7: 输出
 |------|-------|-------|
 | `/marketing-copy` vs `/article-writer` | 带营销目的的推广（CTA 明确）| 公众号长文（个人风格 / 观点输出）|
 | `/marketing-copy --type case` vs `/product-case` | 媒体外推 / 公众号发版本 | 官网案例库 / 销售口袋资料 |
-| `/marketing-copy` vs `/sales-guide` | 给读者 / 客户看的 | 给销售用的内部话术 |
-| `/marketing-copy --type pr` vs `/working-backwards` | 对外发布的真实新闻稿 | 立项前内部 PR-FAQ（决策工具）|
 | `/marketing-copy` vs `/proposal` | 标准化推广物料 | 一对一客户响应方案 |
 | `/marketing-copy --type video` vs `/pdf2video` | 写视频脚本 | 把已有内容渲染成视频 |
 | `/marketing-copy --type xhs` vs `/sync` | 写小红书内容 | 把已有内容多平台分发 |

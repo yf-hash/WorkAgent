@@ -8,7 +8,6 @@ description: >
   - vs /dashboard 看板系列：本命令做"指标定义 / 计算口径 / 埋点 Schema"，
     /dashboard --metric northstar|aarrr|cohort 等做"看板可视化 + SQL 查询 + 嵌入"。
     指标定下来后再去做看板。
-  - vs /ab-test：本命令是"宏观指标"，/ab-test 是"实验级 OEC + 护栏指标"。
 user-invocable: true
 argument-hint: "<分析目标> [--mode metrics|funnel|cohort|event] [--platform posthog|matomo|countly|jitsu]"
 allowed-tools: [Read, Write, Edit, Grep, Glob, AskUserQuestion]
@@ -129,5 +128,4 @@ posthog.capture('feature_used', {
 2. /analytics --mode event（产出埋点 Schema）
 3. 工程实施
 4. `/dashboard --metric northstar|aarrr|cohort`（基于指标做对应看板）
-5. /ab-test（基于数据做对比实验设计）
 ```

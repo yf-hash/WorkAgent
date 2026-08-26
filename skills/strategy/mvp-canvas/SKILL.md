@@ -278,7 +278,4 @@ harness:
 |--------|---------|
 | `product-strategy` | 提供 Lean Canvas 假设清单 |
 | `user-research` | 提供假设的用户访谈验证 |
-| `user-story-mapping` | Walking Skeleton = MVP 范围 |
-| `ab-test` | MVP 上线后做 A/B 验证 |
-| `pmf-survey` | MVP 验证通过后做 PMF 测试 |
 | `growth-experiment` | MVP 之上的增长实验 |

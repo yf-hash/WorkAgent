@@ -136,16 +136,12 @@ Step 6: 风险预案 + 伪 MVP 反模式自检
 /mvp-canvas（本命令）
   ├── /product-strategy → 假设来自 Lean Canvas
   ├── /user-research    → 验证假设的访谈方案
-  ├── /user-story-mapping → Walking Skeleton = MVP 范围
-  ├── /ab-test          → MVP 上线后 A/B 验证
-  └── /pmf-survey       → 验证后判断 PMF
 
 推荐工作流：
   早期想法：
     /product-strategy --mode lean
     → /mvp-canvas --mode fullset --budget low --timebox 2w
     → 上线 MVP → 收集数据
-    → /pmf-survey（达到验证标准后）
 ```
 
 ---

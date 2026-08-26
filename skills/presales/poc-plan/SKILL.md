@@ -355,6 +355,5 @@ Day 7：体面收尾会议
 
 | 知识库 | 协作 |
 |--------|------|
-| `sales-guide-writer` | PoC 销售物料 |
 | `pricing-strategy` | PoC 转正定价 |
 | `business-case` | PoC 转正商业论证 |

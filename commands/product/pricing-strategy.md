@@ -148,7 +148,6 @@ Step 6: A/B 测试 / 调研建议
 - Enterprise 商谈空间：需销售脚本支撑
 
 ## 后续
-→ /ab-test --mode design 设计定价 A/B
 → /pricing-strategy --mode psm 调研敏感度
 → /gtm-strategy 落地价格沟通策略
 ```
@@ -206,9 +205,7 @@ Step 6: A/B 测试 / 调研建议
   ├── /gtm-strategy → 定价是 GTM 核心
   ├── /market-research → 竞品价格情报
   ├── /user-research → PSM / Conjoint 调研
-  ├── /ab-test → 定价 A/B 设计
   ├── /analytics → LTV / CAC 数据
-  └── /pmf-survey → PMF 后定价更稳
 
 推荐工作流：
   新产品上市：
@@ -217,7 +214,6 @@ Step 6: A/B 测试 / 调研建议
     → /pricing-strategy --mode tier
     → /pricing-strategy --mode psm（调研）
     → 上市
-    → /ab-test（持续优化）
 ```
 
 ---

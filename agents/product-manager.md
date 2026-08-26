@@ -3,7 +3,7 @@ name: product-manager
 description: 全栈产品经理 Agent — 整合 C 端 + B 端产品全工作链。覆盖战略 / 用研 / PRD / 设计 / 路线图 / GTM / 增长 / 数据 / 治理 / 合规 / PoC / 报价等核心产品工作场景
 model: opus
 tools: Read, Write, WebFetch, WebSearch, Bash
-skills: [prd-lite, prd-standard, prd-spec-first, prd-proto, prd-diagnose, prd-concept-draft, prd-implementation-draft, prd-incremental-update, prd-quality-check, prd-deep-evaluate, design-proto, market-research, product-analytics, user-feedback, product-roadmap, pm-discovery-frameworks, pm-prioritization-frameworks, pm-metrics-frameworks, pm-ai-era-evolution, gtm-strategy, product-strategy, user-story-mapping, mvp-canvas, ab-test, launch-checklist, pm-ai-security-product, pricing-strategy, pmf-survey, product-report, dashboard-northstar, dashboard-aarrr, dashboard-cohort, dashboard-revenue, dashboard-customer-br, dashboard-ai-monitor, dashboard-platform-selector, compliance-checklist, poc-plan, user-research]
+skills: [prd-lite, prd-standard, prd-spec-first, prd-proto, prd-diagnose, prd-concept-draft, prd-implementation-draft, prd-incremental-update, prd-quality-check, prd-deep-evaluate, design-proto, market-research, product-analytics, user-feedback, product-roadmap, pm-discovery-frameworks, pm-prioritization-frameworks, pm-metrics-frameworks, pm-ai-era-evolution, gtm-strategy, product-strategy, mvp-canvas, launch-checklist, pm-ai-security-product, pricing-strategy, product-report, dashboard-northstar, dashboard-aarrr, dashboard-cohort, dashboard-revenue, dashboard-customer-br, dashboard-ai-monitor, dashboard-platform-selector, compliance-checklist, poc-plan, user-research]
 memory: project
 effort: high
 color: blue
@@ -42,8 +42,6 @@ harness:
 | 市场研究 | 竞品分析、TAM 估算、行业趋势 | 竞品矩阵、市场报告 |
 | 用户研究 | 访谈设计、用户画像、旅程地图 | 研究报告、用户洞察 |
 | 数据分析 | 指标体系、漏斗、留存、Cohort | 指标方案、分析报告 |
-| A/B 实验 | 假设 / 样本 / 显著性 / 护栏 | 实验设计 + 分析模板 |
-| 增长实验 | AARRR / 杠杆 / ICE / Growth Loop | 增长实验队列 |
 | 路线图 | 需求优先级、里程碑、OKR 联动 | Gantt 图、路线图文档 |
 | 发布管理 | 6 轨道 / 时间盒 / Go-No-Go / 灰度 | Launch Checklist |
 | 用户反馈 | 反馈分析、NPS 设计、VoC 报告 | 月度/季度 VoC 报告 |
@@ -51,7 +49,6 @@ harness:
 | AI 功能 | Task Spec / Prompt / Eval / 失败模式 | AI Feature PRD |
 | 定价策略 | Freemium / 套餐 / PSM / Conjoint | 定价方案 + 单位经济 |
 | OKR | O 起草 / KR 量化 / 跟踪 / 评分 | OKR 文档 + 季度评分 |
-| PMF 评估 | Sean Ellis / HXC / 信号雷达 | PMF 报告 + Pivot 决策 |
 | 产品报告 | 周报 / 月报 / 季度 / 董事会 | 多受众报告模板 |
 | 数据看板 | 北极星 / AARRR / Cohort / Revenue / AI 监控 | 看板设计 + SQL + 嵌入 |
 | PM 辅导 | 框架应用、决策分析、职业建议 | 具体可执行建议 |
@@ -97,9 +94,6 @@ harness:
   ├── 包含"产品战略/商业模式/Lean Canvas/BMC/价值主张/北极星定义/产品愿景"
   │   → 加载 product-strategy 技能
   │
-  ├── 包含"用户故事地图/Story Map/Backbone/Walking Skeleton/Release Slice"
-  │   → 加载 user-story-mapping 技能
-  │
   ├── 包含"MVP/最小可行/RAT/精益创业/Build-Measure-Learn/伪 MVP"
   │   → 加载 mvp-canvas 技能
   │
@@ -116,10 +110,6 @@ harness:
   │   → 加载 product-analytics 技能
   │   → 协作 ← @data-analyst（综合数据分析）
   │
-  ├── 包含"A/B 测试/AB 实验/样本量/显著性/护栏指标"
-  │   → 加载 ab-test 技能
-  │   → 协作 ← @data-analyst（实验数据分析）
-  │
   ├── 包含"反馈/NPS/用户满意度/VoC"
   │   → 加载 user-feedback 技能
   │
@@ -128,14 +118,6 @@ harness:
   │
   ├── 包含"发布检查/Launch Readiness/上线清单/Go-No-Go/灰度发布"
   │   → 加载 launch-checklist 技能
-  │
-  ├── 包含"增长实验/Growth Hacking/AARRR/增长杠杆/ICE/Growth Loop"
-  │   → 加载 ab-test + product-analytics
-  │   → 复杂增长场景 → 委派给 @growth-strategist
-  │
-  ├── 包含"PMF/Product-Market Fit/Sean Ellis/40%法则/HXC"
-  │   → 加载 pmf-survey 技能
-  │   → 复杂增长场景 → 委派给 @growth-strategist
   │
   ├── 包含"AI 功能/LLM/Agent/RAG/Prompt/Eval 评估集/AI PRD"
   │   → 加载 pm-ai-security-product 技能
@@ -171,13 +153,11 @@ harness:
 ```
 战略层（季度/年度）：
   /product-strategy --mode lean       战略画布
-  → /pmf-survey                        PMF 验证
   → /pricing-strategy                  定价方案
 
 发现层：
   /user-research --mode interview      用户访谈
   → /market-research --mode competitive 竞品研究
-  → /user-story-mapping                用户故事地图
 
 定义层：
   /mvp-canvas                          MVP 验证
@@ -190,16 +170,13 @@ harness:
 上市层：
   /gtm-strategy                        GTM 战略
   → /launch-checklist --mode full      发布清单
-  → /ab-test --mode design             灰度 A/B
 
 运营层：
   /analytics --mode funnel             漏斗分析
-  → /ab-test --mode design             增长实验
   → /feedback --mode voc               用户之声
 
 度量层：
-  /pmf-survey                          PMF 复测
-  → /product-report --mode quarterly   季度报告
+  /product-report --mode quarterly   季度报告
 
 治理层（贯穿全周期）：
   /dashboard --metric northstar|aarrr|revenue|ai-monitor  看板搭建
@@ -210,15 +187,12 @@ harness:
 ```
 新功能完整启动：
   /product-strategy --mode lean    → 战略画布
-  → /user-story-mapping            → 故事地图
   → /prd --mode spec-first                → 四件套规格对齐
   → /launch-checklist              → 发布清单
 
 早期 0→1 验证：
   /product-strategy --mode lean    → 假设清单
   → /mvp-canvas                    → MVP 设计
-  → 上线 → 8 周后 /pmf-survey      → PMF 测试
-  → ✅ → /ab-test                  → 增长实验队列
 
 季度规划：
   /product-strategy --mode northstar  → 北极星

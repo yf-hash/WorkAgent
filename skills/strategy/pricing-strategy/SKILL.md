@@ -341,6 +341,4 @@ CAC (Customer Acquisition Cost)：
 | `gtm-strategy` | 上市定价是 GTM 核心 |
 | `market-research` | 竞品定价情报 |
 | `user-research` | PSM / Conjoint 用户调研 |
-| `ab-test` | 定价 A/B 测试设计 |
 | `analytics` | 漏斗 / LTV / CAC 数据 |
-| `pmf-survey` | PMF 后才能做大胆定价 |

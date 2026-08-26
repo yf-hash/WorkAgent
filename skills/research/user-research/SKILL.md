@@ -464,7 +464,6 @@ Twitter（Tech 圈）
 | 知识库 | 协作 |
 |--------|------|
 | `market-research` | 互补：用户视角 vs 市场视角 |
-| `pmf-survey` | PMF 调研是用户研究的特殊形式 |
 | `user-feedback` | 反馈分析是被动用户研究 |
 | `product-strategy` | 用户研究 → Lean Canvas 假设验证 |
 | `mvp-canvas` | RAT 验证常用访谈 |

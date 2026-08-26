@@ -325,4 +325,3 @@ Business Case 的"价值"必须有比较对象，否则数字没有意义。
 | `business-case` vs `proposal-generator` | 全数字的财务论证 | 综合方案叙述 |
 | `business-case` vs `pricing-strategy` | 给客户算 ROI | 自家产品定价策略 |
 | `business-case` vs `solution-architecture` | 商务可行性 | 技术可行性 |
-| `business-case` vs `build-vs-buy` | 客户买我方 vs 不买 | 客户自研 vs 买（任意供应商）|

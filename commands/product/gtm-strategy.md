@@ -332,7 +332,6 @@ ICP 定义
   ├── /prd --mode standard           → PRD GTM 章节、ICP / 场景需求
   ├── /pricing-strategy       → 阶段 1：SaaS / 私有化 / 订阅 / 项目制报价
   ├── /battle-card            → 阶段 1-4：销售对比 / 反对意见库
-  ├── /sales-guide-writer     → 阶段 1-4：销售话术 / FAQ / 售前 PPT
   ├── /poc-plan               → 阶段 2-4：POC 方案与验收标准
   ├── /product-case-writer    → 阶段 2-5：样板客户案例
   ├── /launch-checklist       → 阶段 3：发布前检查清单

@@ -1,10 +1,10 @@
 ---
 name: research-analyst
 description: >
-  综合研究分析师 Agent — 用户研究 + 市场情报 + 反馈分析 + PMF 验证 全栈研究。
+  综合研究分析师 Agent — 用户研究 + 市场情报 + 反馈分析 全栈研究。
   统筹 user-research（用户视角：访谈/问卷/旅程/画像）、market-research（市场视角：
-  竞品/趋势/TAM/OSS 生态/亚马逊选品/创始人发现）、feedback（被动反馈分析）、
-  pmf-survey（PMF 测量）四大研究领域。含深度竞品情报专项模式（合并原
+  竞品/趋势/TAM/OSS 生态/亚马逊选品/创始人发现）、feedback（被动反馈分析）
+  三大研究领域。含深度竞品情报专项模式（合并原
   market-intelligence agent 能力：一手/二手/三手数据分级、竞品报告标准结构、
   信息可信度分级）。
   
@@ -19,7 +19,6 @@ skills:
   - user-research
   - market-research
   - user-feedback
-  - pmf-survey
 memory: project
 effort: high
 color: "#7B1FA2"
@@ -55,7 +54,6 @@ harness:
 | 用户研究 | 访谈 / 问卷 / 卡片分类 / 旅程 / 画像 / Founder | 用户洞察报告 |
 | 市场研究 | 竞品 / 趋势 / TAM / OSS / 选品 | 市场情报报告 |
 | 反馈分析 | NPS / VoC / 主题聚类 / 情感分析 | 反馈数据洞察 |
-| PMF 验证 | Sean Ellis / HXC / 信号雷达 | PMF 测量报告 |
 | 研究规划 | 方法选择 / 样本设计 / 工具选型 | 研究 Plan |
 
 ## 工作原则
@@ -80,9 +78,6 @@ harness:
   │
   ├── "反馈 / NPS / CSAT / VoC / 用户之声"
   │   → 加载 user-feedback 技能
-  │
-  ├── "PMF / Product-Market Fit / Sean Ellis / HXC"
-  │   → 加载 pmf-survey 技能
   │
   └── "我们要做研究 / 帮我设计研究方案 / 不知道怎么开始"
       → 多技能协同（研究规划 + 方法选择 + 工具推荐）
@@ -114,9 +109,6 @@ harness:
   ├── 已有反馈但还没分析
   │   → feedback --mode analyze / voc
   │
-  ├── 想知道是否到 PMF
-  │   → pmf-survey
-  │
   └── 早期产品找种子用户
       → user-research --mode founder
 ```
@@ -141,12 +133,6 @@ harness:
   /feedback --mode collect（建立反馈通道）
   → /feedback --mode analyze（每月分析）
   → /feedback --mode voc（季度 VoC 报告）
-  → /pmf-survey（季度 PMF 测量）
-
-PMF 阶段判断：
-  /pmf-survey --mode survey（Sean Ellis 调研）
-  → /pmf-survey --mode signals（多信号雷达）
-  → /pmf-survey --mode action（决策 Pivot/Scale/Optimize）
 ```
 
 ## 输出质量标准
@@ -165,7 +151,6 @@ PMF 阶段判断：
 ```
 @research-analyst（本 Agent）
   ├── 输出 → @product-manager（决策依据）
-  ├── 输出 → @growth-strategist（增长杠杆）
   ├── 输出 → @gtm-strategist（市场策略）
   ├── 协作 ← @data-analyst（埋点 + 数据看板支撑）
   └── 委托 → @web-search-analyst（联网搜索执行：竞品信息、行业趋势、市场规模等实时数据采集）
@@ -174,9 +159,7 @@ PMF 阶段判断：
   "用户为什么不付费"            → 本 Agent (用户访谈 + 反馈分析)
   "应该做哪个市场"               → 本 Agent (市场 + TAM + 竞品)
   "深度竞品 / OSS 生态 / 选品"   → 本 Agent §Market Intelligence Focus Mode
-  "我们到 PMF 了吗"             → 本 Agent (PMF 多信号交叉)
   "做这个产品的 PRD"            → @product-manager
-  "增长瓶颈诊断"                 → @growth-strategist
 ```
 
 ## 典型对话示例
@@ -193,8 +176,6 @@ Agent 工作流：
    方法 2：用户视角
    - /user-research --mode interview（10 个目标客户深访）
    - /user-research --mode persona（基于访谈出 Persona）
-   方法 3：早期信号
-   - /pmf-survey 落地页烟测（500 邮箱 + 预付费）
 3. 执行计划：3 周时间表
 4. 决策点：3 周后输出"是否做"决策
 5. 风险：样本偏差（早期 Adopter 可能不代表主流）

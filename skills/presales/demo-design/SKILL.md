@@ -31,7 +31,6 @@ harness:
 
 > Demo 是售前最高密度的展示窗口（30 分钟决定客户对产品的核心印象）。
 > 区别于 `marketing-copy --type demo`（写脚本）：本 Skill 关注**怎么设计、怎么演练、怎么应对意外**。
-> 区别于 `sales-guide-writer`（销售话术总集）：本 Skill 专注 Demo 这一具体场景。
 
 ---
 
@@ -41,7 +40,7 @@ harness:
 
 ```
 0-5 分钟｜场景对齐（不打开产品）
-  - 复述客户痛点（来自 discovery-call 输出）
+  - 复述客户痛点（来自客户拜访记录）
   - 引入一个客户能共鸣的真实场景
   - 用客户自己的话讲（从纪要中引用）
   - 目的：让客户从一开始就觉得"我们懂他"
@@ -329,6 +328,4 @@ Demo 结束 24 小时内必须发的：
 | 选择 | 用前者 | 用后者 |
 |------|-------|-------|
 | `demo-design` vs `marketing-copy --type demo` | Demo 设计与演练方法论 | Demo 脚本撰写 |
-| `demo-design` vs `sales-guide-writer` | Demo 这一具体场景 | 销售一页禅（产品总体）|
-| `demo-design` vs `discovery-call` | 第 3+ 次会议（产品演示）| 第 1-2 次会议（需求挖掘）|
 | `demo-design` vs `poc-plan` | 30-90 分钟现场演示 | 4-12 周完整 PoC |

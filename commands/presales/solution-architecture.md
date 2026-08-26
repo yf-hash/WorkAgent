@@ -68,7 +68,7 @@ harness:
 
 ```
 Step 1: 信息盘点
-  → 加载 discovery-call 输出（如有）
+  → 加载客户拜访/需求挖掘记录（如有）
   → 客户业务 + 已有 IT 资产 + 已知约束
 
 Step 2: As-Is 现状评估
@@ -110,5 +110,4 @@ Step 8: 评审清单
 | `/solution-architecture` vs `/proposal` | 技术架构方案（SA 主笔）| 商业方案三大类 |
 | `/solution-architecture` vs `/arch-diagram` | 完整方案文档 | 单纯生成架构图 |
 | `/solution-architecture` vs `/prd --mode enterprise` | 售前面向客户 | PM 内部产品规格 |
-| `/solution-architecture` vs `/discovery-call` | 第 3+ 次会议（架构落地）| 第 1-2 次（需求挖掘）|
 | `/solution-architecture` vs `/gap-analysis` | 完整方案蓝图 | 客户需求 vs 产品能力对照表 |

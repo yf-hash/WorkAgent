@@ -3,11 +3,8 @@ name: proposal
 description: >
   售前方案文档 — 企业项目型方案撰写。覆盖售前解决方案、可行性研究报告、
   初步设计方案三大类型，行业适配（政府 / 金融 / 制造 / SaaS），
-  与 /sales-guide / /product-* 系列 / /bid 七阶段标书互补。
   
   与相邻命令的边界（防混淆）：
-  - vs /sales-guide：本命令产出"客户响应方案"（项目型，一次性）；
-    /sales-guide 产出"销售一页禅"（场景剧本，给销售用）。
   - vs /product-* 系列：本命令是"项目型一次性方案"；
     /product-whitepaper / /product-solution 等是"产品级可复用资料"。
   - vs /bid 七阶段：本命令更通用；

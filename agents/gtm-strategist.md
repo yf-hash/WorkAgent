@@ -10,12 +10,12 @@ description: >
   支持金融 / 制造 / 医疗 / 政务 / 能源等行业垂直化、央国企招投标场景，
   以及基于已有材料的增量更新（--update）。
   编排 gtm-strategy、market-research、prd-standard、product-roadmap、pricing-strategy、
-  battle-card、sales-guide-writer、poc-plan、product-case-writer、launch-checklist、
-  rfp-response、win-loss-analysis、demo-design、discovery-call、marketing-copy、
+  battle-card、poc-plan、product-case-writer、launch-checklist、
+  rfp-response、win-loss-analysis、demo-design、marketing-copy、
   pm-prioritization-frameworks、pm-discovery-frameworks 等技能，产出端到端可执行的 B2B 上市方案。
 model: sonnet
 tools: Read, Write, WebFetch, WebSearch, AskUserQuestion
-skills: [gtm-strategy, market-research, prd-standard, product-roadmap, pricing-strategy, battle-card, sales-guide-writer, poc-plan, product-case-writer, launch-checklist, rfp-response, win-loss-analysis, demo-design, discovery-call, marketing-copy, pm-prioritization-frameworks, pm-discovery-frameworks]
+skills: [gtm-strategy, market-research, prd-standard, product-roadmap, pricing-strategy, battle-card, poc-plan, product-case-writer, launch-checklist, rfp-response, win-loss-analysis, demo-design, marketing-copy, pm-prioritization-frameworks, pm-discovery-frameworks]
 memory: project
 effort: high
 color: green
@@ -117,13 +117,12 @@ harness:
 | 市场竞品研究 | `market-research` | 竞品矩阵 / 市场规模 / 行业趋势 |
 | 产品需求文档 | `prd-standard` | PRD（GTM 章节）/ 用户故事 / ICP 与场景需求 |
 | 定价与商务 | `pricing-strategy` | 报价体系（SaaS / 私有化 / 订阅 / 项目制）|
-| 销售使能 | `battle-card`、`sales-guide-writer` | 销售对比 / 反对意见库 / 售前 PPT / FAQ / 话术 |
+| 销售使能 | `battle-card` | 销售对比 / 反对意见库 |
 | 内测与 POC | `poc-plan` | POC 方案 / 验收标准 / POC 报告 |
 | 客户案例 | `product-case-writer` | 样板客户案例 / 行业案例集 |
 | 发布执行 | `launch-checklist`、`marketing-copy` | 发布前 17+ 模块检查清单 / 发布文案 |
 | 招投标响应 | `rfp-response` | 央国企标书响应模板 / 评分项映射 |
 | Demo 设计 | `demo-design` | 定制化 Demo 流程 |
-| Discovery Call | `discovery-call` | SPIN 客户访谈脚本 |
 | 复盘与迭代 | `win-loss-analysis` | 赢/失单分析 / 客户决策因素 |
 | 路线图 | `product-roadmap` | 12 周 Gantt / 季度 Roadmap |
 | 框架应用 | `pm-prioritization-frameworks` / `pm-discovery-frameworks` | 决策分析 / 优先级排序 |
@@ -147,11 +146,11 @@ harness:
   │
   ├── 包含"产品包装/官网/PPT/白皮书/Demo/报价/FAQ/销售话术"
   │   → 阶段 1 入口：gtm-strategy --stage package
-  │   → 调用 pricing-strategy、battle-card、sales-guide-writer
+  │   → 调用 pricing-strategy、battle-card
   │
   ├── 包含"种子客户/POC/试点/样板/内测/试用"
   │   → 阶段 2 入口：gtm-strategy --stage pilot
-  │   → 调用 poc-plan、product-case-writer、discovery-call（SPIN 访谈）
+  │   → 调用 poc-plan、product-case-writer
   │
   ├── 包含"发布/上线/Launch/媒体/传播/官宣"
   │   → 阶段 3 入口：gtm-strategy --stage launch
@@ -191,13 +190,11 @@ Phase 2：阶段 1—产品包装
   ├── [调用 gtm-strategy --stage package] 销售材料体系
   ├── [调用 pricing-strategy] 报价体系（SaaS / 私有化 / 订阅 / 项目制）
   ├── [调用 battle-card] 竞品对比 / 反对意见库
-  ├── [调用 sales-guide-writer] 销售话术 / FAQ
   └── 输出：官网 / PPT / 白皮书 / Demo 脚本 / FAQ / 报价单 / 合同模板
   └── 闸门：销售独立讲完 PPT
 
 Phase 3：阶段 2—内测与样板
   ├── [调用 poc-plan] POC 方案与验收标准（避免无限试用）
-  ├── [调用 discovery-call] SPIN 客户访谈脚本
   ├── [调用 product-case-writer] 客户案例素材沉淀
   └── 输出：种子客户清单 / POC 方案 / 反馈记录 / 样板案例初稿 / 反对意见库
   └── 闸门：≥3 家 POC 完成 + ≥1 家可对外背书
@@ -211,7 +208,6 @@ Phase 4：阶段 3—正式发布
   └── 闸门：8 件最小物料上线 + 线索承接就位
 
 Phase 5：阶段 4—销售转化
-  ├── [调用 sales-guide-writer] 销售话术与售前方案
   ├── [调用 demo-design] 客户化 Demo 设计
   ├── [调用 rfp-response] 央国企招投标响应（如适用）
   ├── 客户决策链 6 角色图谱（Champion / EB / TB / User / Coach / Blocker）
@@ -420,11 +416,9 @@ Agent 工作流：
       ├── skills/pricing-strategy（报价体系）
       ├── skills/poc-plan（POC 方案）
       ├── skills/battle-card（销售对比）
-      ├── skills/sales-guide-writer（销售话术）
       ├── skills/launch-checklist（发布检查清单）
       ├── skills/marketing-copy（发布文案）
       ├── skills/demo-design（客户化 Demo）
-      ├── skills/discovery-call（SPIN 访谈）
       ├── skills/rfp-response（央国企招投标）
       ├── skills/product-case-writer（样板案例）
       └── skills/win-loss-analysis（赢/失单复盘）

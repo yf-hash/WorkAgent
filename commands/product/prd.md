@@ -1,6 +1,6 @@
 ---
 name: prd
-description: PRD 统一入口（12 种模式）。生成类：lite（1 页）/ standard（8 章）/ enterprise（B 端严格 12 章）/ spec-first（四件套）/ proto（含线框图）/ xqy（银行金融 8 章需规）。渐进类：diagnose → concept → impl（对话式三段）。评估类：quality（5 维评分）/ evaluate（23 节差距）。变更类：update（增量合并）。
+description: PRD 统一入口（13 种模式）。生成类：lite（1 页）/ standard（8 章）/ enterprise（B 端严格 12 章）/ linear（Linear Issue 单功能）/ spec-first（四件套）/ proto（含线框图）/ xqy（银行金融 8 章需规）。渐进类：diagnose → concept → impl（对话式三段）。评估类：quality（5 维评分）/ evaluate（23 节差距）。变更类：update（增量合并）。
 user-invocable: true
 argument-hint: "<需求描述或 PRD 文件路径> --mode <mode> [--stage <s>] [--fidelity <f>] [--module-type <m>] [--system <name>] [--flow discovery] [--lang zh|en]"
 allowed-tools: [Read, Write, Edit, AskUserQuestion]
@@ -24,7 +24,7 @@ harness:
 
 ## 一句话
 
-11 个 PRD skill + 1 个模板（enterprise）合入一个命令。`--mode` 分派到对应 skill/模板；无 `--mode` 时按输入类型（描述 / 文件路径）自动推断。
+12 个 PRD skill + 1 个模板（enterprise）合入一个命令。`--mode` 分派到对应 skill/模板；无 `--mode` 时按输入类型（描述 / 文件路径）自动推断。
 
 ## 用法
 
@@ -33,6 +33,7 @@ harness:
 /prd 用户可以查看消费明细 --mode lite
 /prd 开发 AI 写作助手浏览器插件 --mode standard
 /prd 多租户 SaaS 权限中心 --mode enterprise
+/prd 用户可以在订单列表页批量导出 Excel --mode linear
 /prd 用户可以在 App 内直接购买会员 --mode spec-first
 /prd 用户可以在 App 内直接购买会员 --mode spec-first --stage propose
 /prd 新用户注册引导流程 --mode proto --fidelity mid
@@ -60,6 +61,7 @@ harness:
 | `lite` | `skills/prd/prd-lite/SKILL.md` | 需求描述 | 1 页纸 PRD（背景/用户/方案/指标/不在范围）10-15 分钟 | 无 |
 | `standard` | `skills/prd/prd-standard/SKILL.md` | 需求描述 | 标准 8 章 PRD + Given/When/Then 验收 | 无 |
 | `enterprise` | `templates/prd-template.md`（模板直填，无独立 skill） | 需求描述 | B 端严格 12 章 PRD（含多租户/审计/隔离/合规/私有化默认必填），适合 B 端 SaaS / 私有化 | 无 |
+| `linear` | `skills/prd/prd-linear/SKILL.md` | 需求描述 | Linear Issue 级单功能 PRD（背景/名词/入口/主流程/异常边界/数据规则/权限/文案/GWT 验收/影响范围/明确不做/变更记录），含红线自检 | 无 |
 | `spec-first` | `skills/prd/prd-spec-first/SKILL.md` | 需求描述 | Spec-First 四件套（proposal/specs/design/tasks），受 `--stage` 约束 | 无 |
 | `proto` | `skills/prd/prd-proto/SKILL.md` | 需求描述 | PRD + ASCII 线框图（4 状态：默认/空/加载/错误），受 `--fidelity` 约束 | 无 |
 | `xqy` | `skills/prd/prd-xqy/SKILL.md` | 需求描述 | 银行/金融 8 章需规说明书（含 5 张强制表格），受 `--module-type` / `--system` 约束 | 无 |
@@ -80,6 +82,7 @@ harness:
     - lite（1 页对齐）
     - standard（C 端 8 章）
     - enterprise（B 端严格 12 章，含审计/隔离/合规）
+    - linear（Linear Issue 单功能，含红线自检）
     - spec-first（四件套）
     - proto（含线框图）
     - xqy（银行/金融需规）
@@ -130,6 +133,7 @@ harness:
 |---|---|
 | C 端通用 PRD | 本命令 `--mode lite/standard/spec-first/proto` |
 | B 端 SaaS / 私有化严格 12 章 | 本命令 `--mode enterprise` |
+| **Linear/Jira Issue 单功能规范化描述**（含红线自检） | **本命令 `--mode linear`** ⭐ |
 | 银行 / 金融 / 政府核心系统需规 | 本命令 `--mode xqy` 或 `@xqy-spec-writer` |
 | LLM / Agent / RAG 类 AI 功能 PRD | `@ai-product-architect` |
 | 想法模糊、需要对话教练 | 本命令 `--flow discovery` 或 `@prd-coach` |

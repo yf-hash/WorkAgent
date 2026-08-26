@@ -24,7 +24,6 @@ harness:
 # Dashboard Customer BR — 客户业务评审看板
 
 > 单一职责：单客户 BR/QBR 看板模板。
-> 不做：流失分析（→ `churn-analysis`）、收入汇总（→ `dashboard-revenue`）
 
 ## 看板模板
 

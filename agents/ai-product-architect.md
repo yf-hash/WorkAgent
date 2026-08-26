@@ -14,7 +14,6 @@ skills:
   - prd-standard
   - prd-spec-first
   - prd-implementation-draft
-  - ab-test
   - launch-checklist
   - product-analytics
   - dashboard-ai-monitor
@@ -103,9 +102,6 @@ harness:
   ├── 包含 "模型选型 / Opus vs Sonnet vs Haiku / 哪个模型"
   │   → 加载 pm-ai-security-product 技能（模型选型章）
   │
-  ├── 包含 "AI 功能 A/B / 模型 A/B / 灰度对比"
-  │   → 加载 ab-test 技能 + pm-ai-security-product
-  │
   ├── 包含 "AI 功能上线 / AI 灰度 / AI Launch"
   │   → 加载 launch-checklist + pm-ai-security-product
   │
@@ -129,7 +125,6 @@ Phase 1：Pilot 设计（2-4 周）
   - 失败模式覆盖 80%
   - 安全护栏 + Refusal
   - 1-5% 灰度
-  - /ab-test --mode design vs baseline
 
 Phase 2：Prod 上线（4+ 周）
   - 黄金集 200+ 条
@@ -163,7 +158,6 @@ Phase 3：持续运营
 ```
 @ai-product-architect（本 Agent）
   ├── AI 功能的非 AI 部分（界面/流程）→ @product-manager
-  ├── AI 功能的增长 → @growth-strategist
   ├── AI 功能的发布 → 套用 /launch-checklist
   ├── AI 功能的销售物料 → @product-enablement
   └── AI Coding 助手相关 → 参考 claude-api Skill

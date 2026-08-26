@@ -50,7 +50,7 @@ harness:
 3. 现状分析（As-Is）
    - 现有 IT 架构图 + 关键组件清单
    - 已有工具 / 厂商 / 集成
-   - 痛点量化（来自 discovery-call 阶段输出）
+   - 痛点量化（来自客户拜访/需求记录）
 
 4. 目标架构（To-Be）
    - 我方主推架构图（建议用 arch-diagram skill 生成）
@@ -106,7 +106,7 @@ harness:
 
 ### 2.1 信息来源（按可信度）
 1. 客户提供的架构图 / 文档（最优）
-2. discovery-call 阶段访谈记录
+2. 客户访谈记录 / 需求文档
 3. 客户公开技术博客 / 招聘 JD
 4. 同行 / 我方过往合作经验推断（标"⚠️ 待验证"）
 
@@ -354,5 +354,4 @@ Phase 3：全量推广（Day 61-90+）
 | `solution-architecture` vs `proposal-generator` | 技术架构方案（SA 主笔）| 商业方案三大类（投标 / 可研 / 初步设计）|
 | `solution-architecture` vs `arch-diagram` | 完整方案文档（含架构图）| 单纯生成架构图 |
 | `solution-architecture` vs `prd --mode enterprise` | 售前面向客户 | PM 内部产品规格 |
-| `solution-architecture` vs `discovery-call` | 第 3+ 次会议（架构落地）| 第 1-2 次（需求挖掘）|
 | `solution-architecture` vs `gap-analysis` | 完整方案蓝图 | 客户需求 vs 产品能力的对照表 |

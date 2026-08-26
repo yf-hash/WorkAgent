@@ -193,14 +193,12 @@ D+30  商业指标复盘
 /launch-checklist（本命令）
   ├── /gtm-strategy → Marketing 轨道内容
   ├── /roadmap → 发布日期来源
-  ├── /ab-test → 灰度阶段实验设计
   ├── /product-release-note → 版本说明
   └── /analytics → D-Day 监控指标埋点
 
 推荐工作流：
   重大发布：
     /launch-checklist --launch-type gradual --scale large
-    → /ab-test --mode design（灰度阶段）
     → 上线
 ```
 

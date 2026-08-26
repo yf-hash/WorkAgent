@@ -24,7 +24,6 @@ harness:
 # Dashboard Revenue — 收入看板
 
 > 单一职责：B 端订阅业务的收入看板模板与查询要点。
-> 不做：定价策略（→ `pricing-strategy`）、Churn 救援（→ `churn-analysis`）
 
 ## 看板模板
 
@@ -104,6 +103,5 @@ P1：CAC 月度上升 > 20% 且 LTV 不变
 
 ## 配套 Skill
 
-- 流失原因分析：`churn-analysis`
 - 定价优化：`pricing-strategy`
 - 续约谈判：`@solution-architect`
