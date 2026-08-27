@@ -66,11 +66,15 @@ harness:
     gates: [before-write, before-external-send]
 ```
 
-Gate 语义：
+Gate 语义（**核心 gate**，跨命令通用；命令内部可再声明 `after-<stage>` 形式的自定义阶段 gate）：
 - `before-write`：在第一次 Write/Edit 前问一次（防止误覆盖）
 - `before-external-send`：在推送到 GitHub/Slack/Email 前必须二次确认
 - `before-destructive`：任何 rm/mv 前必须确认
 - `before-loop-restart`：iterative loop 每 N 轮汇报一次是否继续
+- `before-freeze`：归档流水线在生成 `_frozen/` 只读快照前必须确认（不可逆）
+- `before-writeback`：Content 流水线在把产物写回关联 PM/SA 项目 `_content/` 前必须确认（会修改另一个项目目录）
+
+**自定义 gate 命名规则**：`^(before|after)-<kebab-case>$`。例如 `after-decompose`（角色 agent 展示计划后确认）、`after-metrics-list`（技术规格书列出 6 大类指标后确认）。`validate-harness.py` 只校验格式，不校验语义——每个命令负责在正文里解释自己的自定义 gate。
 
 ## 与 execute 的边界
 

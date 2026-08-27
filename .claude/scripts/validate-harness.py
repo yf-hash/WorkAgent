@@ -12,6 +12,13 @@ from __future__ import annotations
 import re, sys
 from pathlib import Path
 
+# Ensure UTF-8 stdout on Windows console (GBK by default) so CJK / arrows don't crash.
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+
 ROOT = Path(__file__).resolve().parents[2]
 STRICT = "--strict" in sys.argv
 
@@ -27,10 +34,13 @@ CONSTRAIN_PROFILES = {
 LOOP_MODES = {"one-shot", "pipeline", "iterative", "parallel", "monitor"}
 MEMORY_SCOPES = {"session", "project", "user", "agent"}
 DANGER_LEVELS = {"low", "medium", "high"}
-GATE_KEYS = {
+# Core gate names promoted in profiles.md (kept for reference, not the sole allowlist)
+CORE_GATE_KEYS = {
     "before-write", "before-external-send", "before-destructive",
-    "before-loop-restart",
+    "before-loop-restart", "before-freeze", "before-writeback",
 }
+# Any custom stage gate must match this shape (kebab-case, prefixed by phase)
+GATE_NAME_RE = re.compile(r"^(before|after)-[a-z][a-z0-9-]*$")
 
 # ─── preset ↔ allowed-tools 一致性 ────────────────────────────
 # 每个 preset 下"绝对不该出现"的工具（出现即违反语义）
@@ -125,7 +135,12 @@ def validate_file(path: Path) -> list[str]:
     fm = m.group(1)
 
     if "harness:" not in fm:
-        return []  # 没 harness 块
+        # commands 和 agents 是用户可见的执行入口，必须显式声明 harness
+        # skills 是被 command 引用的内部知识模块，允许省略（继承调用方策略）
+        rel = path.relative_to(ROOT).as_posix()
+        if rel.startswith(("commands/", "agents/")):
+            errors.append("commands / agents 必须显式声明 harness 块（skills 可省略）")
+        return errors
 
     block = extract_harness_block(fm)
     if block is None:
@@ -157,8 +172,11 @@ def validate_file(path: Path) -> list[str]:
         if gates.startswith("["):
             items = [x.strip() for x in gates.strip("[]").split(",") if x.strip()]
             for g in items:
-                if g not in GATE_KEYS:
-                    errors.append(f"constrain.gates 未知 gate: {g!r}")
+                if not GATE_NAME_RE.match(g):
+                    errors.append(
+                        f"constrain.gates 命名不合法: {g!r}"
+                        f"（须匹配 ^(before|after)-<kebab-case>$）"
+                    )
 
     # loop.mode
     loop = parsed.get("loop", {})
@@ -212,7 +230,7 @@ def validate_file(path: Path) -> list[str]:
         violated = (allowed & forbidden) - extension
         for tool in sorted(violated):
             errors.append(
-                f"preset↔allowed-tools 冲突: preset={exe_preset!r} 不该允许 {tool!r}"
+                f"preset<->allowed-tools 冲突: preset={exe_preset!r} 不该允许 {tool!r}"
                 f"（如需扩展，写 harness.execute.tools: [{tool}]）"
             )
 

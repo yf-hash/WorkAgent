@@ -4,6 +4,10 @@
 .claude/audit/
 .claude/backups/
 
+# 流水线产出目录：三条端到端流水线（PM / SA / Content）生成到这里
+# 保留一份 README/CHANGELOG 便于回溯的用法，改为白名单单独 add
+output/
+
 # 备份 / 临时文件
 *.bak
 *.tmp

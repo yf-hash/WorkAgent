@@ -1,799 +1,152 @@
-# WorkAgent
+# .claude — Harness 层配置
 
-> 以 Claude Code 为入口，通过自然语言 command 调用适配的 Agent 和 Skill，完成前场需求的工作智能体，满足产品经理、售前工程师、市场营销等不同用户的场景需求。
+WorkAgent（PM Harness + SA Harness + Content Harness）的 Claude Code 层配置目录。所有 harness 原语在此。
 
-WorkAgent 是面向产品经理、售前工程师、市场营销等用户的工作智能体，核心理念是：**通过 WorkAgent，让工作效率指数级提升**。
-
----
-
-## 项目概述
-
-WorkAgent 是一套以 **风格驱动 + 单一职责** 为核心设计理念的 AI 原生工作平台。它不是通用代码工具，而是专为前场业务人员打造的智能工作系统：
-
-- **内容创作**：公众号长文、访谈稿、深度研究报告、文档润色
-- **营销推广**：公众号软文 / 小红书 / 知乎 / 朋友圈 / 短视频 / 落地页 / EDM / PR 稿 / 客户故事 9 大文体
-- **产品管理**：PRD 全光谱（lite / standard / spec-first / proto / enterprise + 评分 / 评估 / 增量更新）、竞品分析、用户研究、数据分析、路线图规划
-- **售前 / 解决方案**：客户拜访 / 需求挖掘 / Gap Analysis / SA Blueprint / Business Case / RFP 应答 / 安全问卷 / 竞品作战卡 / Demo 设计 / PoC 全链路
-- **标书编制**：七阶段原子命令（analyze / clarify / outline / write / review / check / export），三色标记 + RAG 增强写作
-- **产品资料**：16 类原子产品文档（白皮书 / 技术白皮书 / 宣传册 / 商务介绍 / 技术介绍 / 功能清单 / 销售FAQ / 竞品分析 / 投标参数 / 解决方案 / 案例 / 用户手册 / 部署 / 兼容性 / 发布说明 / 培训）
-- **数据看板**：7 类原子看板（北极星 / AARRR / Cohort / Revenue / Customer BR / AI Monitor / 平台选型）
-- **演示制作**：6 种 PPT 引擎自动路由，学术/商务/开发者场景全覆盖
-- **数据分析**：自然语言转 SQL + Python 沙箱执行，联合数据库与文件分析
-- **视频生成**：Remotion 三引擎拆分（native / prompt2video / vidosy），字幕 / TTS / MP4 渲染全流程
-- **视频处理**：PDF/PPT 转动态视频、AI 智能剪辑、字幕生成、多平台分发
-- **图表架构**：云架构图（AWS/GCP/Azure/K8s）、Visio、Mermaid、PlantUML、Markmap 五引擎独立
-
-**支持编辑器**：Claude Code（完整支持）> Cursor > OpenAI Codex
-
----
-
-## 核心内容
-
-| 模块 | 数量 | 说明 |
-|------|------|------|
-| Agents | 23 个 | 自治代理，编排原子命令完成完整业务流程（v3.0 全部带 harness 元数据） |
-| Skills | 104 个 | 可复用知识库，**严格单一职责**（v3.0 全部带 harness 元数据） |
-| Commands | 68 个 | 统一命令入口（v3.1 精简产品/售前低频后） |
-| Templates | 17 活跃（+ 3 归档） | PRD/PM-Discovery/验收/Release/Sales/PR-FAQ/Model Card/Eval Rubric 等；孤儿模板归档到 `templates/archive/` |
-
-**设计原则**：
-
-- **单一职责**：每个 Skill 只完成一个任务，避免上下文膨胀和决策矛盾（v2.6 重构核心）
-- **风格驱动**：所有写作输出以用户/角色风格为第一优先级，避免 AI 套话
-- **人机协同**：关键节点设置人工确认，标书/内容创作均有阶段性检查点
-- **多引擎路由**：PPT、配图、数据分析等场景支持多种后端引擎自动选择
-- **质量四层自检**：活人感 → 情感 → 信息 → 结构，逐层验证输出质量
-
----
-
-## 项目结构
+## 目录
 
 ```
-WorkAgent/
-├── agents/                # 23 个自治代理（含 README.md 分层索引）
-├── skills/                # 104 个原子 Skill（v2.8 分入 14 子域）
-│   ├── writing/           # 10（article-writer / interview / marketing-copy / style-* / humanizer-*）
-│   ├── prd/               # 11（prd-lite/standard/spec-first/proto/quality/deep-eval/diagnose/concept/impl/incremental/xqy）
-│   ├── pm/                # 7（pm-* 6 + product-strategy）
-│   ├── product/           # 5（4 rich writer + 1 router）
-│   ├── presales/          # 10（gap/SA/BC/RFP/security/battle/demo/PoC/doc-auditor/proposal-generator）
-│   ├── bid/               # 7（bid-analyze/clarify/outline/write/review/check/export）
-│   ├── dashboard/         # 7（northstar/aarrr/cohort/revenue/customer-br/ai-monitor/platform-selector）
-│   ├── ppt/               # 8（ppt-master/architect/rag/researcher + academic/slidetailor/slidev/marp）
-│   ├── media/             # 9（remotion-* / pdf2video / omni-captions / videocut / content-sync / md-* ）
-│   ├── diagram/           # 9（arch/markmap/plantuml/mermaid/visio/html/ai-illustrator/SD/impeccable）
-│   ├── research/          # 7（market/user/paper-*/taskweaver/chat2db/open-websearch）
-│   ├── data/              # 1（product-analytics）
-│   ├── strategy/          # 13（gtm/win-loss/mvp/roadmap/pricing/launch/design-proto/compliance/report/user-feedback/table-csv-md/table-from-text）
-│   └── tools/             # 1（od-contribute）
-├── commands/              # 68 个（v3.1 精简产品/售前低频后）
-│   ├── writing/           # 9（style-* 3 + humanize + polish + marketing + article + interview + sync）
-│   ├── product/           # 20（PM + prd 统一入口 + dashboard + 战略决策）
-│   ├── presales/          # 21（含 bid 统一 + product-* 8 类）
-│   ├── research/          # 5
-│   ├── media/             # 12（ppt/illustrate/video-gen/diagram/arch-diagram/visio/md-render/table/caption/pdf2video/videocut）
-│   └── tools/             # 1
-├── templates/             # 17 活跃（含 templates/product/ 7 个）+ 3 归档（archive/）
-├── HARNESS_FRAMEWORK.md   # ★ v3.0：五能力分层锚点（execute/constrain/loop/memory/security）
-├── docs/                  # ★ v3.0：元文档归档（AGENT_ROUTING/AUDIT/HEALTH_REPORT/CONSOLIDATION_PLAN）
-└── .claude/
-    ├── CLAUDE.md          # ★ v3.0：项目级说明（每次会话必读）
-    ├── settings.json      # 全局权限 + hooks 位（骨架就绪）
-    ├── harness/           # ★ v3.0：五能力原语（execute/constrain/loop/memory/security）
-    ├── hooks/             # ★ v3.0：hook 脚本骨架
-    ├── memory/            # ★ v3.0：项目级记忆（MEMORY.md 索引 + 分文件）
-    └── README.md
+.claude/
+├── CLAUDE.md              # 项目级说明（每次会话必读）
+├── README.md              # 本文件
+├── settings.json          # 全局权限 + hooks 位
+├── harness/                # 五能力原语
+│   ├── execute/           # 工具预设
+│   ├── constrain/         # 权限画像
+│   ├── loop/              # 循环模式
+│   ├── memory/            # 记忆作用域
+│   ├── security/          # 安全策略
+│   └── role/              # 角色路由 SOP
+├── hooks/                 # hook 脚本
+├── memory/                # 项目级记忆
+│   ├── MEMORY.md          # 索引
+│   ├── project-context.md
+│   ├── conventions.md
+│   └── decisions.md
+└── scripts/               # 校验 / 迁移
 ```
 
----
+## 快速索引
 
-## 智能体系统
+- 顶层框架：[../HARNESS_FRAMEWORK.md](../HARNESS_FRAMEWORK.md)
+- PM 6 模块流水线：[../docs/PM_HARNESS.md](../docs/PM_HARNESS.md)
+- SA 7 模块流水线：[../docs/SA_HARNESS.md](../docs/SA_HARNESS.md)
+- Content 5 模块流水线：[../docs/CONTENT_HARNESS.md](../docs/CONTENT_HARNESS.md)
+- 项目级会话说明：[CLAUDE.md](CLAUDE.md)
 
-23 个自治 Agent，覆盖产品、内容、标书、数据、研究、媒体、GTM、方案、视觉、**售前 / 解决方案**全域：
+## 三条流水线命令一览
 
-| Agent | 职责 | 调用时机 |
-|-------|------|---------|
-| `product-manager` | 全栈产品经理（PRD/竞品/用研/分析/路线图/反馈全流程） | 产品决策、需求文档、产品策略 |
-| `solution-architect` | **售前解决方案总指挥** — 统筹客户拜访 / Gap / 方案 / Business Case / RFP / Demo / 竞品 / PoC / 售前物料全链路 | 售前 SE / SA 工作场景，赢单导向 |
-| `product-director` | 产品总监 — 复杂跨部门产品任务的策略层（拆任务/分工/取舍/把关） | 复杂立项、跨团队大功能、CEO 项目、客户战略级方案 |
-| `prd-coach` | PRD 对话教练 — 三镜诊断 + 两阶段交付（概念稿→实现稿），对话式引导非 PM 用户写出可开发的需求文档 | 想法模糊/非 PM/需要引导式写需求文档时 |
-| `qa-acceptance-designer` | 测试验收设计 — PRD → 验收方案（功能/权限/异常/数据/审计/客户口径），输出上线阻断项 | PRD/版本验收、UAT 设计、上线 Go/No-Go 阻断项确认 |
-| `ai-product-architect` | AI 产品架构师 — 专注 LLM/Agent/RAG 类功能的规格、Prompt、Eval、失败模式管理 | AI 功能 PRD、Prompt 工程交付、AI 功能上线评审 |
-| `research-analyst` | 综合研究分析师 — 用户研究 + 市场情报 + 反馈分析 + Market Intelligence Focus Mode（深度竞品 / TAM / OSS 生态 / 选品，合并原 market-intelligence agent） | 早期 0→1 探索、立项验证、深度竞品分析 |
-| `gtm-strategist` | GTM 全链路战略（增长模型/ICP/定位/渠道/定价/90天计划） | 新产品上市规划、GTM 诊断与优化 |
-| `proposal-writer` | 企业方案撰写全链路（售前方案/可研报告/初步设计，多行业定制） | 售前解决方案、项目建议书 |
-| `product-enablement` | 产品赋能（8 类产品资料编排） | 产品赋能、销售支持 |
-| `bid-writer` | 标书七阶段编制（接收 /bid-* 系列子命令） | 标书/投标/招标文件编制 |
-| `content-director` | 全流程内容创作编排（风格分析→框架→写作→QA→迭代） | 需要完整写作流程 |
-| `style-evolver` | 风格学习 → 风格卡片确认 → Writer-Reviewer 迭代创作 | 风格迁移、参考文章仿写 |
-| `doc-polisher` | 文档智能润色（AI 去痕 + 智能配图全自动闭环） | 文档润色、去 AI 味 + 配图一体化 |
-| `paper-researcher` | 论文研究（arXiv 搜集 + 单篇深度解读） | 论文情报跟踪、学术科普写作 |
-| `video-maker` | Remotion 视频生成路由（native / prompt2video / vidosy / pdf2video） | 企业介绍视频、产品演示视频 |
-| `ppt-generator` | PPT 生成协调，5 种引擎路由（academic/slidetailor/ppt-master/slidev/marp；SDK 内嵌 ppt-master） | PPT 生成任务 |
-| `data-analyst` | 综合 TaskWeaver + Chat2DB 的数据分析 Agent | 数据查询、分析、报表生成 |
-| `article-illustrator` | 文章内联配图 — HTML 图表 + Mermaid + Stable Diffusion 三合一，专为 .md 文章自动批量配图 | 文章/博客自动配图 |
-| `diagram-architect` | 统一图表编排，自动路由至 Mermaid/PlantUML/Markmap/diagrams/Visio 最优引擎 | 图表类型不确定、需要多图表套件、格式互转时 |
-| `impeccable-designer` | **反 AI Slop 的前端设计语言总指挥** — 集成 [Paul Bakaus 的 impeccable.style](https://impeccable.style/)，7 领域 vocabulary + 32 上游 flow 参考 + 27 条反模式 + 12 条 critique，让 AI 写的 UI 不再像 AI | landing page / dashboard / 组件设计、AI 味 UI 修复、上线前设计审查 |
-| `web-search-analyst` | 多引擎联网研究分析师（Bing / 百度 / CSDN / DuckDuckGo / Brave / 掘金等 9 大引擎并行 + 跨源三角验证） | 热点解读、技术调研、竞品快照、错误排查 |
-| `xqy-spec-writer` | 银行/金融 XQY 需求规格说明书（8 章模板 + 5 张强制表格） | 银行/保险/证券/国企/运营商/政府类甲乙方交付场景 |
+### PM Harness（6 模块主流水线 + 竞品分析横向能力）
 
----
-
-## Skill 系统
-
-104 个原子 Skill（v2.8 分入 14 子域，v3.0 全部带 harness 元数据）。下方按域列出，每个 Skill **单一职责**、**有边界声明**。
-
-### 写作与内容（10）
-
-| Skill | 描述 | 触发方式 |
-|-------|------|---------|
-| `article-writer` | 文章风格公众号长文写作（4000-8000 字） | `/article-writer` |
-| `hv-analysis` | 横纵分析法深度研究（10000-30000 字 PDF 报告） | `/hv-analysis` |
-| `interview-writer` | 访谈写作 v2.0，Writer-Reviewer 互搏 + 知识库进化 | `/interview-writer` |
-| `style-card-extractor` | 从参考文章提炼风格卡片 | `/style-extract` |
-| `style-writer-reviewer` | 基于风格卡片 + Writer-Reviewer 互搏创作 | `/style-create` |
-| `style-refine` | 已有文章按风格卡片优化 | `/style-refine` |
-| `humanizer-scan` | AI 痕迹扫描（29 模式 / 五维评分） | `/humanize --mode scan` |
-| `humanizer-soul` | 灵魂注入（6 大人性原则） | `/humanize --mode soul` |
-| `humanizer-academic` | 学术深度强化（30 条指令） | `/humanize --mode academic` |
-| `marketing-copy` | 9 大营销文体（公众号软文 / 小红书 / 知乎 / 朋友圈 / 短视频 / 落地页 / EDM / PR 稿 / 客户故事 / Demo 脚本） | `/marketing-copy` |
-
-### 标书编制（7 阶段拆分，7 Skill）
-
-> v2.8 起命令入口统一为 `/bid --phase <1..7|analyze|clarify|outline|write|review|check|export|all>`。Skills 层拆分保留。
-
-| Skill | 阶段 | 触发 |
-|-------|------|---------|
-| `bid-analyze` | 1. 拆解 + 三色标记 | `/bid --phase analyze` |
-| `bid-clarify` | 2. 澄清问题清单 | `/bid --phase clarify` |
-| `bid-outline` | 3. 大纲 + 偏离表 | `/bid --phase outline` |
-| `bid-write` | 4. 分模块撰写 | `/bid --phase write` |
-| `bid-review` | 5. 双轮评审 | `/bid --phase review` |
-| `bid-check` | 6. 合规核查 | `/bid --phase check` |
-| `bid-export` | 7. 移交导出 | `/bid --phase export` |
-
-### PRD 全光谱（10 Skill）
-
-| Skill | 用途 | 触发命令 |
-|-------|------|---------|
-| `prd-lite` | 1 页对齐方向 | `/prd --mode lite` |
-| `prd-standard` | 标准 8 章 PRD | `/prd --mode standard` |
-| `prd-spec-first` | Spec-First 四件套 | `/prd --mode spec-first` |
-| `prd-proto` | 含 ASCII 线框图 | `/prd --mode proto` |
-| `prd-quality-check` | 5 维度评分 | `/prd --mode quality` |
-| `prd-deep-evaluate` | 23 节模板差距分析 | `/prd --mode evaluate` |
-| `prd-diagnose` | 三镜诊断（想法模糊） | `/prd --mode diagnose` |
-| `prd-concept-draft` | 概念稿 | `/prd --mode concept` |
-| `prd-implementation-draft` | 实现稿 | `/prd --mode impl` |
-| `prd-incremental-update` | 已有 PRD 增量更新 | `/prd --mode update` |
-| `prd-xqy` | 银行/金融 XQY 需规格 8 章模板（接口/菜单/批处理） | `/prd --mode xqy` |
-
-> B 端严格 12 章另走 `/prd --mode enterprise`。
-
-### 产品资料（4 rich skills + 1 router + 12 templates）
-
-**4 类 rich skill**（重内容，独立职责）：
-`product-whitepaper-writer`（8-15 章白皮书） / `product-tech-whitepaper-writer`（技术架构侧重） / `product-solution-writer`（客户场景侧重） / `product-case-writer`（客户故事结构）
-
-**12 类轻量文档**（共享 `product-writer-router` skill + `templates/product/*.md` 结构模板）：
-产品彩页 / 商务介绍 PPT / 技术介绍 PPT / 功能清单 / 销售FAQ / 竞品分析 / 投标参数 / 用户手册 / 部署 / 兼容性 / 发布说明 / 培训
-
-> 命令层面依旧是 16 个 `/product-*` 原子命令（用户熟悉的名字不变）。底层从 16 skill × 各自复读的写作规范，收敛为 1 router skill（共享规范）+ 12 template（结构模板）+ 4 独立 skill（rich 内容）。上下文按需加载，共享规范只写一处。
-
-### 数据看板（7 类原子 Skill）
-
-> v2.8 起命令入口统一为 `/dashboard --metric <name>`。Skills 层拆分保留。
-
-| Skill | 看板类型 | 触发 |
-|-------|---------|---------|
-| `dashboard-northstar` | 北极星 | `/dashboard --metric northstar` |
-| `dashboard-aarrr` | AARRR 漏斗 | `/dashboard --metric aarrr` |
-| `dashboard-cohort` | Cohort 留存 | `/dashboard --metric cohort` |
-| `dashboard-revenue` | 收入（MRR/ARR/NRR） | `/dashboard --metric revenue` |
-| `dashboard-customer-br` | 客户 BR / QBR | `/dashboard --metric customer-br` |
-| `dashboard-ai-monitor` | AI 功能监控 | `/dashboard --metric ai-monitor` |
-| `dashboard-platform-selector` | 平台选型决策 | `/dashboard --metric platform-selector` |
-
-### 产品管理（核心方法论 + 框架）
-
-- 战略决策：`product-strategy` / `win-loss-analysis`
-- 流程方法：`mvp-canvas` / `launch-checklist`
-- 数据：`product-analytics` / `user-research` / `market-research` / `user-feedback` / `product-roadmap`
-- 设计与运营：`design-proto` / `pricing-strategy` / `product-report` / `compliance-checklist`
-- AI 产品：`pm-ai-security-product`
-- PM 框架：`pm-discovery-frameworks` / `pm-prioritization-frameworks`（含向上管理） / `pm-metrics-frameworks`（北极星 + AARRR） / `pm-ai-era-evolution` / `pm-qa-acceptance`
-
-### PPT 与可视化
-
-| Skill | 描述 | 触发方式 |
-|-------|------|---------|
-| `ppt-master` | 通用 PPT 生成 | `/ppt` |
-| `academic-pptx` | 学术演讲 PPT | `/ppt`（自动路由） |
-| `slidetailor` | 论文 PDF → 学术幻灯片 | `/ppt --backend slidetailor` |
-| `slidev` | 开发者演示（Markdown + Vue） | `/ppt --backend slidev` |
-| `marp` | Markdown 快速出片 | `/ppt --backend marp` |
-| `ppt-architect` | PPT 场景图表构建（路由至 mermaid/plantuml/diagrams） | 内部调度 |
-| `ppt-rag-indexer` | PPT 专用 RAG 索引检索 | `/ppt --rag` |
-| `ppt-web-researcher` | PPT 多源内容搜集（官方/媒体/学术/产业/社区） | `/ppt --research` |
-| `html-chart` | HTML+Playwright 截图，4 种风格 | `/illustrate` |
-| `mermaid-chart` | Mermaid 图表生成 | `/illustrate --backend mermaid` |
-| `diagram-markmap` | Markmap 思维导图 | `/diagram --type mindmap` |
-| `diagram-plantuml` | PlantUML 全系 UML | `/diagram --type uml` |
-| `arch-diagram` | 云架构图（AWS/GCP/Azure/K8s/阿里云） | `/arch-diagram` |
-| `visio-builder` | Visio 图表创建与格式互转 | `/visio` |
-| `ai-illustrator` | AI 智能插图（article / thesis-figure / document 子流程） | 对话触发 |
-| `stable-diffusion` | SD WebUI 文生图 / 图生图 | `/illustrate --backend sd` |
-| `impeccable` | 反 AI Slop 前端设计语言（7 领域 vocabulary + 32 上游 flow 参考 + 27 反模式 + 12 critique） | `/impeccable` |
-| `md-poster` | Markdown 转海报/分享卡片 | `/md-render --format poster` |
-| `md-table-image` | Markdown 表格转图片 | `/md-render --format table` |
-| `table-from-text` | 层级文本 → Markdown/CSV/Excel 表格 | `/table-from-text` |
-| `table-csv-md` | CSV ↔ Markdown 表格互转 | `/table-csv` |
-
-### 数据与研究
-
-| Skill | 描述 | 触发方式 |
-|-------|------|---------|
-| `taskweaver` | 代码优先 Agent，Python 沙箱执行 | `/taskweaver` |
-| `chat2db` | 自然语言转 SQL | 对话触发 |
-| `paper-collector` | arXiv 安全论文搜集 | `/paper-collect` |
-| `paper-interpreter` | 论文 PDF 深度解读（4000-6000 字公众号长文） | `/paper-interpret` |
-| `open-websearch` | 多引擎联网搜索后端封装（Bing / 百度 / CSDN / 掘金 / DuckDuckGo / Brave 等 9 引擎 + 站点抓取） | 由 `web-search-analyst` / `paper-collector` 调用 |
-
-### 媒体
-
-| Skill | 描述 | 触发方式 |
-|-------|------|---------|
-| `remotion-native` | Remotion 原生模板渲染 | `/video-gen --engine native` |
-| `remotion-prompt2video` | 提示词 → 视频 | `/video-gen --engine prompt2video` |
-| `remotion-vidosy` | Vidosy JSON → 视频 | `/video-gen --engine vidosy` |
-| `pdf2video` | PDF/PPT 转动态视频 | `/pdf2video` |
-| `omni-captions` | 视频字幕生成 | `/caption` |
-| `videocut` | AI 视频智能剪辑 | `/videocut` |
-| `content-sync` | 30+ 平台内容分发 | `/sync` |
-
-### 售前 / 解决方案
-
-| Skill | 描述 | 触发方式 |
-|-------|------|---------|
-| `gap-analysis` | 客户需求 vs 产品能力对照 | `/gap-analysis` |
-| `solution-architecture` | SA Blueprint 12 章 | `/solution-architecture` |
-| `business-case` | 客户价值证明（ROI / TCO / Payback / NPV） | `/business-case` |
-| `rfp-response` | RFP / RFI 应答 | `/rfp-response` |
-| `security-questionnaire` | 安全问卷应答（CAIQ / SIG / VSA） | `/security-questionnaire` |
-| `battle-card` | 竞品作战卡 | `/battle-card` |
-| `demo-design` | Demo 设计与演练 | `/demo-design` |
-| `poc-plan` | PoC/试点管理 | `/poc-plan` |
-| `gtm-strategy` | GTM 上市战略 | `/gtm-strategy` |
-| `proposal-generator` | 企业项目型方案文档 | `/proposal` |
-| `doc-auditor` | 产品文档质量审核（被 `/product-*` 命令生成后自动核验调用） |
-
-### 工具与集成（tools）
-
-| Skill | 描述 | 触发方式 |
-|-------|------|---------|
-| `od-contribute` | 一键向 [nexu-io/open-design](https://github.com/nexu-io/open-design) 提交贡献（Skill / Design System / 翻译 / 文档 / bug）——即使不会写代码 | `/od-contribute` |
-
----
-
-## 命令系统（v2.6 原子命令为主）
-
-### 写作类
-
+**推荐一键入口**：
 ```bash
-/article-writer 帮我写一篇关于 Claude Code 的公众号文章
-/hv-analysis 帮我用横纵分析法研究 Hermes Agent
-/interview-writer 以下是我和张三的访谈记录：[素材]
+# 主流水线（需求 → PRD → 技术规格）
+/pm-pipeline "一句话原始需求" --mode human --product-type saas-b
 
-# 风格三段式：提炼 → 创作 → 优化
-/style-extract --learn url1,url2 --output style.md
-/style-create --title "文章标题" --style-card style.md
-/style-refine article.md --style-card style.md
+# 竞品分析工程化（横向能力）
+/pm-competitive "产品定位" [--mode full|monitor|refresh]
 
-# 去 AI 味三段式：scan → soul → academic（v2.8 统一入口）
-/humanize article.md --mode scan
-/humanize article.md --mode soul
-/humanize thesis.md --mode academic
-
-/polish thesis.pdf --tone academic --intensity max
-/marketing-copy AI 安全运营平台 --type wechat --audience tob --industry fintech --cta demo
-
-# 标书七阶段（v2.8 统一入口）
-/bid 招标文件.pdf --phase analyze --color --clarify-list
-/bid --phase clarify
-/bid --phase outline --from 要求清单.xlsx --with-deviation
-/bid --phase write --section solution --kb company-docs/ --figures
-/bid --phase review
-/bid --phase check
-/bid --phase export
+# 自然语言智能路由
+/pm 客户要一个批量导入发票功能，做完整交付包
+/pm 帮我分析下 AI 写作赛道的竞品
 ```
 
-### 产品管理类
+| 命令 | 阶段 | 作用 |
+|---|---|---|
+| **主流水线** | | |
+| `/pm-clarify` | M2 | 一句话 → 澄清报告 |
+| `/pm-solution` | M3 | 澄清 → 业务方案 |
+| `/pm-prototype` | M4 | 方案 → 原型底稿（JSON/Mermaid） |
+| `/prd --validate` | M5 | → PRD + 4 类校验 |
+| `/pm-tech-spec` | M6 | → 技术规格书 |
+| `/pm-archive` | M7 | 归档 |
+| `/pm-pipeline` | 编排 | 一键跑 6 模块 |
+| **竞品分析（横向能力）** | | |
+| `/pm-competitive-scan` | 阶段 1 | 竞品发现 + 情报采集 |
+| `/pm-competitive-benchmark` | 阶段 2 | 5 维对标 + 战略 + 话术 |
+| `/pm-competitive` | 编排 | 一键跑两阶段（含 monitor/refresh） |
 
+### SA Harness（7 模块 - 对外售前）
+
+**推荐一键入口**：
 ```bash
-# PRD 全光谱
-/prd --mode lite "AI 写作助手"                     # 1 页对齐方向
-/prd --mode standard "AI 写作助手"                 # 标准 8 章
-/prd --mode spec-first "API 网关重构"              # Spec-First 四件套
-/prd --mode proto "新功能页面" --wireframe         # 含 ASCII 线框图
-/prd "多租户 RBAC 后台" --mode enterprise          # B 端严格 12 章
-/prd --mode xqy "对公开户流程" --module-type mixed # 银行/金融 XQY 8 章需规格
-
-# 对话渐进 PRD（想法模糊时）
-/prd --mode diagnose "我有个模糊的想法..."
-/prd --mode concept                                # 概念稿
-/prd --mode impl                                   # 实现稿
-/prd --mode update prd-v1.md                       # 增量更新
-
-# PRD 质量
-/prd --mode quality prd.md                         # 5 维度评分
-/prd --mode evaluate prd.md                   # 23 节模板差距
-
-# 调研类
-/market-research AI 写作工具市场 --mode competitive
-/user-research 验证用户付费意愿
-/feedback "AI 写作助手 v2.3" --mode voc     # 用户反馈 VoC 报告
-/analytics 用户注册漏斗分析
-
-# 数据看板（v2.8 统一入口）
-/dashboard --metric northstar
-/dashboard --metric aarrr
-/dashboard --metric cohort
-/dashboard --metric revenue
-/dashboard --metric customer-br
-/dashboard --metric ai-monitor
-/dashboard --metric platform-selector
-
-# 战略决策
-/win-loss --quarter Q2
-
-# PM 流程
-/pm-intake "客户工单"
-/pm-discovery "AI 安全 SOC 智能体的市场切入"
-/pm-review "PRD-2026-Q2.md"
-/pm-sales-pack "AI 渗透测试智能体 / 央企客户"
-/gtm-strategy 云安全产品上市 --growth plg
+/sa-pipeline "客户信息" --client "XX" --industry finance --compliance 等保三级
+/sa 某客户要替换老系统，需要私有化 + 国产化   # 自然语言智能路由
 ```
 
-### 售前 / 解决方案类
+| 命令 | 阶段 | 作用 |
+|---|---|---|
+| `/sa-intake` | M1 | 销售/RFP → 结构化项目对象 |
+| `/sa-clarify` | M2 | → 客户调研痛点报告 |
+| `/sa-solution-map` | M3 | → 业务能力映射 + 竞品 + 风险 |
+| `/sa-architect` | M4 | → 总体方案 + 架构 + 三项校验 |
+| `/sa-poc` | M5.1 | POC 测试方案 |
+| `/sa-impl` | M5.2 | 实施方案 |
+| `/sa-rfp` | M5.3 | RFP 应答 + 偏离表 |
+| `/sa-quote` | M6 | 配置估算 + 宣讲底稿 |
+| `/sa-archive` | M7 | 归档 |
+| `/sa-pipeline` | 编排 | 一键跑 7 模块 |
 
+### Content Harness（5 模块 - 八大文体内容创作）
+
+**推荐一键入口**（**单一调用入口**）：
 ```bash
-# 需求评估 + 方案设计
-/gap-analysis ./Requirements.xlsx --industry fintech
-/solution-architecture 某城商行 SOC --industry fintech --deployment private
-/business-case 某政务云项目 --industry gov
+# 一句自然语言（自动识别文体）
+/content "基于 VulnHunter 项目写一份解决方案白皮书" \
+  --project ./output/pm-pipeline/vulnhunter-20260827/ \
+  --writeback
 
-# 招标 / 应答
-/rfp-response ./Bank_Tender.xlsx --industry fintech --themes "国产化,等保三级"
-/security-questionnaire ./Bank_VSQ.xlsx --standard custom
-
-# 标书七阶段：见上方 /bid-* 系列
-
-# Demo + 竞品
-/demo-design 某关键客户 --type business --duration 30
-/battle-card Splunk --tier 1 --industry fintech
-
-# PoC + 售前物料
-/poc-plan 某客户试点 --industry fintech
-/proposal 智慧城市交通 --type feasibility --industry gov
-
-# 8 类产品资料（原子命令）
-/product-whitepaper AI 客服平台 --industry saas
-/product-tech-whitepaper AI 客服平台
-/product-intro-business AI 客服平台
-/product-intro-tech AI 客服平台
-/product-function-list AI 客服平台
-/product-sales-faq AI 客服平台
-/product-competitive AI 客服平台
-/product-bid-params AI 客服平台
-/product-solution AI 客服平台
-/product-case AI 客服平台 --customer 某城商行
-/product-deploy AI 客服平台
-
-# 售前总指挥
-@solution-architect 某城商行 SOC 项目从首访到合同的完整推进
+# 或用角色总入口
+/content 帮我给项目 X 出一份汇报 PPT
 ```
 
-### 研究与数据类
+| 命令 | 阶段 | 作用 |
+|---|---|---|
+| `/content-intake` | M1 | 自然语言 → ContentRequest JSON（文体识别 + 需求解析） |
+| `/content-materials` | M2 | 拉取 PM/SA 项目产物 → 素材池 |
+| `/content-generate` | M3 | 八大文体专项生成初稿 |
+| `/content-validate` | M4 | 5 类校验（事实/合规/风格/完整/引用） |
+| `/content-archive` | M5 | 归档 + 多格式导出 + 回写 |
+| `/content` | 统一入口 | 一键跑 5 模块（对外唯一入口） |
 
-```bash
-/paper-collect --since 2026-02-01 --topic llm-security,fuzzing --limit 5
-/paper-interpret paper.pdf --style professional --length medium
-/taskweaver 查询最近 30 天销售额超过 1000 的订单
-/hv-analysis 研究 Cursor 的产品策略与市场定位
+**八大文体**：promo / solution-doc / tech-whitepaper / ppt / solution-whitepaper / activity-tweet / pr / tech-popular
+
+## 三条流水线的关系
+
+```
+                        WorkAgent
+                            │
+       ┌────────────────────┼────────────────────┐
+       │                    │                    │
+      /pm                  /sa                /content
+    (内部 PRD)           (对外方案)           (内容传播)
+       │                    │                    │
+       └───────素材──────► /content ◄──────素材──┘
+                            │
+                            ▼
+                   产出可回写到 PM/SA
+                   {project}/_content/
 ```
 
-### 媒体生成类
-
-```bash
-/ppt 帮我做一个论文答辩 PPT，主题是"深度学习"
-/ppt 做一个产品介绍 PPT --style google --pages 10
-/ppt --backend slidetailor --source paper.pdf
-/ppt Q4业绩汇报 --rag quarterly_report.pdf kpi_data.xlsx --style mckinsey
-
-/illustrate article.md
-/illustrate --mode single --backend mermaid --type sequence --desc "微服务调用链"
-/illustrate --mode single --backend sd --desc "AI 协作封面图" --sd-style digital-art
-
-# Remotion 三引擎（v2.8 统一入口）
-/video-gen --engine native --template ai-native-company-intro --render
-/video-gen --engine prompt2video "30秒展示产品核心价值"
-/video-gen --engine vidosy story.json --render
-
-/pdf2video report.pdf --render
-/caption video.mp4 --translate zh --bilingual --format ass
-/videocut lecture.mp4 --mode review
-/sync article.md --platforms wechat,zhihu,juejin
-
-# 图表统一入口（v2.8）
-/diagram "用户注册流程" --type mindmap
-/diagram --type uml --subtype sequence --desc "微服务调用链"
-/arch-diagram 用户→CloudFront→ALB→EC2集群→RDS --provider aws
-/visio 用户注册流程 --type flowchart
-/visio diagram.mmd --mode convert --from mermaid --output vsdx
-
-# Markdown 转图 + 表格（v2.8 统一入口）
-/md-render article.md --format poster --theme gradient
-/md-render table.md --format table
-/table-from-text "层级文本..." --to md
-/table-csv data.csv --to md
-
-# 反 AI Slop 设计语言
-/impeccable craft "AI 安全产品 marketing landing page"
-/impeccable critique src/components/Hero.tsx
-/impeccable audit
-/impeccable polish "the checkout form"
-/impeccable quieter "the dashboard sidebar"
-/impeccable bolder "the marketing hero"
-/impeccable distill "the pricing page"
-/impeccable harden "the signup flow"
-/impeccable onboard "first-run experience"
-```
-
----
-
-## 核心场景
-
-### 场景一：公众号长文创作
-
-```bash
-# 直接写作
-/article-writer 帮我写一篇关于 AI Native 产品设计的文章
-
-# 风格驱动三段式：先学风格，再创作，再优化
-/style-extract --learn https://mp.weixin.qq.com/xxx --output style.md
-/style-create --title "我的新文章标题" --style-card style.md
-/style-refine article.md --style-card style.md
-
-# 去 AI 味三段式（v2.8 统一入口）
-/humanize article.md --mode scan
-/humanize article.md --mode soul
-
-# 访谈稿：Writer-Reviewer 互搏迭代
-/interview-writer --target-score 88 --max-rounds 3
-```
-
-### 场景二：标书全流程编制（v2.6 七阶段原子命令）
-
-```bash
-/bid 招标文件.pdf --phase analyze --color --clarify-list   # 1. 拆解 + 三色标记
-/bid --phase clarify                                        # 2. 澄清问题清单
-/bid --phase outline --from 要求清单.xlsx --with-deviation  # 3. 大纲 + 偏离表
-/bid --phase write --section solution --kb company-docs/    # 4. 分模块撰写
-/bid --phase review                                         # 5. 双轮评审
-/bid --phase check                                          # 6. 合规核查
-/bid --phase export                                         # 7. 移交导出
-```
-
-三色标记规则：🔴 一票否决项 / 🟡 高分项 / 🔵 基础合规项
-
-### 场景三：PPT 智能生成
-
-```bash
-/ppt 论文答辩 PPT，主题"深度学习在医疗影像中的应用"   # 自动路由到 academic-pptx
-/ppt 产品季度汇报 --style business --pages 15          # 自动路由到 ppt-master
-/ppt --backend slidetailor --source paper.pdf          # 论文 PDF 直接转幻灯片
-/ppt React 技术分享 --backend slidev                   # 开发者演示
-```
-
-### 场景四：产品经理全流程
-
-```bash
-/pm-discovery "AI 写作助手浏览器插件"             # 一次性发现报告
-/prd --mode standard "AI 写作助手浏览器插件"            # 标准 8 章 PRD（C 端）
-/prd "多租户企业版" --mode enterprise                # B 端严格 12 章
-/market-research AI 写作工具市场 --mode competitive
-/analytics 用户注册漏斗分析
-/roadmap Q2 路线图规划 --horizon 3m
-@qa-acceptance-designer "MVP 范围 v0.1"          # 验收方案
-/launch-checklist MVP 上线
-```
-
-### 场景五：售前 / 解决方案全链路
-
-```bash
-# Stage 1 评估
-/gap-analysis ./Bank_Reqs.xlsx --industry fintech
-/battle-card Splunk --tier 1 --industry fintech
-
-# Stage 2 方案
-/solution-architecture 某城商行 SOC --deployment private
-/business-case 某城商行 SOC --baseline statusquo
-/demo-design 某城商行 --duration 30
-
-# Stage 3 应答
-/rfp-response ./Bank_Tender.xlsx --industry fintech
-/security-questionnaire ./Bank_VSQ.xlsx --standard custom
-/bid 招标文件.pdf --phase analyze                # 标书走 /bid --phase 七阶段
-
-# Stage 4 演示 + PoC
-/demo-design 某城商行 --mode rehearse
-/poc-plan 某城商行 PoC
-
-# 一键编排
-@solution-architect 某城商行 SOC 项目从首访到合同的完整推进
-```
-
-### 场景六：产品营销推广
-
-```bash
-/marketing-copy AI 安全运营平台 --type wechat --audience tob --industry fintech --cta demo
-/marketing-copy 零信任访问控制方案 --type zhihu --audience tob --cta whitepaper
-/marketing-copy 数据安全网关 --type xhs --audience tob --industry saas
-/marketing-copy 数据安全网关 --type landing --cta demo
-/marketing-copy v2.0 新功能发布 --type edm --audience tob --cta demo
-/marketing-copy 半夜告警没人响应 --type video --duration 60
-/marketing-copy 城商行案例 --type case --industry fintech --length long --cta demo
-/marketing-copy "[公司名] 完成 A 轮融资" --type pr --length medium
-```
-
-### 场景七：视频全链路处理
-
-```bash
-# Remotion 三引擎（v2.8 统一入口）
-/video-gen --engine native --template ai-native-company-intro --render
-/video-gen --engine prompt2video "30秒展示产品核心价值"
-/video-gen --engine vidosy story.json
-
-# 文档转视频 + 智能剪辑 + 字幕
-/pdf2video report.pdf --render
-/videocut lecture.mp4 --mode review
-/caption video.mp4 --translate zh --bilingual --format ass
-/sync article.md --platforms wechat,zhihu,juejin,xiaohongshu
-```
-
-### 场景八：图表五引擎
-
-```bash
-# 思维导图 / UML / 云架构 / Visio / 通用配图（v2.8 统一入口）
-/diagram "产品设计流程" --type mindmap
-/diagram --type uml --subtype sequence --desc "微服务调用链"
-/arch-diagram 用户→CloudFront→ALB→EC2集群→RDS --provider aws
-/visio 用户注册流程 --type flowchart
-/illustrate article.md
-```
-
-### 场景九：反 AI Slop 的前端设计语言（Impeccable）
-
-```bash
-# 从零做一个落地页
-/impeccable craft "AI 安全产品 marketing landing page"
-/impeccable craft "城商行 SOC 产品页" --register brand --genre tech-minimal --stack react
-
-# 已有 UI "AI 味重"，修
-/impeccable critique src/components/Hero.tsx
-/impeccable audit
-/impeccable polish "the checkout form"
-
-# 调强度
-/impeccable bolder "the marketing hero"
-/impeccable quieter "the dashboard sidebar"
-/impeccable distill "the pricing page"
-
-# 工程兜底 + 配置阶段
-/impeccable harden "the signup flow"
-/impeccable onboard "first-run experience"
-/impeccable teach
-
-# 端到端编排
-@impeccable-designer 从零做一个 B 端 AI 安全产品的官网，editorial 风格
-```
-
----
-
-## 使用指南
-
-### 编辑器配置
-
-**Claude Code（推荐）**：直接 `/` 命令调用。配置位于 `.claude/settings.json`。
-**Cursor**：Agent 模式，规则位于 `.cursor/rules/writing-guidelines.mdc`。
-**OpenAI Codex / OpenCode**：通过读取 Skill 文件内容调用。
-
-### Skill 调用方式
-
-1. **对话触发**：在对话中描述需求，Claude Code 自动识别并激活对应 Skill
-2. **命令调用**：使用 `/command-name` 直接调用，支持参数控制行为
-
-### 质量标准
-
-所有写作输出通过四层自检：
-
-| 层次 | 检查项 | 标准 |
-|------|--------|------|
-| 活人感 | 是否有真实的人在说话 | 无 AI 套话，有个人立场 |
-| 情感 | 是否打动读者 | 有温度，不说教 |
-| 信息 | 是否有干货 | 有见识，不废话 |
-| 结构 | 是否好读 | 段落节奏流畅 |
-
-禁止出现的 AI 套话：「首先」「总之」「不得不说」「值得注意的是」「综上所述」等。
-
----
-
-## 快速开始
-
-**1. 克隆仓库**
-
-```bash
-git clone https://github.com/your-org/WorkAgent.git
-cd WorkAgent
-```
-
-**2. 在 Claude Code 中打开**
-
-```bash
-claude .
-```
-
-**3. 尝试第一个命令**
-
-```bash
-# PM 全流程入门
-/pm-intake "你脑子里那个模糊的想法"
-/pm-discovery "你的产品方向"
-/prd --mode diagnose "想法模糊"                      # 想法模糊时
-/prd --mode standard "你的产品名"                    # 直接写
-@qa-acceptance-designer "MVP 范围 v0.1"
-
-# 售前入门
-@solution-architect "客户名 / 项目名"
-/gap-analysis ./Requirements.xlsx
-/solution-architecture 项目名
-/business-case 项目名
-/rfp-response ./RFP.xlsx
-/battle-card 对手名 --tier 1
-/demo-design 客户名
-
-# 营销推广入门
-/marketing-copy 产品名 --type wechat --cta demo
-/marketing-copy 产品名 --type landing
-/marketing-copy 客户名 --type case
-
-# 战略决策
-/win-loss --quarter Q2
-
-# 通用任务
-/article-writer 帮我写一篇关于 AI 工具提效的文章
-/prd --mode lite "团队协作工具"
-/ppt 产品季度汇报 --style business --pages 10
-/arch-diagram 用户→CloudFront→ALB→EC2集群→RDS --provider aws
-/pdf2video report.pdf --render
-/diagram "产品设计流程" --type mindmap
-```
-
-**4. 查看详细分工**
-
-每个命令、Skill、Agent 的 frontmatter 都明确写明「不做什么 / 流转到哪个组件」。仓库健康度见 `../docs/HEALTH_REPORT.md`。
-
----
-
-## 更新日志
-
-### v3.0（Harness 五能力分层，2026-08）
-
-- **架构升级**：引入 harness 五能力分层（Execute / Constrain / Loop / Memory / Security），把"模型思考"与"执行调度"显式分开。顶层锚点 [`../HARNESS_FRAMEWORK.md`](../HARNESS_FRAMEWORK.md)
-- **全量补齐**：86 commands + 24 agents + 115 skills = **225 个组件 100% 带 `harness:` 块**
-- **新增基础设施**：
-  - `.claude/CLAUDE.md`（项目级说明，每次会话必读）
-  - `.claude/harness/`（execute/constrain/loop/memory/security 五子目录 + 原语规格）
-  - `.claude/hooks/`（4 个骨架脚本：pre-write-sensitive-guard、pre-bash-danger、post-write-backup、audit）
-  - `.claude/memory/`（MEMORY.md 索引 + project-context / conventions / decisions）
-  - `.claude/scripts/`（migrate.py 统一迁移入口 + validate-harness.py 校验）
-- **元文档归档**：AGENT_ROUTING / AUDIT / HEALTH_REPORT / CONSOLIDATION_PLAN 迁到 `docs/`
-- **新增根 README**：作为外部第一入口，指向 HARNESS_FRAMEWORK.md 和本文件
-
-### v2.8.1（PRD 全光谱合并，2026-07）
-
-- **Commands 再合并**（-10 net）：11 个 `prd-*` 命令合并成 1 个 `/prd --mode <mode>` 统一入口
-  - 生成类 5：`--mode lite|standard|spec-first|proto|xqy`
-  - 渐进类 3：`--mode diagnose|concept|impl` + `--flow discovery` 一键跑
-  - 评估类 2：`--mode quality|evaluate`
-  - 变更类 1：`--mode update`
-  - 保留原有二级参数：`--stage`（spec-first）/ `--fidelity`（proto）/ `--module-type` / `--system`（xqy）
-  - 强顺序 gate 保留：concept 检查 diagnose 输出、impl 检查 concept 输出
-- Skills 层 11 个保持原子，精度不减
-- AUDIT.md「合 prd-* 11 个」撤回项标记为 v2.8.1 已推翻（详见 `../docs/AUDIT.md`）
-- 15 处下游引用批量替换（agents/prd-coach、agents/product-manager、agents/xqy-spec-writer、agents/ai-product-architect、templates/prd-template 等）
-- 最终规模：**24 Agents / 115 Skills / 87 Commands / 25 Templates**
-
-### v2.8（Commands 主题合并 + Skills 分子目录 + Agents 索引，2026-07）
-
-- **Commands 合并**（-17 net）：将 24 个 stub 命令合并成 6 个主题入口
-  - dashboard 7 → 1（`/dashboard --metric`）
-  - bid 7 → 1（`/bid --phase`）
-  - md 2 → 1（`/md-render --format`）
-  - remotion 3 → 1（`/video-gen --engine`）
-  - humanize 3 → 1（`/humanize --mode`，⚠️ 覆盖 AUDIT 247 撤回项）
-  - diagram 2 → 1（`/diagram --type`，⚠️ 覆盖 AUDIT 247 撤回项）
-- **Skills 分子目录**：115 skill 全部迁入 14 子域（writing/prd/pm/product/presales/bid/dashboard/ppt/media/diagram/research/data/strategy/tools），184 处引用批量替换
-- **Agents 收敛**（25 → 24）：删除 `impeccable-manual-edit-applier`（status: draft，无调用路径）
-- **新增治理文档**：`agents/README.md`（分层索引）+ `../docs/AGENT_ROUTING.md`（7 组边界规则）+ `../docs/CONSOLIDATION_PLAN.md`（本轮方案）
-- **AUDIT.md**：C1（skills 分子目录）标记为已执行；「未做事项」新增 "v2.8 状态" 列
-- 最终规模：**24 Agents / 115 Skills / 97 Commands / 25 Templates**
-
-### v2.7（二次裁剪 + 文档漂移修正，2026-07）
-
-- 删除 4 个低价值 / 被覆盖的 Skill：`pm-core-framework` / `doc-formatter` / `bid-rewriter` / `pptx-sdk`
-- 删除 1 个能力被 `@diagram-architect` + `@article-illustrator` 覆盖的 Agent：`visual-suite`
-- 补录 v2.6 遗漏的 2 个 Agent：`web-search-analyst` / `xqy-spec-writer`（此前存在但 README/HEALTH_REPORT 未列入）
-- 清理根仓库无关文件：删除 5 个漏洞挖掘遗留 Python 脚本
-- 修复 `doc-polisher` / `product-director` / `bid-writer` / `ppt-generator` / `article-illustrator` 的 skills 列表和路由描述
-- 新增 `AUDIT.md`：后续裁剪与结构优化的 checklist（product-\*-writer 合并、pm-\* 合并、skills 分子目录等）
-- 最终规模：**25 Agents / 127 Skills / 114 Commands / 13 Templates**
-
-### v2.6（单一职责拆分，2026-06）
-
-- 拆分 16 个"多任务融合" Skill → 49 个原子 Skill
-- 拆分 9 个 `--mode` 命令 → 30 个原子命令
-- 删除冗余 `@writer-reviewer` Agent（已被 `style-writer-reviewer` Skill 完全覆盖）
-- 修复 v2.5 残留的全部断链引用（pm-skills / product-spec / prd-writer / data-dashboard / bid full / humanize / diagram / remotion-generate 等）
-- 修复 SR 违规描述（`proposal-generator` / `ai-illustrator` / `bid-write`）
-- 最终规模：**24 Agents / 129 Skills / 112 Commands / 13 Templates**
-
-### v2.5（依赖修复 + 重复清理 + 文档同步）
-
-- 删除遗留兼容文件（`agents/visual-creator.md` 等）
-- 修复所有指向已删命令/Agent 的引用（一次性修复 8 类）
-- 为多个命令补齐"加载技能"声明
-- 规模：25 Agents / 95 Skills / 83 Commands
-
-### v2.4（聚焦工作技能，移除团队/人际管理类组件）
-
-- 删除 2 个 Agent / 6 个 Skill / 9 个 Command / 2 个 Template
-- 调用链路修复，重复命令清理
-
-### v2.3（售前 / 解决方案补齐 + 营销推广 + 产品域裁剪）
-
-- 新增售前 8 Skill / 8 Command + 营销推广 1 Skill + 1 Command
-- 新建 `commands/presales/` 目录，迁出 13 个售前命令
-
-### v2.2 / v2.1 / v2.0
-
-- v2.2：新增图表架构 / Visio / Remotion / PPT 多源研究等能力
-- v2.1：GTM / Proposal / Visual Suite 等编排 Agent
-- v2.0：全栈 PM Agent / 风格自进化 / 文档润色 + 配图
-
-### v1.0
-
-- 初始版本：14 个 Agent，36+ 个 Skill，40+ 个 Command
-
----
-
-## 来源
-
-本项目集成了以下开源仓库的内容：
-
-### 写作能力
-- article-writer / hv-analysis — 文章写作技能
-
-### 产品管理全流程能力
-- [pm_claude_code_kit](https://github.com/) — B 端 / 企业级视角的 PM 工作台
-
-### PPT 生成能力
-- [ppt-master](https://github.com/hugohe3/ppt-master)、[academic-pptx-skill](https://github.com/Gabberflast/academic-pptx-skill)、[SlideTailor](https://github.com/nusnlp/SlideTailor)、[Slidev](https://github.com/slidevjs/slidev)、[Marp](https://github.com/marp-team/marp)、[python-pptx](https://github.com/scanny/python-pptx)、[PptxGenJS](https://github.com/gitbrent/PptxGenJS)、[frontend-slides](https://github.com/zarazhangrui/frontend-slides)
-
-### 数据与可视化工具
-- [TaskWeaver](https://github.com/microsoft/TaskWeaver)、[Chat2DB](https://github.com/chat2db/Chat2DB)、[Stable Diffusion WebUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui)、[Mermaid](https://github.com/mermaid-js/mermaid)
-
-### 设计语言（反 AI Slop）
-- [pbakaus/impeccable](https://github.com/pbakaus/impeccable) — Paul Bakaus 的"让 AI harness 更会做设计"的设计语言（[impeccable.style](https://impeccable.style/)）
-
-感谢以上作者的开源贡献。
+- **PM**：内部产品 PM 视角，从需求想法到 PRD + 技术规格书
+- **SA**：售前工程师视角，从客户输入 / RFP 到方案 + POC + 应答 + 报价
+- **Content**：内容 / 市场 / 品牌视角，一句话到八大文体物料
+- **共用**：都基于本目录五能力分层框架
+- **Content 特有**：跨流水线复用 PM/SA 素材 + 回写附属产物
+
+详见 [../README.md](../README.md)。
+
+## 反模式
+
+- ❌ 编辑 `.claude/settings.json` 未经用户确认 —— 属于 security.deny list
+- ❌ 写 memory 记录 API key / 密码 / 敏感路径 —— 属于 security 拦截项
+- ❌ 编辑 `HARNESS_FRAMEWORK.md` 未同步更新 `docs/*_HARNESS.md`
+- ❌ 混用不同流水线的输出目录
+- ❌ Content 生成时不关联 PM/SA 项目却引用具体数字 —— 事实错误温床
+
+## 版本
+
+- v3.2（2026-08-27）：新增 Content Harness 5 模块流水线（八大文体内容创作）
+- v3.1（2026-08-27）：PM Harness 新增竞品分析工程化能力（横向能力）
+- v3.0（2026-08-27）：新增 SA Harness 7 模块流水线（对外售前场景）
+- v2.0（2026-08-27）：精简至端到端 6 模块 PM 流水线
+- v1.x：见 git history

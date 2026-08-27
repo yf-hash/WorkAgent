@@ -2,15 +2,15 @@
 
 > 在大模型作为基本算力的前提下，构建"模型负责思考、harness 负责执行/约束/循环/记忆/安全"的自动化执行体系。
 >
-> 版本：v3.0（首版，2026-08-01）。本文件是 WorkAgent 后续所有结构性重构的锚点。
+> 版本：v3.2（2026-08-27）。本文件是 WorkAgent 后续所有结构性重构的锚点。当前形态：3 条端到端流水线（PM / SA / Content）+ 26 commands + 27 skills + 3 agents + 3 roles。
 
 ---
 
 ## 1. 为什么需要 harness 分层
 
-当前 WorkAgent 有 24 agents / 115 skills / 86 commands，"模型思考"部分（prompt 工程、职责边界、领域知识）已经很厚重，但"harness 层"极薄：
+WorkAgent 早期版本"模型思考"部分（prompt 工程、职责边界、领域知识）已经很厚重，但"harness 层"极薄：
 
-- `commands/` 里 **71%** 的命令没有声明 `allowed-tools`（模型可任意调用任何工具）
+- 大多数命令没有声明 `allowed-tools`（模型可任意调用任何工具）
 - 无 `.claude/hooks/`、无项目 `CLAUDE.md`、无 `memory/` 目录、无 loop 模板
 - Agents 已经引入了 `memory: project` / `MaxTurns` / `skills:[...]` 等 harness 字段——**说明作者已在 agent 层试水，但 command 层没跟上**
 
@@ -121,6 +121,7 @@ name: <name>
 description: <one-line>
 argument-hint: <hint>
 user-invocable: true|false
+model: sonnet                       # 可选，见 §3.1；不写则继承父 agent
 
 harness:
   execute:
@@ -150,15 +151,27 @@ harness:
 
 **回退规则**：如果某 command 没有 `harness:` 块，harness 用五个默认档中的 `default` 档（read-only + one-shot + session-memory + medium-security）。
 
+### 3.1 模型下放规则（`model:` 字段）
+
+三个角色 meta-agent（`agents/pm.md` / `sa.md` / `content.md`）默认 `model: opus`，负责需求理解和 3-8 步计划分解。**具体 command 在如下场景下应显式 `model: sonnet` 覆盖父模型**：
+
+| 场景 | 典型 command | 理由 |
+|---|---|---|
+| **网关 / 输入清洗** | `content-intake`、`sa-intake` | 文体分类 / 元信息抽取，规则化任务 |
+| **归档 / 版本递增** | `pm-archive`、`sa-archive`、`content-archive` | 目录扫描 + 模板填充 + 版本号，无深度推理 |
+| **规则化校验** | `content-validate` | 5 类规则化 diff，无生成压力 |
+
+**留在 opus（继承）的**：`*-clarify`、`*-solution`、`*-architect`、`prd`、`*-tech-spec`、`content-generate`、`*-poc`、`*-rfp` 等——这些需要深度推理或长文生成。
+
 ## 4. 五种执行模式（Loop.mode 枚举）
 
 | mode | 语义 | 典型场景 | harness 表现 |
 |---|---|---|---|
-| `one-shot` | 一次问答一次输出 | /prd --mode lite、/marketing-copy、大部分 commands | 无循环，输出即结束 |
-| `pipeline` | 固定阶段串行 | /bid 七阶段、/prd --flow discovery（diagnose→concept→impl） | 阶段间可插 gate |
-| `iterative` | 写→评→改直到达标 | @style-evolver、@bid-writer 评审、humanizer 迭代 | 用 /loop + max-iterations |
-| `parallel` | 独立子任务并行 | @research-analyst 多角度调研、review-all 多维度审查 | Agent 并行调度 |
-| `monitor` | 常驻观察外部状态 | 竞品跟踪、日志监控、CI 状态跟踪 | Monitor 工具 + persistent |
+| `one-shot` | 一次问答一次输出 | /prd --mode outline、大部分单模块命令 | 无循环，输出即结束 |
+| `pipeline` | 固定阶段串行 | /pm-pipeline 6 模块流水线、/prd --mode full 内部阶段 | 阶段间可插 gate |
+| `iterative` | 写→评→改直到达标 | /prd --validate 后修改重跑、/pm-tech-spec 校验循环 | 用 /loop + max-iterations |
+| `parallel` | 独立子任务并行 | /pm-clarify 内部三个子 Agent、/pm-tech-spec 六大类指标并行梳理 | Agent 并行调度 |
+| `monitor` | 常驻观察外部状态 | 归档后监控外部依赖 SLA、CI 状态跟踪 | Monitor 工具 + persistent |
 
 ## 5. 权限画像（Constrain.profile 预置档）
 
@@ -176,40 +189,42 @@ harness:
 ```
 WorkAgent/
 ├── HARNESS_FRAMEWORK.md          # 本文件（顶层锚点）
-├── README.md                     # 项目主 README（更新指向 harness）
+├── README.md                     # 项目主 README
 │
 ├── .claude/
 │   ├── settings.json             # 全局权限 + hooks 位（画像详细规则在 harness/constrain）
 │   ├── CLAUDE.md                 # ★ 项目级说明（所有会话必读）
-│   ├── README.md                 # 完整命令 / 组件索引
+│   ├── README.md                 # 完整命令 / 组件索引 + 版本日志
 │   │
-│   ├── harness/                  # ★ 五能力分层原语
+│   ├── harness/                  # ★ 五能力分层原语 + 一层角色元代理
 │   │   ├── README.md
 │   │   ├── execute/presets.md    # 工具预设 6 类
 │   │   ├── constrain/profiles.md # 权限画像 6 类 + gate
 │   │   ├── loop/modes.md         # 5 种执行模式
 │   │   ├── memory/schema.md      # 4 种作用域
-│   │   └── security/policies.md  # 3 级危险度 + deny list
+│   │   ├── security/policies.md  # 3 级危险度 + deny list
+│   │   └── role/                 # 角色元代理原语（router + task-planner）
 │   │
-│   ├── hooks/                    # ★ hook 脚本（4 个骨架，默认未启用）
-│   ├── memory/                   # ★ 项目级记忆（MEMORY.md 索引 + 分文件）
-│   └── scripts/                  # ★ migrate.py + validate-harness.py
+│   ├── hooks/                    # ★ 5 对 hook 脚本（.sh + .ps1；3 启用 + 2 骨架）
+│   ├── memory/                   # ★ 项目级记忆（MEMORY.md 索引 + 3 分文件）
+│   └── scripts/                  # ★ migrate.py + validate-harness.py（CI 强制）
 │
-├── agents/                       # 24 个业务角色（100% harness 化）
-├── commands/                     # 86 个入口（100% harness 化）
-├── skills/                       # 115 个知识模块（100% harness 化）
-├── templates/                    # 25 个模板
+├── agents/                       # 3 个角色总入口（pm / sa / content，100% harness 化）
+├── commands/                     # 26 个入口（product 10 + presales 10 + content 6，100% harness 化）
+├── skills/                       # 27 个知识模块（pm 10 + prd 1 + sa 11 + content 5，100% harness 化）
+├── roles/                        # 3 份角色声明式配置（manifest.yaml + workflows.md）
 │
-└── docs/                         # 元文档归档
-    ├── AGENT_ROUTING.md
-    ├── AUDIT.md
-    ├── HEALTH_REPORT.md
-    └── CONSOLIDATION_PLAN.md
+└── docs/                         # 元文档
+    ├── PM_HARNESS.md             # PM 6 模块流水线总览
+    ├── SA_HARNESS.md             # SA 7 模块流水线总览
+    ├── CONTENT_HARNESS.md        # Content 5 模块流水线总览
+    └── README.md
 ```
 
 **运行时目录**（按需生成，不预建）：
 - `.claude/audit/YYYY-MM-DD.log` — 启用 audit.sh 后生成
 - `.claude/backups/YYYY-MM-DD/` — 启用 post-write-backup.sh 后生成
+- `output/{pm,sa,content}-pipeline/{slug-YYYYMMDD}/` — 三条流水线产出目录
 
 ## 7. 迁移优先级
 
@@ -225,23 +240,29 @@ WorkAgent/
    - `commands/writing/article-writer.md` — iterative（四层自检）
 
 **P1（已完成）**：
-7. ✅ 为 61 个缺 `allowed-tools` 的 command 补 `allowed-tools` + `harness:` 块（86/86 覆盖）
-8. ✅ 为 24 个 agent 补 `harness:` 块（24/24 覆盖）
+7. ✅ 为所有 command 补 `allowed-tools` + `harness:` 块（26/26 覆盖）
+8. ✅ 为所有 agent 补 `harness:` 块（3/3 覆盖）
 9. ✅ 增补 `.claude/hooks/` 实际脚本（pre-write-sensitive-guard / pre-bash-danger / post-write-backup / audit）
 
 **P2（已完成）**：
-10. ✅ 为 115 个 skill 补 `harness:` 块（115/115 覆盖）
+10. ✅ 明确 skills 的 harness 策略：**允许省略**，由调用方 command 的 harness 决定（skills 是 user-invocable: false 的内部知识模块，无独立执行上下文）；`validate-harness.py` 对 commands/agents 缺 harness 报错，对 skills 缺省默认继承
 
 **P3（v3.1 已完成）**：
 11. ✅ 3 个 hook 默认启用（pre-write-sensitive-guard / pre-bash-danger / harness-context-inject）
 12. ✅ 场景感知 MVP：UserPromptSubmit hook 自动注入命令的 harness 元数据（软性，不强制拦截）
 13. ✅ PowerShell 版本 hook（5 个 .ps1，无 Git Bash 环境替代）
-14. ✅ templates 目录索引化：22 个活跃 + 3 个归档，0 孤儿
-15. ✅ 迁移脚本合并（`migrate.py` 单入口）+ YAML 结构校验（`validate-harness.py --strict`）+ preset ↔ allowed-tools 一致性检查
-16. ✅ `.gitignore` 覆盖运行时目录（audit/backups/settings.local）
-17. 强制切换 permission profile 的 hook（继续延后，等生产观察 ≥1 个月）
+14. ✅ 迁移脚本合并（`migrate.py` 单入口）+ YAML 结构校验（`validate-harness.py --strict`）+ preset ↔ allowed-tools 一致性检查
+15. ✅ `.gitignore` 覆盖运行时目录（audit/backups/settings.local）
 
-**当前覆盖率**：commands 86/86 · agents 24/24 · skills 115/115 = **225/225 (100%)**
+**P4（v3.0/3.1/3.2 已完成）**：
+16. ✅ 新增角色元代理层（`.claude/harness/role/`）：router + task-planner 支撑 `/pm` `/sa` `/content` 三个角色总入口
+17. ✅ 新增 SA Harness 7 模块流水线（对外售前）
+18. ✅ 新增 Content Harness 5 模块流水线（八大文体 + 跨流水线回写）
+
+**P5（延后 / 观察中）**：
+19. 强制切换 permission profile 的 hook（继续延后，等生产观察 ≥1 个月）
+
+**当前覆盖率**：commands 26/26 · agents 3/3 = **29/29 (100%)** 强制层。skills（27 个）按设计允许省略 harness，继承调用方 command 的策略。CI 强制 `validate-harness.py --strict` 通过。
 **Hook 启用率**：3/5（安全 guard × 2 + 上下文注入 × 1；备份 / 审计保持骨架）
 
 ## 8. 批处理迁移模板

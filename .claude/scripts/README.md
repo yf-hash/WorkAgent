@@ -5,8 +5,7 @@
 | 脚本 | 用途 | 何时用 |
 |---|---|---|
 | [migrate.py](migrate.py) | 批量补齐 commands/agents/skills 的 `harness:` 元数据 | 新组件加入后 / 域默认档变更后 |
-| [validate-harness.py](validate-harness.py) | 校验所有 harness 块的结构合法性（枚举/缩进/section 齐全） | CI/pre-commit 前 / 手动修改后 |
-| [templates-index.py](templates-index.py) | 扫描 templates/ 生成 README 索引 + used-by 溯源 | 增删 template 后 |
+| [validate-harness.py](validate-harness.py) | 校验所有 harness 块的结构合法性（枚举/gate 命名/preset↔工具一致性） | CI / pre-commit / 手动修改后 |
 
 ## 常用命令
 
@@ -28,10 +27,9 @@ python .claude/scripts/validate-harness.py
 
 # 校验并作 CI 门（有错就退出 1）
 python .claude/scripts/validate-harness.py --strict
-
-# 重生 templates 索引
-python .claude/scripts/templates-index.py
 ```
+
+> **CI**：`.github/workflows/validate-harness.yml` 在每次 push / PR 时强制运行 `validate-harness.py --strict`。
 
 ## 添加新场景
 
@@ -54,8 +52,9 @@ python .claude/scripts/templates-index.py
 
 ## 已废弃的脚本
 
-以下脚本历史存在过，v3.1 合并 / 修完 bug 后已移除，仅在此备忘：
+以下脚本历史存在过，v3.1/v3.2 合并 / 归零后已移除，仅在此备忘：
 
 - `migrate-harness.py`（v3.0 首版，处理 commands + agents） → 并入 `migrate.py`
 - `migrate-harness-skills.py`（v3.0，处理 skills） → 并入 `migrate.py`
 - `fix-harness-indent.py`（v3.0 一次性修 YAML 缩进 bug） → bug 已修，不会重现
+- `templates-index.py`（v3.0，扫描 `templates/` 生成索引） → v3.2 归零 `templates/` 目录后无对象可索引，删除

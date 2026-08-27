@@ -1,0 +1,209 @@
+# PM Role — 产品经理角色声明式清单（v2.0 - 精简版）
+#
+# 本文件由 agents/pm.md 在会话开始时加载，作为路由决策的唯一数据源。
+# v2.0 变更：只保留端到端 6 模块流水线相关能力，其他历史资产已移除。
+#
+# ---
+# 消费者：.claude/harness/role/router.md（通用交互 SOP）
+# 参考格式：.claude/harness/role/README.md
+
+role:
+  name: 产品经理
+  entry:
+    slash: /pm
+    at: "@pm"
+  scope: >
+    端到端产品需求处理流水线：从一句话原始需求 → 需求澄清 → 业务方案 →
+    原型底稿 → PRD → 产品技术规格书 → 版本归档。
+  positioning: >
+    你是产品经理的"总入口"，专注 6 模块端到端流水线的编排与调度。
+    大多数情况下应推荐 /pm-pipeline 一键调度，也可按需分步执行单模块命令。
+
+# ============================================================
+# 能力域 → 命令映射
+# 6 模块流水线 + 1 编排器 = 7 个命令
+# ============================================================
+capabilities:
+
+  requirement-pipeline:
+    description: 端到端需求处理流水线（M2 → M7）
+    commands:
+      - /pm-clarify        # 【M2】需求澄清报告（歧义识别+澄清问题+冲突检测）
+      - /pm-solution       # 【M3】业务方案拆解（流程+P0/P1/P2+依赖&风险）
+      - /pm-prototype      # 【M4】原型描述与结构化 JSON（页面+Mermaid+组件）
+      - /prd               # 【M5】PRD 撰写（含 --validate 校验模式）
+      - /pm-tech-spec      # 【M6】产品技术指标 & 技术规格书
+      - /pm-archive        # 【M7】产物审阅与版本归档
+      - /pm-pipeline       # 端到端 6 模块流水线一键编排
+
+  competitive-analysis:
+    description: 竞品分析工程化能力（横向能力，可独立跑，也可为主流水线提供输入）
+    commands:
+      - /pm-competitive-scan       # 【阶段 1】竞品发现 + 情报采集（多信源）
+      - /pm-competitive-benchmark  # 【阶段 2】多维对标 + 差异化定位 + 应对策略
+      - /pm-competitive            # 一键编排两阶段 + monitor / refresh / focus 模式
+
+# ============================================================
+# 典型工作流
+# ============================================================
+workflows:
+
+  # ------------------------------------------------------------
+  # 【核心】端到端需求处理流水线（6 模块 + 归档）
+  # 一句话原始需求 → 澄清 → 方案 → 原型 → PRD → 技术规格 → 归档
+  # 每 stage 之间都设 Harness 人工卡点（PM 审阅确认后方可下一步）
+  # ------------------------------------------------------------
+  end-to-end-pipeline:
+    trigger:
+      - "端到端"
+      - "全流程需求"
+      - "一句话需求"
+      - "从想法到规格"
+      - "完整流水线"
+      - "从需求到技术规格"
+      - "完整交付包"
+      - "e2e"
+    description: 端到端 6 模块流水线（原始想法 → 技术规格书 + 归档）
+    output-dir: ./output/pm-pipeline/{topic}-{yyyymmdd}/
+    stages:
+      - id: M2
+        command: /pm-clarify
+        args: "{raw_input}"
+        purpose: 【模块2】需求澄清（歧义识别 + 澄清问题 + 冲突检测）
+        produces: 01-clarify-report.md
+        gate:
+          type: human-review
+          prompt: "《需求澄清报告》已生成，请确认或驳回（可回到重新澄清）"
+      - id: M3
+        command: /pm-solution
+        args: "01-clarify-report.md"
+        purpose: 【模块3】业务方案拆解（主/分支/异常流程 + P0/P1/P2 + 依赖&风险）
+        produces: 02-business-solution.md
+        gate:
+          type: human-review
+          prompt: "《业务方案》已生成，可人工调整功能优先级，确认后继续"
+      - id: M4
+        command: /pm-prototype
+        args: "02-business-solution.md"
+        purpose: 【模块4】原型辅助生成（页面清单 + 组件 + Mermaid + 结构化 JSON）
+        produces:
+          - 03-prototype-desc.md
+          - 03-prototype.json
+          - 03-flow.mmd
+        gate:
+          type: human-review
+          prompt: "《原型底稿》已生成，可编辑修改，确认后向下游 PRD 流转"
+      - id: M5
+        command: /prd --mode full --validate --input 01,02,03
+        args: "{topic}"
+        purpose: 【模块5】PRD 主文档 + 校验（完整性/一致性/歧义/埋点）
+        produces:
+          - 04-PRD.md
+          - 04-PRD-validate.md
+        gate:
+          type: human-review
+          prompt: "PRD 已生成，可修改，确认后流转到技术规格流水线"
+      - id: M6
+        command: /pm-tech-spec
+        args: "04-PRD.md 01-clarify-report.md"
+        purpose: 【模块6】产品技术指标 & 规格书（性能/安全/兼容/可靠/合规/依赖 六大类）
+        produces:
+          - 05-tech-metrics.md
+          - 05-tech-spec.md
+          - 05-tech-spec-validate.md
+        gate:
+          type: human-review
+          prompt: "《产品技术规格书》已生成，可修改指标数值，确认后归档"
+      - id: M7
+        command: /pm-archive
+        args: "{output-dir}"
+        purpose: 【归档】版本号、变更历史、README 索引
+        produces:
+          - README.md
+          - CHANGELOG.md
+        gate: none
+
+  # ------------------------------------------------------------
+  # 竞品分析工程化流水线（横向能力）
+  # 两阶段：scan（发现+情报）→ benchmark（对标+定位+战略）
+  # 可独立跑，也可为端到端主流水线的 M2/M3/M5 提供输入
+  # ------------------------------------------------------------
+  competitive-analysis:
+    trigger:
+      - "竞品分析"
+      - "竞品对比"
+      - "对标"
+      - "差异化定位"
+      - "竞品情报"
+      - "竞争格局"
+      - "谁在做同样的事"
+      - "对手分析"
+      - "竞品跟踪"
+    description: 竞品分析工程化两阶段（scan + benchmark）
+    output-dir: ./output/competitive/{topic-slug}-{yyyymmdd}/
+    stages:
+      - id: SCAN
+        command: /pm-competitive-scan
+        args: "{topic}"
+        purpose: 竞品发现（四类：直接/间接/替代/自建）+ 多信源情报采集
+        produces:
+          - 01-competitor-list.md
+          - 01-competitors.json
+        gate:
+          type: human-review
+          prompt: "《竞品清单 + 情报卡集》已生成，请确认竞品覆盖度"
+      - id: BENCHMARK
+        command: /pm-competitive-benchmark
+        args: "01-competitors.json"
+        purpose: 多维对标（5 维）+ 洞察 + 差异化定位 + 应对策略 + 话术库
+        produces:
+          - 02-benchmark-matrix.md
+          - 02-insights.md
+          - 02-positioning.md
+          - 02-strategy.md
+          - 02-sales-playbook.md
+          - 02-report-full.md
+        gate:
+          type: human-review
+          prompt: "《竞品分析总报告》已生成，确认后可交付销售 / PRD 引用"
+
+# ============================================================
+# 单点直达（识别到明确单一 command 时，跳过计划流程）
+# ============================================================
+single-shot:
+  - trigger: ["需求澄清", "澄清报告", "需求歧义", "一句话需求"]
+    command: /pm-clarify
+  - trigger: ["业务方案", "功能拆解", "P0 P1 P2", "优先级拆解"]
+    command: /pm-solution
+  - trigger: ["原型底稿", "原型 JSON", "线框图 JSON", "结构化原型"]
+    command: /pm-prototype
+  - trigger: ["写个 PRD", "帮我写 PRD", "PRD 文档"]
+    command: /prd --mode full
+  - trigger: ["一页纸 PRD", "简版 PRD", "对齐稿"]
+    command: /prd --mode outline
+  - trigger: ["单功能 PRD", "Feature PRD"]
+    command: /prd --mode feature
+  - trigger: ["PRD 校验", "PRD 完整性", "PRD 检查"]
+    command: /prd --validate
+  - trigger: ["技术规格书", "技术指标清单", "产品规格", "产品技术指标"]
+    command: /pm-tech-spec
+  - trigger: ["产物归档", "版本归档", "生成 CHANGELOG"]
+    command: /pm-archive
+  - trigger: ["端到端流水线", "全流程走一遍", "完整交付包"]
+    command: /pm-pipeline
+  - trigger: ["竞品发现", "竞品情报", "竞品清单"]
+    command: /pm-competitive-scan
+  - trigger: ["竞品对标", "功能矩阵", "定价对比", "应对策略", "销售话术"]
+    command: /pm-competitive-benchmark
+  - trigger: ["竞品分析", "对标", "差异化定位", "竞品跟踪", "竞争格局"]
+    command: /pm-competitive
+
+# ============================================================
+# 默认参数（未指定时使用）
+# ============================================================
+defaults:
+  prd-mode: full
+  clarify-mode: human
+  product-type: saas-b
+  output-dir: ./output/pm-pipeline
+  language: zh-CN

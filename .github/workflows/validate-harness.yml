@@ -1,0 +1,42 @@
+name: validate-harness
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - "agents/**/*.md"
+      - "commands/**/*.md"
+      - "skills/**/*.md"
+      - ".claude/scripts/**"
+      - ".claude/harness/**"
+      - ".github/workflows/validate-harness.yml"
+  pull_request:
+    paths:
+      - "agents/**/*.md"
+      - "commands/**/*.md"
+      - "skills/**/*.md"
+      - ".claude/scripts/**"
+      - ".claude/harness/**"
+      - ".github/workflows/validate-harness.yml"
+
+jobs:
+  validate:
+    name: Structural check on all harness blocks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run validate-harness.py --strict
+        # Validates:
+        # - All commands/agents have a harness: block (skills may omit — they inherit caller policy)
+        # - Enum whitelists (execute.preset / constrain.profile / loop.mode / memory.scope / security.danger-level)
+        # - Gate names match ^(before|after)-<kebab>$
+        # - preset <-> allowed-tools consistency (Bash under writing-scoped/research must be declared via harness.execute.tools)
+        run: |
+          python .claude/scripts/validate-harness.py --strict

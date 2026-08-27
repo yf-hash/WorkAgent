@@ -1,6 +1,6 @@
 # WorkAgent — 项目级说明（所有 Claude Code 会话必读）
 
-> 你现在进入的是 **WorkAgent** 仓库：一套面向产品经理 / 售前 / 市场营销的 AI 工作智能体（86 commands + 115 skills + 24 agents + 25 templates）。
+> 你现在进入的是 **WorkAgent** 仓库：一套面向产品经理 / 售前 / 内容三个角色的 AI 工作智能体（26 commands + 27 skills + 3 agents + 3 roles，v3.2）。
 >
 > 本文件由 Claude Code harness 在每次会话开始时自动载入，用于在**模型思考**之上强制一层**项目级执行规范**。
 
@@ -22,9 +22,10 @@ WorkAgent 的核心命题是：**大模型作为算力，harness 作为执行器
 
 ## 三、命令 / 技能 / 代理的语义
 
-- **Commands**（`commands/`，86 个）：斜杠命令，用户直接调用的入口，含 argument-hint 和输入结构
-- **Skills**（`skills/`，115 个）：可复用知识模块，`user-invocable: false` 表示只被 command/agent 调用
-- **Agents**（`agents/`，24 个）：业务角色代理，编排多个 skill 完成完整流程
+- **Commands**（`commands/`，26 个）：斜杠命令，用户直接调用的入口，含 argument-hint 和输入结构；分 3 域（product/presales/content）
+- **Skills**（`skills/`，27 个）：可复用知识模块，`user-invocable: false` 表示只被 command/agent 调用
+- **Agents**（`agents/`，3 个）：三大角色总入口（PM / SA / Content），编排 commands 完成端到端流水线
+- **Roles**（`roles/`，3 个）：声明式能力清单（`manifest.yaml` + `workflows.md`），供 agent 读取路由
 
 ## 四、本仓库的硬规则
 
@@ -36,8 +37,8 @@ WorkAgent 的核心命题是：**大模型作为算力，harness 作为执行器
 
 ## 五、常见误区
 
-- ❌ 用 `/prd` 时不看 `--mode`，直接自行揣测走 standard——**必须问一下**（本文件加载了 [`../commands/product/prd.md`](../commands/product/prd.md) 的 12 种模式）
-- ❌ 遇到 pipeline 类命令（如 `/bid`）时试图一口气跑完——**阶段间必须 gate**
+- ❌ 用 `/prd` 时不看 `--mode`，直接自行揣测走 standard——**必须问一下**（本文件加载了 [`../commands/product/prd.md`](../commands/product/prd.md) 的模式列表）
+- ❌ 遇到 pipeline 类命令（`/pm-pipeline` / `/sa-pipeline` / `/content` / `/pm-competitive`）时试图一口气跑完——**阶段间必须 gate**
 - ❌ 在 iterative 类命令中忽略 max-iterations——**必须停下来汇报**
 - ❌ 编辑 `.claude/settings.json` 未经用户确认——**属于 security.deny list**
 - ❌ 写 memory 记录了 API key / 密码 / 敏感路径——**属于 security 拦截项**
@@ -45,11 +46,11 @@ WorkAgent 的核心命题是：**大模型作为算力，harness 作为执行器
 ## 六、给用户的入口
 
 用户第一次进来时通常应问：
-1. 你现在的角色？（PM / 售前 / 市场 / 内容）
-2. 你想产出什么？（PRD / 方案 / 文章 / 分析 / 演示）
-3. 有目标客户 / 项目背景吗？
+1. 你现在的角色？（PM / 售前 SA / 内容 Content）
+2. 你想产出什么？（PRD + 技术规格 / 售前方案 + 报价 / 八大文体内容）
+3. 有目标客户 / 项目背景吗？（Content 场景优先问是否要关联现有 PM / SA 项目）
 
-然后按结果推荐命令或 agent。
+然后按结果推荐 `/pm` · `/sa` · `/content` 角色总入口或具体流水线命令。
 
 ## 七、迭代原则
 

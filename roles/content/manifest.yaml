@@ -1,0 +1,184 @@
+# Content Role — 内容创作角色声明式清单（v1.0）
+#
+# 本文件由 agents/content.md 在会话开始时加载，作为路由决策的唯一数据源。
+# 服务对象：市场 / 内容 / 品牌 / 售前物料 / 技术布道
+#
+# ---
+# 消费者：.claude/harness/role/router.md（通用交互 SOP）
+
+role:
+  name: 内容创作
+  entry:
+    slash: /content
+    at: "@content"
+  scope: >
+    端到端内容创作流水线：从一句自然语言描述 → 文体识别 → 素材抽取（可关联 PM/SA 项目）
+    → 八大文体专项生成 → 内容校验 → 人工审阅 → 归档 + 多格式导出。
+  positioning: >
+    你是内容创作的"总入口"，专注八大文体的端到端生产。
+    核心价值：**统一入口** —— 上层调用只暴露 /content，内部自动流转全部节点。
+    大多数情况下应推荐 /content 一键调度，也可按需分步执行单模块命令。
+    区别于 /pm（内部 PRD）和 /sa（对外方案），本 role 服务**内容与传播**。
+
+# ============================================================
+# 能力域 → 命令映射
+# 5 模块流水线 + 1 统一入口 = 6 个命令
+# ============================================================
+capabilities:
+
+  content-pipeline:
+    description: 端到端内容创作流水线（M1 → M5）
+    commands:
+      - /content-intake      # 【M1】内容请求网关（文体识别 + 需求解析）
+      - /content-materials   # 【M2】项目素材抽取（关联 PM/SA 项目）
+      - /content-generate    # 【M3】八大文体专项生成
+      - /content-validate    # 【M4】五类内容校验
+      - /content-archive     # 【M5】版本归档 + 多格式导出
+      - /content             # 统一入口编排器（对外唯一入口）
+
+# ============================================================
+# 八大文体（Style 枚举）
+# ============================================================
+styles:
+  - id: promo
+    name: 产品推广文
+    audience: 决策者
+    tone: 商业、场景化
+    length: 800-2000 字
+    keywords: [产品价值, 客户收益, 核心卖点, 场景化, 业务价值]
+  - id: solution-doc
+    name: 产品解决方案文
+    audience: 客户 IT + 业务
+    tone: 专业、务实
+    length: 2000-5000 字
+    keywords: [行业痛点, 解决方案, 部署形态, 应用场景, 收益]
+  - id: tech-whitepaper
+    name: 产品技术白皮书
+    audience: 技术受众
+    tone: 严谨、技术
+    length: 5000-15000 字
+    keywords: [技术挑战, 架构, 技术原理, 技术指标, 安全设计, 性能]
+  - id: ppt
+    name: 产品 PPT
+    audience: 会议汇报
+    tone: 简洁、视觉化
+    length: 15-30 页
+    keywords: [大纲, 每页要点, 配图建议, 备注话术, 结构化 JSON]
+  - id: solution-whitepaper
+    name: 产品解决方案白皮书
+    audience: 客户决策者 + 技术负责人
+    tone: 专业、系统
+    length: 8000-20000 字
+    keywords: [行业背景, 业务痛点, 解决方案, 落地路径, 案例, 收益]
+  - id: activity-tweet
+    name: 产品活动推文
+    audience: 公众号 / 社群
+    tone: 轻量、引导
+    length: 500-1500 字
+    keywords: [活动背景, 福利, 亮点, 引导行动, 排版分段]
+  - id: pr
+    name: 企业 PR 稿
+    audience: 媒体记者
+    tone: 新闻稿式、客观
+    length: 800-1500 字
+    keywords: [导语, 事件背景, 核心信息, 企业观点, 产品亮点, 展望]
+  - id: tech-popular
+    name: 产品技术科普文
+    audience: 开发者 / 技术爱好者
+    tone: 通俗 + 专业
+    length: 2000-5000 字
+    keywords: [是什么, 解决什么, 怎么工作, 由浅入深]
+
+# ============================================================
+# 典型工作流
+# ============================================================
+workflows:
+
+  # ------------------------------------------------------------
+  # 【核心】端到端内容创作流水线（5 模块）
+  # 自然语言 → 网关 → 素材 → 生成 → 校验 → 审核 → 归档
+  # ------------------------------------------------------------
+  end-to-end-content:
+    trigger:
+      - "写一篇"
+      - "帮我写"
+      - "生成一份"
+      - "白皮书"
+      - "PR 稿"
+      - "推广文"
+      - "解决方案文"
+      - "活动推文"
+      - "科普文"
+      - "PPT 大纲"
+      - "产品文档"
+    description: 端到端内容创作流水线（八大文体皆走此流程）
+    output-dir: ./output/content-pipeline/{style}-{topic-slug}-{yyyymmdd}/
+    stages:
+      - id: M1
+        command: /content-intake
+        args: "{raw_input}"
+        purpose: 【模块1】文体识别 + 需求解析 + 参数标准化
+        produces: 00-content-request.json
+        gate:
+          type: human-review
+          prompt: "《内容请求》已解析，请确认文体 / 受众 / 篇幅 / 关键约束"
+      - id: M2
+        command: /content-materials
+        args: "00-content-request.json"
+        purpose: 【模块2】项目素材抽取（如关联 PM/SA 项目 ID）
+        produces: 01-material-pool.md
+        gate:
+          type: human-review
+          prompt: "《素材池》已生成，请确认核心事实素材"
+        skip_when: "无关联项目 ID"
+      - id: M3
+        command: /content-generate
+        args: "00-content-request.json 01-material-pool.md"
+        purpose: 【模块3】八大文体专项生成初稿
+        produces: 02-draft.md
+        gate: none
+      - id: M4
+        command: /content-validate
+        args: "02-draft.md 01-material-pool.md"
+        purpose: 【模块4】五类校验（事实/合规/风格/完整/引用）
+        produces: 03-validate-report.md
+        gate:
+          type: human-review
+          prompt: "《校验报告》已生成 + 初稿在 02-draft.md，请审阅（编辑/驳回/通过）"
+      - id: M5
+        command: /content-archive
+        args: "{output-dir}"
+        purpose: 【模块5】归档 + 多格式导出 + 可回写 PM/SA 项目
+        produces:
+          - README.md
+          - CHANGELOG.md
+          - _export/*.{md,docx,json}
+        gate: none
+
+# ============================================================
+# 单点直达
+# ============================================================
+single-shot:
+  - trigger: ["内容请求", "文体识别", "解析需求", "content intake"]
+    command: /content-intake
+  - trigger: ["项目素材", "素材抽取", "拉取项目材料"]
+    command: /content-materials
+  - trigger: ["生成初稿", "文体生成", "写文章"]
+    command: /content-generate
+  - trigger: ["内容校验", "事实校验", "合规校验", "文案校验"]
+    command: /content-validate
+  - trigger: ["内容归档", "导出文档", "版本快照"]
+    command: /content-archive
+  - trigger: ["写内容", "写文章", "帮我写", "生成一份", "内容创作"]
+    command: /content
+
+# ============================================================
+# 默认参数（未指定时使用）
+# ============================================================
+defaults:
+  audience: 通用
+  language: zh-CN
+  format-out: markdown
+  include-mermaid: false
+  include-cases: true
+  output-dir: ./output/content-pipeline

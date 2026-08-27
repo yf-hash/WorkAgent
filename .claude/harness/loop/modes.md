@@ -24,7 +24,7 @@
 
 ### `iterative`
 - **语义**：写→评→改直到达标（Writer-Reviewer 互搏、Ralph Wiggum）
-- **典型场景**：`@style-evolver` / `@bid-writer` 评审轮 / `humanizer-*` 迭代
+- **典型场景**：`/prd --validate` 生成后校验→修改→重跑 / `/pm-tech-spec` 指标校验循环
 - **harness 表现**：用 `/loop` 自我调度，或用 max-iterations 限制轮数
 - **配套字段**：
   ```yaml
@@ -37,7 +37,7 @@
 
 ### `parallel`
 - **语义**：把独立子任务分派给多个子代理并发执行，收敛结果
-- **典型场景**：`@research-analyst` 多角度调研 / `/review-all` 多维度审查 / `@product-manager` 编排多子 agent
+- **典型场景**：`/pm-clarify` 三个子 Agent 并行（歧义识别 / 澄清问题 / 冲突检测）/ `/pm-tech-spec` 六大类指标并行梳理
 - **harness 表现**：用 Agent 工具的批量并发调用（一条消息里多个 Agent 工具块）
 - **配套字段**：
   ```yaml

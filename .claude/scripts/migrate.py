@@ -71,6 +71,8 @@ SKILL_DEFAULTS = {
         ("pm",        "writing-scoped", "writing-safe", "one-shot", "project", "low"),
         ("product",   "writing-scoped", "writing-safe", "one-shot", "project", "low"),
         ("presales",  "writing-scoped", "writing-safe", "one-shot", "project", "medium"),
+        ("sa",        "writing-scoped", "writing-safe", "one-shot", "project", "medium"),
+        ("content",   "writing-scoped", "writing-safe", "one-shot", "project", "low"),
         ("bid",       "writing-scoped", "writing-safe", "one-shot", "project", "medium"),
         ("dashboard", "research",       "read-only",    "one-shot", "project", "low"),
         ("ppt",       "media-heavy",    "shell-restricted", "one-shot", "session", "medium"),
