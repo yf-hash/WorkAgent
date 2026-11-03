@@ -126,5 +126,4 @@ check("login with new password", s == 200)
 s, _ = call("POST", "/api/auth/login", {"username": "admin", "password": "admin123"}, token=False)
 check("old password rejected", s == 401)
 
-io.open("_test_result.txt", "w", encoding="utf-8").write("ALL PASS" if ok else "FAILURES PRESENT")
 print("\nRESULT:", "ALL PASS" if ok else "FAILURES PRESENT")
