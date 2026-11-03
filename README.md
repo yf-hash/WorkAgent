@@ -9,9 +9,10 @@
 > - **售前工程师（SA）**：从销售转述一句话 / RFP 到完整售前包（含方案 + POC + RFP 应答 + 报价）— [SA Harness](docs/SA_HARNESS.md)
 > - **内容 / 市场 / 品牌**：从一句自然语言到八大文体内容物料（推广文 / 白皮书 / PR 稿 / PPT / 推文 / 科普文...）— [Content Harness](docs/CONTENT_HARNESS.md)
 
-## Web 控制台（console/）
+## Web 控制台
 
-仓库内的可交付界面：[`console/`](console/README.md) —— 面向售前 / 产品 / 内容团队的 AI 工作台。
+Web 控制台（原 `console/` 目录）已拆分为独立仓库：
+**[yf-hash/WorkAgent-web](https://github.com/yf-hash/WorkAgent-web)** —— 面向售前 / 产品 / 内容团队的 AI 工作台。
 
 - 登录鉴权、对话式需求登记、`/pm` `/sa` `/content` 智能体选择
 - Skill 能力库支持上传 Markdown 新增或合并补充
@@ -19,8 +20,9 @@
 - Python 标准库后端 + SQLite，零第三方依赖，提供 Docker 部署
 
 ```bash
-cd console && python server/app.py      # http://127.0.0.1:8765/  （admin / admin123）
-cd console && docker compose up -d --build
+git clone https://github.com/yf-hash/WorkAgent-web.git
+cd WorkAgent-web && python server/app.py      # http://127.0.0.1:8765/  （admin / admin123）
+# 或 docker compose up -d --build
 ```
 
 ## 快速上手
