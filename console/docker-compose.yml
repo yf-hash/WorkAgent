@@ -1,0 +1,18 @@
+services:
+  workagent:
+    build:
+      context: ..
+      dockerfile: console/Dockerfile
+    container_name: workagent-console
+    ports:
+      - "${WORKAGENT_PORT:-8765}:8765"
+    environment:
+      WORKAGENT_ADMIN_USER: ${WORKAGENT_ADMIN_USER:-admin}
+      WORKAGENT_ADMIN_PASSWORD: ${WORKAGENT_ADMIN_PASSWORD:-admin123}
+      WORKAGENT_SESSION_HOURS: ${WORKAGENT_SESSION_HOURS:-72}
+    volumes:
+      - workagent-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  workagent-data:
